@@ -8,6 +8,8 @@ public class TeamBApplication {
 
 	public static void main(String[] args) {
 		System.out.println("*********** TEST **********");
+		System.out.println("*********** TEST2 **********");
+
 		SpringApplication.run(TeamBApplication.class, args);
 	}
 
