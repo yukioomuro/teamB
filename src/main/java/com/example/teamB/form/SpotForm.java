@@ -22,4 +22,20 @@ public class SpotForm {
 	private String spotName;
 
 	//観光地住所
+	@NotBlank
+	private String address;
+
+	//観光地webページ
+	private String web;
+
+	//電話番号
+	@NotBlank
+	private String tel;
+
+	//おすすめポイント
+	private String point;
+
+	//目的ID
+	@Id
+	private Integer purposeId;
 }
