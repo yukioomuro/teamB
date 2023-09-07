@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+button{
+ padding: 10px 20px;
+ background: yellow;
+ color: #111111;
+ border-bottom: solid 5px gray;
+ border-radius: 25px;
+}
+button{
+ -webkit-transform: translateY(5px);
+ transform: translateY(5px);
+ border-bottom: none;
+}
