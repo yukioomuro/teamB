@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thyneleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="css/myPage.css">
+<title>☆マイページ☆</title>
 </head>
 <body>
 
+	<div id="headline">
+		<h1 class="mypage">マイページ</h1>
+	</div>
+
+	<div id="name">
+		<!-- formやmodelから名前を持ってきて表示 -->
+		<h2>名前表示</h2>
+	</div>
+
+	<div class="element">
+		<h3>
+			<a href="スケジュールのURL" target="_blank" rel="noopener noreferrer">スケジュール</a>
+		</h3>
+
+		<h3>
+			<a href="「④スポットMAP」へ戻るURL">修正する</a>
+		</h3>
+
+		<h3>
+			<!-- リマインドボタン -->
+		</h3>
+
+		<h3>
+			<!-- メモ帳 -->
+			<label>メモ帳</label><br>
+			<textarea rows="5" cols="30"></textarea>
+		</h3>
+
+		<h4>
+			<!-- <form name="Logout" method="post" action="/cgi-bin/Logout.cgi">
+			<input type="submit" value="Logout" />
+			</form> -->
+			<a href="ログアウト画面">ログアウト</a>
+		</h4>
+	</div>
 </body>
 </html>
