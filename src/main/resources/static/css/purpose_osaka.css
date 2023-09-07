@@ -1,13 +1,20 @@
 @charset "UTF-8";
 
 .food{
-	
-margin-left: auto;
-margin-right: auto;
-
+    width: 50%;
+	display:flex;
+    margin: 10px auto;
+}
+.img{
+	width: 50px;
+    
 
 }
-img{width:50%;
-    heigth:50%;
-    vertical-align:bottom;
-    }
+.img img{
+    width: 100%;
+}
+.e{
+    text-align: center;
+	font-size:15px;
+}
+
