@@ -34,4 +34,7 @@ public class Spot {
 
 	//目的ID
 	private Integer purposeId;
+	
+	//画像ファイル
+	private String imageFileName;
 }

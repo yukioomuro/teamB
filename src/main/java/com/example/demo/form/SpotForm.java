@@ -36,6 +36,8 @@ public class SpotForm {
 	private String point;
 
 	//目的ID
-	@Id
 	private Integer purposeId;
+
+	//画像ファイル
+	private String imageFileName;
 }
