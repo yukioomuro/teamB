@@ -2,9 +2,121 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理画面</title>
+<link rel="stylesheet" href="css/manager_page.css">
 </head>
 <body>
+	<h1>oritabi</h1>
+	<hr>
+	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
+	<div th:if="${costomerForm.costomer}" style="margin: 5px">
+		<h3>お客様一覧</h3>
+		<!-- 削除完了コメント -->
+		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
+		<p th:if="${msg}" th:text="${msg}"></p>
+		
+		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<script>
+		$(function() {
+				$(".D").click(function() {
+						$(".E").slideToggle("");
+				});
+		});
+		</script>
+		<style>
+		.D{
+				display: inline-block;
+				background: #e6e6e6;
+				padding: 5px 10px;
+				cursor: pointer;
+		}
+		.E{
+				background: #e6e6e6;
+				height: 100px;
+		}
+		</style>
+		<div class="D">OPEN</div>
+		<div class="E">
+		<table th:unless="${#lists.isEmpty(list)}">
+			<tr>
+				<th>顧客ID</th>
+				<th>名前</th>
+				<th>MAIL</th>
+				<th>PASSWD</th>
+				<th>メモ</th>
+			</tr>
+			
+			<tr th:each="obj : ${list}" align="center">
+				<td th:text="${obj.id}"></td>
+				<td th:text="${obj.name}"></td>
+				<td th:text="${obj.mail}" align="left"></td>
+				<td th:text="${obj.pass}"></td>
+				<td th:text="${obj.memo}" align="left"></td>
+			</tr>
+		</table>
+	　</div>
+		<!-- △△△データが一件でもあれば表示△△△ -->
+		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
+		<p th:if="${#lists.isEmpty(list)}">登録されている顧客情報はありません。</p>
+		<!-- △△△データが一件もない場合表示△△△ -->
+	</div>
+	<div th:if="${spotForm.tourist}" style="margin: 5px">
+		<h3>観光地スポット <a th:href="@{/teamB/touroku}"><button>登録</button></a><br></h3>
+		<!-- 削除完了コメント -->
+		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
+		<p th:if="${msg}" th:text="${msg}"></p>
+		
+		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
+
+		<table th:unless="${#lists.isEmpty(list)}">
+			<tr>
+				<th>観光地連番</th>
+				<th>観光地名th>
+				<th>観光地住所</th>
+				<th>WEBページ</th>
+				<th>電話番号</th>
+				<th>オススメ</th>
+				<th>目的ID</th>
+				<th>編集</th>
+				<th>削除</th>
+
+			</tr>
+			<tr th:each="obj : ${list}" align="center">
+				<td th:text="${obj.spot_id}"></td>
+				<td th:text="${obj.spot_name}"></td>
+				<td th:text="${obj.address}" align="left"></td>
+				<td th:text="${obj.web}" align="left"></td>
+				<td th:text="${obj.tel}"></td>
+				<td th:text="${obj.point}" align="left"></td>
+<!-- 				<td th:text="${obj.purpose}"></td> -->
+				<td th:text="${obj.tel}"></td>
+				<!-- 編集ボタン -->
+				<td>
+					<form method="GET" th:action="@{/teamB/{id}(id=${obj.spot_id})}">
+						<input type="submit" value="編集">
+					</form>
+				</td>
+				<!-- 削除ボタン -->
+				<td>
+					<form method="POST" th:action="@{/teamB/delete}">
+						<input type="hidden" name="id" th:value="${obj.spot_id}">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<!-- △△△データが一件でもあれば表示△△△ -->
+		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
+		<p th:if="${#lists.isEmpty(list)}">登録されている顧客情報はありません。</p>
+		<!-- △△△データが一件もない場合表示△△△ -->
+	</div>
+	<!-- △△△新規登録時のみ表示△△△ -->
+	<!-- ▼▼▼新規登録時でない時に表示▼▼▼ -->
+	<p th:unless="${costomerForm.costomer}">
+		<a href="#" th:href="@{/teamB}">CRUD画面に戻る</a>
+	</p>
+	<!-- △△△新規登録時でない時に表示△△△ -->
 
 </body>
 </html>
