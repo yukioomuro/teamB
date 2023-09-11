@@ -29,12 +29,12 @@
 
 .food .img,
 .look .img,
-.play .img, {
+.play .img{
     padding-right: 25px;
 }
 
 .asobu,
-.food,
+.taberu,
 .tour{
     padding: auto;
     width: 90%;
@@ -55,7 +55,7 @@
     object-fit: cover
 
 }
-.food .kita .yukari .img_yukari img{
+.taberu .kita .yukari .img_yukari img{
     width: 380px;  
     height: 250px;
     object-fit: cover
@@ -63,8 +63,9 @@
 
 .tour .oosakajyou .img_oosakajyou img,
 .tour .tsutenkaku .img_tsutenkaku img,
-.tour .taiyounotou .img_taiyounotou img,
-.tour .ngk .img_ngk .img{
+.tour .tarou .img_tarou img,
+.tour .ngk .img_ngk img{
+
     width: 380px;  
     height: 250px;
     object-fit: cover
