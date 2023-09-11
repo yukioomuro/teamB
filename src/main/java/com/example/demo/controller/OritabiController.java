@@ -17,8 +17,6 @@ import com.example.demo.service.OritabiService;
 public class OritabiController {
 
 	//DI対象（依存対象）
-	
-	
 	@Autowired
 	OritabiService service;
 
@@ -29,18 +27,23 @@ public class OritabiController {
 		return form;
 	}
 
+	@ModelAttribute
 	public PurposeForm setUpPurposeForm() {
 		PurposeForm form = new PurposeForm();
 		return form;
 	}
 
+	@ModelAttribute
 	public CostomerForm setUpCostomerForm() {
 		CostomerForm form = new CostomerForm();
 		return form;
 	}
 
+	@ModelAttribute
 	public HistoryForm setUpHistoryForm() {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
+	
+	
 }
