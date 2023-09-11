@@ -17,6 +17,8 @@ import com.example.demo.service.OritabiService;
 public class OritabiController {
 
 	//DI対象（依存対象）
+	
+	
 	@Autowired
 	OritabiService service;
 
