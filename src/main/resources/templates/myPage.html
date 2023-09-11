@@ -8,7 +8,7 @@
 <body>
 
 	<div id="headline">
-		<h1 class="mypage">マイページ</h1>
+		<h1 class="headline">マイページ</h1>
 	</div>
 
 	<div id="name">
@@ -20,10 +20,12 @@
 
 		<!-- ▼▼▼ 以下テーブルはスケジュール表 ▼▼▼ -->
 		<!-- データベースから引っ張ってきたい -->
-		<table id="table">
+		<table id="table" border="1">
 			<tr>
-				<th colspan="2">スケジュール</th>
+				<th colspan="3">スケジュール</th>
 			</tr>
+			<!-- 以下の名前と場所(URL)の行は th:each="【要素格納用変数】:${【繰り返し処理するオブジェクト】}
+				を使った繰り返し処理の方が楽にできそう___教科書(p.151)___ -->
 			<tr>
 				<th>名前</th>
 				<th>場所(URL)</th>
