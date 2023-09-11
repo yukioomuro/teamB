@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.osaka {
+    width: 100%;
+    max-width: 1300px;
+}
+.osaka h1{
+    margin-left: 200px;
+}
+
+.img{
+	width: 50px;    
+}
+.img img{
+    width: 100%;
+}
+.osaka .food,
+.osaka .look,
+.osaka .play{
+    width: 50%;
+	display:flex;
+    margin: 10px auto;
+	font-size:15px;
+}
+
+.osaka .play .img img{
+    width: 40px; 
+}
+
+.food .img,
+.look .img,
+.play .img, {
+    padding-right: 25px;
+}
+
+.asobu,
+.food,
+.tour{
+    padding: auto;
+    width: 90%;
+    max-width: 1300px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    
+
+}
+.asobu .usj .img_usj img,
+.asobu .cupnoodles .img_cup img,
+.asobu .kaiyukan .img_kaiyukan img,
+.asobu .tennoujizoo .img_zoo img {
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+
+}
+.food .kita .yukari .img_yukari img{
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+}
+
+.tour .oosakajyou .img_oosakajyou img,
+.tour .tsutenkaku .img_tsutenkaku img,
+.tour .taiyounotou .img_taiyounotou img,
+.tour .ngk .img_ngk .img{
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+}
