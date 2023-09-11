@@ -1,4 +1,4 @@
-package com.example.teamB.form;
+package com.example.demo.entity;
 
 import org.springframework.data.annotation.Id;
 
@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpotForm {
+public class Purpose {
 
-	//観光スポットリストテーブルへのテーブル
-	//観光地連番
+	//目的地リストへのForm
+	//ID
 	@Id
-	private Integer spotId;
-
-	//観光地名
 	@NotBlank
-	private String spotName;
+	private Integer purposeId;
 
-	//観光地住所
+	//目的
+	@NotBlank
+	private String purposeKinds;
+
 }

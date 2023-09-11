@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.osaka {
+    width: 100%;
+    max-width: 1300px;
+}
+.osaka h1{
+    margin-left: 200px;
+}
+
+.img{
+	width: 50px;    
+}
+.img img{
+    width: 100%;
+}
+.osaka .food,
+.osaka .look,
+.osaka .play{
+    width: 50%;
+	display:flex;
+    margin: 10px auto;
+	font-size:15px;
+}
+
+.osaka .play .img img{
+    width: 40px; 
+}
+
+.food .img,
+.look .img,
+.play .img{
+    padding-right: 25px;
+}
+
+.asobu,
+.taberu,
+.tour{
+    padding: auto;
+    width: 90%;
+    max-width: 1300px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    
+
+}
+.asobu .usj .img_usj img,
+.asobu .cupnoodles .img_cup img,
+.asobu .kaiyukan .img_kaiyukan img,
+.asobu .tennoujizoo .img_zoo img {
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+
+}
+.taberu .kita .yukari .img_yukari img{
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+}
+
+.tour .oosakajyou .img_oosakajyou img,
+.tour .tsutenkaku .img_tsutenkaku img,
+.tour .tarou .img_tarou img,
+.tour .ngk .img_ngk img{
+
+    width: 380px;  
+    height: 250px;
+    object-fit: cover
+}
+.login_bar{
+    width:90%;
+    min-width: 200px;
+    max-width: 600px;
+    padding: auto;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+button {
+ background-color: hwb(160 56% 9%);
+}
+
+.login body{
+  background: #f5f5f5;
+}
+
+h5
+{
+  font-weight: 400;
+}
+
+.container
+{
+  margin-top: 80px;
+  width: 400px;
+  height: 700px;
+}
+
+.tabs .indicator
+{
+  background-color: #e0f2f1;
+  height: 60px;
+  opacity: 0.3;
+}
+
+.form-container
+{
+  padding: 40px;
+  padding-top: 10px;
+}
+
+.confirmation-tabs-btn
+{
+  position: absolute;
+}

@@ -6,16 +6,10 @@ button{
  color: #111111;
  border-bottom: solid 5px gray;
  border-radius: 25px;
- 
 }
 
 button{
  -webkit-transform: translateY(5px);
  transform: translateY(5px);
  border-bottom: none;
-}
-
-#map {
-	height: 400px;
-	width: 100%;
 }

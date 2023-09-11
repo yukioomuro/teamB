@@ -1,4 +1,4 @@
-package com.example.teamB.form;
+package com.example.demo.form;
 
 import org.springframework.data.annotation.Id;
 
@@ -32,4 +32,8 @@ public class CostomerForm {
 	//メモ
 	private String memo;
 
+	//登録・変更の判定用//
+	//crud.htmlは「登録」時と「変更」時で表示する内容を変える必要がある。//
+	//「true」の場合は「登録」、「false」の場合は「変更」
+	private Boolean newCostomer;
 }

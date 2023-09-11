@@ -8,7 +8,7 @@
 <body>
 
 	<div id="headline">
-		<h1 class="mypage">マイページ</h1>
+		<h1 class="headline">マイページ</h1>
 	</div>
 
 	<div id="name">
@@ -18,34 +18,42 @@
 
 	<div class="element">
 
-		<h3>
-			<table id="table">
-				<tr>
-					<th colspan="2">スケジュール</th>
-				</tr>
-				<tr>
-					<th>名前</th>
-					<th>場所(URL)</th>
-				</tr>
-				<tr>
-					<td>名前</td>
-					<td>場所(URL)</td>
-				</tr>
-				<tr>
-					<td>名前</td>
-					<td>場所(URL)</td>
-				</tr>
-			</table>
+		<!-- ▼▼▼ 以下テーブルはスケジュール表 ▼▼▼ -->
+		<!-- データベースから引っ張ってきたい -->
+		<table id="table" border="1">
+			<tr>
+				<th colspan="3">スケジュール</th>
+			</tr>
+			<!-- 以下の名前と場所(URL)の行は th:each="【要素格納用変数】:${【繰り返し処理するオブジェクト】}
+				を使った繰り返し処理の方が楽にできそう___教科書(p.151)___ -->
+			<tr>
+				<th>名前</th>
+				<th>場所(URL)</th>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td>場所(URL)</td>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td>場所(URL)</td>
+			</tr>
+		</table>
+		<!-- ▲▲▲ 以上テーブル ▲▲▲ -->
 
-		</h3>
 
+		<!-- ▼▼▼ 以下修正ボタン（ひとつ前のページのリンク）▼▼▼ -->
 		<h3>
 			<a href="map.html">修正する</a>
 		</h3>
+		<!-- ▲▲▲以上修正ボタン ▲▲▲-->
+
 
 		<h3>
 			<!-- リマインドボタン -->
+			<!-- いまいち作り方が思いつかない -->
 		</h3>
+
 
 		<h3>
 			<!-- メモ帳 -->
@@ -53,11 +61,13 @@
 			<textarea rows="5" cols="30"></textarea>
 		</h3>
 
+
 		<h4>
+			<!-- 下記コメントはログアウト専用の公式みたいなもの。たぶん使わない。 -->
 			<!-- <form name="Logout" method="post" action="/cgi-bin/Logout.cgi">
 			<input type="submit" value="Logout" />
 			</form> -->
-			<a href="ログアウト画面">ログアウト</a>
+			<a href="out.html">ログアウト</a>
 		</h4>
 	</div>
 </body>
