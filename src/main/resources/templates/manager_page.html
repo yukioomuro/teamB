@@ -55,7 +55,7 @@
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<div th:if="${spotForm.tourist}" style="margin: 5px">
-		<h3>観光地スポット <a th:href="@{/teamB/touroku}"><button>登録</button></a><br></h3>
+		<h3>観光地スポット <a th:href="@{/teamB/touroku}"><button type="button" onclick="location.href='manager_page.html'">登録</button></a><br></h3>
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
