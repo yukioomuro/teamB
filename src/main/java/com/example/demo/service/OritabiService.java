@@ -2,10 +2,9 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
-import javax.xml.crypto.KeySelector.Purpose;
-
 import com.example.demo.entity.Costomer;
 import com.example.demo.entity.History;
+import com.example.demo.entity.Purpose;
 import com.example.demo.entity.Spot;
 
 public interface OritabiService {

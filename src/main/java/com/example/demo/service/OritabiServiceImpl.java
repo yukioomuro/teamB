@@ -2,14 +2,13 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
-import javax.xml.crypto.KeySelector.Purpose;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.Costomer;
 import com.example.demo.entity.History;
+import com.example.demo.entity.Purpose;
 import com.example.demo.entity.Spot;
 import com.example.demo.repository.CostomerRepository;
 import com.example.demo.repository.HistoryRepository;
