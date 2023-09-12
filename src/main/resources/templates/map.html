@@ -18,7 +18,8 @@
         // Google Maps JavaScript APIの読み込み
         function initMap() {
             // 地図を表示する位置を設定
-            const mapCenter = { lat: 34.052235, lng: -118.243683 }; // 例: ロサンゼルスの緯度経度
+            const mapCenter = { lat: 34.693738, lng: 135.502165 }; // 大阪市の緯度経度
+
 
             // 地図を生成
             const map = new google.maps.Map(document.getElementById('map'), {
@@ -36,7 +37,7 @@
                 origin: '大阪駅',
                 destination: '海遊館',
                 waypoints: [
-                    { location: '梅田駅', stopover: true },
+                    { location: '大阪城', stopover: true },
                     { location: '心斎橋駅', stopover: true },
                     // 必要に応じて追加のウェイポイントを指定
                 ],
