@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Costomer;
+import com.example.demo.entity.Spot;
 import com.example.demo.form.CostomerForm;
 import com.example.demo.form.HistoryForm;
 import com.example.demo.form.PurposeForm;
@@ -67,7 +68,7 @@ public class OritabiController {
 
 	//新規登録画面の操作
 	@PostMapping("/register")
-	public String insert(@Validated CostomerForm costomerForm,
+	public String insertCostomer(@Validated CostomerForm costomerForm,
 			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
 		//Form から entity へ詰め替え
@@ -90,5 +91,29 @@ public class OritabiController {
 	}
 
 	//顧客情報や観光スポットの編集用の操作
+	@PostMapping("/manager_page")
+	public String insertTourist(@Validated SpotForm spotForm,
+			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
+		//Form から entity へ詰め替え
+		Spot spot = new Spot();
+		spot.setSpotName(spotForm.getSpotName());
+		spot.setAddress(spotForm.getAddress());
+		spot.setWeb(spotForm.getWeb());
+		spot.setTel(spotForm.getTel());
+		spot.setPoint(spotForm.getPoint());
+		spot.setPurposeId(spotForm.getPurposeId());
+		spot.setImageFileName(spotForm.getImageFileName());
+
+		//入力チェック
+		if (!bindingResult.hasErrors()) {
+			service.insertSpot(spot);
+			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+			return "manager_page";
+
+		} else {
+			//エラーがある場合は、もう一度新規登録画面へ飛びます。
+			return "/manager_page";
+		}
+	}
 }
