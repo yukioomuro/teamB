@@ -21,14 +21,14 @@
 		<script src="https://code.jquery.com/jquery.min.js"></script>
 		<script>
 			$(function () {
-				$(".D").click(function () {
-					$(".E").slideToggle("");
+				$(".A").click(function () {
+					$(".B").slideToggle("");
 				});
 			});
 		</script>
 
-		<div class="D">OPEN</div>
-		<div class="E">
+		<div class="A"> 一覧 ⇓ </div>
+		<div class="B">
 			<table th:unless="${#lists.isEmpty(list)}">
 				<tr>
 					<th>顧客ID</th>
@@ -46,7 +46,6 @@
 					<td th:text="${obj.memo}" align="left"></td>
 				</tr>
 			</table>
-			　
 		</div>
 		
 		<!-- △△△データが一件でもあれば表示△△△ -->
@@ -55,7 +54,31 @@
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<div th:if="${spotForm.tourist}" style="margin: 5px">
-		<h3>観光地スポット <a th:href="@{/teamB/touroku}"><button type="button" onclick="location.href='manager_entry.html'">登録</button></a><br></h3>
+		<h3>観光地スポット <a th:href="@{/teamB/touroku}"></a><br></h3>
+	
+			<!-- ▼▼▼ Form ▼▼▼ -->
+			<form method="POST" th:action="${spotForm.tourist}? @{/teamB/insert} : @{/teamB/update}" th:object="${spotForm}">
+				<label>観光地連番</label>
+				<inpu⇓t type="text" th:field="*{spot_id}" /><br>
+				<label>観光地名</label>
+				<input type="text" th:field="*{spot_name}" /><br>
+				<label>観光地住所</label>
+				<input type="text" th:field="*{address}"><br>
+				<label>WEBページ</label>
+				<input type="text" th:field="*{web}"><br>
+				<label>電話番号</label>
+				<input type="text" th:field="*{tel}"><br> 
+				<label>オススメ</label><br>
+				<textarea rows="5" cols="50" th:field="*{memo}"></textarea><br>
+				<label>目的ID</label>
+				<input type="text" th:field="*{purpose}"><br>
+				<label>画像URL</label>
+				<input type="text" th:field="*{img}"><br>    
+				<div class="button006">
+					<a href="#">ボタンのデザイン</a>
+				</div>
+			</form>
+		
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
@@ -63,13 +86,13 @@
 		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
 		<script>
 			$(function () {
-				$(".A").click(function () {
-					$(".B").slideToggle("");
+				$(".E").click(function () {
+					$(".F").slideToggle("");
 				});
 			});
 		</script>
-		<div class="A">一覧</div>
-		<div class="B">
+		<div class="E">一覧 ⇓</div>
+		<div class="F">
 			<table th:unless="${#lists.isEmpty(list)}">
 				<tr>
 					<th>観光地連番</th>
@@ -79,6 +102,7 @@
 					<th>電話番号</th>
 					<th>オススメ</th>
 					<th>目的ID</th>
+					<th>画像URL</th>
 					<th>編集</th>
 					<th>削除</th>
 				</tr>
@@ -89,6 +113,7 @@
 					<td th:text="${obj.web}" align="left"></td>
 					<td th:text="${obj.tel}"></td>
 					<td th:text="${obj.point}" align="left"></td>
+					<td th:text="${obj.img}" align="left"></td>
 					<!-- 				<td th:text="${obj.purpose}"></td> -->
 					<td th:text="${obj.tel}"></td>
 					<!-- 編集ボタン -->
