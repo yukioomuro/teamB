@@ -1,117 +1,165 @@
 @charset "UTF-8";
 
-.osaka {
-    width: 100%;
-    max-width: 1300px;
-}
-.osaka h1{
-    margin-left: 200px;
+.oosaka {
+  width: auto;
+  margin: auto;
+
 }
 
-.img{
-	width: 50px;    
-}
-.img img{
-    width: 100%;
-}
-.osaka .food,
-.osaka .look,
-.osaka .play{
-    width: 50%;
-	display:flex;
-    margin: 10px auto;
-	font-size:15px;
+.tab {
+  display: inline-block;
+  /* インラインブロック化 */
+
+  border-width: 1px 1px 0px 1px;
+  /* 上側と左右に枠線を引く */
+
+  border-style: solid;
+  /* 枠線の種類は「実線」 */
+
+  border-color: black;
+  /* 枠線の色は「黒」 */
+
+  border-radius: 0px 0px 0px 0px;
+  /* 左上と右上の角だけを丸くする */
+
+ padding: 1em 1em; 
+  /* 内側の余白量 */
+
+  /* font-weight: bold; */
+  /* タブの文字を太字にする */
+
+  color: black; 
+  /* タブの文字色：黒色 */
+  background-color: hwb(0 100% 0%);
+
 }
 
-.osaka .play .img img{
-    width: 40px; 
+/* ▼タブにマウスポインタが載った際の装飾 */
+.tab:hover {
+  color: hwb(60 34% 59%);
+  /* タブの文字色： */
+
+  background-color: hwb(60 85% 10%);
+  /* タブの背景色： */
+  
+  cursor: pointer;
+  /* マウスポインタの形状を「指(指し示す形)」にする */
 }
 
-.food .img,
-.look .img,
-.play .img{
-    padding-right: 25px;
+input:checked+.tab {
+  color: hwb(0 0% 100%);
+  /* タブの文字色*/
+  background-color: hwb(0 100% 0%);
+  /* タブの背景色： */
 }
 
-.asobu,
 .taberu,
-.tour{
-    padding: auto;
-    width: 90%;
-    max-width: 1300px;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around; 
-    
-
-}
-.asobu .usj .img_usj img,
-.asobu .cupnoodles .img_cup img,
-.asobu .kaiyukan .img_kaiyukan img,
-.asobu .tennoujizoo .img_zoo img {
-    width: 380px;  
-    height: 250px;
-    object-fit: cover
-
-}
-.taberu .kita .yukari .img_yukari img{
-    width: 380px;  
-    height: 250px;
-    object-fit: cover
+.tour,
+.asobu {
+  display: none;
+  width: 100%;
 }
 
-.tour .oosakajyou .img_oosakajyou img,
-.tour .tsutenkaku .img_tsutenkaku img,
-.tour .tarou .img_tarou img,
-.tour .ngk .img_ngk img{
-
-    width: 380px;  
-    height: 250px;
-    object-fit: cover
-}
-.login_bar{
-    width:90%;
-    min-width: 200px;
-    max-width: 600px;
-    padding: auto;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-button {
- background-color: hwb(160 56% 9%);
+input:checked+.tab_class+.area {
+  display: block;
 }
 
-.login body{
+
+/* ▼タブ機能を制御するラジオボタン(非表示にする) */
+.tabbox input {
+  display: none;
+}
+
+/* ▼タブの中身(共通装飾＋非選択状態の装飾) */
+.tabcontent {
+  display: none;
+  /* 標準では非表示にする */
+  width: 500px;
+
+  border: 1px solid black;
+  /* 枠線を引く：黒色で1ピクセルの実線 */
+
+  padding: 2em;
+  /* 内側の余白量 */
+  background-color: hwb(0 100% 0%);
+  /* 背景色：淡い黄色(※選択中のタブの背景色と合わせます) */
+  
+  height:  100%;             /* 高さ指定 */
+  width: 100%;                 /* 幅指定 */
+}
+ul{
+  display: flex;
+
+}
+li{
+  list-style: none;
+  margin-left: 20px;
+}
+/* ▼チェックが入っているラジオボタンに対応するタブの中身を表示する */
+#tabcheck1:checked~#tabcontent1 {
+  display: block;
+}
+#tabcheck2:checked~#tabcontent2 {
+  display: block;
+}
+#tabcheck3:checked~#tabcontent3 {
+  display: block;
+}
+
+.tabcontent .kita .yukari .img_yukari img,
+.tabcontent .usj .img_usj img,
+.tabcontent .cupnoodles .img_cup img,
+.tabcontent .kaiyukan .img_kaiyukan img,
+.tabcontent .tennoujizoo .img_zoo img,
+.tabcontent .oosakajyou .img_oosakajyou img,
+.tabcontent .tsutenkaku .img_tsutenkaku img,
+.tabcontent .tarou .img_tarou img,
+.tabcontent .ngk .img_ngk img
+{
+  width: 380px;
+  height: 250px;
+  object-fit: cover
+}
+
+.pickup {
+  width: 90%;
+  min-width: 200px;
+  max-width: 600px;
+  padding: auto;
+  box-sizing: border-box;
+  cursor: pointer;
+  
+}
+
+.pickup button {
+  background-color: hwb(160 64% 14%);
+}
+
+.login body {
   background: #f5f5f5;
 }
 
-h5
-{
+h5 {
   font-weight: 400;
 }
 
-.container
-{
+.container {
   margin-top: 80px;
   width: 400px;
   height: 700px;
 }
 
-.tabs .indicator
-{
+.tabs .indicator {
   background-color: #e0f2f1;
   height: 60px;
   opacity: 0.3;
 }
 
-.form-container
-{
+.form-container {
   padding: 40px;
   padding-top: 10px;
 }
 
-.confirmation-tabs-btn
-{
+.confirmation-tabs-btn {
   position: absolute;
 }
