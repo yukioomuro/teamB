@@ -18,7 +18,8 @@
         // Google Maps JavaScript APIの読み込み
         function initMap() {
             // 地図を表示する位置を設定
-            const mapCenter = { lat: 34.052235, lng: -118.243683 }; // 例: ロサンゼルスの緯度経度
+            const mapCenter = { lat: 34.693738, lng: 135.502165 }; // 大阪市の緯度経度
+
 
             // 地図を生成
             const map = new google.maps.Map(document.getElementById('map'), {
@@ -36,7 +37,7 @@
                 origin: '大阪駅',
                 destination: '海遊館',
                 waypoints: [
-                    { location: '梅田駅', stopover: true },
+                    { location: '京セラドーム', stopover: true },
                     { location: '心斎橋駅', stopover: true },
                     // 必要に応じて追加のウェイポイントを指定
                 ],
@@ -51,11 +52,12 @@
                     directionsRenderer.setDirections(response);
 
                     // 所要時間を表示
+                    
                     const durationText = response.routes[0].legs.reduce((total, leg) => {
-                        return total + leg.duration.text;
+                        return total + leg.duration.text + ' → ';
                     }, '');
 
-                    document.getElementById('duration').innerHTML = '所要時間: ' + durationText;
+                    document.getElementById('duration').innerHTML = '所要時間: ' + durationText + '到着！';
                 } else {
                     alert('ルートの取得中にエラーが発生しました: ' + status);
                 }
@@ -65,13 +67,12 @@
 
     <!-- Google Maps JavaScript APIの読み込み -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwT0jZfclNhbmP1847xeSL0VWGfp9fOlU&callback=initMap" async defer></script>
-	<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-	<button type="button" onclick="history.back()">一つ前の操作に戻る</button>
+	
 	<hr>
 	<br>
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<button class="btn" onclick="location.href='./purpose_osaka.html'">スポット選択に戻る</button>
+		<button class="btn" onclick="location.href='./purpose_osaka.html'">スポットの変更</button>
 		<br>
 		<!--各顧客観光リストテーブル③に登録されるように-->
 		<button class="btn" onclick="location.href='./mypage.html'">リスト作成</button>
