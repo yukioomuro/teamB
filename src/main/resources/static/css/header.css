@@ -1,0 +1,394 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+/* RESET
+----------------------------------------------------------------------------------------------------*/
+a,article,body,dd,div,dl,dt,em,form,footer,header,h1,h2,h3,h4,h5,h6,html,i,iframe,img,label,legend,li,nav,ol,p,section,main,span,table,tbody,tfoot,thead,time,tr,th,td,ul,video{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;white-space:normal;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left}textarea{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left}article,footer,header,nav,section,main{display:block}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}
+
+/* ----------------------------------------------
+
+ * 設定をしなおす
+
+---------------------------------------------- */
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-family: 'Roboto',"游ゴシック Medium", "Yu Gothic Medium","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  font-weight: 500;
+  color: #535761;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media only screen and ( max-width : 768px ) {
+  body {font-size: 14px;}
+}
+
+table {
+  margin : 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+}
+
+img {
+  vertical-align: middle;
+  border: none;
+}
+
+
+/* ----------------------------------------------
+
+ * アンカータグの設定
+
+---------------------------------------------- */
+a {
+  outline:none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+a,a:hover,a:hover img {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+a:hover {
+  filter: alpha(opacity=80);
+  -moz-opacity:0.80;
+  opacity:0.80;
+}
+
+
+/* ----------------------------------------------
+
+ * 要素を左右中央寄せ
+
+---------------------------------------------- */
+
+.taC {
+  text-align: center !important;
+}
+
+.taR {
+  text-align: right !important;
+}
+
+.taL {
+  text-align: left !important;
+}
+
+
+
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;*behavior:url(/scripts/boxsizing.htc)}.container{margin:0 auto}.clr:after,.col:after,.container:after,.group:after,.row:after{content:"";display:table;clear:both}.row{padding-bottom:0}.col{display:block;float:left;width:100%}@media (min-width:769px),print{.gutters .col{margin-left:2%}.gutters .col:first-child{margin-left:0}.gutters .colR:first-child{margin-right:0}.sp{display:none}}@media(max-width:768px){.sp_none{display:none !important;}}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    width /***/:auto;　/*IE8のみ適用*/
+}
+
+@media only screen and ( max-width : 768px ) {
+  .sbox {
+    margin-bottom: 20px;
+  }
+  .container {
+    padding: 0 30px;
+  }
+  section {
+    padding: 100px 0;
+  }
+}
+
+@media only screen and ( max-width : 480px ) {
+  .container {
+    padding: 0 20px;
+  }
+}
+@media only screen and ( max-width : 374px ) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+@media print, screen and ( min-width : 769px ) {
+  .sbox {
+    margin-bottom: 25px;
+  }
+  .container {
+    width: 100%;
+  }
+  section {
+    padding: 200px 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------
+
+　   HEADER
+
+--------------------------------------------------------------------------------------------- */
+
+#header {
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  z-index: 99;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+}
+#gNav a:hover {
+  color: #999;
+}
+nav li a {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+nav .sub-menu,.mean-container .mean-nav ul ul {
+  background: #fff;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+@media only screen and ( max-width : 768px ) {
+  #header {
+    padding: 10px 0;
+    height: 60px;
+  }
+  .h_logo {
+    width: 200px;
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    z-index: 100;
+  }
+
+  #gNav .nav {
+    overflow-y: auto;
+    /*height: 100vh;*/
+  }
+  .mean-nav .container {
+    padding: 0;
+  }
+  nav li .fa {
+    display: none;
+  }
+}
+
+@media print, screen and ( min-width : 769px ) {
+  #header {
+    height: 80px;
+  }
+  .h_logo img {
+    width: 300px;
+  }
+  #h_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #gNav ul {
+    position: relative;
+    display: flex;
+    right: 10%;
+  }
+  #gNav li {
+    position: relative;
+    margin-right: 3em;
+	font-family: sawarabi-gothic,sans-serif;
+	font-weight: 500;
+	font-style: normal;
+  }
+  #gNav li:last-child {
+    margin-right: 0;
+  }
+  #gNav li i {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  #gNav li a {
+    position: relative;
+    display: block;
+    text-align: center;
+    line-height: 80px;
+  }
+  #gNav .sub-menu {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    display: block;
+    position: absolute;
+    margin-left: -100px;
+    width: 200px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  #gNav .sub-menu a {
+    padding: 10px;
+    display: block;
+    border-bottom: none;
+    padding: 20px;
+    line-height: 1.2em;
+  }
+  #gNav .sub-menu a:hover:after {
+    content: none;
+  }
+  #gNav .sub-menu li {
+    display: block;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+  }
+  #gNav .sub-menu li:last-child {
+    border-bottom: none;
+  }
+  #gNav ul > li:hover {
+    -webkit-transition: all .5s;
+    transition: all .5s;
+  }
+  #gNav ul > li:hover a,#gNav .current-menu-item a,#gNav .current-menu-parent a {
+    color: #bfd0ff;
+  }
+  #gNav li:hover ul.sub-menu {
+    top: 80px;
+    visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+  }
+  #gNav li ul li:after {
+    content: none;
+  }
+ #gNav li:hover ul.sub-menu a {
+    color: #111;
+  }
+  #gNav .sub-menu li a:hover {
+    background: #fff;
+  }
+  #gNav .contact_btn a:hover {
+    color: #fff;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------
+
+　   FOOTER
+
+--------------------------------------------------------------------------------------------- */
+#footer {
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  font-size: 14px;
+}
+.f_logo,.f_logo p {
+  text-align: center;
+}
+.copy {
+  text-align: center;
+}
+@media only screen and ( max-width : 768px ) {
+  #footer {
+    padding: 40px 0;
+  }
+  .f_logo {
+    padding: 0 20px;
+    text-align: center;
+  }
+  .f_logo p {
+    text-align: center;
+  }
+  .f_logo img {
+    margin-bottom: 20px;
+    width: 150px;
+  }
+}
+
+@media only screen and ( max-width : 480px ) {
+}
+
+@media print, screen and ( min-width : 769px ) {
+  #footer {
+    padding: 30px 0;
+  }
+  .f_logo {
+  }
+  .f_logo img {
+    margin-bottom: 20px;
+    width: 200px;
+  }
+  .f_logo {
+  }
+  .copy {
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------
+
+　   CONTENTS
+
+--------------------------------------------------------------------------------------------- */
+#main p {
+  word-break: break-all;
+}
+
+section {
+  text-align: center;
+}
+
+#sec01 {
+  background: #cadffa;
+}
+#sec02 {
+  background: #99c1f3;
+}
+#sec03 {
+  background: #7ea7d9;
+}
+#sec04 {
+  background: #618bbe;
+}
+.btn {
+  display: block;
+  background: #fff;
+  color: #618bbe;
+  padding: 0.8em 1em;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 100px;
+}
+.btn:before {
+  content: "\f104";
+  font-family: "FontAwesome";
+  margin-right: 5px;
+}
+@media only screen and ( max-width : 768px ) {
+  #main {
+    padding-top: 58px;
+  }
+  .btn {
+    width: 60%;
+  }
+}
+
+@media only screen and ( max-width : 480px ) {
+  .btn {
+    width: 100%;
+  }
+}
+
+@media print, screen and ( min-width : 769px ) {
+  #main {
+    padding-top: 80px;
+  }
+  .btn {
+    width: 300px;
+  }
+}
+
+
