@@ -1,15 +1,6 @@
 @charset "UTF-8";
 
-<<<<<<< HEAD
-button {
-	padding: 10px 20px;
-	background: yellow;
-	color: #111111;
-	border-bottom: solid 5px gray;
-	border-radius: 25px;
-=======
-body{
-	background-color: #FFCC00;
+
 }
 
 .box{
@@ -20,33 +11,18 @@ body{
 	pading: 20px;
 	width: 200px;
 	background-color: #FF9999;
+	
 }
 
-button{
- padding: 10px 20px;
- background: yellow;
- color: #111111;
- border-bottom: solid 5px gray;
- border-radius: 25px;
- 
->>>>>>> branch 'master' of https://github.com/yukioomuro/teamB.git
-}
 
-button {
-	-webkit-transform: translateY(5px);
-	transform: translateY(5px);
-	border-bottom: none;
-}
+
 
 #map {
 	height: 400px;
-<<<<<<< HEAD
 	width: 50%;
 	margin: 0 auto;
-=======
 	width: 400px;
 	
->>>>>>> branch 'master' of https://github.com/yukioomuro/teamB.git
 }
 
 #duration {
