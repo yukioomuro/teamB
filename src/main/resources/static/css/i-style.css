@@ -539,6 +539,16 @@ footer .copyright{
     text-align: center;
     color: #1F1F1F;
 }
+.btn-sin{
+	color: #dc143c;
+	font-weight: bold;
+	text-align: center;
+}
+.btn-log{
+	color: #333333;
+	font-weight: bold;
+	text-align: center;
+}
 
 /*pc版--------------------------------------*/
 @media screen and (min-width:800px){
