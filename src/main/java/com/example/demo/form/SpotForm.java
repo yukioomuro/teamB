@@ -3,6 +3,7 @@ package com.example.demo.form;
 import org.springframework.data.annotation.Id;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,7 @@ public class SpotForm {
 	private String point;
 
 	//目的ID
-	@NotBlank
+	@NotNull
 	private Integer purposeId;
 
 	//画像ファイル

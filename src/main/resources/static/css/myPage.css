@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.button {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.shusei {
+	margin-left:10px;
+	order: 1;
+}
+
+.hozon {
+	margin-left:10px;
+	order: 2;
+}
