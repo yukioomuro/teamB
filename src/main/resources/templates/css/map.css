@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+body{
+	background-color: #FFCC00;
+}
+
+.box{
+	 display: flex;
+}
+
+.suke{
+	pading: 20px;
+	width: 200px;
+	background-color: #FF9999;
+}
+
 button{
  padding: 10px 20px;
  background: yellow;
@@ -17,9 +31,8 @@ button{
 
 #map {
 	height: 400px;
-	width: 50%;
-	margin: 0 auto;
-    
+	width: 400px;
+	
 }
 
 #duration{

@@ -8,66 +8,96 @@
 </head>
 <body>
 	<h1>ルート選択</h1>
-	<!-- 地図を表示する要素 -->
-    <div id="map"></div>
+	<div class="box">
 
-    <!-- 所要時間を表示する要素 -->
-    <div id="duration"></div>
+		<!-- 地図を表示する要素 -->
+		<div id="map"></div>
 
-    <script>
-        // Google Maps JavaScript APIの読み込み
-        function initMap() {
-            // 地図を表示する位置を設定
-            const mapCenter = { lat: 34.693738, lng: 135.502165 }; // 大阪市の緯度経度
+		<!-- 所要時間を表示する要素 -->
+		<!-- 所要時間を表示する要素1 -->
+		<div id="leg1"></div>
 
+		<!-- 所要時間を表示する要素2 -->
+		<div id="leg2"></div>
 
-            // 地図を生成
-            const map = new google.maps.Map(document.getElementById('map'), {
-                center: mapCenter,
-                zoom: 12, // ズームレベル
-            });
+		<!-- 所要時間を表示する要素3 -->
+		<div id="leg3"></div>
 
-            // 出発地、目的地、ウェイポイントの設定
-            const directionsService = new google.maps.DirectionsService();
-            const directionsRenderer = new google.maps.DirectionsRenderer({
-                map: map,
-            });
+		<script>
+			// Google Maps JavaScript APIの読み込み
+			function initMap() {
+				// 地図を表示する位置を設定
+				const mapCenter = {
+					lat : 34.693738,
+					lng : 135.502165
+				}; // 大阪市の緯度経度
 
-            const request = {
-                origin: '大阪駅',
-                destination: '海遊館',
-                waypoints: [
-                    { location: '京セラドーム', stopover: true },
-                    { location: '心斎橋駅', stopover: true },
-                    // 必要に応じて追加のウェイポイントを指定
-                ],
-                travelMode: 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
-                optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
-            };
+				// 地図を生成
+				const map = new google.maps.Map(document.getElementById('map'),
+						{
+							center : mapCenter,
+							zoom : 12, // ズームレベル
+						});
 
-            // Directions サービスを使用して経路を計算
-            directionsService.route(request, function(response, status) {
-                if (status === 'OK') {
-                    // 経路情報を地図に描画
-                    directionsRenderer.setDirections(response);
+				// 出発地、目的地、ウェイポイントの設定
+				const directionsService = new google.maps.DirectionsService();
+				const directionsRenderer = new google.maps.DirectionsRenderer({
+					map : map,
+				});
 
-                    // 所要時間を表示
-                    
-                    const durationText = response.routes[0].legs.reduce((total, leg) => {
-                        return total + leg.duration.text + ' → ';
-                    }, '');
+				const request = {
+					origin : '大阪駅',
+					destination : '海遊館',
+					waypoints : [ {
+						location : '京セラドーム',
+						stopover : true
+					}, {
+						location : '心斎橋駅',
+						stopover : true
+					},
+					// 必要に応じて追加のウェイポイントを指定
+					],
+					travelMode : 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
+					optimizeWaypoints : true, // ウェイポイントの最適化を有効にする
+				};
 
-                    document.getElementById('duration').innerHTML = '所要時間: ' + durationText + '到着！';
-                } else {
-                    alert('ルートの取得中にエラーが発生しました: ' + status);
-                }
-            });
-        }
-    </script>
+				// Directions サービスを使用して経路を計算
+				directionsService
+						.route(
+								request,
+								function(response, status) {
+									if (status === 'OK') {
+										// 経路情報を地図に描画
+										directionsRenderer
+												.setDirections(response);
 
-    <!-- Google Maps JavaScript APIの読み込み -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwT0jZfclNhbmP1847xeSL0VWGfp9fOlU&callback=initMap" async defer></script>
-	
+										// 所要時間を表示
+										document.getElementById('leg1').textContent = `Leg 1: ${response.routes[0].legs[0].duration.text}`;
+										document.getElementById('leg2').textContent = `Leg 2: ${response.routes[0].legs[1].duration.text}`;
+										document.getElementById('leg3').textContent = `Leg 3: ${response.routes[0].legs[2].duration.text}`;
+									} else {
+										alert('ルートの取得中にエラーが発生しました: ' + status);
+									}
+								});
+			}
+		</script>
+
+		<!-- Google Maps JavaScript APIの読み込み -->
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVClt3T6_YjhogNvKLn8XYb20nSNifSKg&callback=initMap"
+			async defer></script>
+		
+		<div class="suke">
+			<h3>スケジュール</h3>
+			<p>名前 場所</p>
+			<p>↓ 時間</p>
+			<p>名前 場所</p>
+			<p>↓ 時間</p>
+			<p>名前 場所</p>
+			<p>↓ 時間</p>
+		</div>
+
+	</div>
 	<hr>
 	<br>
 	<div>
