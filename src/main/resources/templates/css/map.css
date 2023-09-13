@@ -3,29 +3,30 @@
 
 }
 
-.box{
-	 display: flex;
-}
+#displayElement1 , #displayElement2{
+      display:flex;
+      background:#ddd;
+      width: 80%;
+      height:auto;
+      padding:10px;
+    }
 
 .suke{
-	pading: 20px;
-	width: 200px;
-	background-color: #FF9999;
-	
-}
-
-
-
-
-#map {
-	height: 400px;
-	width: 50%;
-	margin: 0 auto;
+	padding: 20px;
 	width: 400px;
-	
+	background-color: #FF9999;
+	 margin: 20px;
+}
+.jun{
+	padding: 20px;
+	width: 400px;
+	background-color: #FF9999;
+	 margin: 20px;
 }
 
-#duration {
-	text-align: center;
+#map2 ,#map1{
+	height: 400px;
+	width: 400px;
 	margin: 20px;
 }
+

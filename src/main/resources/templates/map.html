@@ -65,121 +65,134 @@
 
 <!--headerscript-->
 <script type="text/javascript">
-$(function($){
-    //メニューの表示状態保管用
-    var state = false;
-    //.bodyのスクロール位置
-    var scrollpos = 0;
-    //meanmenuの状態による表示制御
-    function mm_control() {
-        if($('.mean-nav .nav').is(':visible')) {
-            //表示中
-            if(state == false) {
-                scrollpos = $(window).scrollTop();
-                $('body').addClass('fixed').css({'top': -scrollpos});
-                $('.mean-container').addClass('open');
-                $('.mean-nav .mask').show();
-                state = true;
-            }
-        } else {
-            //非表示中
-            if(state == true) {
-                $('body').removeClass('fixed').css({'top': 0});
-                window.scrollTo( 0 , scrollpos );
-                $('.mean-container').removeClass('open');
-                $('.mean-nav .mask').hide();
-                state = false;
-            }
-        }
-    }
+	$(function($) {
+		//メニューの表示状態保管用
+		var state = false;
+		//.bodyのスクロール位置
+		var scrollpos = 0;
+		//meanmenuの状態による表示制御
+		function mm_control() {
+			if ($('.mean-nav .nav').is(':visible')) {
+				//表示中
+				if (state == false) {
+					scrollpos = $(window).scrollTop();
+					$('body').addClass('fixed').css({
+						'top' : -scrollpos
+					});
+					$('.mean-container').addClass('open');
+					$('.mean-nav .mask').show();
+					state = true;
+				}
+			} else {
+				//非表示中
+				if (state == true) {
+					$('body').removeClass('fixed').css({
+						'top' : 0
+					});
+					window.scrollTo(0, scrollpos);
+					$('.mean-container').removeClass('open');
+					$('.mean-nav .mask').hide();
+					state = false;
+				}
+			}
+		}
 
-    $('#gNav').meanmenu({
-        meanMenuContainer: "#header .h_nav", // メニューを表示させる位置
-        meanScreenWidth: "768"
-    });
-    $(document)
-    .on('opend.meanmenu closed.meanmenu', function() {
-        mm_control();
-    })
-    .on('touchend click', '.mean-bar .mask', function(e) {
-        $('.mean-bar .meanmenu-reveal').trigger('click');
-        return false;
-    });
-    //ウィンドウサイズ変更によるメニュー非表示時の制御
-    $(window).on('resize', function() {
-        mm_control();
-    });
-});
+		$('#gNav').meanmenu({
+			meanMenuContainer : "#header .h_nav", // メニューを表示させる位置
+			meanScreenWidth : "768"
+		});
+		$(document).on('opend.meanmenu closed.meanmenu', function() {
+			mm_control();
+		}).on('touchend click', '.mean-bar .mask', function(e) {
+			$('.mean-bar .meanmenu-reveal').trigger('click');
+			return false;
+		});
+		//ウィンドウサイズ変更によるメニュー非表示時の制御
+		$(window).on('resize', function() {
+			mm_control();
+		});
+	});
 </script>
 
 <!--sliderscript-->
 <script>
-    
-    //ヘッダー　検索ボタン
-      $(function(){
-   $(".menubtn").click(function(){
-     $("#menu").slideToggle();
-   });
-  });
-        
-        
-        
-    //フッター　メニュー
-  $(function(){
-   $(".f_menubtn").click(function(){
-     $(".f_open").slideToggle();
-       
-   });
-  });
-        
-    
-     $(function(){
-         
-         $('.tab li').click(function(){
-             var index = $('.tab li').index(this);
-             
-             //コンテンツを非表示に
-             $('.content li').css('display','none');
-             //クリックされた番号のコンテンツを表示
-             $('.content li').eq(index).css('display','block');
-             
-             
-             
-             //tabについてる'tab_current'を消す
-             $('.tab li').removeClass('tab_current');
-             //クリックしたタブにのみ'tab_current'をつける
-             $(this).addClass('tab_current')
-             
-         }); 
-     });
-    
-    
-    
-    //スクロール
-        $(function (){
-        $(window).scroll(function (){
-            
-            if ($(this).scrollTop() > 10) {
-                $('#articles-scroll').addClass('is-fixed');
-            } else{
-                $('articles-scroll').removeClass('is-fixed');
-            }
-        })
-    })
-        
-    
-    
-    </script>
+	//ヘッダー　検索ボタン
+	$(function() {
+		$(".menubtn").click(function() {
+			$("#menu").slideToggle();
+		});
+	});
+
+	//フッター　メニュー
+	$(function() {
+		$(".f_menubtn").click(function() {
+			$(".f_open").slideToggle();
+
+		});
+	});
+
+	$(function() {
+
+		$('.tab li').click(function() {
+			var index = $('.tab li').index(this);
+
+			//コンテンツを非表示に
+			$('.content li').css('display', 'none');
+			//クリックされた番号のコンテンツを表示
+			$('.content li').eq(index).css('display', 'block');
+
+			//tabについてる'tab_current'を消す
+			$('.tab li').removeClass('tab_current');
+			//クリックしたタブにのみ'tab_current'をつける
+			$(this).addClass('tab_current')
+
+		});
+	});
+
+	//スクロール
+	$(function() {
+		$(window).scroll(function() {
+
+			if ($(this).scrollTop() > 10) {
+				$('#articles-scroll').addClass('is-fixed');
+			} else {
+				$('articles-scroll').removeClass('is-fixed');
+			}
+		})
+	})
+</script>
 <!--さわらびゴシック-->
 <script>
-  (function(d) {
-    var config = {
-      kitId: 'wum1xfc',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
+	(
+					function(d) {
+						var config = {
+							kitId : 'wum1xfc',
+							scriptTimeout : 3000,
+							async : true
+						}, h = d.documentElement, t = setTimeout(function() {
+							h.className = h.className.replace(
+									/\bwf-loading\b/g, "")
+									+ " wf-inactive";
+						}, config.scriptTimeout), tk = d
+								.createElement("script"), f = false, s = d
+								.getElementsByTagName("script")[0], a;
+						h.className += " wf-loading";
+						tk.src = 'https://use.typekit.net/' + config.kitId
+								+ '.js';
+						tk.async = true;
+						tk.onload = tk.onreadystatechange = function() {
+							a = this.readyState;
+							if (f || a && a != "complete" && a != "loaded")
+								return;
+							f = true;
+							clearTimeout(t);
+							try {
+								Typekit.load(config)
+							} catch (e) {
+							}
+						};
+						s.parentNode.insertBefore(tk, s)
+					})(document);
 </script>
 
 
@@ -232,158 +245,205 @@ $(function($){
 	<h1>ルート選択</h1>
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
-	<!-- ボタン -->
-	<button id="toggleButton">ルート表示</button>
 
-	<!-- 表示用の要素1 -->
-	<div id="displayElement1">
-		<div id="map1"></div>
-	</div>
-
-	<!-- 表示用の要素2（初めは非表示） -->
-	<div id="displayElement2" style="display: none;">
-		<div id="map"></div>
-		<div class="suke">
-			<h3>スケジュール</h3>
-			<!-- 住所の要素 -->
-			<p>名前 場所</p>
-			<!-- 所要時間の要素 -->
-			<div id="leg1"></div>
-			<p>名前 場所</p>
-			<div id="leg2"></div>
-			<p>名前 場所</p>
-			<div id="leg3"></div>
-			<p>名前 場所</p>
-
+		<!-- 表示用の要素1 -->
+		<div id="displayElement1">
+			<!--  マップの表示 -->
+			<div id="map1" style="height: 300px;"></div>
+			<!--  選択した住所表示 -->
+			<div class="jun">
+				<p>ピンをクリックして順番を決めてください</p>
+				<p>今選択した目的地</p>
+				<div id="addressDisplay"></div>
+				<div id="selectedAddresses"></div>
+				<!--  ボタン表示 -->
+				<button id="undoButton">一つ戻る</button>
+			</div>
 		</div>
-	</div>
 
+		<!-- 表示用の要素2（初めは非表示） -->
+		<div id="displayElement2" style="display: none;">
+
+			<!-- mapの表示 -->
+			<div id="map2" style="height: 300px;"></div>
+			<div class="suke">
+				<h3>スケジュール</h3>
+				<!-- 住所の要素 -->
+				<p>名前 場所</p>
+				<!-- 所要時間の要素 -->
+				<div id="leg1"></div>
+				<p>名前 場所</p>
+				<div id="leg2"></div>
+				<p>名前 場所</p>
+				<div id="leg3"></div>
+				<p>名前 場所</p>
+			</div>
+		</div>
+	
 	<script>
-        $(document).ready(function() {
-            // ボタンがクリックされたときに要素を切り替える
-            $("#toggleButton").click(function() {
-                // 現在表示されている要素を非表示にし、非表示の要素を表示に切り替える
-                $("#displayElement1").toggle();
-                $("#displayElement2").toggle();
+		let map1; // 地図1用の変数s
+		let map2; // 地図2用の変数
+
+		$(document).ready(function() {
+			// ボタンがクリックされたときに要素を切り替える
+			$("#toggleButton").click(function() {
+				// ボタンのテキストを取得
+			    var buttonText = $(this).text();
+
+			    // ボタンのテキストを変更
+			    if (buttonText === "ルート表示") {
+			      $(this).text("ルートを選び直す");
+			    } else {
+			      $(this).text("ルート表示");
+			    }
+				// 現在表示されている要素を非表示にし、非表示の要素を表示に切り替える
+				$("#displayElement1").toggle();
+				$("#displayElement2").toggle();
+
+				// マップを初期化
+				initMap();
+			});
+		});
+
+		function initMap() {
+			const mapCenter = {
+				lat : 34.693738,
+				lng : 135.502165
+			};
+
+			// 地図1の初期化
+			map1 = new google.maps.Map(document.getElementById('map1'), {
+				center : mapCenter,
+				zoom : 12
+			});
+
+			// 地図2の初期化
+			map2 = new google.maps.Map(document.getElementById('map2'), {
+				center : mapCenter,
+				zoom : 12
+			});
+
+			// 各地図に対する処理を追加
+			setupMap1(map1);
+			setupMap2(map2);
+		}
+
+		<!--map1の処理-->
+		function setupMap1() {
+            const locations = [
+                { id: 'address1', name: '大阪駅' },
+                { id: 'address2', name: '京セラドーム' },
+                { id: 'address3', name: '心斎橋駅' },
+                { id: 'address4', name: '海遊館' }
+            ];
+
+            let selectedAddresses = [];
+
+            locations.forEach(function(address) {
+                const geocoder = new google.maps.Geocoder();
+                const infoWindow = new google.maps.InfoWindow(); // infoWindow の宣言
+
+                geocoder.geocode({ 'address': address.name }, function(results, status) {
+                    if (status === 'OK') {
+                        const marker = new google.maps.Marker({
+                            map: map1,
+                            position: results[0].geometry.location,
+                            title: address.name
+                        });
+
+                        // ホバー処理
+                        marker.addListener('mouseover', function() {
+                            infoWindow.setContent(address.name);
+                            infoWindow.open(map, marker);
+                        });
+
+                        marker.addListener('mouseout', function() {
+                            infoWindow.close();
+                        });
+
+                        marker.addListener('click', function() {
+                            // 選択された住所を配列に追加
+                            selectedAddresses.push(address.name);
+                            document.getElementById('addressDisplay').textContent = address.name;
+
+                            // リストとして選択された住所を表示
+                            updateAddressList();
+                        });
+                    } else {
+                        alert('ジオコーディングに失敗しました: ' + status);
+                    }
+                });
             });
-        });
-    </script>
 
+            const undoButton = document.getElementById('undoButton');
+            undoButton.addEventListener('click', function() {
+                // リストから最後に選択された住所を削除
+                selectedAddresses.pop();
+                // 住所リストを更新
+                updateAddressList();
+            });
 
-	<div class="box">
-		<!-- 地図を表示する要素 -->
-		<!-- ボタンを押すと表示 -->
-		<!-- マップを表示するdiv要素 -->
-		<div>
-			<script>
-	        // Google Mapsを初期化するコード
-	        function initMap() {
-	            // マップを表示する位置を設定
-	            const mapCenter = { lat: 34.693738, lng: 135.502165 }; // 大阪市の緯度経度
+            function updateAddressList() {
+                const addressList = document.getElementById('selectedAddresses');
+                addressList.innerHTML = '<h3>　目的地の順番：</h3>' +
+                    '<ul>' + selectedAddresses.map(addr => `<li>　${addr}　</li>`).join('') + '</ul>';
+            }
+        }
+		
+		<!--map2の処理-->
+		function setupMap2(map) {
+			// 出発地、目的地、ウェイポイントの設定
+			const directionsService = new google.maps.DirectionsService();
+			const directionsRenderer = new google.maps.DirectionsRenderer({
+				map : map,
+			});
 
-	            // マップを生成
-	            const map = new google.maps.Map(document.getElementById('map1'), {
-	                center: mapCenter, // 地図の中心を設定
-	                zoom: 12 // ズームレベルを設定
-	            });
+			const request = {
+				origin : '大阪駅',
+				destination : '海遊館',
+				waypoints : [ {
+					location : '京セラドーム',
+					stopover : true
+				}, {
+					location : '心斎橋駅',
+					stopover : true
+				},
+				// 必要に応じて追加のウェイポイントを指定
+				],
+				travelMode : 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
+				optimizeWaypoints : true, // ウェイポイントの最適化を有効にする
+			};
 
-	         // 住所の配列
-	            const addresses = [
-	                '大阪駅',
-	                '京セラドーム',
-	                '心斎橋駅',
-	                '海遊館'
-	                // 追加の住所をここに追加
-	            ];
+			// Directions サービスを使用して経路を計算
+			directionsService
+					.route(
+							request,
+							function(response, status) {
+								if (status === 'OK') {
+									// 経路情報を地図に描画
+									directionsRenderer.setDirections(response);
 
-	            // 住所から緯度経度を取得し、ピンを立てる
-	            const geocoder = new google.maps.Geocoder();
+									// 所要時間を表示
+									document.getElementById('leg1').textContent = `　↓　${response.routes[0].legs[0].duration.text}`;
+									document.getElementById('leg2').textContent = `　↓　${response.routes[0].legs[1].duration.text}`;
+									document.getElementById('leg3').textContent = `　↓　${response.routes[0].legs[2].duration.text}`;
+								} else {
+									alert('ルートの取得中にエラーが発生しました: ' + status);
+								}
+							});
+		}
+	</script>
 
-	            addresses.forEach(function (address) {
-	                geocoder.geocode({ 'address': address }, function (results, status) {
-	                    if (status === 'OK') {
-	                        const marker = new google.maps.Marker({
-	                            map: map,
-	                            position: results[0].geometry.location,
-	                            title: address // ピンに表示するタイトル
-	                        });
-	                    } else {
-	                        alert('ジオコーディングに失敗しました: ' + status);
-	                    }
-	                });
-	            });
-	        }
-	    </script>
-		</div>
-
-
-		<script>
-			function initMap() {
-				// 地図を表示する位置を設定
-				const mapCenter = {
-					lat : 34.693738,
-					lng : 135.502165
-				}; // 大阪市の緯度経度
-
-				// 地図を生成
-				const map = new google.maps.Map(document.getElementById('map'),
-						{
-							center : mapCenter,
-							zoom : 12, // ズームレベル
-						});
-
-				// 出発地、目的地、ウェイポイントの設定
-				const directionsService = new google.maps.DirectionsService();
-				const directionsRenderer = new google.maps.DirectionsRenderer({
-					map : map,
-				});
-
-				const request = {
-					origin : '大阪駅',
-					destination : '海遊館',
-					waypoints : [ {
-						location : '京セラドーム',
-						stopover : true
-					}, {
-						location : '心斎橋駅',
-						stopover : true
-					},
-					// 必要に応じて追加のウェイポイントを指定
-					],
-					travelMode : 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
-					optimizeWaypoints : true, // ウェイポイントの最適化を有効にする
-				};
-
-				
-				// Directions サービスを使用して経路を計算
-				directionsService
-						.route(
-								request,
-								function(response, status) {
-									if (status === 'OK') {
-										// 経路情報を地図に描画
-										directionsRenderer
-												.setDirections(response);
-
-										// 所要時間を表示
-										document.getElementById('leg1').textContent = `　↓　${response.routes[0].legs[0].duration.text}`;
-										document.getElementById('leg2').textContent = `　↓　${response.routes[0].legs[1].duration.text}`;
-										document.getElementById('leg3').textContent = `　↓　${response.routes[0].legs[2].duration.text}`;
-									} else {
-										alert('ルートの取得中にエラーが発生しました: ' + status);
-									}
-								});
-			}
-		</script>
-
-		<!-- Google Maps JavaScript APIの読み込み -->
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVClt3T6_YjhogNvKLn8XYb20nSNifSKg&callback=initMap"
-			async defer></script>
+	<!-- Google Maps JavaScript APIの読み込み -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVClt3T6_YjhogNvKLn8XYb20nSNifSKg&callback=initMap"
+		async defer></script>
 
 
 	</div>
 	<br>
+	<!-- ボタン -->
+	<button id="toggleButton">ルート表示</button>
 	<hr>
 	<br>
 	<div>
