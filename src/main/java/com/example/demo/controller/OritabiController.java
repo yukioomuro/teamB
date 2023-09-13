@@ -21,7 +21,7 @@ import com.example.demo.service.OritabiService;
 
 //Oritabiのコントローラー
 @Controller
-@RequestMapping("/oritabi")
+@RequestMapping("/teamB")
 public class OritabiController {
 
 	//DI対象（依存対象）
@@ -31,6 +31,7 @@ public class OritabiController {
 	//「form-backing bean」の初期化
 	@ModelAttribute
 	public SpotForm setUpSpotForm() {
+		System.out.println("setup");
 		SpotForm form = new SpotForm();
 		return form;
 	}
@@ -53,17 +54,17 @@ public class OritabiController {
 		return form;
 	}
 
-	//新規登録の一覧表示(エラー時に表示される)
+	//新規Spt登録時の一覧表示(エラー時に表示される)
 	@GetMapping
-	public String showList(CostomerForm costomerForm, Model model) {
+	public String showSpotList(SpotForm spotForm, Model model) {
 		//新規登録設定
-		costomerForm.setNewCostomer(true);
+		spotForm.setNewSpot(true);
 		//新規登録情報の一覧を取得
-		Iterable<Costomer> list = service.selectAllCostomer();
+		Iterable<Spot> list = service.selectAllSpot();
 		//表示用Modelへ格納
 		model.addAttribute("list", list);
 		model.addAttribute("title", "登録用フォーム");
-		return "register";
+		return "manager_page";
 	}
 
 	//新規登録画面の操作
@@ -86,15 +87,16 @@ public class OritabiController {
 
 		} else {
 			//エラーがある場合は、もう一度新規登録画面へ飛びます。
-			return "/register";
+			return "register";
 		}
 	}
 
 	//顧客情報や観光スポットの編集用の操作
-	@PostMapping("/manager_page")
+	@PostMapping("/insert")
 	public String insertTourist(@Validated SpotForm spotForm,
 			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
+		System.out.println("****************************");
 		//Form から entity へ詰め替え
 		Spot spot = new Spot();
 		spot.setSpotName(spotForm.getSpotName());
@@ -109,11 +111,13 @@ public class OritabiController {
 		if (!bindingResult.hasErrors()) {
 			service.insertSpot(spot);
 			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-			return "manager_page";
+			return "redirect:/manager_page";
 
 		} else {
 			//エラーがある場合は、もう一度新規登録画面へ飛びます。
-			return "/manager_page";
+			return showSpotList(spotForm, model);
 		}
 	}
+
+	
 }
