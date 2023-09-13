@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+
+.osaka_spot{
+  display:flex;
+  flex-direction:column;
+}
+.spot_view{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
 .oosaka {
   width: auto;
   margin: auto;
