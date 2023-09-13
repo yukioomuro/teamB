@@ -5,11 +5,13 @@
   display:flex;
   flex-direction:column;
 }
-.spot_view{
-  display: flex;
-  flex-wrap: wrap;
-}
 
+.spot_view .img{
+  display: flex;
+  
+
+
+}
 
 
 .oosaka {
@@ -76,11 +78,17 @@ input:checked+.tab_class+.area {
   display: block;
 }
 
+.tabbox .tabcontent input{
+  display:inline;
+}
 
 /* ▼タブ機能を制御するラジオボタン(非表示にする) */
 .tabbox input {
   display: none;
 }
+
+
+
 
 /* ▼タブの中身(共通装飾＋非選択状態の装飾) */
 .tabcontent {
