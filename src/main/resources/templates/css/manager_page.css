@@ -49,7 +49,6 @@ tr {
 }
 
 .A, 
-.C,
 .E {
 	display: inline-block;
 	background: #e6e6e6;
@@ -58,7 +57,6 @@ tr {
 	}
 
 .B,
-.D,
 .F {
   display: none;
   background: #e6e6e6;

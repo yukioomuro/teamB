@@ -59,7 +59,7 @@
 			<!-- ▼▼▼ Form ▼▼▼ -->
 			<form method="POST" th:action="${spotForm.tourist}? @{/teamB/insert} : @{/teamB/update}" th:object="${spotForm}">
 				<label>観光地連番</label>
-				<inpu⇓t type="text" th:field="*{spot_id}" /><br>
+				<input type="text" th:field="*{spot_id}" /><br>
 				<label>観光地名</label>
 				<input type="text" th:field="*{spot_name}" /><br>
 				<label>観光地住所</label>
@@ -75,7 +75,7 @@
 				<label>画像URL</label>
 				<input type="text" th:field="*{img}"><br>    
 				<div class="button006">
-					<a href="#">ボタンのデザイン</a>
+				<input type="submit" value="送信">
 				</div>
 			</form>
 		
