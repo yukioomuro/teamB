@@ -4,8 +4,209 @@
 <meta charset="UTF-8">
 <link href="../static/css/style_oomuro.css" rel="stylesheet" type="text/css">
 <title>新規登録</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--headerのjs-->
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!--リセットユイ-->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+
+<!--headercss-->
+<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../static/css/header.css" rel="stylesheet" type="text/css">
+<!--css-->
+<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
+<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+
+<!--font-awesome-->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+
+<!--jquery cdn-->   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!--googlefont細-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+<!--googlefont太-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!--googlefontRoboto-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+
+<!--scroll.js-->
+<script type="text/javascript" src="js/scroll.js"></script>
+    
+<!--slider-->
+<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
+<link href="../static/css/slick-theme.css" rel="stylesheet" type="text/css">
+
+<!--headerscript-->
+<script type="text/javascript">
+$(function($){
+    //メニューの表示状態保管用
+    var state = false;
+    //.bodyのスクロール位置
+    var scrollpos = 0;
+    //meanmenuの状態による表示制御
+    function mm_control() {
+        if($('.mean-nav .nav').is(':visible')) {
+            //表示中
+            if(state == false) {
+                scrollpos = $(window).scrollTop();
+                $('body').addClass('fixed').css({'top': -scrollpos});
+                $('.mean-container').addClass('open');
+                $('.mean-nav .mask').show();
+                state = true;
+            }
+        } else {
+            //非表示中
+            if(state == true) {
+                $('body').removeClass('fixed').css({'top': 0});
+                window.scrollTo( 0 , scrollpos );
+                $('.mean-container').removeClass('open');
+                $('.mean-nav .mask').hide();
+                state = false;
+            }
+        }
+    }
+
+    $('#gNav').meanmenu({
+        meanMenuContainer: "#header .h_nav", // メニューを表示させる位置
+        meanScreenWidth: "768"
+    });
+    $(document)
+    .on('opend.meanmenu closed.meanmenu', function() {
+        mm_control();
+    })
+    .on('touchend click', '.mean-bar .mask', function(e) {
+        $('.mean-bar .meanmenu-reveal').trigger('click');
+        return false;
+    });
+    //ウィンドウサイズ変更によるメニュー非表示時の制御
+    $(window).on('resize', function() {
+        mm_control();
+    });
+});
+</script>
+    
+<!--sliderscript-->
+<script>
+    
+    //ヘッダー　検索ボタン
+      $(function(){
+   $(".menubtn").click(function(){
+     $("#menu").slideToggle();
+   });
+  });
+        
+        
+        
+    //フッター　メニュー
+  $(function(){
+   $(".f_menubtn").click(function(){
+     $(".f_open").slideToggle();
+       
+   });
+  });
+        
+    
+     $(function(){
+         
+         $('.tab li').click(function(){
+             var index = $('.tab li').index(this);
+             
+             //コンテンツを非表示に
+             $('.content li').css('display','none');
+             //クリックされた番号のコンテンツを表示
+             $('.content li').eq(index).css('display','block');
+             
+             
+             
+             //tabについてる'tab_current'を消す
+             $('.tab li').removeClass('tab_current');
+             //クリックしたタブにのみ'tab_current'をつける
+             $(this).addClass('tab_current')
+             
+         }); 
+     });
+    
+    
+    
+    //スクロール
+        $(function (){
+        $(window).scroll(function (){
+            
+            if ($(this).scrollTop() > 10) {
+                $('#articles-scroll').addClass('is-fixed');
+            } else{
+                $('articles-scroll').removeClass('is-fixed');
+            }
+        })
+    })
+        
+    
+    
+    </script>
+<!--さわらびゴシック-->
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'wum1xfc',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+
 </head>
 <body>
+  <header id="header">
+    <div class="container">
+        <div id="h_top">
+            <div class="h_logo"><a href=""><img src="../imag/logo22.png" alt=""/></a></div>
+            <div class="h_nav">
+                <nav id="gNav">
+                    <ul class="nav">
+                        <li><a href="">ボタン</a></li>
+                        <li><a href="">ボタン</a></li>
+                        <li><a href="" class="btn-sin">新規登録</a></li>
+                        <li><a href=""class= "btn-log">ログイン</a></li>
+                    </ul>
+                    <div class="mask"></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+    <header class="mheader">
+        <div class="pc_menuFlex">
+            <div class="i-logo"><a href="#"><img src="../imag/logo22.png" alt=""/></a>
+            </div>
+            <div class="pc_menu">
+                <ul>
+                    <li><a href="#nav01">ボタン</a></li>
+                    <li><a href="#nav02">ボタン</a></li>
+                    <li><a href="#nav03" class="btn-sin">新規登録</a></li>
+                    <li><a href="#nav04"class= "btn-log">ログイン</a></li>
+                </ul>
+            </div> 
+        </div>
+    </header>
+    <br><br><br>
+    <br><br><br>
+
+
     <div id="register" class="col s12">
         <form class="col s12">
           <div class="form-container">
@@ -46,5 +247,69 @@
             <center>
             </div>
         </form>
+        <!--footer-------------------------------------------->
+    <div class="f_menu">
+        
+        
+      <!--footer_ナビゲーション-->
+      <ul>
+          <li></li>
+          
+          <li></li>
+          
+          <li></li>
+          
+          <li></li>
+          
+          <li>
+                  <div class="f_menubtn">
+                      <div><i class="fas fa-bars"></i></div>
+                  </div>
+              
+          </li>
+      </ul>
+  </div>
+  <!--footer_メニューの中身-->
+          <div class="f_open">
+              <div class="f_logo">
+               <img src="../imag/logo22.png" alt=""/>
+              </div>
+              
+              <div class="category_list">
+                  <dl>
+                      <dd>ボタン</dd>
+                  </dl>
+                  
+                  <dl>
+                      <dd>ボタン</dd>
+                  </dl>
+                  
+                  <dl>
+                      <dd><div class="btn-sin">新規登録</div></dd>
+                  </dl>
+                  
+                  <dl>
+                      <dd><div class= "btn-log">ログイン</div></dd>
+                  </dl>
+              
+          </div>
+
+  </div>
+  
+  
+  
+  <footer>
+  <p class="copyright">
+    ©︎Pochikifu　All Rights Reserved.
+  </p>
+  </footer>
+  <!--sliderのjs-------------------------------------------->
+<script type="text/javascript"src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+
+
+
 </body>
 </html>

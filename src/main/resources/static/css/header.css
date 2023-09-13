@@ -96,7 +96,6 @@ img {
     height: auto;
     width /***/:auto;　/*IE8のみ適用*/
 }
-
 @media only screen and ( max-width : 768px ) {
   .sbox {
     margin-bottom: 20px;
@@ -125,6 +124,7 @@ img {
     margin-bottom: 25px;
   }
   .container {
+    height: 100px;
     width: 100%;
   }
   section {
