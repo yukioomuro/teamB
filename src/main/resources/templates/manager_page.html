@@ -350,7 +350,7 @@
 					<td th:text="${obj.tel}"></td>
 					<!-- 編集ボタン -->
 					<td>
-						<form method="GET" th:action="@{/oritabi/{id}(id=${obj.spotId})}">
+						<form method="GET" th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">
 							<input type="submit" value="編集">
 						</form>
 					</td>
