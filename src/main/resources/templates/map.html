@@ -281,7 +281,7 @@
 		</div>
 	
 	<script>
-		let map1; // 地図1用の変数s
+		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
 
 		$(document).ready(function() {
@@ -329,15 +329,16 @@
 		}
 
 		<!--map1の処理-->
+            let selectedAddresses = [];
 		function setupMap1() {
             const locations = [
-                { id: 'address1', name: '大阪駅' },
-                { id: 'address2', name: '京セラドーム' },
-                { id: 'address3', name: '心斎橋駅' },
-                { id: 'address4', name: '海遊館' }
+            	<!--データベースから住所を取ってくる-->
+            	{ name: '大阪駅' },
+                { name: '京セラドーム' },
+                { name: '心斎橋駅' },
+                { name: '海遊館' }
             ];
 
-            let selectedAddresses = [];
 
             locations.forEach(function(address) {
                 const geocoder = new google.maps.Geocoder();
@@ -400,21 +401,23 @@
 				map : map,
 			});
 
-			const request = {
-				origin : '大阪駅',
-				destination : '海遊館',
-				waypoints : [ {
-					location : '京セラドーム',
-					stopover : true
-				}, {
-					location : '心斎橋駅',
-					stopover : true
-				},
-				// 必要に応じて追加のウェイポイントを指定
-				],
-				travelMode : 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
-				optimizeWaypoints : true, // ウェイポイントの最適化を有効にする
-			};
+			// ウェイポイントの配列を作成
+		    const waypoints = [];
+
+		    for (let i = 1; i < selectedAddresses.length - 1; i++) {
+		        waypoints.push({
+		            location: selectedAddresses[i],
+		            stopover: true
+		        });
+		    }
+
+		    const request = {
+		        origin: selectedAddresses[0],
+		        destination: selectedAddresses[selectedAddresses.length - 1],
+		        waypoints: waypoints,
+		        travelMode: 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
+		        optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
+		    };
 
 			// Directions サービスを使用して経路を計算
 			directionsService
@@ -426,9 +429,10 @@
 									directionsRenderer.setDirections(response);
 
 									// 所要時間を表示
-									document.getElementById('leg1').textContent = `　↓　${response.routes[0].legs[0].duration.text}`;
-									document.getElementById('leg2').textContent = `　↓　${response.routes[0].legs[1].duration.text}`;
-									document.getElementById('leg3').textContent = `　↓　${response.routes[0].legs[2].duration.text}`;
+									//配列で回す
+									for(let x = 0; x < request.length; x++){
+									document.getElementById('leg'+ (x+1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
+									}
 								} else {
 									alert('ルートの取得中にエラーが発生しました: ' + status);
 								}
