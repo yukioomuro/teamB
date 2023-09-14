@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Costomer;
@@ -54,14 +55,15 @@ public class OritabiController {
 		return form;
 	}
 
-	//新規Spt登録時の一覧表示(エラー時に表示される)
+	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
+
 	@GetMapping("/manager_page")
 	public String showSpotList(SpotForm spotForm, Model model) {
 		//新規登録設定
 		spotForm.setNewSpot(true);
 		//新規登録情報の一覧を取得
 		Iterable<Spot> list = service.selectAllSpot();
-		for(Spot i : list) {
+		for (Spot i : list) {
 			System.out.println(i.getSpotName());
 		}
 		//表示用Modelへ格納
@@ -69,6 +71,58 @@ public class OritabiController {
 		//model.addAttribute("title", "登録用フォーム");
 		return "manager_page";
 	}
+
+	//観光スポットの登録用の操作
+	@PostMapping("/insertSpot")
+	public String insertTourist(@Validated SpotForm spotForm,
+			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+
+		System.out.println("****************************");
+		//Form から entity へ詰め替え
+		Spot spot = new Spot();
+		spot.setSpotName(spotForm.getSpotName());
+		spot.setAddress(spotForm.getAddress());
+		spot.setWeb(spotForm.getWeb());
+		spot.setTel(spotForm.getTel());
+		spot.setPoint(spotForm.getPoint());
+		spot.setPurposeId(spotForm.getPurposeId());
+		spot.setImageFileName(spotForm.getImageFileName());
+		System.out.println(spot);
+
+		//入力チェック
+		if (!bindingResult.hasErrors()) {
+			System.out.println("insertTourist は正常に動作しました。");
+			service.insertSpot(spot);
+			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+			return "redirect:/oritabi/manager_page";
+
+		} else {
+			System.out.println("insertTourist でエラーが出ています。");
+			//エラーがある場合は、もう一度新規登録画面へ飛びます。
+			return showSpotList(spotForm, model);
+		}
+	}
+
+	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
+
+	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot編集 ▼▼▼▼▼▼▼▼▼▼ */
+	
+	/* △△△△△△△△△△ 観光地Spot編集 △△△△△△△△△△ */
+
+	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot削除 ▼▼▼▼▼▼▼▼▼▼ */
+	/*spotIdをキーにして削除する*/
+	@PostMapping("/spotDel")
+	public String spotDel(@RequestParam("spotId") String spotId, Model model,
+			RedirectAttributes redirectAttributes) {
+		System.out.println(spotId);
+		//タスクを１件削除してリダイレクト
+		service.deleteSpotById(Integer.parseInt(spotId));
+		redirectAttributes.addFlashAttribute("spotDelComp", "削除がしました");
+		return "redirect:/oritabi/manager_page";
+	}
+	/* △△△△△△△△△△ 観光地Spot削除 △△△△△△△△△△ */
+
+	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
 
 	//新規登録画面の操作
 	@PostMapping("/register")
@@ -94,40 +148,8 @@ public class OritabiController {
 		}
 	}
 
-	//顧客情報や観光スポットの編集用の操作
-	@PostMapping("/insertSpot")
-	public String insertTourist(@Validated SpotForm spotForm,
-			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
 
-		System.out.println("****************************");
-		//Form から entity へ詰め替え
-		Spot spot = new Spot();
-		spot.setSpotName(spotForm.getSpotName());
-		spot.setAddress(spotForm.getAddress());
-		spot.setWeb(spotForm.getWeb());
-		spot.setTel(spotForm.getTel());
-		spot.setPoint(spotForm.getPoint());
-		spot.setPurposeId(spotForm.getPurposeId());
-		spot.setImageFileName(spotForm.getImageFileName());
-		System.out.println(spot);
+	/***************************************************************************************************/
 
-		//入力チェック
-		if (!bindingResult.hasErrors()) {
-			System.out.println("--------------");
-			service.insertSpot(spot);
-			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-			//showSpotList(spotForm, model);
-			return "redirect:/oritabi/manager_page";
-
-		} else {
-			System.out.println("++++++++++++++++");
-			//エラーがある場合は、もう一度新規登録画面へ飛びます。
-			return showSpotList(spotForm, model);
-		}
-	}
-
-//	@GetMapping("/manager_page")
-//	public String a(Model model) {
-//		return "manager_page";
-//	}
 }

@@ -291,8 +291,8 @@
 			th:object="${spotForm}">
 			<!-- <label>観光地連番</label> -->
 			<!-- <input type="text" th:field="*{spotId}" /><br> -->
-			<label>観光地名</label> 
-			<input type="text" th:field="*{spotName}" /><br>
+			<label>観光地名</label>
+			 <input type="text" th:field="*{spotName}" /><br>
 			<label>観光地住所</label>
 			 <input type="text" th:field="*{address}"><br>
 			<label>WEBページ</label>
@@ -300,9 +300,9 @@
 			<label>電話番号</label>
 			 <input type="text" th:field="*{tel}"><br>
 			<label>オススメ</label><br>
-			<textarea rows="5" cols="50" th:field="*{point}"></textarea>
-			<br> <label>目的ID</label>
-			 <input type="text"
+			<textarea rows="5" cols="50" th:field="*{point}"></textarea><br> 
+			<label>目的ID</label> 
+			<input type="text"
 				th:field="*{purposeId}"><br> <label>画像URL</label> <input
 				type="text" th:field="*{imageFileName}"><br>
 			<div class="button006">
@@ -312,7 +312,7 @@
 		<p th:if="${complete}" th:text="${complete}"></p>
 
 		<!-- 削除完了コメント -->
-		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
+		<p th:if="${spotDelComp}" th:text="${spotDelComp}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
 
 		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
@@ -350,14 +350,14 @@
 					<td th:text="${obj.tel}"></td>
 					<!-- 編集ボタン -->
 					<td>
-						<form method="GET" th:action="@{/teamB/{id}(id=${obj.spotId})}">
+						<form method="GET" th:action="@{/oritabi/{id}(id=${obj.spotId})}">
 							<input type="submit" value="編集">
 						</form>
 					</td>
 					<!-- 削除ボタン -->
 					<td>
-						<form method="POST" th:action="@{/teamB/delete}">
-							<input type="hidden" name="id" th:value="${obj.spotId}">
+						<form method="POST" th:action="@{/oritabi/spotDel}">
+							<input type="hidden" name="spotId" th:value="${obj.spotId}">
 							<input type="submit" value="削除">
 						</form>
 					</td>
