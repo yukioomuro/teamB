@@ -12,6 +12,18 @@
 
 
 }
+.titleds{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.ooosaka {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
 
 
 .oosaka {
@@ -19,12 +31,42 @@
   margin: auto;
 
 }
-
+.ptag{
+  font-weight: bold;
+}
+/* コンテンツの余白 */
+.yukari{
+  padding: 15px;;
+}
+.oosakajyou{
+  padding: 15px;
+}
+.tsutenkaku{
+  padding: 15px;
+}
+.tarou{
+  padding: 15px;
+}
+.ngk{
+  padding: 15px;
+}
+.usj{
+  padding: 15px;
+}
+.cupnoodles{
+  padding: 15px;
+}
+.kaiyukan{
+  padding: 15px;
+}
+.tennoujizoo{
+  padding: 15px;
+}
 .tab {
   display: inline-block;
   /* インラインブロック化 */
 
-  border-width: 1px 1px 0px 1px;
+  border-width: 1px 1px 1px 1px;
   /* 上側と左右に枠線を引く */
 
   border-style: solid;
@@ -47,13 +89,17 @@
   background-color: hwb(0 100% 0%);
 
 }
+.tabds{
+  width: 80%;
+  margin: 0 auto;
+}
 
 /* ▼タブにマウスポインタが載った際の装飾 */
 .tab:hover {
   color: hwb(60 34% 59%);
   /* タブの文字色： */
 
-  background-color: hwb(60 85% 10%);
+  background-color:#f5deb3;
   /* タブの背景色： */
   
   cursor: pointer;
@@ -94,7 +140,7 @@ input:checked+.tab_class+.area {
 .tabcontent {
   display: none;
   /* 標準では非表示にする */
-  width: 500px;
+ 
 
   border: 1px solid black;
   /* 枠線を引く：黒色で1ピクセルの実線 */
@@ -106,10 +152,18 @@ input:checked+.tab_class+.area {
   
   height:  100%;             /* 高さ指定 */
   width: 100%;                 /* 幅指定 */
+  margin:  0 auto;
+ 
 }
 ul{
+ 
+}
+.ul-class{
+  width: 100%;
   display: flex;
-
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:  0 auto;
 }
 li{
   list-style: none;
@@ -136,25 +190,33 @@ li{
 .tabcontent .tarou .img_tarou img,
 .tabcontent .ngk .img_ngk img
 {
-  width: 380px;
+  width: 400px;
   height: 250px;
-  object-fit: cover
+  margin :0 auto;
+  object-fit: cover;
 }
 
+
+
+
+
 .pickup {
-  width: 90%;
-  min-width: 200px;
-  max-width: 600px;
-  padding: auto;
-  box-sizing: border-box;
-  cursor: pointer;
+  width: 70%;
+  margin: 30px auto;
+  
   
 }
 
 .pickup button {
+  padding: 20px;
+ width: 100%;
+  margin: 0 auto;
   background-color: hwb(160 64% 14%);
 }
-
+.button-box{
+  width: 50%;
+  margin: 0 auto;;
+}
 .login body {
   background: #f5f5f5;
 }

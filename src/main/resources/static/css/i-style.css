@@ -338,6 +338,8 @@ ul li{
 }
 
 /*ハンバーガーメニューここまで-------*/
+
+
 /*profileここから-----------------------*/
 
 .profile{
@@ -584,7 +586,83 @@ footer .copyright{
 	color: #333333;
 	font-weight: bold;
 }
+/* 日本地図 */
 
+#mapTbl{
+	max-width: 800px;
+	border-collapse:collapse; /* 隣接する枠線を重ねる */
+	text-align : center; /* 文字水平位置 */
+	font-size : 8px; /* 文字サイズ */
+	color: #D5D5D5;
+	margin: 6% auto;
+	border : 1px solid aqua; /* 表 枠線 */
+	  } 
+  
+  #mapTbl tr{height : 0.4em;}/* 行の高さ */
+  
+  #mapTbl tr td{
+   border : 1px solid #efffff; /* セル 枠線 */
+   padding:2px; /* 内側の余白 */
+  
+	 }
+  
+  .hokka{ /* 北海道 */
+	height : 7em;
+	background-color : #228b22; /* 各地方の背景色 */
+	cursor : pointer; /* マウスカーソルの形状 */
+	 }
+  
+  .tohoku{ /* 東北 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .kanto{ /* 関東 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .hokuriku{ /* 北陸 */
+	background-color :#228b22;
+	cursor : pointer;
+	 }
+  
+  .kosinetu{ /* 甲信越 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .cyuubu{ /* 中部 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .kinki{ /* 近畿 */
+	background-color : fuchsia;
+	cursor : pointer;
+	 }
+  .tyugoku{ /* 中国 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .sikoku{ /* 四国 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .kyusyu{ /* 九州、沖縄 */
+	background-color : #228b22;
+	cursor : pointer;
+	 }
+  
+  .kaikyo{ height : 1em;} /* 津軽海峡 */
+  
+  .topBottom{ height : 2em; } /*外枠と地図の 上下余白 */
+  
+  .leftRight{ width : 2em; } /* 左右余白 */
+  
+/* ここまで */
 /*PCお知らせここから------*/
 
 	.news{
