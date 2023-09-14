@@ -255,7 +255,7 @@
 
 		<div class="A">一覧 ⇓</div>
 		<div class="B">
-			<table th:unless="${#lists.isEmpty(list)}">
+			<table th:unless="${#lists.isEmpty('costomerList')}">
 				<tr>
 					<th>顧客ID</th>
 					<th>名前</th>
@@ -264,7 +264,7 @@
 					<th>メモ</th>
 				</tr>
 
-				<tr th:each="obj : ${list}" align="center">
+				<tr th:each="obj : ${costomerList}" align="center">
 					<td th:text="${obj.id}"></td>
 					<td th:text="${obj.name}"></td>
 					<td th:text="${obj.mail}" align="left"></td>
@@ -276,7 +276,7 @@
 
 		<!-- △△△データが一件でもあれば表示△△△ -->
 		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
-		<p th:if="${#lists.isEmpty(list)}">登録されている顧客情報はありません。</p>
+		<p th:if="${#lists.isEmpty(costomerList)}">登録されている顧客情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!-- th:if="${spotForm.newSpot}" -->
@@ -325,7 +325,7 @@
 		</script>
 		<div class="E">一覧 ⇓</div>
 		<div class="F">
-			<table th:unless="${#lists.isEmpty(list)}">
+			<table th:unless="${#lists.isEmpty(spotList)}">
 				<tr>
 					<th>観光地連番</th>
 					<th>観光地名</th>
@@ -338,7 +338,7 @@
 					<th>編集</th>
 					<th>削除</th>
 				</tr>
-				<tr th:each="obj : ${list}" align="center">
+				<tr th:each="obj : ${spotList}" align="center">
 					<td th:text="${obj.spotId}"></td>
 					<td th:text="${obj.spotName}"></td>
 					<td th:text="${obj.address}" align="left"></td>
@@ -346,7 +346,7 @@
 					<td th:text="${obj.tel}"></td>
 					<td th:text="${obj.point}" align="left"></td>
 					<td th:text="${obj.imageFileName}" align="left"></td>
-					<!-- 				<td th:text="${obj.purpose}"></td> -->
+					<td th:text="${obj.purposeId}"></td>
 					<td th:text="${obj.tel}"></td>
 					<!-- 編集ボタン -->
 					<td>
@@ -357,7 +357,7 @@
 					<!-- 削除ボタン -->
 					<td>
 						<form method="POST" th:action="@{/teamB/delete}">
-							<input type="hidden" name="id" th:value="${obj.spot_id}">
+							<input type="hidden" name="id" th:value="${obj.spotId}">
 							<input type="submit" value="削除">
 						</form>
 					</td>
@@ -367,7 +367,7 @@
 		<br>
 		<!-- △△△データが一件でもあれば表示△△△ -->
 		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
-		<p th:if="${#lists.isEmpty(list)}">登録されている観光情報はありません。</p>
+		<p th:if="${#lists.isEmpty(spotList)}">登録されている観光情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!-- △△△新規登録時のみ表示△△△ -->

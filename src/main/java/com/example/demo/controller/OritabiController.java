@@ -31,7 +31,7 @@ public class OritabiController {
 	//「form-backing bean」の初期化
 	@ModelAttribute
 	public SpotForm setUpSpotForm() {
-		System.out.println("setup");
+		System.out.println("setupSpotForm");
 		SpotForm form = new SpotForm();
 		return form;
 	}
@@ -55,16 +55,19 @@ public class OritabiController {
 	}
 
 	//新規Spt登録時の一覧表示(エラー時に表示される)
-	@GetMapping
+	@GetMapping("/manager_page")
 	public String showSpotList(SpotForm spotForm, Model model) {
 		//新規登録設定
 		spotForm.setNewSpot(true);
 		//新規登録情報の一覧を取得
 		Iterable<Spot> list = service.selectAllSpot();
+		for(Spot i : list) {
+			System.out.println(i.getSpotName());
+		}
 		//表示用Modelへ格納
-		model.addAttribute("list", list);
-		model.addAttribute("title", "登録用フォーム");
-		return "/manager_page";
+		model.addAttribute("spotList", list);
+		//model.addAttribute("title", "登録用フォーム");
+		return "manager_page";
 	}
 
 	//新規登録画面の操作
@@ -113,7 +116,7 @@ public class OritabiController {
 			System.out.println("--------------");
 			service.insertSpot(spot);
 			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-			showSpotList(spotForm, model);
+			//showSpotList(spotForm, model);
 			return "redirect:/oritabi/manager_page";
 
 		} else {
@@ -123,8 +126,8 @@ public class OritabiController {
 		}
 	}
 
-	@GetMapping("/manager_page")
-	public String a() {
-		return "manager_page";
-	}
+//	@GetMapping("/manager_page")
+//	public String a(Model model) {
+//		return "manager_page";
+//	}
 }
