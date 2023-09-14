@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -106,7 +109,79 @@ public class OritabiController {
 	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
 
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot編集 ▼▼▼▼▼▼▼▼▼▼ */
-	
+	@GetMapping("/{spotId}")
+	public String showUpdateSpot(SpotForm spotForm,
+			@PathVariable Integer spotId, Model model) {
+		//Spotを取得
+		Optional<Spot> spotOpt = service.selectOneByIdSpot(spotId);
+		//SpotFormへ詰めなおし
+		Optional<SpotForm> spotFormOpt = spotOpt.map(t -> makeSpotForm(t));
+		//SpotFormがnullでなければ中身を取り出す
+		if (spotFormOpt.isPresent()) {
+			spotForm = spotFormOpt.get();
+		}
+		//更新用のModelを作る
+		makeUpdateModel(spotForm, model);
+		return "redirect:/oritabi/manager_page";
+	}
+
+	//更新用のModelを作成
+	private void makeUpdateModel(SpotForm spotForm, Model model) {
+		model.addAttribute("spotId", spotForm.getSpotId());
+		spotForm.setNewSpot(false);
+		model.addAttribute("spotForm", spotForm);
+		model.addAttribute("title", "更新用フォーム");
+	}
+
+	//spotId をキーにしてデータを更新する
+	@PostMapping("/spotUpdate")
+	public String spotUpdate(@Validated SpotForm spotForm,
+			BindingResult result, Model model,
+			RedirectAttributes redirectAttributes) {
+		//SpotForm から Spotに詰めなおす
+		Spot spot = makeSpot(spotForm);
+		//入力チェック
+		if (!result.hasErrors()) {
+			//更新処理、フラッシュスコープの使用、リダイレクト（ここの編集ページ）
+			service.updateSpot(spot);
+			redirectAttributes.addFlashAttribute("updateComp", "更新が完了しました☆");
+			//更新画面の表示
+			return "redirect:/oritabi/manager_page" + spot.getSpotId();
+		} else {
+			//更新用のModelを作る
+			makeUpdateModel(spotForm, model);
+			return "manager_page";
+		}
+	}
+
+	/*----- 【以下はFormとDomainObjectの詰めなおし】----- */
+	/* Form yから entity へ詰めなおし */
+	private Spot makeSpot(SpotForm spotForm) {
+		Spot spot = new Spot();
+		spot.setSpotId(spotForm.getSpotId());
+		spot.setSpotName(spotForm.getSpotName());
+		spot.setAddress(spotForm.getAddress());
+		spot.setWeb(spotForm.getWeb());
+		spot.setTel(spotForm.getTel());
+		spot.setPoint(spotForm.getPoint());
+		spot.setPurposeId(spotForm.getPurposeId());
+		spot.setImageFileName(spotForm.getImageFileName());
+		return spot;
+	}
+
+	/* ----- spot から spotForm に詰めなおす ---- */
+	private SpotForm makeSpotForm(Spot spot) {
+		SpotForm form = new SpotForm();
+		form.setSpotId(spot.getSpotId());
+		form.setSpotName(spot.getSpotName());
+		form.setAddress(spot.getAddress());
+		form.setWeb(spot.getWeb());
+		form.setTel(spot.getTel());
+		form.setPoint(spot.getPoint());
+		form.setPurposeId(spot.getPurposeId());
+		form.setImageFileName(spot.getImageFileName());
+		return form;
+	}
 	/* △△△△△△△△△△ 観光地Spot編集 △△△△△△△△△△ */
 
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot削除 ▼▼▼▼▼▼▼▼▼▼ */
