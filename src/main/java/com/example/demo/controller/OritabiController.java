@@ -90,7 +90,7 @@ public class OritabiController {
 		spot.setPoint(spotForm.getPoint());
 		spot.setPurposeId(spotForm.getPurposeId());
 		spot.setImageFileName(spotForm.getImageFileName());
-		System.out.println(spot);
+		//		System.out.println(spot);
 
 		//入力チェック
 		if (!bindingResult.hasErrors()) {
@@ -112,6 +112,7 @@ public class OritabiController {
 	@GetMapping("/{spotId}")
 	public String showUpdateSpot(SpotForm spotForm,
 			@PathVariable Integer spotId, Model model) {
+		System.out.println("spotForm");
 		//Spotを取得
 		Optional<Spot> spotOpt = service.selectOneByIdSpot(spotId);
 		//SpotFormへ詰めなおし
@@ -122,11 +123,12 @@ public class OritabiController {
 		}
 		//更新用のModelを作る
 		makeUpdateModel(spotForm, model);
-		return "redirect:/oritabi/manager_page";
+		return "manager_page";
 	}
 
 	//更新用のModelを作成
 	private void makeUpdateModel(SpotForm spotForm, Model model) {
+		System.out.println("makeUpdateModel");
 		model.addAttribute("spotId", spotForm.getSpotId());
 		spotForm.setNewSpot(false);
 		model.addAttribute("spotForm", spotForm);
@@ -138,6 +140,7 @@ public class OritabiController {
 	public String spotUpdate(@Validated SpotForm spotForm,
 			BindingResult result, Model model,
 			RedirectAttributes redirectAttributes) {
+		System.out.println("spotUpdate");
 		//SpotForm から Spotに詰めなおす
 		Spot spot = makeSpot(spotForm);
 		//入力チェック
