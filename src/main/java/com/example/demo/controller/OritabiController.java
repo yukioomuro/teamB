@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +107,7 @@ public class OritabiController {
 			return showSpotList(spotForm, model);
 		}
 	}
+	//管理者ページ↓
 
 	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
 
@@ -227,7 +230,49 @@ public class OritabiController {
 	}
 
 	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
-
+//管理者ページ　修了
 	/***************************************************************************************************/
 
+
+	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot表示 ▼▼▼▼▼▼▼▼▼▼ */
+	
+	
+	@GetMapping("/spot")
+	public String spotview(Model model) {
+		Iterable<Spot>spotall= service.selectAllSpot();
+		
+		List<Spot>spottaberu=new ArrayList<>();
+		List<Spot>spottour=new ArrayList<>();
+		List<Spot>spotasobu=new ArrayList<>();
+		
+		for(Spot s:spotall) {
+			switch(s.getPurposeId()) {
+			case 1 :
+				spottaberu.add(s);
+				break;
+				
+			case 2:
+				spottour.add(s);
+				break;
+				
+			case 3 :
+				spotasobu.add(s);
+				break;
+			}
+		}
+		
+		
+		model.addAttribute("spottaberu", spottaberu);
+		model.addAttribute("spottour", spottour);
+		model.addAttribute("spotasobu", spotasobu);
+		
+		System.out.println(spottour);
+		
+	return "spot";	
+		
+	}
+	
+	
+	
+	
 }
