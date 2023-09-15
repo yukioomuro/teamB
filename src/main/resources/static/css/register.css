@@ -12,8 +12,10 @@ article,footer, header, menu, nav, section {
   text-decoration: none;
   vertical-align: baseline;
 }
+
 .lo-tittle{
   font-weight: bold;
+  margin-left: 145px;
 }
 /* 共通CSS */
 .container {
@@ -47,12 +49,12 @@ html {
         color: #a2aab0;
     }
 
-.btn {
-    padding: 10px 30px;
-    font-size: 15px;
-    border-radius: 20px;
-    border: none;
-    margin-top: 20px;
+.btnds {
+    display: block;
+  padding: 0.8em 1em;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 100px;
 }
 .btn-box{
   margin-top: 30px;
@@ -63,9 +65,14 @@ html {
 }
 
 .btn-submit {
-    background-color: #4c586f;
-    color: #fff;
-    margin-top: 15px;
+    background-color: #fff;
+    color: #222;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.btnds btn-submit {
+    color: #222222;
 }
 
 /* login */
@@ -89,7 +96,7 @@ html {
     }
 
 .login {
-    padding: 60px 0; 
+    padding: 50px 0; 
     width: 50%;
     margin: 100px auto;
     background-color: #ebeced;
@@ -110,15 +117,27 @@ html {
     }
 
     .form-group {
-        margin-bottom: 10px;
+        margin-left: 145px;
+        margin-bottom: 5px;
+    }
+
+    .req {
+       font-size: 6px; 
+       background-color: #dc143c;
+       color: #fff;
+       padding: 3px;
+       border-radius: 7px;
+       margin-left: 2px;
     }
 
     .row {
        margin-top: 10px;
     }
 
-    label {
-      
+    input::placeholder,
+    textarea::placeholder {
+        opacity: 0.5;
+        color: #222222;
     }
 
   .copyright {
