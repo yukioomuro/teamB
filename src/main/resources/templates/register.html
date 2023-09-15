@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/css/style_oomuro.css" rel="stylesheet"
 	type="text/css">
 <title>新規登録</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="../static/css/register.css">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
 
@@ -244,58 +244,49 @@
 
 
 	<div id="register" class="col s12">
-
-		<form method="POST"
+	<!-- ログインエラーのときはメッセージを表示 -->
+	<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
+ 	<!-- ログインフォーム -->
+ <!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
+	<form method="POST"
 			th:action="${costomerForm.newCostomer}? @{/teamB/insert}"
 			th:object="${costomerForm}">
 
-			<div class="form-container">
-				<h3 class="teal-text">Welcome</h3>
-
-				<div class="row">
-					<div class="input-field col s6">
-						<input id="name" type="text" class="validate" th:field="*{name}">
-						<label for="name">Name</label>
-
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="email" type="email" class="validate"
-							th:field="*{email}"> <label for="email">Email</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="email-confirm" type="email" class="validate"
-							th:field="*{email}"> <label for="email-confirm">Email
-							Confirmation</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="password" type="password" class="validate"
-							th:field="*{pass}"> <label for="password">Password</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="password-confirm" type="password" class="validate"
-							th:field="*{pass}"> <label for="password-confirm">Password
-							Confirmation</label>
-					</div>
-				</div>
-				
-				<input class="btn waves-effect waves-light teal" type="button"
-					onclick="location.href='spot.html'" value="登録">
-					
-<!--  			<button class="btn waves-effect waves-light teal" type="button"
-					onclick="location.href='spot.html'" name="action">登録</button>-->	
-
+	<div class="login-wrapper" id="login">
+		<div class="container">
+				<div class="login">
+						<div class="login-wrapper-title">
+				<h3 class="lo-tittle">新規登録</h3>
+						</div>
+						<form class="login-form" th:action="@{authenticate}" method="post">
+							<div class="row">
+								<div class="input-field col s6">
+									<p>名前 <p class="req">必須</p></p><p class="req">必須</p>
+									<input id="name" type="name" class="validate" placeholder="山田" th:field="*{name}" autocomplete="name" required>
+								</div>
+							<div class="form-group">
+									<p>メールアドレス</p><p class="req">必須</p>
+									<input class="mail" type="email" name="email" placeholder="test.test.com" th:field="*{mail}" autocomplete="email" required>
+							</div>
+							<div class="form-group">
+								<p>メールアドレス確認</p><p class="req">必須</p>
+								<input class="mail" type="email" name="email" placeholder="test@test.com" th:field="*{mailView}" autocomplete="email" required>
+						</div>
+							<div class="form-group">
+									<p>パスワード</p><p class="req">必須</p>
+									<input class="password" type="password" name="password" placeholder="123456" th:field="*{pass}" autocomplete="password" required>
+							</div>
+							<div class="form-group"><p class="req">必須</p>
+								<p>パスワード確認</p>
+								<input class="password" type="password" name="password" placeholder="123456" th:field="*{passView}" autocomplete="password" required>
+						</div>
+							<div class="btn-box"><button type="submit" class="btn btn-submit" onclick="location.href='spot.html'">登録</button>
+				      </div>
 			</div>
-
 		</form>
+	</div>
+</div>
+ <div class="f_menu">
 
 	</div>
 	<!--footer-------------------------------------------->
