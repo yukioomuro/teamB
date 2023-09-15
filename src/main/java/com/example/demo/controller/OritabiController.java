@@ -60,6 +60,7 @@ public class OritabiController {
 		return form;
 	}
 
+	//管理者ページ↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
 
 	@GetMapping("/manager_page")
@@ -107,7 +108,6 @@ public class OritabiController {
 			return showSpotList(spotForm, model);
 		}
 	}
-	//管理者ページ↓
 
 	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
 
@@ -202,7 +202,11 @@ public class OritabiController {
 		return "redirect:/oritabi/manager_page";
 	}
 	/* △△△△△△△△△△ 観光地Spot削除 △△△△△△△△△△ */
+	//管理者ページ　終了
 
+	/***************************************************************************************************/
+
+	//Registerページ↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
 
 	//新規登録画面の操作
@@ -218,61 +222,60 @@ public class OritabiController {
 		costomer.setMemo(costomerForm.getMemo());
 
 		//入力チェック
-		if (!bindingResult.hasErrors()) {
-			service.insertCostomer(costomer);
-			redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-			return "map";
+		if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
+				costomerForm.getPass().equals(costomerForm.getPassView())) {
 
+			if (!bindingResult.hasErrors()) {
+				service.insertCostomer(costomer);
+				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+				return "map";
+
+			} else {
+				//エラーがある場合は、もう一度新規登録画面へ飛びます。
+				return "register";
+			}
 		} else {
-			//エラーがある場合は、もう一度新規登録画面へ飛びます。
+			model.addAttribute("miss", "確認用メールアドレスか、確認用パスワードが違います。");
 			return "register";
 		}
 	}
 
 	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
-//管理者ページ　修了
-	/***************************************************************************************************/
-
 
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot表示 ▼▼▼▼▼▼▼▼▼▼ */
-	
-	
+
 	@GetMapping("/spot")
 	public String spotview(Model model) {
-		Iterable<Spot>spotall= service.selectAllSpot();
-		
-		List<Spot>spottaberu=new ArrayList<>();
-		List<Spot>spottour=new ArrayList<>();
-		List<Spot>spotasobu=new ArrayList<>();
-		
-		for(Spot s:spotall) {
-			switch(s.getPurposeId()) {
-			case 1 :
+		Iterable<Spot> spotall = service.selectAllSpot();
+
+		List<Spot> spottaberu = new ArrayList<>();
+		List<Spot> spottour = new ArrayList<>();
+		List<Spot> spotasobu = new ArrayList<>();
+
+		for (Spot s : spotall) {
+			switch (s.getPurposeId()) {
+			case 1:
 				spottaberu.add(s);
 				break;
-				
+
 			case 2:
 				spottour.add(s);
 				break;
-				
-			case 3 :
+
+			case 3:
 				spotasobu.add(s);
 				break;
 			}
 		}
-		
-		
+
 		model.addAttribute("spottaberu", spottaberu);
 		model.addAttribute("spottour", spottour);
 		model.addAttribute("spotasobu", spotasobu);
-		
+
 		System.out.println(spottour);
-		
-	return "spot";	
-		
+
+		return "spot";
+
 	}
-	
-	
-	
-	
+
 }
