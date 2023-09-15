@@ -25,9 +25,15 @@ public class CostomerForm {
 	@NotBlank
 	private String mail;
 
+	@NotBlank
+	private String mailView;
+
 	//パスワード
 	@NotBlank
 	private String pass;
+
+	@NotBlank
+	private String passView;
 
 	//メモ
 	private String memo;
