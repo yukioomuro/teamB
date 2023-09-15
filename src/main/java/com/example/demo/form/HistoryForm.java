@@ -23,7 +23,20 @@ public class HistoryForm {
 
 	//観光地ID
 	@NotBlank
-	private Integer touristId;
+	private Integer touristId_1;
+
+	@NotBlank
+	private Integer touristId_2;
+
+	private Integer touristId_3;
+
+	private Integer touristId_4;
+
+	private Integer touristId_5;
+
+	private Integer touristId_6;
+
+	private Integer touristId_7;
 
 	//顧客情報
 	@NotBlank

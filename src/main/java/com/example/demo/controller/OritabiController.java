@@ -115,7 +115,7 @@ public class OritabiController {
 	@GetMapping("/{spotId}")
 	public String showUpdateSpot(SpotForm spotForm,
 			@PathVariable Integer spotId, Model model) {
-		System.out.println("spotForm");
+		System.out.println("showUpdateSpot");
 		//Spotを取得
 		Optional<Spot> spotOpt = service.selectOneByIdSpot(spotId);
 		//SpotFormへ詰めなおし
@@ -148,11 +148,11 @@ public class OritabiController {
 		Spot spot = makeSpot(spotForm);
 		//入力チェック
 		if (!result.hasErrors()) {
-			//更新処理、フラッシュスコープの使用、リダイレクト（ここの編集ページ）
+			//更新処理、フラッシュスコープの使用、リダイレクト（個々の編集ページ）
 			service.updateSpot(spot);
-			redirectAttributes.addFlashAttribute("updateComp", "更新が完了しました☆");
+			redirectAttributes.addFlashAttribute("updateComp", "☆更新が完了しました☆");
 			//更新画面の表示
-			return "redirect:/oritabi/manager_page" + spot.getSpotId();
+			return "redirect:/oritabi/manager_page";
 		} else {
 			//更新用のModelを作る
 			makeUpdateModel(spotForm, model);
