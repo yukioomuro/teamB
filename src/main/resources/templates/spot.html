@@ -2,476 +2,557 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <link href="../static/css/style_oomuro.css" rel="stylesheet" type="text/css">
-    <title>観光スポット一覧</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<link th:href="@{/css/style_oomuro.css}" rel="stylesheet" type="text/css">
+	<title>観光スポット一覧</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--headerのjs-->
-<script src="js/jquery-3.2.1.min.js"></script>
+	<!--headerのjs-->
+	<script src="js/jquery-3.2.1.min.js"></script>
 
-<!--リセットユイ-->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+	<!--リセットユイ-->
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
-<!--headercss-->
-<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
-<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../static/css/header.css" rel="stylesheet" type="text/css">
-<!--css-->
-<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
-<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+	<!--headercss-->
+	<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
+	<!--css-->
+	<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
 
-<!--font-awesome-->
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--font-awesome-->
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+		integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
 
-<!--jquery cdn-->   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--jquery cdn-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!--googlefont細-->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
-<!--googlefont太-->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-<!--googlefontRoboto-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+	<!--googlefont細-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+	<!--googlefont太-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+	<!--googlefontRoboto-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 
-<!--scroll.js-->
-<script type="text/javascript" src="js/scroll.js"></script>
-    
-<!--slider-->
-<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
-<link href="../static/css/slick-theme.css" rel="stylesheet" type="text/css">
+	<!--scroll.js-->
+	<script type="text/javascript" src="js/scroll.js"></script>
 
-<!--headerscript-->
-<script type="text/javascript">
-$(function($){
-    //メニューの表示状態保管用
-    var state = false;
-    //.bodyのスクロール位置
-    var scrollpos = 0;
-    //meanmenuの状態による表示制御
-    function mm_control() {
-        if($('.mean-nav .nav').is(':visible')) {
-            //表示中
-            if(state == false) {
-                scrollpos = $(window).scrollTop();
-                $('body').addClass('fixed').css({'top': -scrollpos});
-                $('.mean-container').addClass('open');
-                $('.mean-nav .mask').show();
-                state = true;
-            }
-        } else {
-            //非表示中
-            if(state == true) {
-                $('body').removeClass('fixed').css({'top': 0});
-                window.scrollTo( 0 , scrollpos );
-                $('.mean-container').removeClass('open');
-                $('.mean-nav .mask').hide();
-                state = false;
-            }
-        }
-    }
+	<!--slider-->
+	<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/slick-theme.css}" rel="stylesheet" type="text/css">
 
-    $('#gNav').meanmenu({
-        meanMenuContainer: "#header .h_nav", // メニューを表示させる位置
-        meanScreenWidth: "768"
-    });
-    $(document)
-    .on('opend.meanmenu closed.meanmenu', function() {
-        mm_control();
-    })
-    .on('touchend click', '.mean-bar .mask', function(e) {
-        $('.mean-bar .meanmenu-reveal').trigger('click');
-        return false;
-    });
-    //ウィンドウサイズ変更によるメニュー非表示時の制御
-    $(window).on('resize', function() {
-        mm_control();
-    });
-});
-</script>
-    
-<!--sliderscript-->
-<script>
-    
-    //ヘッダー　検索ボタン
-      $(function(){
-   $(".menubtn").click(function(){
-     $("#menu").slideToggle();
-   });
-  });
-        
-        
-        
-    //フッター　メニュー
-  $(function(){
-   $(".f_menubtn").click(function(){
-     $(".f_open").slideToggle();
-       
-   });
-  });
-        
-    
-     $(function(){
-         
-         $('.tab li').click(function(){
-             var index = $('.tab li').index(this);
-             
-             //コンテンツを非表示に
-             $('.content li').css('display','none');
-             //クリックされた番号のコンテンツを表示
-             $('.content li').eq(index).css('display','block');
-             
-             
-             
-             //tabについてる'tab_current'を消す
-             $('.tab li').removeClass('tab_current');
-             //クリックしたタブにのみ'tab_current'をつける
-             $(this).addClass('tab_current')
-             
-         }); 
-     });
-    
-    
-    
-    //スクロール
-        $(function (){
-        $(window).scroll(function (){
-            
-            if ($(this).scrollTop() > 10) {
-                $('#articles-scroll').addClass('is-fixed');
-            } else{
-                $('articles-scroll').removeClass('is-fixed');
-            }
-        })
-    })
-        
-    
-    
-    </script>
-<!--さわらびゴシック-->
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'wum1xfc',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
+	<!--headerscript-->
+	<script type="text/javascript">
+		$(function ($) {
+			//メニューの表示状態保管用
+			var state = false;
+			//.bodyのスクロール位置
+			var scrollpos = 0;
+			//meanmenuの状態による表示制御
+			function mm_control() {
+				if ($('.mean-nav .nav').is(':visible')) {
+					//表示中
+					if (state == false) {
+						scrollpos = $(window).scrollTop();
+						$('body').addClass('fixed').css({
+							'top': -scrollpos
+						});
+						$('.mean-container').addClass('open');
+						$('.mean-nav .mask').show();
+						state = true;
+					}
+				} else {
+					//非表示中
+					if (state == true) {
+						$('body').removeClass('fixed').css({
+							'top': 0
+						});
+						window.scrollTo(0, scrollpos);
+						$('.mean-container').removeClass('open');
+						$('.mean-nav .mask').hide();
+						state = false;
+					}
+				}
+			}
+
+			$('#gNav').meanmenu({
+				meanMenuContainer: "#header .h_nav", // メニューを表示させる位置
+				meanScreenWidth: "768"
+			});
+			$(document).on('opend.meanmenu closed.meanmenu', function () {
+				mm_control();
+			}).on('touchend click', '.mean-bar .mask', function (e) {
+				$('.mean-bar .meanmenu-reveal').trigger('click');
+				return false;
+			});
+			//ウィンドウサイズ変更によるメニュー非表示時の制御
+			$(window).on('resize', function () {
+				mm_control();
+			});
+		});
+	</script>
+
+	<!--sliderscript-->
+	<script>
+		//ヘッダー　検索ボタン
+		$(function () {
+			$(".menubtn").click(function () {
+				$("#menu").slideToggle();
+			});
+		});
+
+		//フッター　メニュー
+		$(function () {
+			$(".f_menubtn").click(function () {
+				$(".f_open").slideToggle();
+
+			});
+		});
+
+		$(function () {
+
+			$('.tab li').click(function () {
+				var index = $('.tab li').index(this);
+
+				//コンテンツを非表示に
+				$('.content li').css('display', 'none');
+				//クリックされた番号のコンテンツを表示
+				$('.content li').eq(index).css('display', 'block');
+
+				//tabについてる'tab_current'を消す
+				$('.tab li').removeClass('tab_current');
+				//クリックしたタブにのみ'tab_current'をつける
+				$(this).addClass('tab_current')
+
+			});
+		});
+
+		//スクロール
+		$(function () {
+			$(window).scroll(function () {
+
+				if ($(this).scrollTop() > 10) {
+					$('#articles-scroll').addClass('is-fixed');
+				} else {
+					$('articles-scroll').removeClass('is-fixed');
+				}
+			})
+		})
+	</script>
+	<!--さわらびゴシック-->
+	<script>
+			(
+				function (d) {
+					var config = {
+						kitId: 'wum1xfc',
+						scriptTimeout: 3000,
+						async: true
+					}, h = d.documentElement, t = setTimeout(function () {
+						h.className = h.className.replace(
+							/\bwf-loading\b/g, "")
+							+ " wf-inactive";
+					}, config.scriptTimeout), tk = d
+						.createElement("script"), f = false, s = d
+							.getElementsByTagName("script")[0], a;
+					h.className += " wf-loading";
+					tk.src = 'https://use.typekit.net/' + config.kitId
+						+ '.js';
+					tk.async = true;
+					tk.onload = tk.onreadystatechange = function () {
+						a = this.readyState;
+						if (f || a && a != "complete" && a != "loaded")
+							return;
+						f = true;
+						clearTimeout(t);
+						try {
+							Typekit.load(config)
+						} catch (e) {
+						}
+					};
+					s.parentNode.insertBefore(tk, s)
+				})(document);
+	</script>
 
 
 </head>
 
 <body>
-    <header id="header">
-        <div class="container">
-            <div id="h_top">
-                <div class="h_logo"><a href=""><img src="../imag/logo22.png" alt=""/></a></div>
-                <div class="h_nav">
-                    <nav id="gNav">
-                        <ul class="nav">
-                            <li><a href="">ボタン</a></li>
-                            <li><a href="">ボタン</a></li>
-                            <li><a href="src/main/resources/templates/register.html" class="btn-sin">新規登録</a></li>
-                            <li><a href="src/main/resources/templates/manager_login.html"class= "btn-log">ログイン</a></li>
-                        </ul>
-                        <div class="mask"></div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-        
-        <header class="mheader">
-            <div class="pc_menuFlex">
-                <div class="i-logo"><a href="#"><img src="../imag/logo22.png" alt=""/></a>
-                </div>
-                <div class="pc_menu">
-                    <ul>
-                        <li><a href="#nav01">ボタン</a></li>
-                        <li><a href="#nav02">ボタン</a></li>
-                        <li><a href="src/main/resources/templates/register.html" class="btn-sin">新規登録</a></li>
-                        <li><a href="src/main/resources/templates/manager_login.html"class= "btn-log">ログイン</a></li>
-                    </ul>
-                </div> 
-            </div>
-        </header>
-    
-        <br><br>
-        <br><br>
-        <br><br>
-        <div class ="osaka">
-        <h2 class ="ooosaka">大阪エリア</h2>
-    <div class="oosaka">
-      
-
-        <div class="tabds">
-            <div class="tabbox">
-                
-                    <input type="radio" name="tabset" id="tabcheck1" checked>
-                    <label for="tabcheck1" class="tab">食べる</label>
-                    <input type="radio" name="tabset" id="tabcheck2">
-                    <label for="tabcheck2" class="tab">観る</label>
-                    <input type="radio" name="tabset" id="tabcheck3">
-                    <label for="tabcheck3" class="tab">遊ぶ</label>
-               
-                <div class="tabcontent" id="tabcontent1">
-
-                    <h3 class ="titleds">食べる</h3>
-
-                    <div class="kita">
-                        
-
-                        <ul class = "ul-class">
-                           
-                            <li class="yukari">
-
-                                <a target="_blank" rel="noopener noreferrer" href="https://www.yukarichan.co.jp/">
-                                    <p class ="ptag"><input type="checkbox" name=“sample” value="1">お好み焼ゆかり 曾根崎本店</p>
-                                    <div class="img_yukari">
-                                        <img src="../imag/yukari.jpg">
-                                    </div>
-                                </a>
-                                <p>フワフワで美味しい</p>
-                                <address>
-                                    <a href="https://www.yukarichan.co.jp/">大阪市北区曽根崎2-14-13</a><br>
-                                    <a href="tel:06-6311-0214">TEL:06-6311-0214</a>
-                                </address>
-                            </li>
+	<header id="header">
+		<div class="container">
+			<div id="h_top">
+				<div class="h_logo">
+					<a href=""><img th:src="@{/imag/logo22.png}" alt="" /></a>
+				</div>
+				<div class="h_nav">
+					<nav id="gNav">
+						<ul class="nav">
+							<li><a href="">ボタン</a></li>
+							<li><a href="">ボタン</a></li>
+							<li><a href="register.html" class="btn-sin">新規登録</a></li>
+							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+						</ul>
+						<div class="mask"></div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
 
 
+	<header class="mheader">
+		<div class="pc_menuFlex">
+			<div class="i-logo">
+				<a href="#"><img th:src="@{/imag/logo22.png}" alt="" /></a>
+			</div>
+			<div class="pc_menu">
+				<ul>
+					<li><a href="#nav01">ボタン</a></li>
+					<li><a href="#nav02">ボタン</a></li>
+					<li><a href="register.html" class="btn-sin">新規登録</a></li>
+					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 
-                        </ul>
-                    </div>
-
-                    <div class="minami">
-                        
-
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </div>
-
-                </div>
-
-
-                <div class="tabcontent" id="tabcontent2">
-
-                    <h3 class ="titleds">観る</h3>
-
-                    <ul class = "ul-class">
-                        <li class="oosakajyou">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.osakacastle.net/">
-                                <p class ="ptag"><input type="checkbox" name=“sample” value="2">大坂城</p>
-                                <div class="img_oosakajyou">
-                                    <img src="../imag/oosakajyou.jpg">
-                                </div>
-                            </a>
-                            <p>都会のど真ん中のお城</p>
-                            <address>
-                                <a href="https://www.osakacastle.net/">大阪市中央区大阪城 1-1</a><br> <a
-                                    href="tel:06-6941-3044">TEL:06-6941-3044</a>
-                            </address>
-                        </li>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="osaka">
+		<h2 class="ooosaka">大阪エリア</h2>
+		<div class="oosaka">
 
 
-                        <li class="tsutenkaku">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.tsutenkaku.co.jp/">
-                                <p class ="ptag"><input type="checkbox" name=“sample” value="2">通天閣/新世界</p>
-                                <div class="img_tsutenkaku">
-                                    <img src="../imag/tsutenkaku.jpg">
-                                </div>
-                            </a>
-                            <p>天望パラダイス</p>
-                            <address>
-                                <a href="https://www.tsutenkaku.co.jp/">大阪市浪速区恵美須東１丁目１８-6</a><br>
-                                <a href="tel:06-6641-9555">TEL:06-6641-9555</a>
-                            </address>
-                        </li>
+			<div class="tabds">
 
-                        <li class="tarou">
-                            <a target="_blank" rel="noopener noreferrer" href="https://taiyounotou-expo70.jp/">
-                                <p class ="ptag"><input type="checkbox" name=“sample” value="2">太陽の塔</p>
-                                <div class="img_tarou">
-                                    <img src="../imag/taiyounotou.jpg">
-                                </div>
-                            </a>
-                            <p>岡本太郎の芸術作品</p>
-                            <address>
-                                <a href="https://taiyounotou-expo70.jp/">吹田市千里 万博公園1-1</a><br>
-                                <a href="tel: 0120-197-089">TEL: 0120-197-089</a>
-                            </address>
-                        </li>
+				<!--tabの設定-->
+				<div class="tabbox">
+					<input type="radio" name="tabset" id="tabcheck1" checked>
+					<label for="tabcheck1" class="tab">食べる</label>
+					<input type="radio" name="tabset" id="tabcheck2">
+					<label for="tabcheck2" class="tab">観る</label>
+					<input type="radio" name="tabset" id="tabcheck3">
+					<label for="tabcheck3" class="tab">遊ぶ</label>
 
-                        <li class="ngk">
-                            <a target="_blank" rel="noopener noreferrer" href="https://ngk.yoshimoto.co.jp/">
-                                <p class ="ptag"><input type="checkbox" name=“sample” value="2">なんばグランド花月</p>
-                                <div class="img_ngk">
-                                    <img src="../imag/nanbakagetu.jpg">
-                                </div>
-                            </a>
-                            <p>日本最高峰の笑いが集まるところ</p>
-                            <address>
-                                <a href="https://ngk.yoshimoto.co.jp/">大阪市中央区難波千日前11-6</a><br>
-                                <a href="tel:06-6641-0888">TEL: 06-6641-0888</a>
-                            </address>
-                        </li>
-                    </ul>
-                </div>
+					<!--tabごとの中身（食べる）-->
+					<div class="tabcontent" id="tabcontent1">
+
+						<h3 class="titleds">食べる</h3>
+
+						<ul class="ul-class">
+							<div th:each="spot:${spottaberu}">
+								<li class="spot_taberu">
+									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+										<p class="ptag">
+											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
+										</p>
+										<div class="img_aberu">
+											<img th:src="@{'/imag/'+${spot.imageFileName}}">
+										</div>
+									</a>
+									<p>[[${spot.point}]]</p>
+									<address>
+										<a th:href="${spot.web}">[[${spot.address}]]</a>
+										<br>
+										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+									</address>
+								</li>
+							</div>
+						</ul>
+					</div>
 
 
+					<!--tabごとの中身（観る）-->
+					<div class="tabcontent" id="tabcontent2">
 
-                <div class="tabcontent" id="tabcontent3">
+						<h3 class="titleds">観る</h3>
 
-                    <h3 class ="titleds">遊ぶ</h3>
+						<ul class="ul-class">
+							<div th:each="spot:${spottour}">
+								<li class="spot_tour">
+									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+										<p class="ptag">
+											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
+										</p>
+										<div class="img_tour">
+											<img th:src="@{'/imag/'+${spot.imageFileName}}">
+										</div>
+									</a>
+									<p>[[${spot.point}]]</p>
+									<address>
+										<a th:href="${spot.web}">[[${spot.address}]]</a>
+										<br>
+										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+									</address>
+								</li>
 
-                    <ul class = "ul-class">
-                        <li class="usj">
+							</div>
 
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.usj.co.jp/web/ja/jp">
-                                <p class ="ptag"><input type="checkbox" name=“sample” value="3">ユニバーサルスタジオジャパン</p>
-                                <div class="img_usj">
-                                    <img src="../imag/USJ_image.jpg">
-                                </div>
-                            </a>
-                            <p>一日中楽しめる!!!</p>
-                            <address>
-                                <a href="https://www.usj.co.jp/web/ja/jp">大阪市此花区桜島2-1-33</a><br>
-                                <a href="tel:06-6465-3000">TEL:06-6465-3000</a>
-                            </address>
-                        </li>
+						</ul>
 
-                        <li class="cupnoodles">
-                            <p target="_blank" rel="noopener noreferrer"
-                                href="https://www.cupnoodles-museum.jp/ja/osaka_ikeda/">
-                                <p class ="ptag"></p><input type="checkbox" name=“sample” value="3">カップラーメンミュージアム</p>
-                                <div class="img_cup">
-                                    <img src="../imag/cupnoodlesM.jpg">
-                                </div>
-                            </a>
-                            <p>オリジナルカップラーメンが作れる</p>
-                            <address>
-                                <a href="https://www.cupnoodles-museum.jp/ja/osaka_ikeda/">大阪府池田市満寿美町8-25</a><br>
-                                <a href="tel:072-752-3484">TEL:072-752-3484</a>
-                            </address>
-                        </li>
+						<!--  					<ul class="ul-class">
+							<div th:each="spot:${spottour}">
 
-                        <li class="kaiyukan">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.kaiyukan.com/">
-                                <p class ="ptag"> <input type="checkbox" name=“sample” value="3">海遊館</p>
-                                <div class="img_kaiyukan">
-                                    <img src="../imag/kaiyuukann.jpg">
-                                </div>
-                            </a>
-                            <p>世界最大級の水族館</p>
-                            <address>
-                                <a href="https://www.kaiyukan.com/">大阪府大阪市港区海岸通1-1-10</a><br> <a
-                                    href="tel:06-6576-5501">TEL:06-6576-5501</a>
-                            </address>
-                        </li>
-
-                        <li class="tennoujizoo">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.tennojizoo.jp/">
-                                <p class ="ptag"> <input type="checkbox" name=“sample” value="3">天王寺動物園</p>
-                                <div class="img_zoo">
-                                    <img src="../imag/tennnoujizoo.jpg">
-                                </div>
-                            </a>
-                            <p>動物園で楽しく学ぼう</p>
-                            <address>
-                                <a href="https://www.tennojizoo.jp/">大阪市天王寺区茶臼山町1-108</a><br> <a
-                                    href="tel:06-6576-5501">TEL:06-6771-8401</a>
-                            </address>
-                        </li>
-                    </ul>
-                </div>
+								<li class="oosakajyou"><a target="_blank"
+									rel="noopener noreferrer" href="https://www.osakacastle.net/">
+										<p class="ptag">
+											<input type="checkbox" name=“sample” value="2">大坂城
+										</p>
+										
+											<img src="../imag/oosakajyou.jpg">
+										</div>
+								</a>
+									<p>都会のど真ん中のお城</p>
+									<address>
+										<a href="https://www.osakacastle.net/">大阪市中央区大阪城 1-1</a><br>
+										<a href="tel:06-6941-3044">TEL:06-6941-3044</a>
+									</address></li>
+							</div>
 
 
+							<li class="tsutenkaku"><a target="_blank"
+								rel="noopener noreferrer" href="https://www.tsutenkaku.co.jp/">
+									<p class="ptag">
+										<input type="checkbox" name=“sample” value="2">通天閣/新世界
+									</p>
+									<div class="img_tsutenkaku">
+										<img src="../imag/tsutenkaku.jpg">
+									</div>
+							</a>
+								<p>天望パラダイス</p>
+								<address>
+									<a href="https://www.tsutenkaku.co.jp/">大阪市浪速区恵美須東１丁目１８-6</a><br>
+									<a href="tel:06-6641-9555">TEL:06-6641-9555</a>
+								</address></li>
 
-            </div>
-        </div>
+							<li class="tarou"><a target="_blank"
+								rel="noopener noreferrer" href="https://taiyounotou-expo70.jp/">
+									<p class="ptag">
+										<input type="checkbox" name=“sample” value="2">太陽の塔
+									</p>
+									<div class="img_tarou">
+										<img src="../imag/taiyounotou.jpg">
+									</div>
+							</a>
+								<p>岡本太郎の芸術作品</p>
+								<address>
+									<a href="https://taiyounotou-expo70.jp/">吹田市千里 万博公園1-1</a><br>
+									<a href="tel: 0120-197-089">TEL: 0120-197-089</a>
+								</address></li>
 
-        <br>
+							<li class="ngk"><a target="_blank" rel="noopener noreferrer"
+								href="https://ngk.yoshimoto.co.jp/">
+									<p class="ptag">
+										<input type="checkbox" name=“sample” value="2">なんばグランド花月
+									</p>
+									<div class="img_ngk">
+										<img src="../imag/nanbakagetu.jpg">
+									</div>
+							</a>
+								<p>日本最高峰の笑いが集まるところ</p>
+								<address>
+									<a href="https://ngk.yoshimoto.co.jp/">大阪市中央区難波千日前11-6</a><br>
+										<a href="tel:06-6641-0888">TEL: 06-6641-0888</a>
+								</address></li>
+						</ul>-->
+					</div>
 
-        <div class="pickup">
-            <a target="_blank" rel="noopener noreferrer">
-            </a>
-            <div class ="button-box"><button type="button" onclick="location.href='map.html'">pickup</button></div>
-            </a>
-        </div>
+					<!--tabごとの中身（遊ぶ）-->
+					<div class="tabcontent" id="tabcontent3">
+						<h3 class="titleds">遊ぶ</h3>
+					
+								
+								
+						
+							
+						
 
-
-    </div>
-</div>
-<!--footer-------------------------------------------->
-<div class="f_menu">
-        
-        
-    <!--footer_ナビゲーション-->
-    <ul>
-        <li></li>
-        
-        <li></li>
-        
-        <li></li>
-        
-        <li></li>
-        
-        <li>
-                <div class="f_menubtn">
-                    <div><i class="fas fa-bars"></i></div>
-                </div>
-            
-        </li>
-    </ul>
-</div>
-<!--footer_メニューの中身-->
-        <div class="f_open">
-            <div class="f_logo">
-             <img src="../imag/logo22.png" alt=""/>
-            </div>
-            
-            <div class="category_list">
-                <dl>
-                    <dd>ボタン</dd>
-                </dl>
-                
-                <dl>
-                    <dd>ボタン</dd>
-                </dl>
-                
-                <dl>
-                    <dd><a href ="src/main/resources/templates/register.html"><div class="btn-sin">新規登録</div></a></dd>
-                </dl>
-                
-                <dl>
-                    <dd><a href="src/main/resources/templates/manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
-                </dl>
-        </div>
-
-</div>
+						<ul class="ul-class">
+							<div th:each="spot:${spotasobu}">
+								<li class="spot_asobu">
+									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+										<p class="ptag">
+											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
+										</p>
+										<div class="img_asobu">
+											<img th:src="@{'/imag/'+${spot.imageFileName}}">
+										</div>
+									</a>
+									<p>[[${spot.point}]]</p>
+									<address>
+										<a th:href="${spot.web}">[[${spot.address}]]</a>
+										<br>
+										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+									</address>
+								</li>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 
+			<!--  				
+						<ul class="ul-class">
+						<li class="usj">
+							<a target="_blank" rel="noopener noreferrer"
+							href="https://www.usj.co.jp/web/ja/jp">
+								<p class="ptag">
+									<input type="checkbox" name=“sample” value="3">ユニバーサルスタジオジャパン
+								</p>
+								<div class="img_usj">
+									<img src="../imag/USJ_image.jpg">
+								</div>
+						</a>
+							<p>一日中楽しめる!!!</p>
+							<address>
+								<a href="https://www.usj.co.jp/web/ja/jp">大阪市此花区桜島2-1-33</a><br>
+								<a href="tel:06-6465-3000">TEL:06-6465-3000</a>
+							</address></li>
 
-<footer>
-<p class="copyright">
-  ©︎Oritabi　All Rights Reserved.
-</p>
-</footer>
-<!--sliderのjs-------------------------------------------->
-<script type="text/javascript"src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="js/test.js"></script>
-<script type="text/javascript" src="js/slick.min.js"></script>
+						<li class="cupnoodles">
+							<p target="_blank" rel="noopener noreferrer"
+								href="https://www.cupnoodles-museum.jp/ja/osaka_ikeda/">
+							<p class="ptag"></p> <input type="checkbox" name=“sample”
+							value="3">カップラーメンミュージアム
+							</p>
+							<div class="img_cup">
+								<img src="../imag/cupnoodlesM.jpg">
+							</div> </a>
+							<p>オリジナルカップラーメンが作れる</p>
+							<address>
+								<a href="https://www.cupnoodles-museum.jp/ja/osaka_ikeda/">大阪府池田市満寿美町8-25</a><br>
+								<a href="tel:072-752-3484">TEL:072-752-3484</a>
+							</address>
+						</li>
+
+						<li class="kaiyukan"><a target="_blank"
+							rel="noopener noreferrer" href="https://www.kaiyukan.com/">
+								<p class="ptag">
+									<input type="checkbox" name=“sample” value="3">海遊館
+								</p>
+								<div class="img_kaiyukan">
+									<img src="../imag/kaiyuukann.jpg">
+								</div>
+						</a>
+							<p>世界最大級の水族館</p>
+							<address>
+								<a href="https://www.kaiyukan.com/">大阪府大阪市港区海岸通1-1-10</a><br>
+								<a href="tel:06-6576-5501">TEL:06-6576-5501</a>
+							</address></li>
+
+						<li class="tennoujizoo"><a target="_blank"
+							rel="noopener noreferrer" href="https://www.tennojizoo.jp/">
+								<p class="ptag">
+									<input type="checkbox" name=“sample” value="3">天王寺動物園
+								</p>
+								<div class="img_zoo">
+									<img src="../imag/tennnoujizoo.jpg">
+								</div>
+						</a>
+							<p>動物園で楽しく学ぼう</p>
+							<address>
+								<a href="https://www.tennojizoo.jp/">大阪市天王寺区茶臼山町1-108</a><br>
+								<a href="tel:06-6576-5501">TEL:06-6771-8401</a>
+							</address></li>
+					</ul>
+					-->
+
+			<br>
+
+			<div class="pickup">
+				<a target="_blank" rel="noopener noreferrer">
+					<div class="button-box">
+
+						<button type="button" onclick="location.href='map.html'">pickup</button>
+					</div>
+				</a>
+			</div>
+
+
+
+		</div>
+
+		<!--footer-------------------------------------------->
+		<div class="f_menu">
+
+
+			<!--footer_ナビゲーション-->
+			<ul>
+				<li></li>
+
+				<li></li>
+
+				<li></li>
+
+				<li></li>
+
+				<li>
+					<div class="f_menubtn">
+						<div>
+							<i class="fas fa-bars"></i>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+		</div>
+		<!--footer_メニューの中身-->
+		<div class="f_open">
+			<div class="f_logo">
+				<img src="../imag/logo22.png" alt="" />
+			</div>
+
+			<div class="category_list">
+				<dl>
+					<dd>ボタン</dd>
+				</dl>
+
+				<dl>
+					<dd>ボタン</dd>
+				</dl>
+
+				<dl>
+					<dd>
+						<a href="register.html">
+							<div class="btn-sin">新規登録</div>
+						</a>
+					</dd>
+				</dl>
+
+				<dl>
+					<dd>
+						<a href="manager_login.html">
+							<div class="btn-log">ログイン</div>
+						</a>
+					</dd>
+				</dl>
+			</div>
+
+		</div>
+
+
+
+		<footer>
+			<p class="copyright">©︎Oritabi All Rights Reserved.</p>
+		</footer>
+		<!--sliderのjs-------------------------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/test.js"></script>
+		<script type="text/javascript" src="js/slick.min.js"></script>
 
 
 
