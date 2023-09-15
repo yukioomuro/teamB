@@ -234,75 +234,76 @@
 		<h2 class="ooosaka">大阪エリア</h2>
 		<div class="oosaka">
 
+			<form action ="./mapcopy.html">
+				<div class="tabds">
 
-			<div class="tabds">
+					<!--tabの設定-->
+					<div class="tabbox">
+						<input type="radio" name="tabset" id="tabcheck1" checked>
+						<label for="tabcheck1" class="tab">食べる</label>
+						<input type="radio" name="tabset" id="tabcheck2">
+						<label for="tabcheck2" class="tab">観る</label>
+						<input type="radio" name="tabset" id="tabcheck3">
+						<label for="tabcheck3" class="tab">遊ぶ</label>
 
-				<!--tabの設定-->
-				<div class="tabbox">
-					<input type="radio" name="tabset" id="tabcheck1" checked>
-					<label for="tabcheck1" class="tab">食べる</label>
-					<input type="radio" name="tabset" id="tabcheck2">
-					<label for="tabcheck2" class="tab">観る</label>
-					<input type="radio" name="tabset" id="tabcheck3">
-					<label for="tabcheck3" class="tab">遊ぶ</label>
+						<!--tabごとの中身（食べる）-->
 
-					<!--tabごとの中身（食べる）-->
-					<div class="tabcontent" id="tabcontent1">
+						<div class="tabcontent" id="tabcontent1">
 
-						<h3 class="titleds">食べる</h3>
+							<h3 class="titleds">食べる</h3>
 
-						<ul class="ul-class">
-							<div th:each="spot:${spottaberu}">
-								<li class="spot_taberu">
-									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-										<p class="ptag">
-											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
-										</p>
-										<div class="img_taberu">
-											<img th:src="@{'/imag/'+${spot.imageFileName}}">
-										</div>
-									</a>
-									<p>[[${spot.point}]]</p>
-									<address>
-										<a th:href="${spot.web}">[[${spot.address}]]</a>
-										<br>
-										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
-									</address>
-								</li>
-							</div>
-						</ul>
-					</div>
+							<ul class="ul-class">
+								<div th:each="spot:${spottaberu}">
+									<li class="spot_taberu">
+										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+											<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+											</p>
+											<div class="img_taberu">
+												<img th:src="@{'/imag/'+${spot.imageFileName}}">
+											</div>
+										</a>
+										<p>[[${spot.point}]]</p>
+										<address>
+											<a th:href="${spot.web}">[[${spot.address}]]</a>
+											<br>
+											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+										</address>
+									</li>
+								</div>
+							</ul>
+						</div>
 
 
-					<!--tabごとの中身（観る）-->
-					<div class="tabcontent" id="tabcontent2">
+						<!--tabごとの中身（観る）-->
+						<div class="tabcontent" id="tabcontent2">
 
-						<h3 class="titleds">観る</h3>
+							<h3 class="titleds">観る</h3>
 
-						<ul class="ul-class">
-							<div th:each="spot:${spottour}">
-								<li class="spot_tour">
-									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-										<p class="ptag">
-											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
-										</p>
-										<div class="img_tour">
-											<img th:src="@{'/imag/'+${spot.imageFileName}}">
-										</div>
-									</a>
-									<p>[[${spot.point}]]</p>
-									<address>
-										<a th:href="${spot.web}">[[${spot.address}]]</a>
-										<br>
-										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
-									</address>
-								</li>
+							<ul class="ul-class">
+								<div th:each="spot:${spottour}">
+									<li class="spot_tour">
+										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+											<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+											</p>
+											<div class="img_tour">
+												<img th:src="@{'/imag/'+${spot.imageFileName}}">
+											</div>
+										</a>
+										<p>[[${spot.point}]]</p>
+										<address>
+											<a th:href="${spot.web}">[[${spot.address}]]</a>
+											<br>
+											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+										</address>
+									</li>
 
-							</div>
+								</div>
 
-						</ul>
+							</ul>
 
-						<!--  					<ul class="ul-class">
+							<!--  					<ul class="ul-class">
 							<div th:each="spot:${spottour}">
 
 								<li class="oosakajyou"><a target="_blank"
@@ -367,38 +368,38 @@
 										<a href="tel:06-6641-0888">TEL: 06-6641-0888</a>
 								</address></li>
 						</ul>-->
-					</div>
+						</div>
 
-					<!--tabごとの中身（遊ぶ）-->
-					<div class="tabcontent" id="tabcontent3">
-						<h3 class="titleds">遊ぶ</h3>
-					
-						<ul class="ul-class">
-							<div th:each="spot:${spotasobu}">
-								<li class="spot_asobu">
-									<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-										<p class="ptag">
-											<input type="checkbox" name=“sample” value="1">[[${spot.spotName}]]
-										</p>
-										<div class="img_asobu">
-											<img th:src="@{'/imag/'+${spot.imageFileName}}">
-										</div>
-									</a>
-									<p>[[${spot.point}]]</p>
-									<address>
-										<a th:href="${spot.web}">[[${spot.address}]]</a>
-										<br>
-										<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
-									</address>
-								</li>
-							</div>
-						</ul>
+						<!--tabごとの中身（遊ぶ）-->
+						<div class="tabcontent" id="tabcontent3">
+							<h3 class="titleds">遊ぶ</h3>
+
+							<ul class="ul-class">
+								<div th:each="spot:${spotasobu}">
+									<li class="spot_asobu">
+										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
+											<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+											</p>
+											<div class="img_asobu">
+												<img th:src="@{'/imag/'+${spot.imageFileName}}">
+											</div>
+										</a>
+										<p>[[${spot.point}]]</p>
+										<address>
+											<a th:href="${spot.web}">[[${spot.address}]]</a>
+											<br>
+											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
+										</address>
+									</li>
+								</div>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
 
 
-			<!--  				
+				<!--  				
 						<ul class="ul-class">
 						<li class="usj">
 							<a target="_blank" rel="noopener noreferrer"
@@ -464,23 +465,37 @@
 					</ul>
 					-->
 
-			<br>
+				<br>
 
-			<div class="pickup">
-				<a target="_blank" rel="noopener noreferrer">
-					<div class="button-box">
+				<div class="pickup">
+					<a target="_blank" rel="noopener noreferrer">
+						<div class="button-box">
+							<input type="submit" id="submit" value="pickup" onclick="location.href='mapcopy.html'"  >
 
-						<button type="button" onclick="location.href='map.html'">pickup</button>
-					</div>
-				</a>
-			</div>
+						</div>
+					</a>
+				</div>
+
+
+			</form>
+
+		 </div>
+
+		 
+
+		 <script type="text/javascript">
+			$(function(){
+			  $("#checkbox").on("click", function(){
+				var v = $(this).val();
+				sessionStorage.setItem('key', v);
+			  });
+			})
+			</script>
 
 
 
-		</div>
-
-		<!--footer-------------------------------------------->
-		<div class="f_menu">
+		 <!--footer-------------------------------------------->
+		 <div class="f_menu">
 
 
 			<!--footer_ナビゲーション-->
