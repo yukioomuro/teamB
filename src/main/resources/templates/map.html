@@ -269,14 +269,26 @@
 			<div class="suke">
 				<h3>スケジュール</h3>
 				<!-- 住所の要素 -->
-				<div id="spot1"></div>
 				<!-- 所要時間の要素 -->
+				<div id="address_1"></div>
 				<div id="leg1"></div>
-				<div id="spot2"></div>
+				<div id="address_2"></div>
 				<div id="leg2"></div>
-				<div id="spot3"></div>
+				<div id="address_3"></div>
 				<div id="leg3"></div>
-				<div id="spot4"></div>
+				<div id="address_4"></div>
+				<div id="leg4"></div>
+				<div id="address_5"></div>
+				<div id="leg5"></div>
+				<div id="address_6"></div>
+				<div id="leg6"></div>
+				<div id="address_7"></div>
+				<div id="leg7"></div>
+				<div id="address_8"></div>
+				<div id="leg8"></div>
+				<div id="address_9"></div>
+				<div id="leg9"></div>
+				<div id="address_10"></div>
 			</div>
 		</div>
 	
@@ -314,13 +326,13 @@
 			// 地図1の初期化
 			map1 = new google.maps.Map(document.getElementById('map1'), {
 				center : mapCenter,
-				zoom : 12
+				zoom : 11.5
 			});
 
 			// 地図2の初期化
 			map2 = new google.maps.Map(document.getElementById('map2'), {
 				center : mapCenter,
-				zoom : 12
+				zoom : 11.5
 			});
 
 			// 各地図に対する処理を追加
@@ -390,6 +402,13 @@
                 const addressList = document.getElementById('selectedAddresses');
                 addressList.innerHTML = '<h3>　目的地の順番：</h3>' +
                     '<ul>' + selectedAddresses.map(addr => `<li>　${addr}　</li>`).join('') + '</ul>';
+                    
+                    for (let x = 0; x < selectedAddresses.length; x++) {
+                    	  const addressElement = document.getElementById('address_' + (x + 1));
+                    	  if (addressElement) {
+                    	    addressElement.textContent = selectedAddresses[x]; // 選択されたアドレスを設定
+                    	  }
+                    	}
             }
         }
 		// map2の処理
@@ -428,9 +447,7 @@
 		            for (let x = 0; x < response.routes[0].legs.length; x++) {
 		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
 		            }
-		         // 住所名も表示
-	                document.getElementById('spot' + (x + 1)).textContent = leg.start_address;
-	                document.getElementById('spot' + (x + 2)).textContent = leg.end_address;
+		         
 		        } else {
 		            alert('ルートの取得中にエラーが発生しました: ' + status);
 		        }
