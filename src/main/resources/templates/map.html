@@ -246,52 +246,52 @@
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 
-		<!-- 表示用の要素1 -->
-		<div id="displayElement1">
-			<!--  マップの表示 -->
-			<div id="map1" style="height: 300px;"></div>
-			<!--  選択した住所表示 -->
-			<div class="jun">
-				<p>ピンをクリックして順番を決めてください</p>
-				<p>今選択した目的地</p>
-				<div id="addressDisplay"></div>
-				<div id="selectedAddresses"></div>
-				<!--  ボタン表示 -->
-				<button id="undoButton">一つ戻る</button>
-			</div>
+	<!-- 表示用の要素1 -->
+	<div id="displayElement1">
+		<!--  マップの表示 -->
+		<div id="map1" style="height: 300px;"></div>
+		<!--  選択した住所表示 -->
+		<div class="jun">
+			<p>ピンをクリックして順番を決めてください</p>
+			<p>今選択した目的地</p>
+			<div id="addressDisplay"></div>
+			<div id="selectedAddresses"></div>
+			<!--  ボタン表示 -->
+			<button id="undoButton">一つ戻る</button>
 		</div>
+	</div>
 
-		<!-- 表示用の要素2（初めは非表示） -->
-		<div id="displayElement2" style="display: none;">
+	<!-- 表示用の要素2（初めは非表示） -->
+	<div id="displayElement2" style="display: none;">
 
-			<!-- mapの表示 -->
-			<div id="map2" style="height: 300px;"></div>
-			<div class="suke">
-				<h3>スケジュール</h3>
-				<!-- 住所の要素 -->
-				<!-- 所要時間の要素 -->
-				<div id="address_1"></div>
-				<div id="leg1"></div>
-				<div id="address_2"></div>
-				<div id="leg2"></div>
-				<div id="address_3"></div>
-				<div id="leg3"></div>
-				<div id="address_4"></div>
-				<div id="leg4"></div>
-				<div id="address_5"></div>
-				<div id="leg5"></div>
-				<div id="address_6"></div>
-				<div id="leg6"></div>
-				<div id="address_7"></div>
-				<div id="leg7"></div>
-				<div id="address_8"></div>
-				<div id="leg8"></div>
-				<div id="address_9"></div>
-				<div id="leg9"></div>
-				<div id="address_10"></div>
-			</div>
+		<!-- mapの表示 -->
+		<div id="map2" style="height: 300px;"></div>
+		<div class="suke">
+			<h3>スケジュール</h3>
+			<!-- 住所の要素 -->
+			<!-- 所要時間の要素 -->
+			<div id="address_1"></div>
+			<div id="leg1"></div>
+			<div id="address_2"></div>
+			<div id="leg2"></div>
+			<div id="address_3"></div>
+			<div id="leg3"></div>
+			<div id="address_4"></div>
+			<div id="leg4"></div>
+			<div id="address_5"></div>
+			<div id="leg5"></div>
+			<div id="address_6"></div>
+			<div id="leg6"></div>
+			<div id="address_7"></div>
+			<div id="leg7"></div>
+			<div id="address_8"></div>
+			<div id="leg8"></div>
+			<div id="address_9"></div>
+			<div id="leg9"></div>
+			<div id="address_10"></div>
 		</div>
-	
+	</div>
+
 	<script>
 		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
@@ -342,6 +342,8 @@
 
 		<!--map1の処理-->
             let selectedAddresses = [];
+            let clickedAddresses = []; // クリックされた住所を記録するための配列
+            
 		function setupMap1() {
             const locations = [
             	<!--データベースから住所を取ってくる-->
@@ -375,13 +377,20 @@
                         });
 
                         marker.addListener('click', function() {
-                            // 選択された住所を配列に追加
-                            selectedAddresses.push(address.name);
-                            document.getElementById('addressDisplay').textContent = address.name;
+                            // クリックされた住所がすでにclickedAddressesに含まれていない場合に処理を実行
+                            if (!clickedAddresses.includes(address.name)) {
+                                // 選択された住所を配列に追加
+                                selectedAddresses.push(address.name);
+                                document.getElementById('addressDisplay').textContent = address.name;
 
-                            // リストとして選択された住所を表示
-                            updateAddressList();
+                                // クリックされた住所をclickedAddressesに追加
+                                clickedAddresses.push(address.name);
+
+                                // リストとして選択された住所を表示
+                                updateAddressList();
+                            }
                         });
+
                     } else {
                         alert('ジオコーディングに失敗しました: ' + status);
                     }
@@ -392,7 +401,14 @@
             const undoButton = document.getElementById('undoButton');
             undoButton.addEventListener('click', function() {
                 // リストから最後に選択された住所を削除
-                selectedAddresses.pop();
+                const lastSelectedAddress = selectedAddresses.pop();
+
+    			// クリックされた住所の記録からも削除
+   			 	const index = clickedAddresses.indexOf(lastSelectedAddress);
+    			if (index !== -1) {
+        			clickedAddresses.splice(index, 1);
+   					}
+
                 // 住所リストを更新
                 updateAddressList();
             });
@@ -456,7 +472,7 @@
 
 	</script>
 
-	
+
 	<!-- Google Maps JavaScript APIの読み込み -->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAhS4QglEOA1OS33iZ2S3-mZRx6qId34&callback=initMap"
@@ -515,11 +531,15 @@
 			</dl>
 
 			<dl>
-				<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+				<dd>
+					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+				</dd>
 			</dl>
-			
+
 			<dl>
-				<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+				<dd>
+					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+				</dd>
 			</dl>
 
 		</div>
