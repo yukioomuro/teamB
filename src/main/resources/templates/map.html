@@ -269,14 +269,14 @@
 			<div class="suke">
 				<h3>スケジュール</h3>
 				<!-- 住所の要素 -->
-				<p>名前 場所</p>
+				<div id="spot1"></div>
 				<!-- 所要時間の要素 -->
 				<div id="leg1"></div>
-				<p>名前 場所</p>
+				<div id="spot2"></div>
 				<div id="leg2"></div>
-				<p>名前 場所</p>
+				<div id="spot3"></div>
 				<div id="leg3"></div>
-				<p>名前 場所</p>
+				<div id="spot4"></div>
 			</div>
 		</div>
 	
@@ -392,16 +392,15 @@
                     '<ul>' + selectedAddresses.map(addr => `<li>　${addr}　</li>`).join('') + '</ul>';
             }
         }
-		
-		<!--map2の処理-->
+		// map2の処理
 		function setupMap2(map) {
-			// 出発地、目的地、ウェイポイントの設定
-			const directionsService = new google.maps.DirectionsService();
-			const directionsRenderer = new google.maps.DirectionsRenderer({
-				map : map,
-			});
+		    // 出発地、目的地、ウェイポイントの設定
+		    const directionsService = new google.maps.DirectionsService();
+		    const directionsRenderer = new google.maps.DirectionsRenderer({
+		        map: map,
+		    });
 
-			// ウェイポイントの配列を作成
+		    // ウェイポイントの配列を作成
 		    const waypoints = [];
 
 		    for (let i = 1; i < selectedAddresses.length - 1; i++) {
@@ -419,34 +418,34 @@
 		        optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
 		    };
 
-			// Directions サービスを使用して経路を計算
-			directionsService
-					.route(
-							request,
-							function(response, status) {
-								if (status === 'OK') {
-									// 経路情報を地図に描画
-									directionsRenderer.setDirections(response);
+		    // Directions サービスを使用して経路を計算
+		    directionsService.route(request, function (response, status) {
+		        if (status === 'OK') {
+		            // 経路情報を地図に描画
+		            directionsRenderer.setDirections(response);
 
-									// 所要時間を表示
-									//配列で回す
-									for(let x = 0; x < request.length; x++){
-									document.getElementById('leg'+ (x+1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
-									}
-								} else {
-									alert('ルートの取得中にエラーが発生しました: ' + status);
-								}
-							});
+		            // 所要時間を表示
+		            for (let x = 0; x < response.routes[0].legs.length; x++) {
+		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
+		            }
+		         // 住所名も表示
+	                document.getElementById('spot' + (x + 1)).textContent = leg.start_address;
+	                document.getElementById('spot' + (x + 2)).textContent = leg.end_address;
+		        } else {
+		            alert('ルートの取得中にエラーが発生しました: ' + status);
+		        }
+		    });
 		}
+
 	</script>
 
+	
 	<!-- Google Maps JavaScript APIの読み込み -->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVClt3T6_YjhogNvKLn8XYb20nSNifSKg&callback=initMap"
 		async defer></script>
 
 
-	</div>
 	<br>
 	<!-- ボタン -->
 	<button id="toggleButton">ルート表示</button>
