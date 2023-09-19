@@ -267,7 +267,6 @@ public class OritabiController {
 				break;
 			}
 		}
-
 		model.addAttribute("spottaberu", spottaberu);
 		model.addAttribute("spottour", spottour);
 		model.addAttribute("spotasobu", spotasobu);
@@ -277,5 +276,26 @@ public class OritabiController {
 		return "spot";
 
 	}
+	/* △△△△△△△△△△ 観光地Spot表示 △△△△△△△△△△ */
 
+/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作 ▼▼▼▼▼▼▼▼▼▼ */
+
+@PostMapping("/spotList")
+public String checkBoxview(Model model) {
+
+List<Spot> checkBoxSpot= new ArrayList<>();
+
+for(Spot s :checkBoxSpot) {
+	checkBoxSpot.add(s);
 }
+
+	model.addAttribute("spotcheck",checkBoxSpot);
+
+return "mapcopy";
+}
+
+	
+
+/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
+}
+

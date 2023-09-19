@@ -21,6 +21,8 @@ public class SpotForm {
 	//観光地名
 	@NotBlank
 	private String spotName;
+	//チェックBOX 確認用
+	private String []spotNames; 
 
 	//観光地住所
 	@NotBlank
