@@ -280,7 +280,7 @@ public class OritabiController {
 
 /* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作 ▼▼▼▼▼▼▼▼▼▼ */
 
-@GetMapping("/spot")
+@PostMapping("/spotList")
 public String checkBoxview(Model model) {
 
 List<Spot> checkBoxSpot= new ArrayList<>();
