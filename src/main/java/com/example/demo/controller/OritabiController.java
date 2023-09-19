@@ -25,10 +25,12 @@ import com.example.demo.form.PurposeForm;
 import com.example.demo.form.SpotForm;
 import com.example.demo.service.OritabiService;
 
+import jakarta.validation.Valid;
+
 //Oritabiのコントローラー
 @Controller
 @RequestMapping("/oritabi")
-public class OritabiController {
+public class OritabiController{
 
 	//DI対象（依存対象）
 	@Autowired
@@ -50,6 +52,7 @@ public class OritabiController {
 
 	@ModelAttribute
 	public CostomerForm setUpCostomerForm() {
+		System.out.println("setupCostomerForm");
 		CostomerForm form = new CostomerForm();
 		return form;
 	}
@@ -111,6 +114,10 @@ public class OritabiController {
 
 	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
 
+	
+	
+	
+	
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot編集 ▼▼▼▼▼▼▼▼▼▼ */
 	@GetMapping("/{spotId}")
 	public String showUpdateSpot(SpotForm spotForm,
@@ -161,7 +168,7 @@ public class OritabiController {
 	}
 
 	/*----- 【以下はFormとDomainObjectの詰めなおし】----- */
-	/* Form yから entity へ詰めなおし */
+	/* Form から entity へ詰めなおし */
 	private Spot makeSpot(SpotForm spotForm) {
 		Spot spot = new Spot();
 		spot.setSpotId(spotForm.getSpotId());
@@ -218,7 +225,9 @@ public class OritabiController {
 		Costomer costomer = new Costomer();
 		costomer.setName(costomerForm.getName());
 		costomer.setMail(costomerForm.getMail());
+		costomer.setMailView(costomerForm.getMailView());
 		costomer.setPass(costomerForm.getPass());
+		costomer.setPassView(costomerForm.getPassView());
 		costomer.setMemo(costomerForm.getMemo());
 
 		//入力チェック
@@ -228,7 +237,7 @@ public class OritabiController {
 			if (!bindingResult.hasErrors()) {
 				service.insertCostomer(costomer);
 				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-				return "map";
+				return "spot";
 
 			} else {
 				//エラーがある場合は、もう一度新規登録画面へ飛びます。
@@ -278,24 +287,35 @@ public class OritabiController {
 	}
 	/* △△△△△△△△△△ 観光地Spot表示 △△△△△△△△△△ */
 
-/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作 ▼▼▼▼▼▼▼▼▼▼ */
-
-@PostMapping("/spotList")
-public String checkBoxview(Model model) {
-
-List<Spot> checkBoxSpot= new ArrayList<>();
-
-for(Spot s :checkBoxSpot) {
-	checkBoxSpot.add(s);
-}
-
-	model.addAttribute("spotcheck",checkBoxSpot);
-
-return "mapcopy";
-}
-
 	
+	
+	
+	/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作☆ ▼▼▼▼▼▼▼▼▼▼ */
 
-/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
+	@PostMapping("/spotCheck")
+	public String checkBoxview(Model model) {
+
+		List<Spot> checkBoxSpot = new ArrayList<>();
+
+		for (Spot s : checkBoxSpot) {
+			checkBoxSpot.add(s);
+		}
+
+		model.addAttribute("spotcheck", checkBoxSpot);
+
+		return "mapcopy";
+	}
+
+	/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
+
+	/* Register 登録画面 */
+	@PostMapping("makeCostomer")
+	public String makeRegister(@Valid @ModelAttribute CostomerForm costomerForm, BindingResult bindingResult,
+			Model model) {
+
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("costomerForm", new CostomerForm());
+		}
+		return "register";
+	}
 }
-

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<meta name="viewport" content="width=device-width, initial-scale=1">	
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -235,53 +235,75 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<div id="register" class="col s12">
-	<!-- ログインエラーのときはメッセージを表示 -->
-	<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
- 	<!-- ログインフォーム -->
- <!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
-	<form method="POST"
-			th:action="${costomerForm.newCostomer}? @{/teamB/insert}"
+		<!-- ログインエラーのときはメッセージを表示 -->
+		<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
+		<!-- ログインフォーム -->
+		<!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
+		<form method="POST"
+			th:action="${costomerForm.newCostomer}? @{/teamB/insert} : @{/teamB/updateCostomer}"
 			th:object="${costomerForm}">
 
-	<div class="login-wrapper" id="login">
-		<div class="container">
-				<div class="login">
+			<div class="login-wrapper" id="login">
+				<div class="container">
+					<div class="login">
 						<div class="login-wrapper-title">
-				<h3 class="lo-tittle">新規登録</h3>
+							<h3 class="lo-tittle">新規登録</h3>
 						</div>
-						<form class="login-form" th:action="@{authenticate}" method="post">
-							<div class="row">
-								<div class="form-group">
-									<p>名前<span class="req">必須</span></p>
-									<input id="name" type="name" class="validate" placeholder="山田" th:field="*{name}" autocomplete="name" required>
-								</div>
+						<!-- <form class="login-form" th:action="@{authenticate}" method="post"> -->
+						<div class="row">
 							<div class="form-group">
-									<p>メールアドレス<span class="req">必須</span></p>
-									<input class="mail" type="email" name="email" placeholder="test.test.com" th:field="*{mail}" autocomplete="email" required>
+								<p>
+									名前<span class="req">必須</span>
+								</p>
+								<input id="name" type="name" class="validate" placeholder="山田"
+									th:field="*{name}" autocomplete="name" required>
 							</div>
-							<div class="form-group">
-								<p>メールアドレス確認<span class="req">必須</span></p>
-								<input class="mail" type="email" name="email" placeholder="test@test.com" th:field="*{mailView}" autocomplete="email" required>
 						</div>
-							<div class="form-group">
-									<p>パスワード<span class="req">必須</span></p>
-									<input class="password" type="password" name="password" placeholder="123456" th:field="*{pass}" autocomplete="password" required>
-							</div>
-							<div class="form-group">
-								<p>パスワード確認<span class="req">必須</span></p>
-								<input class="password" type="password" name="password" placeholder="123456" th:field="*{passView}" autocomplete="password" required>
+						<div class="form-group">
+							<p>
+								メールアドレス<span class="req">必須</span>
+							</p>
+							<input class="mail" type="email" name="email"
+								placeholder="test.test.com" th:field="*{mail}"
+								autocomplete="email" required>
 						</div>
-							<div class="btn-box"><button type="submit" class="btnds btn-submit" onclick="location.href='spot.html'">登録</button>
-				      </div>
+						<div class="form-group">
+							<p>
+								メールアドレス確認<span class="req">必須</span>
+							</p>
+							<input class="mail" type="email" name="email"
+								placeholder="test@test.com" th:field="*{mailView}"
+								autocomplete="email" required>
+						</div>
+						<div class="form-group">
+							<p>
+								パスワード<span class="req">必須</span>
+							</p>
+							<input class="password" type="password" name="password"
+								placeholder="123456" th:field="*{pass}" autocomplete="password"
+								required>
+						</div>
+						<div class="form-group">
+							<p>
+								パスワード確認<span class="req">必須</span>
+							</p>
+							<input class="password" type="password" name="password"
+								placeholder="123456" th:field="*{passView}"
+								autocomplete="password" required>
+						</div>
+						<div class="btn-box">
+							<button type="submit" class="btnds btn-submit"
+								onclick="location.href='spot.html'">登録</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</div>
-</div>
- <div class="f_menu">
 
-	</div>
+	<div class="f_menu"></div>
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
 
@@ -323,11 +345,15 @@
 			</dl>
 
 			<dl>
-				<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+				<dd>
+					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+				</dd>
 			</dl>
-			
+
 			<dl>
-				<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+				<dd>
+					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+				</dd>
 			</dl>
 
 		</div>

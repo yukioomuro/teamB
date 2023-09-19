@@ -1,8 +1,7 @@
-
-<%@ page import="bean.LoginUserBean" %>   
+<%@ page import="bean.LoginUserBean" %>
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http:/www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8">
@@ -271,7 +270,11 @@
 
 	<div class="login_bar">
 
-		<button type=“button” onclick="location.href='register.html'">新規登録</button>
+		<form th:action="@{makeCostomer}" method="post">
+			<!-- onclick="location.href='register.html'" -->
+			<button>新規登録</button>
+		</form>
+
 
 	</div>
 
@@ -285,14 +288,14 @@
 				<h3 class="teal-text"></h3>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="email" type="email" class="validate" name="useremail" required> 
-						<label	for="email">Email</label>
+						<input id="email" type="email" class="validate" name="useremail"
+							required> <label for="email">Email</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="password" type="password" class="validate" name="userpw" required> 
-						<label	for="password">Password</label>
+						<input id="password" type="password" class="validate"
+							name="userpw" required> <label for="password">Password</label>
 					</div>
 				</div>
 				<br>
@@ -305,13 +308,13 @@
 		</form>
 
 		<!-- ログイン失敗時の処理 -->
-		
-<!--	<% LoginUserBean userinfo =
+
+		<!--	<% LoginUserBean userinfo =
 		(LoginUserBean)request.getAttribute("result"); if(userinfo != null) {
-		if(userinfo.getLogin_user_flg() == 1){ %> IDまたはパスワードに不備があります <% } } %>  -->	
-		
+		if(userinfo.getLogin_user_flg() == 1){ %> IDまたはパスワードに不備があります <% } } %>  -->
+
 	</div>
-	
+
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
 
@@ -352,11 +355,15 @@
 			</dl>
 
 			<dl>
-				<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+				<dd>
+					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+				</dd>
 			</dl>
-			
+
 			<dl>
-				<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+				<dd>
+					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+				</dd>
 			</dl>
 		</div>
 

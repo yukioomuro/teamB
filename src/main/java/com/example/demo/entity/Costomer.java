@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import org.springframework.data.annotation.Id;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,14 @@ public class Costomer {
 	//メアド
 	private String mail;
 
+	@NotBlank
+	private String mailView;
+
 	//パスワード
 	private String pass;
+
+	@NotBlank
+	private String passView;
 
 	//メモ
 	private String memo;
