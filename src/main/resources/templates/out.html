@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/out.css">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -164,7 +165,13 @@ $(function($){
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
   })(document);
 </script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'UA-13xxxxxxxxx');
+</script>
 
 </head>
 <body>
@@ -202,11 +209,25 @@ $(function($){
                 </div> 
             </div>
         </header>
-    
-    
-<!--footer-------------------------------------------->
-<div class="f_menu">
-        
+  
+  <!-- ログインエラーのときはメッセージを表示 -->
+  <div th:if="${failureMessage != null}" th:text="${failureMessage}"></div>
+  <!-- ログインフォーム -->
+  <!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
+  
+  <div class="login-wrapper" id="login">
+     <div class="containerds">
+             <div class="login">
+                     <div class="login-wrapper-title">
+                             <h3 class ="lo-tittle">ログアウトしました</h3>
+                     </div>
+                    
+                             <div class="btn-box"><button type="submit" class="btnds btn-submit" onclick="location.href='purpose_osaka.html'">ログイン</button></div>
+                     
+             </div>
+     </div>
+ </div>
+  <div class="f_menu">    
         
     <!--footer_ナビゲーション-->
     <ul>
@@ -257,7 +278,7 @@ $(function($){
 
 <footer>
 <p class="copyright">
-    ©︎Oritabi　All Rights Reserved.
+    ©︎Oritabi All Rights Reserved.
 </p>
 </footer>
 <!--sliderのjs-------------------------------------------->
