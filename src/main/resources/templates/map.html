@@ -346,7 +346,7 @@
             
 		function setupMap1() {
             const locations = [
-            	<!--データベースから住所を取ってくる-->
+            	//データベースから住所を取ってくる
             	{ name: '大阪駅' },
                 { name: '京セラドーム' },
                 { name: '心斎橋駅' },
@@ -397,7 +397,7 @@
                 });
             });
 
-            <!--選び直すボタン-->
+            //選び直すボタン-->
             const undoButton = document.getElementById('undoButton');
             undoButton.addEventListener('click', function() {
                 // リストから最後に選択された住所を削除
@@ -413,7 +413,7 @@
                 updateAddressList();
             });
 
-            <!--クリックした住所-->
+            //クリックした住所
             function updateAddressList() {
                 const addressList = document.getElementById('selectedAddresses');
                 addressList.innerHTML = '<h3>　目的地の順番：</h3>' +
