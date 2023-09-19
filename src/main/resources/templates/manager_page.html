@@ -220,7 +220,7 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="../imag/logo22.png" alt="" /></a>
+				<a href="#"><img src="@{/imag/logo22.png}" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
@@ -284,30 +284,36 @@
 		<p th:if="${#lists.isEmpty(costomerList)}">登録されている顧客情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
-	<!--  -->
-	<div th:if="${spotForm.newSpot}" style="margin: 5px">
+	<!--th:if="${spotForm.newSpot}"  -->
+	<div  style="margin: 5px">
 		<h3>
 			観光地スポット<br>
 		</h3>
 
 		<!-- ▼▼▼ Form ▼▼▼ -->
 		<form method="POST"
-			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/update}"
+			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
 			th:object="${spotForm}">
 			<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-			<label th:unless="*{newSpot}">観光地連番</label> <input
-				th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
-			<label>観光地名</label> <input type="text" th:field="*{spotName}" /><br>
-			<label>観光地住所</label> <input type="text" th:field="*{address}"><br>
-			<label>WEBページ</label> <input type="text" th:field="*{web}"><br>
-			<label>電話番号</label> <input type="text" th:field="*{tel}"><br>
+			<label th:unless="*{newSpot}">観光地連番</label>
+			<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+			<label>観光地名</label>
+			<input type="text" th:field="*{spotName}" /><br>
+			<label>観光地住所</label> 
+			<input type="text" th:field="*{address}"><br>
+			<label>WEBページ</label> 
+			<input type="text" th:field="*{web}"><br>
+			<label>電話番号</label> 
+			<input type="text" th:field="*{tel}"><br>
 			<label>オススメ</label><br>
-			<textarea rows="5" cols="50" th:field="*{point}"></textarea>
-			<br> <label>目的ID</label> <input type="text"
-				th:field="*{purposeId}"><br> <label>画像URL</label> <input
-				type="text" th:field="*{imageFileName}"><br>
+			<textarea rows="5" cols="50" th:field="*{point}"></textarea><br> 
+			<label>目的ID</label> 
+			<input type="text" th:field="*{purposeId}"><br> 
+			<label>画像URL</label> 
+			<input type="text" th:field="*{imageFileName}"><br>
 			<div class="button006">
-				<input type="submit" value="送信">
+				<input th:if="*{newSpot}" type="submit" value="送信" >
+				<input th:unless="*{newSpot}" type="submit" value="送信">
 			</div>
 		</form>
 		<p th:if="${complete}" th:text="${complete}"></p>
@@ -324,52 +330,54 @@
 				});
 			});
 		</script>
-		<div class="E">一覧 ⇓</div>
-		<div class="F">
-			<table th:unless="${#lists.isEmpty(spotList)}">
-				<tr>
-					<th>観光地連番</th>
-					<th>観光地名</th>
-					<th>観光地住所</th>
-					<th>WEBページ</th>
-					<th>電話番号</th>
-					<th>オススメ</th>
-					<th>目的ID</th>
-					<th>画像URL</th>
-					<th>編集</th>
-					<th>削除</th>
-				</tr>
-				<tr th:each="obj : ${spotList}" align="center">
-					<td th:text="${obj.spotId}"></td>
-					<td th:text="${obj.spotName}"></td>
-					<td th:text="${obj.address}" align="left"></td>
-					<td th:text="${obj.web}" align="left"></td>
-					<td th:text="${obj.tel}"></td>
-					<td th:text="${obj.point}" align="left"></td>
-					<td th:text="${obj.imageFileName}" align="left"></td>
-					<td th:text="${obj.purposeId}"></td>
-					<td th:text="${obj.tel}"></td>
-					<!-- 編集ボタン -->
-					<td>
-						<form method="GET"
-							th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">
-							<input type="submit" value="編集">
-						</form>
-					</td>
-					<!-- 削除ボタン -->
-					<td>
-						<form method="POST" th:action="@{/oritabi/spotDel}">
-							<input type="hidden" name="spotId" th:value="${obj.spotId}">
-							<input type="submit" value="削除">
-						</form>
-					</td>
-				</tr>
-			</table>
+		<div th:if="${spotForm.newSpot}">
+			<div class="E">一覧 ⇓</div>
+			<div class="F">
+				<table th:unless="${#lists.isEmpty(spotList)}">
+					<tr>
+						<th>観光地連番</th>
+						<th>観光地名</th>
+						<th>観光地住所</th>
+						<th>WEBページ</th>
+						<th>電話番号</th>
+						<th>オススメ</th>
+						<th>目的ID</th>
+						<th>画像URL</th>
+						<th>編集</th>
+						<th>削除</th>
+					</tr>
+					<tr th:each="obj : ${spotList}" align="center">
+						<td th:text="${obj.spotId}"></td>
+						<td th:text="${obj.spotName}"></td>
+						<td th:text="${obj.address}" align="left"></td>
+						<td th:text="${obj.web}" align="left"></td>
+						<td th:text="${obj.tel}"></td>
+						<td th:text="${obj.point}" align="left"></td>
+						<td th:text="${obj.imageFileName}" align="left"></td>
+						<td th:text="${obj.purposeId}"></td>
+						<td th:text="${obj.tel}"></td>
+						<!-- 編集ボタン -->
+						<td>
+							<form method="GET"
+								th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">
+								<input type="submit" value="編集">
+							</form>
+						</td>
+						<!-- 削除ボタン -->
+						<td>
+							<form method="POST" th:action="@{/oritabi/spotDel}">
+								<input type="hidden" name="spotId" th:value="${obj.spotId}">
+								<input type="submit" value="削除">
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<br>
 		<!-- △△△データが一件でもあれば表示△△△ -->
 		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
-		<p th:if="${#lists.isEmpty(spotList)}">登録されている観光情報はありません。</p>
+		<p th:if="${#lists.isEmpty(spotList) && spotForm.newSpot == true}">登録されている観光情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!-- △△△新規登録時のみ表示△△△ -->
@@ -406,7 +414,7 @@
 	<!--footer_メニューの中身-->
 	<div class="f_open">
 		<div class="f_logo">
-			<img src="../imag/logo22.png" alt="" />
+			<img src="@{/imag/logo22.png}" alt="" />
 		</div>
 
 		<div class="category_list">
