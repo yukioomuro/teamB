@@ -3,8 +3,9 @@
 
 /* RESET
 ----------------------------------------------------------------------------------------------------*/
-a,article,body,dd,div,dl,dt,em,form,footer,header,h1,h2,h3,h4,h5,h6,html,i,iframe,img,label,legend,li,nav,ol,p,section,main,span,table,tbody,tfoot,thead,time,tr,th,td,ul,video{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;white-space:normal;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left}textarea{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left}article,footer,header,nav,section,main{display:block}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}
+a,article,body,dd,div,dl,dt,em,form,footer,header,h1,h2,h3,h4,h5,h6,html,i,iframe,img,label,legend,li,nav,ol,p,section,main,span,table,tbody,tfoot,thead,time,tr,th,td,ul,video{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;white-space:normal;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left}article,footer,header,nav,section,main{display:block}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}
 
+/* textarea{font-family:inherit;font-size:100%;font-weight:inherit;font-style:inherit;vertical-align:baseline;margin:0;padding:0;border:0;outline:0;background:transparent;line-height:1.6;text-align:left} */
 /* ----------------------------------------------
 
  * 設定をしなおす
