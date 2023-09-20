@@ -208,8 +208,8 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -245,13 +245,13 @@
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 
-	<!-- 表示用の要素1 -->
-	<div id="displayElement1">
-		<!--  マップの表示 -->
-		<div id="map1" style="height: 300px;"></div>
+		<!-- 表示用の要素1 -->
+		<div id="displayElement1">
+			<!--  マップの表示 -->
+			<div id="map1" style="height: 300px;"></div>
 
-		<p id="result">ooo</p>
-		<script type="text/javascript">
+			<p id="result">ooo</p>
+			<script type="text/javascript">
 				$(function(){
 				  var d = sessionStorage.getItem('key');
 				  $("#result").text(d);
@@ -259,36 +259,36 @@
 				</script>
 
 
-		<!--  選択した住所表示 -->
-		<div class="jun">
-			<p>ピンをクリックして順番を決めてください</p>
-			<p>今選択した目的地</p>
-			<div id="addressDisplay"></div>
-			<div id="selectedAddresses"></div>
-			<!--  ボタン表示 -->
-			<button id="undoButton">一つ戻る</button>
+			<!--  選択した住所表示 -->
+			<div class="jun">
+				<p>ピンをクリックして順番を決めてください</p>
+				<p>今選択した目的地</p>
+				<div id="addressDisplay"></div>
+				<div id="selectedAddresses"></div>
+				<!--  ボタン表示 -->
+				<button id="undoButton">一つ戻る</button>
+			</div>
 		</div>
-	</div>
 
-	<!-- 表示用の要素2（初めは非表示） -->
-	<div id="displayElement2" style="display: none;">
+		<!-- 表示用の要素2（初めは非表示） -->
+		<div id="displayElement2" style="display: none;">
 
-		<!-- mapの表示 -->
-		<div id="map2" style="height: 300px;"></div>
-		<div class="suke">
-			<h3>スケジュール</h3>
-			<!-- 住所の要素 -->
-			<p>名前 場所</p>
-			<!-- 所要時間の要素 -->
-			<div id="leg1"></div>
-			<p>名前 場所</p>
-			<div id="leg2"></div>
-			<p>名前 場所</p>
-			<div id="leg3"></div>
-			<p>名前 場所</p>
+			<!-- mapの表示 -->
+			<div id="map2" style="height: 300px;"></div>
+			<div class="suke">
+				<h3>スケジュール</h3>
+				<!-- 住所の要素 -->
+				<p>名前 場所</p>
+				<!-- 所要時間の要素 -->
+				<div id="leg1"></div>
+				<p>名前 場所</p>
+				<div id="leg2"></div>
+				<p>名前 場所</p>
+				<div id="leg3"></div>
+				<p>名前 場所</p>
+			</div>
 		</div>
-	</div>
-
+	
 	<script>
 		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
@@ -455,7 +455,6 @@
 		async defer></script>
 
 
-	</div>
 	<br>
 
 	<p id="result"></p>
@@ -466,10 +465,10 @@
 	<br>
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<button class="btn" onclick="location.href='./purpose_osaka.html'">スポットの変更</button>
+		<button class="btn" th:href="@{/oritabi/spot}">スポットの変更</button>
 		<br>
 		<!--各顧客観光リストテーブル③に登録されるように-->
-		<button class="btn" onclick="location.href='./mypage.html'">リスト作成</button>
+		<button class="btn" onclick="th:href='@{/oritabi/mypage}'">リスト作成</button>
 	</div>
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
@@ -511,15 +510,11 @@
 			</dl>
 
 			<dl>
-				<dd>
-					<a href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
-				</dd>
+				<dd><a href ="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a></dd>
 			</dl>
-
+			
 			<dl>
-				<dd>
-					<a href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
-				</dd>
+				<dd><a href="@{/oritabi/manager_login"><div class= "btn-log">ログイン</div></a></dd>
 			</dl>
 
 		</div>

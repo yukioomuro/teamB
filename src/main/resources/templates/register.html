@@ -257,7 +257,7 @@
 								<p>
 									名前<span class="req">必須</span>
 								</p>
-								<input id="name" type="name" class="validate" placeholder="山田"
+								<input id="name" type="text" class="validate" placeholder="山田"
 									th:field="*{name}" autocomplete="name" required>
 							</div>
 						</div>
@@ -295,7 +295,7 @@
 						</div>
 						<div class="btn-box">
 							<input type="submit" class="btnds btn-submit"
-							value="登録" onclick="location.href='@{/oritabi/spot}'">
+							value="登録" th:href="@{/oritabi/spot}">
 						</div>
 					</div>
 				</div>

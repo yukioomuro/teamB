@@ -235,7 +235,7 @@
 		<h2 class="ooosaka">大阪エリア</h2>
 		<div class="oosaka">
 
-			<form action ="./mapcopy.html">
+			<form th:action ="@{/oritabi/map}">
 				<div class="tabds">
 
 					<!--tabの設定-->
@@ -254,7 +254,7 @@
 							<h3 class="titleds">食べる</h3>
 
 							<ul class="ul-class">
-								<div th:each="spot:${spottaberu}">
+								<div th:each="spot : ${spottaberu}">
 									<li class="spot_taberu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
@@ -471,7 +471,7 @@
 				<div class="pickup">
 					<a target="_blank" rel="noopener noreferrer">
 						<div class="button-box">
-							<input type="submit" id="submit" value="pickup" onclick="location.href='@{/oritabi/map}'"  >
+							<input type="submit" id="submit" value="pickup" th:href="@{/oritabi/map}"  >
 
 						</div>
 					</a>

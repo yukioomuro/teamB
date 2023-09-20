@@ -1,8 +1,8 @@
 package com.example.demo.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,13 +24,13 @@ public class Costomer {
 	//メアド
 	private String mail;
 
-	@NotBlank
+	@Transient
 	private String mailView;
 
 	//パスワード
 	private String pass;
 
-	@NotBlank
+	@Transient
 	private String passView;
 
 	//メモ

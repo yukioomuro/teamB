@@ -1,6 +1,7 @@
 package com.example.demo.form;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class CostomerForm {
 	@NotBlank
 	private String mail;
 
+	@Transient
 	@NotBlank
 	private String mailView;
 
@@ -32,6 +34,7 @@ public class CostomerForm {
 	@NotBlank
 	private String pass;
 
+	@Transient
 	@NotBlank
 	private String passView;
 
