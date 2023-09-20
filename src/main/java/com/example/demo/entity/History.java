@@ -24,21 +24,29 @@ public class History {
 	//観光地ID
 	@NotBlank
 	private Integer touristId_1;
-
+	
+	//所要時間
+	@NotBlank
+	private String time_1;
+	
 	@NotBlank
 	private Integer touristId_2;
-
+	
+	private String time_2;
+	
 	private Integer touristId_3;
-
+	
+	private String time_3;
+	
 	private Integer touristId_4;
+	
+	private String time_4;
 
 	private Integer touristId_5;
 
-	private Integer touristId_6;
-
-	private Integer touristId_7;
-
+	
 	//顧客情報
 	@NotBlank
 	private String memo;
+
 }
