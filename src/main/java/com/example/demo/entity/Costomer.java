@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 //顧客リストテーブル
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

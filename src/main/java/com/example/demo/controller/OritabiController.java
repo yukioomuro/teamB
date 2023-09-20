@@ -27,11 +27,13 @@ import com.example.demo.service.OritabiService;
 
 import jakarta.validation.Valid;
 
-//Oritabiのコントローラー
+//Oritabiのコントローラー-----☆
 @Controller
 @RequestMapping("/oritabi")
 public class OritabiController{
+	
 
+	
 	//DI対象（依存対象）
 	@Autowired
 	OritabiService service;
@@ -57,6 +59,7 @@ public class OritabiController{
 		return form;
 	}
 
+	
 	@ModelAttribute
 	public HistoryForm setUpHistoryForm() {
 		HistoryForm form = new HistoryForm();
