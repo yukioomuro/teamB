@@ -43,7 +43,6 @@ public class History {
 	private String time_4;
 
 	private Integer touristId_5;
-
 	
 	//顧客情報
 	@NotBlank
