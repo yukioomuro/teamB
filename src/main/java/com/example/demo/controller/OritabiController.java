@@ -62,24 +62,56 @@ public class OritabiController {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
-	
+
 	/* ▼▼▼▼▼▼▼▼▼▼ HTML 表示用メソッド ▼▼▼▼▼▼▼▼▼▼ */
-	@GetMapping("/top")
-	public String showTop() {
-		return "top";
+
+	@GetMapping("/manager_login")
+	public String showLogin() {
+		return "manager_login";
+	}
+
+//	@GetMapping("/manager_page")
+//	public String showManagerPage() {
+//		return "manager_page";
+//	}
+
+	@GetMapping("/map")
+	public String showMap() {
+		return "map";
+	}
+
+	@GetMapping("/myPage")
+	public String showMyPage() {
+		return "myPage";
+	}
+
+	@GetMapping("/out")
+	public String showOut() {
+		return "out";
+	}
+
+	@GetMapping("/purpose_osaka")
+	public String showPurpose() {
+		return "purpose_osaka";
 	}
 
 	@GetMapping("/register")
 	public String showRegister() {
 		return "register";
 	}
-	
-//	@GetMapping("/spot")
-//	public String showSpot() {
-//		return "spot";
-//	}
+
+	//@GetMapping("/spot")
+	//public String showSpot() {
+	//	return "spot";
+	//}
+
+	@GetMapping("/top")
+	public String showTop() {
+		return "top";
+	}
+
 	/* △△△△△△△△△△ HTML 表示用メソッド △△△△△△△△△△ */
-	
+
 	//管理者ページ↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
 
