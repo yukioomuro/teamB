@@ -62,7 +62,24 @@ public class OritabiController {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
+	
+	/* ▼▼▼▼▼▼▼▼▼▼ HTML 表示用メソッド ▼▼▼▼▼▼▼▼▼▼ */
+	@GetMapping("/top")
+	public String showTop() {
+		return "top";
+	}
 
+	@GetMapping("/register")
+	public String showRegister() {
+		return "register";
+	}
+	
+//	@GetMapping("/spot")
+//	public String showSpot() {
+//		return "spot";
+//	}
+	/* △△△△△△△△△△ HTML 表示用メソッド △△△△△△△△△△ */
+	
 	//管理者ページ↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
 
