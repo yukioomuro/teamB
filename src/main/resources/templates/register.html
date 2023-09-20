@@ -242,7 +242,7 @@
 		<!-- ログインフォーム -->
 		<!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
 		<form method="POST"
-			th:action="${costomerForm.newCostomer}? @{/teamB/insert} : @{/teamB/updateCostomer}"
+			th:action="@{/oritabi/insertCostomer}"
 			th:object="${costomerForm}">
 
 			<div class="login-wrapper" id="login">
