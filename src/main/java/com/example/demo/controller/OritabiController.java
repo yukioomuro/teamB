@@ -25,8 +25,6 @@ import com.example.demo.form.PurposeForm;
 import com.example.demo.form.SpotForm;
 import com.example.demo.service.OritabiService;
 
-import jakarta.validation.Valid;
-
 //Oritabiのコントローラー-----☆
 @Controller
 @RequestMapping("/oritabi")
@@ -250,7 +248,7 @@ public class OritabiController {
 		System.out.println(spotId);
 		//タスクを１件削除してリダイレクト
 		service.deleteSpotById(Integer.parseInt(spotId));
-		redirectAttributes.addFlashAttribute("spotDelComp", "削除がしました");
+		redirectAttributes.addFlashAttribute("spotDelComp", "削除が完了しました");
 		return "redirect:/oritabi/manager_page";
 	}
 	/* △△△△△△△△△△ 観光地Spot削除 △△△△△△△△△△ */
@@ -351,13 +349,13 @@ public class OritabiController {
 	/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
 
 	/* Register 登録画面 */
-	@PostMapping("makeCostomer")
-	public String makeRegister(@Valid @ModelAttribute CostomerForm costomerForm, BindingResult bindingResult,
-			Model model) {
-
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("costomerForm", new CostomerForm());
-		}
-		return "register";
-	}
+//	@PostMapping("makeCostomer")
+//	public String makeRegister(@Valid @ModelAttribute CostomerForm costomerForm, BindingResult bindingResult,
+//			Model model) {
+//
+//		if (bindingResult.hasErrors()) {
+//			model.addAttribute("costomerForm", new CostomerForm());
+//		}
+//		return "register";
+//	}
 }
