@@ -3,194 +3,183 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>管理画面</title>
-<link rel="stylesheet" href="css/manager_page.css">
-<!--headerのjs-->
-<script src="js/jquery-3.2.1.min.js"></script>
+	<meta charset="UTF-8">
+	<title>管理画面</title>
+	<link rel="stylesheet" th:href="@{/css/manager_page.css}">
+	<!--headerのjs-->
+	<script src="js/jquery-3.2.1.min.js"></script>
 
-<!--リセットユイ-->
-<link rel="stylesheet" type="text/css"
-	href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+	<!--リセットユイ-->
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
-<!--headercss-->
-<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"
-	type="text/css">
-<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
-<!--css-->
-<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
+	<!--headercss-->
+	<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
+	<!--css-->
+	<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
 
-<!--font-awesome-->
-<link rel="stylesheet" type="text/css"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--font-awesome-->
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
-	integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI="
-	crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+		integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
 
-<!--jquery cdn-->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--jquery cdn-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!--googlefont細-->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap"
-	rel="stylesheet">
-<!--googlefont太-->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
-	rel="stylesheet">
-<!--googlefontRoboto-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
-	rel="stylesheet">
+	<!--googlefont細-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+	<!--googlefont太-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+	<!--googlefontRoboto-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 
-<!--scroll.js-->
-<script type="text/javascript" src="js/scroll.js"></script>
+	<!--scroll.js-->
+	<script type="text/javascript" src="js/scroll.js"></script>
 
-<!--slider-->
-<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
-<link th:href="@{/css/slick-theme.css}" rel="stylesheet" type="text/css">
+	<!--slider-->
+	<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/css/slick-theme.css}" rel="stylesheet" type="text/css">
 
-<!--headerscript-->
-<script type="text/javascript">
-	$(function($) {
-		//メニューの表示状態保管用
-		var state = false;
-		//.bodyのスクロール位置
-		var scrollpos = 0;
-		//meanmenuの状態による表示制御
-		function mm_control() {
-			if ($('.mean-nav .nav').is(':visible')) {
-				//表示中
-				if (state == false) {
-					scrollpos = $(window).scrollTop();
-					$('body').addClass('fixed').css({
-						'top' : -scrollpos
-					});
-					$('.mean-container').addClass('open');
-					$('.mean-nav .mask').show();
-					state = true;
-				}
-			} else {
-				//非表示中
-				if (state == true) {
-					$('body').removeClass('fixed').css({
-						'top' : 0
-					});
-					window.scrollTo(0, scrollpos);
-					$('.mean-container').removeClass('open');
-					$('.mean-nav .mask').hide();
-					state = false;
+	<!--headerscript-->
+	<script type="text/javascript">
+		$(function ($) {
+			//メニューの表示状態保管用
+			var state = false;
+			//.bodyのスクロール位置
+			var scrollpos = 0;
+			//meanmenuの状態による表示制御
+			function mm_control() {
+				if ($('.mean-nav .nav').is(':visible')) {
+					//表示中
+					if (state == false) {
+						scrollpos = $(window).scrollTop();
+						$('body').addClass('fixed').css({
+							'top': -scrollpos
+						});
+						$('.mean-container').addClass('open');
+						$('.mean-nav .mask').show();
+						state = true;
+					}
+				} else {
+					//非表示中
+					if (state == true) {
+						$('body').removeClass('fixed').css({
+							'top': 0
+						});
+						window.scrollTo(0, scrollpos);
+						$('.mean-container').removeClass('open');
+						$('.mean-nav .mask').hide();
+						state = false;
+					}
 				}
 			}
-		}
 
-		$('#gNav').meanmenu({
-			meanMenuContainer : "#header .h_nav", // メニューを表示させる位置
-			meanScreenWidth : "768"
+			$('#gNav').meanmenu({
+				meanMenuContainer: "#header .h_nav", // メニューを表示させる位置
+				meanScreenWidth: "768"
+			});
+			$(document).on('opend.meanmenu closed.meanmenu', function () {
+				mm_control();
+			}).on('touchend click', '.mean-bar .mask', function (e) {
+				$('.mean-bar .meanmenu-reveal').trigger('click');
+				return false;
+			});
+			//ウィンドウサイズ変更によるメニュー非表示時の制御
+			$(window).on('resize', function () {
+				mm_control();
+			});
 		});
-		$(document).on('opend.meanmenu closed.meanmenu', function() {
-			mm_control();
-		}).on('touchend click', '.mean-bar .mask', function(e) {
-			$('.mean-bar .meanmenu-reveal').trigger('click');
-			return false;
+	</script>
+
+	<!--sliderscript-->
+	<script>
+		//ヘッダー　検索ボタン
+		$(function () {
+			$(".menubtn").click(function () {
+				$("#menu").slideToggle();
+			});
 		});
-		//ウィンドウサイズ変更によるメニュー非表示時の制御
-		$(window).on('resize', function() {
-			mm_control();
+
+		//フッター　メニュー
+		$(function () {
+			$(".f_menubtn").click(function () {
+				$(".f_open").slideToggle();
+
+			});
 		});
-	});
-</script>
 
-<!--sliderscript-->
-<script>
-	//ヘッダー　検索ボタン
-	$(function() {
-		$(".menubtn").click(function() {
-			$("#menu").slideToggle();
+		$(function () {
+
+			$('.tab li').click(function () {
+				var index = $('.tab li').index(this);
+
+				//コンテンツを非表示に
+				$('.content li').css('display', 'none');
+				//クリックされた番号のコンテンツを表示
+				$('.content li').eq(index).css('display', 'block');
+
+				//tabについてる'tab_current'を消す
+				$('.tab li').removeClass('tab_current');
+				//クリックしたタブにのみ'tab_current'をつける
+				$(this).addClass('tab_current')
+
+			});
 		});
-	});
 
-	//フッター　メニュー
-	$(function() {
-		$(".f_menubtn").click(function() {
-			$(".f_open").slideToggle();
+		//スクロール
+		$(function () {
+			$(window).scroll(function () {
 
-		});
-	});
-
-	$(function() {
-
-		$('.tab li').click(function() {
-			var index = $('.tab li').index(this);
-
-			//コンテンツを非表示に
-			$('.content li').css('display', 'none');
-			//クリックされた番号のコンテンツを表示
-			$('.content li').eq(index).css('display', 'block');
-
-			//tabについてる'tab_current'を消す
-			$('.tab li').removeClass('tab_current');
-			//クリックしたタブにのみ'tab_current'をつける
-			$(this).addClass('tab_current')
-
-		});
-	});
-
-	//スクロール
-	$(function() {
-		$(window).scroll(function() {
-
-			if ($(this).scrollTop() > 10) {
-				$('#articles-scroll').addClass('is-fixed');
-			} else {
-				$('articles-scroll').removeClass('is-fixed');
-			}
+				if ($(this).scrollTop() > 10) {
+					$('#articles-scroll').addClass('is-fixed');
+				} else {
+					$('articles-scroll').removeClass('is-fixed');
+				}
+			})
 		})
-	})
-</script>
-<!--さわらびゴシック-->
-<script>
-	(
-					function(d) {
-						var config = {
-							kitId : 'wum1xfc',
-							scriptTimeout : 3000,
-							async : true
-						}, h = d.documentElement, t = setTimeout(function() {
-							h.className = h.className.replace(
-									/\bwf-loading\b/g, "")
-									+ " wf-inactive";
-						}, config.scriptTimeout), tk = d
-								.createElement("script"), f = false, s = d
-								.getElementsByTagName("script")[0], a;
-						h.className += " wf-loading";
-						tk.src = 'https://use.typekit.net/' + config.kitId
-								+ '.js';
-						tk.async = true;
-						tk.onload = tk.onreadystatechange = function() {
-							a = this.readyState;
-							if (f || a && a != "complete" && a != "loaded")
-								return;
-							f = true;
-							clearTimeout(t);
-							try {
-								Typekit.load(config)
-							} catch (e) {
-							}
-						};
-						s.parentNode.insertBefore(tk, s)
-					})(document);
-</script>
+	</script>
+	<!--さわらびゴシック-->
+	<script>
+			(
+				function (d) {
+					var config = {
+						kitId: 'wum1xfc',
+						scriptTimeout: 3000,
+						async: true
+					}, h = d.documentElement, t = setTimeout(function () {
+						h.className = h.className.replace(
+							/\bwf-loading\b/g, "")
+							+ " wf-inactive";
+					}, config.scriptTimeout), tk = d
+						.createElement("script"), f = false, s = d
+							.getElementsByTagName("script")[0], a;
+					h.className += " wf-loading";
+					tk.src = 'https://use.typekit.net/' + config.kitId
+						+ '.js';
+					tk.async = true;
+					tk.onload = tk.onreadystatechange = function () {
+						a = this.readyState;
+						if (f || a && a != "complete" && a != "loaded")
+							return;
+						f = true;
+						clearTimeout(t);
+						try {
+							Typekit.load(config)
+						} catch (e) {
+						}
+					};
+					s.parentNode.insertBefore(tk, s)
+				})(document);
+	</script>
 
 </head>
 
@@ -239,8 +228,7 @@
 	<br>
 	<br>
 	<br>
-	<h1>oritabi</h1>
-	<hr>
+
 	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
 	<div th:if="${costomerForm.newCostomer}" style="margin: 5px">
 		<h3>お客様一覧</h3>
@@ -251,8 +239,8 @@
 		<!-- ▼▼▼ 顧客情報が1件でもあれば表示 ▼▼▼ -->
 		<script src="https://code.jquery.com/jquery.min.js"></script>
 		<script>
-			$(function() {
-				$(".A").click(function() {
+			$(function () {
+				$(".A").click(function () {
 					$(".B").slideToggle("");
 				});
 			});
@@ -285,47 +273,63 @@
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!--th:if="${spotForm.newSpot}"  -->
-	<div  style="margin: 5px">
-		<h3>
-			観光地スポット<br>
-		</h3>
+	<div style="margin: 5px">
+		
 
 		<!-- ▼▼▼ Form ▼▼▼ -->
-		<form method="POST"
-			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
-			th:object="${spotForm}">
-			<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-			<label th:unless="*{newSpot}">観光地連番</label>
-			<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
-			<label>観光地名</label>
-			<input type="text" th:field="*{spotName}" /><br>
-			<label>観光地住所</label> 
-			<input type="text" th:field="*{address}"><br>
-			<label>WEBページ</label> 
-			<input type="text" th:field="*{web}"><br>
-			<label>電話番号</label> 
-			<input type="text" th:field="*{tel}"><br>
-			<label>オススメ</label><br>
-			<textarea rows="5" cols="50" th:field="*{point}"></textarea><br> 
-			<label>目的ID</label> 
-			<input type="text" th:field="*{purposeId}"><br> 
-			<label>画像URL</label> 
-			<input type="text" th:field="*{imageFileName}"><br>
-			<div class="button006">
-				<input th:if="*{newSpot}" type="submit" value="送信" >
-				<input th:unless="*{newSpot}" type="submit" value="送信">
-			</div>
-		</form>
-		<p th:if="${complete}" th:text="${complete}"></p>
 
+		<div class="login">
+			<h3>観光地スポット<br></h3>
+			<form method="POST" th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
+				th:object="${spotForm}">
+				<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
+				<div class="form-group">
+					<label th:unless="*{newSpot}">観光地連番</label>
+					<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+				</div>
+				<div class="form-group">
+					<label>観光地名</label>
+					<input type="text" th:field="*{spotName}" /><br>
+				</div>
+				<div class="form-group">
+					<label>観光地住所</label>
+					<input type="text" th:field="*{address}"><br>
+				</div>
+				<div class="form-group">
+					<label>WEBページ</label>
+					<input type="text" th:field="*{web}"><br>
+				</div>
+				<div class="form-group">
+					<label>電話番号</label>
+					<input type="text" th:field="*{tel}"><br>
+				</div>
+				<div class="form-group">
+					<label>オススメ</label><br>
+					<textarea rows="5" cols="22" th:field="*{point}"></textarea><br>
+				</div>
+				<div class="form-group">
+					<label>目的ID</label>
+					<input type="text" th:field="*{purposeId}"><br>
+				</div>
+				<div class="form-group">
+					<label>画像URL</label>
+					<input type="text" th:field="*{imageFileName}"><br>
+				</div>
+				<div class="button006">
+					<input th:if="*{newSpot}" type="submit" value="送信">
+					<input th:unless="*{newSpot}" type="submit" value="送信">
+				</div>
+			</form>
+			<p th:if="${complete}" th:text="${complete}"></p>
+		</div>
 		<!-- 削除完了コメント -->
 		<p th:if="${spotDelComp}" th:text="${spotDelComp}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
 
 		<!-- ▼▼▼ 観光地情報が1件でもあれば表示 ▼▼▼ -->
 		<script>
-			$(function() {
-				$(".E").click(function() {
+			$(function () {
+				$(".E").click(function () {
 					$(".F").slideToggle("");
 				});
 			});
@@ -355,11 +359,9 @@
 						<td th:text="${obj.point}" align="left"></td>
 						<td th:text="${obj.imageFileName}" align="left"></td>
 						<td th:text="${obj.purposeId}"></td>
-						<td th:text="${obj.tel}"></td>
 						<!-- 編集ボタン -->
 						<td>
-							<form method="GET"
-								th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">
+							<form method="GET" th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">
 								<input type="submit" value="編集">
 							</form>
 						</td>
@@ -383,8 +385,7 @@
 	<!-- △△△新規登録時のみ表示△△△ -->
 	<!-- ▼▼▼新規登録時でない時に表示▼▼▼ -->
 	<p th:unless="${costomerForm.newCostomer}">
-		<a href="#" th:href="@{/teamB}" type="button"
-			onclick="location.href='manager_login.html'">ログアウト</a>
+		<a href="#" th:href="@{/teamB}" type="button" onclick="location.href='manager_login.html'">ログアウト</a>
 	</p>
 	<!-- △△△新規登録時でない時に表示△△△ -->
 	<!--footer-------------------------------------------->
@@ -428,13 +429,17 @@
 
 			<dl>
 				<dd>
-					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+					<a href="register.html">
+						<div class="btn-sin">新規登録</div>
+					</a>
 				</dd>
 			</dl>
 
 			<dl>
 				<dd>
-					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+					<a href="manager_login.html">
+						<div class="btn-log">ログイン</div>
+					</a>
 				</dd>
 			</dl>
 
@@ -442,16 +447,14 @@
 
 	</div>
 
-
-
 	<footer>
 		<p class="copyright">©︎Pochikifu All Rights Reserved.</p>
 	</footer>
+
+
 	<!--sliderのjs-------------------------------------------->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="js/test.js"></script>
 	<script type="text/javascript" src="js/slick.min.js"></script>
 
