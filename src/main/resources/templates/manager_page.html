@@ -274,54 +274,62 @@
 	</div>
 	<!--th:if="${spotForm.newSpot}"  -->
 	<div style="margin: 5px">
-		
+
 
 		<!-- ▼▼▼ Form ▼▼▼ -->
 
-		<div class="login">
-			<h3>観光地スポット<br></h3>
-			<form method="POST" th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
-				th:object="${spotForm}">
-				<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-				<div class="form-group">
-					<label th:unless="*{newSpot}">観光地連番</label>
-					<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+		<!-- <div class="login-wrapper" id="login"> -->
+			<div class="containerds">
+				<div class="login">
+					<div class="login-wrapper-title">
+						<h3 class="lo-tittle">観光地編集</h3>
+					</div>
+					<form method="POST" th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
+						th:object="${spotForm}">
+						<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
+						<div class="form-group">
+							<label th:unless="*{newSpot}">観光地連番</label><br>
+							<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+						</div>
+						<div class="form-group">
+							<label>観光地名</label><br>
+							<input type="text" th:field="*{spotName}" class="form-box" /><br>
+						</div>
+						<div class="form-group">
+							<label>観光地住所</label><br>
+							<input type="text" th:field="*{address}"><br>
+						</div>
+						<div class="form-group">
+							<label>WEBページ</label><br>
+							<input type="text" th:field="*{web}"><br>
+						</div>
+						<div class="form-group">
+							<label>電話番号</label><br>
+							<input type="text" th:field="*{tel}"><br>
+						</div>
+						<div class="form-group">
+							<label>オススメ</label><br>
+							<textarea rows="5" cols="22" th:field="*{point}"></textarea><br>
+						</div>
+						<div class="form-group">
+							<label>目的ID</label><br>
+							<input type="text" th:field="*{purposeId}"><br>
+						</div>
+						<div class="form-group">
+							<label>画像URL</label><br>
+							<input type="text" th:field="*{imageFileName}"><br>
+						</div>
+						<div class="button006">
+							<div class="btn-box">
+								<input th:if="*{newSpot}" type="submit" value="送信" class ="btnds btn-submit">
+								<input th:unless="*{newSpot}" type="submit" value="送信">
+							</div>
+						</div>
+					</form>
+					<p th:if="${complete}" th:text="${complete}"></p>
 				</div>
-				<div class="form-group">
-					<label>観光地名</label>
-					<input type="text" th:field="*{spotName}" /><br>
-				</div>
-				<div class="form-group">
-					<label>観光地住所</label>
-					<input type="text" th:field="*{address}"><br>
-				</div>
-				<div class="form-group">
-					<label>WEBページ</label>
-					<input type="text" th:field="*{web}"><br>
-				</div>
-				<div class="form-group">
-					<label>電話番号</label>
-					<input type="text" th:field="*{tel}"><br>
-				</div>
-				<div class="form-group">
-					<label>オススメ</label><br>
-					<textarea rows="5" cols="22" th:field="*{point}"></textarea><br>
-				</div>
-				<div class="form-group">
-					<label>目的ID</label>
-					<input type="text" th:field="*{purposeId}"><br>
-				</div>
-				<div class="form-group">
-					<label>画像URL</label>
-					<input type="text" th:field="*{imageFileName}"><br>
-				</div>
-				<div class="button006">
-					<input th:if="*{newSpot}" type="submit" value="送信">
-					<input th:unless="*{newSpot}" type="submit" value="送信">
-				</div>
-			</form>
-			<p th:if="${complete}" th:text="${complete}"></p>
-		</div>
+			</div>
+		<!-- </div> -->
 		<!-- 削除完了コメント -->
 		<p th:if="${spotDelComp}" th:text="${spotDelComp}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
@@ -357,8 +365,8 @@
 						<td th:text="${obj.web}" align="left"></td>
 						<td th:text="${obj.tel}"></td>
 						<td th:text="${obj.point}" align="left"></td>
-						<td th:text="${obj.imageFileName}" align="left"></td>
 						<td th:text="${obj.purposeId}"></td>
+						<td th:text="${obj.imageFileName}" align="left"></td>
 						<!-- 編集ボタン -->
 						<td>
 							<form method="GET" th:action="@{/oritabi/{spotId}(spotId=${obj.spotId})}">

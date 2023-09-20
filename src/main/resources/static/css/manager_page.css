@@ -9,21 +9,26 @@ h1 {
 body {
   background-color:#ffffff;
  /*  font-family: 'M PLUS Rounded 1c', sans-serif;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Roboto', sans-serif;  */
-  font-size: 100%;
+ font-family: 'Montserrat', sans-serif;
+ font-family: 'Roboto', sans-serif;  */
+ font-size: 100%;
+}
+.tableds{
+  padding: 10px;
+  margin : 0 auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
 }
 
 h3 {
-  color: #583822;
+  color:#333333;
 }
 
 table {
   border-collapse: collapse;
-  width: 100%;
   table-layout: fixed;
-  width: auto;
-  text-align: center;
+  width: auto; 
 }
 th,
 td {
@@ -31,16 +36,18 @@ td {
   text-align: center;
   border-bottom: 1px solid #ddd;
   font-weight: normal;
-  color: #583822; 
-   
+  color: #333333; 
+  padding: 0 15px !important;
 }
 th {
   font-weight: bolder;
   font-size: .875rem;
-  color: #583822;
+  color: #333333;
   background: #e6e6e6;
-  text-align: center;
+  text-align: center !important;
+  white-space: nowrap !important;
 }
+
 img {
   width: 80px;
   display: block;
@@ -49,17 +56,21 @@ img {
 }
 
 tr {
-	background: #e6e6e6;
+  background: #e6e6e6;
+  
 }
 
 .A, 
 .C,
 .E {
-	display: inline-block;
+  display: inline-block;
 	background: #e6e6e6;
 	padding: 5px 10px;
 	cursor: pointer;
-	}
+}
+.A{
+  padding: 10px;
+}
 
 .B,
 .D,
@@ -67,17 +78,17 @@ tr {
   display: none;
   background: #e6e6e6;
 	/* height: 100px; */
-	}
+}
 
-  .lo-tittle{
-    font-weight: bold;
-    margin-left: 145px;
-  }
-  /* 共通CSS */
-  .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 15px;
+.lo-tittle{
+  font-weight: bold;
+  margin-left: 145px;
+}
+/* 共通CSS */
+.containerds {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
   }
   
   html {
@@ -97,7 +108,7 @@ tr {
   
       .wrapper-title h3{
           font-size: 25px;
-          color: #3e3e3b;
+          color: #333333;
       }
   
       .wrapper-title p {
@@ -113,7 +124,9 @@ tr {
     border-radius: 100px;
   }
   .btn-box{
-    margin-top: 30px;
+    width: 50%;
+    margin: 30px auto;
+   
   }
   .btn:hover{
       cursor: pointer;
@@ -123,16 +136,24 @@ tr {
   .btn-submit {
       background-color: #4c586f;
       color: #fff;
-      width: 40%;
+      width: 100%;
       margin: 0 auto;
   }
-  
-  .btnds btn-submit {
-      color: #222222;
+  .btn-submitds{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
+  .btnds btn-submit {
+      color: #333333;
+  
+  }
+
   
   /* login */
   .login-wrapper {
+    height:auto;
+    width: 100%;
       text-align: center;
       padding: 80px 0 ;
   }
@@ -143,7 +164,7 @@ tr {
   
       .login-wrapper-title h3{
           font-size: 25px;
-          color: #3e3e3b;
+          color: #333333;
       }
   
       .login-wrapper-title p {
@@ -194,7 +215,7 @@ tr {
       input::placeholder,
       textarea::placeholder {
           opacity: 0.5;
-          color: #222222;
+          color: #333333;
       }
   
     .copyright {
