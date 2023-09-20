@@ -206,8 +206,8 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-							<li><a href="register.html" class="btn-sin">新規登録</a></li>
-							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -226,8 +226,8 @@
 				<ul>
 					<li><a href="#nav01">ボタン</a></li>
 					<li><a href="#nav02">ボタン</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
@@ -285,7 +285,7 @@
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!--th:if="${spotForm.newSpot}"  -->
-	<div  style="margin: 5px">
+	<div style="margin: 5px">
 		<h3>
 			観光地スポット<br>
 		</h3>
@@ -295,25 +295,20 @@
 			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
 			th:object="${spotForm}">
 			<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-			<label th:unless="*{newSpot}">観光地連番</label>
-			<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
-			<label>観光地名</label>
-			<input type="text" th:field="*{spotName}" /><br>
-			<label>観光地住所</label> 
-			<input type="text" th:field="*{address}"><br>
-			<label>WEBページ</label> 
-			<input type="text" th:field="*{web}"><br>
-			<label>電話番号</label> 
-			<input type="text" th:field="*{tel}"><br>
+			<label th:unless="*{newSpot}">観光地連番</label> <input
+				th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+			<label>観光地名</label> <input type="text" th:field="*{spotName}" /><br>
+			<label>観光地住所</label> <input type="text" th:field="*{address}"><br>
+			<label>WEBページ</label> <input type="text" th:field="*{web}"><br>
+			<label>電話番号</label> <input type="text" th:field="*{tel}"><br>
 			<label>オススメ</label><br>
-			<textarea rows="5" cols="50" th:field="*{point}"></textarea><br> 
-			<label>目的ID</label> 
-			<input type="text" th:field="*{purposeId}"><br> 
-			<label>画像URL</label> 
-			<input type="text" th:field="*{imageFileName}"><br>
+			<textarea rows="5" cols="50" th:field="*{point}"></textarea>
+			<br> <label>目的ID</label> <input type="text"
+				th:field="*{purposeId}"><br> <label>画像URL</label> <input
+				type="text" th:field="*{imageFileName}"><br>
 			<div class="button006">
-				<input th:if="*{newSpot}" type="submit" value="送信" >
-				<input th:unless="*{newSpot}" type="submit" value="送信">
+				<input th:if="*{newSpot}" type="submit" value="送信"> <input
+					th:unless="*{newSpot}" type="submit" value="送信">
 			</div>
 		</form>
 		<p th:if="${complete}" th:text="${complete}"></p>
@@ -428,13 +423,13 @@
 
 			<dl>
 				<dd>
-					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+					<a href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
 				</dd>
 			</dl>
 
 			<dl>
 				<dd>
-					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+					<a href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
 				</dd>
 			</dl>
 
