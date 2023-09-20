@@ -197,8 +197,9 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-							<li><a href="register.html" class="btn-sin">新規登録</a></li>
-							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
+							
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -217,8 +218,8 @@
 				<ul>
 					<li><a href="#nav01">ボタン</a></li>
 					<li><a href="#nav02">ボタン</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
@@ -535,7 +536,7 @@
 
 				<dl>
 					<dd>
-						<a href="register.html">
+						<a th:href="@{/oritabi/register}" >
 							<div class="btn-sin">新規登録</div>
 						</a>
 					</dd>
@@ -543,7 +544,7 @@
 
 				<dl>
 					<dd>
-						<a href="manager_login.html">
+						<a th:href="@{/oritabi/manager_login}">
 							<div class="btn-log">ログイン</div>
 						</a>
 					</dd>
