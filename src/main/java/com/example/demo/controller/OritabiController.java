@@ -30,10 +30,8 @@ import jakarta.validation.Valid;
 //Oritabiのコントローラー-----☆
 @Controller
 @RequestMapping("/oritabi")
-public class OritabiController{
-	
+public class OritabiController {
 
-	
 	//DI対象（依存対象）
 	@Autowired
 	OritabiService service;
@@ -59,7 +57,6 @@ public class OritabiController{
 		return form;
 	}
 
-	
 	@ModelAttribute
 	public HistoryForm setUpHistoryForm() {
 		HistoryForm form = new HistoryForm();
@@ -117,10 +114,6 @@ public class OritabiController{
 
 	/* △△△△△△△△△△ 新規観光地Spot登録 △△△△△△△△△△ */
 
-	
-	
-	
-	
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot編集 ▼▼▼▼▼▼▼▼▼▼ */
 	@GetMapping("/{spotId}")
 	public String showUpdateSpot(SpotForm spotForm,
@@ -290,9 +283,6 @@ public class OritabiController{
 	}
 	/* △△△△△△△△△△ 観光地Spot表示 △△△△△△△△△△ */
 
-	
-	
-	
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作☆ ▼▼▼▼▼▼▼▼▼▼ */
 
 	@PostMapping("/spotCheck")
