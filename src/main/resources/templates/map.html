@@ -264,6 +264,12 @@
 	<!-- 表示用の要素2（初めは非表示） -->
 	<div id="displayElement2" style="display: none;">
 
+
+
+
+
+
+
 		<!-- mapの表示 -->
 		<div id="map2" style="height: 300px;"></div>
 		<div class="suke">
@@ -281,6 +287,11 @@
 			<div id="address_5"></div>
 		</div>
 	</div>
+	<!-- チェックボックス表示 -->
+	<div th:each="check:${spotcheck}">
+	<p >[[${check}]]</p>
+</div>
+<!-- ↑チェックボックス表示 -->
 
 	<script>
 		let map1; // 地図1用の変数

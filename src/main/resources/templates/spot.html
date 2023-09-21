@@ -287,7 +287,7 @@
 									<li class="spot_tour">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_tour">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">

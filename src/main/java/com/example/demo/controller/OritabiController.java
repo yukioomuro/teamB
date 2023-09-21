@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Costomer;
 import com.example.demo.entity.Spot;
+import com.example.demo.form.CheckForm;
 import com.example.demo.form.CostomerForm;
 import com.example.demo.form.HistoryForm;
 import com.example.demo.form.PurposeForm;
@@ -60,6 +61,12 @@ public class OritabiController {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
+	
+	@ModelAttribute
+	public CheckForm setUpCheckForm() {
+		CheckForm form=new CheckForm();
+		return form;
+	}
 
 	/* ▼▼▼▼▼▼▼▼▼▼ HTML 表示用メソッド ▼▼▼▼▼▼▼▼▼▼ */
 
@@ -73,10 +80,10 @@ public class OritabiController {
 	//		return "manager_page";
 	//	}
 
-	@GetMapping("/map")
-	public String showMap() {
-		return "map";
-	}
+//	@GetMapping("/map")
+//	public String showMap() {
+//		return "map";
+//	}
 
 	@GetMapping("/myPage")
 	public String showMyPage() {
@@ -295,18 +302,18 @@ public class OritabiController {
 
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作☆ ▼▼▼▼▼▼▼▼▼▼ */
 
-	@PostMapping("/spotCheck")
-	public String checkBoxview(Model model) {
+	@GetMapping("/map")
+	public String checkBoxview(CheckForm checkform,Model model) {
 
-		List<Spot> checkBoxSpot = new ArrayList<>();
+//		List<Spot> checkBoxSpot = new ArrayList<>();
+//
+//		for (Spot s : checkBoxSpot) {
+//			checkBoxSpot.add(s);
+//		}
 
-		for (Spot s : checkBoxSpot) {
-			checkBoxSpot.add(s);
-		}
+		model.addAttribute("spotcheck", checkform.getCheckBoxSpot());
 
-		model.addAttribute("spotcheck", checkBoxSpot);
-
-		return "mapcopy";
+		return "map";
 	}
 
 	/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
