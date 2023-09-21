@@ -17,13 +17,13 @@ article,footer, header, menu, nav, section {
 
 .lo-tittle{
   font-weight: bold;
-  margin-left: 145px;
+  margin: 0 auto;
+  text-align: center;
 }
 /* 共通CSS */
 .container {
-    max-width: 1100px;
+    width: 50%;
     margin: 0 auto;
-    padding: 0 15px;
 }
 
 html {
@@ -43,7 +43,7 @@ html {
 
     .wrapper-title h3{
         font-size: 25px;
-        color: #3e3e3b;
+        color: #333333;
     }
 
     .wrapper-title p {
@@ -52,14 +52,15 @@ html {
     }
 
 .btnds {
-    display: block;
+  display: block;
   padding: 0.8em 1em;
   text-align: center;
   margin: 0 auto;
   border-radius: 100px;
 }
 .btn-box{
-  margin-top: 30px;
+  width: 50%;
+  margin: 30px auto;
 }
 .btn:hover{
     cursor: pointer;
@@ -67,29 +68,37 @@ html {
 }
 
 .btn-submit {
-    background-color: #4c586f;
+    background-color: #c1692a;
     color: #fff;
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
+    border: solid 1px #c1692a;
+}
+
+.btn-submitds {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .btnds btn-submit {
-    color: #222222;
+    color: #333333;
 }
 
 /* login */
 .login-wrapper {
+    height: auto;
+    width: 100%;
     text-align: center;
     padding: 80px 0 ;
 }
     .login-wrapper-title {
-        margin-left: 50px;
-        margin-bottom: 30px;
+       margin:  0 auto;
     }
 
     .login-wrapper-title h3{
         font-size: 25px;
-        color: #3e3e3b;
+        color: #333333;
     }
 
     .login-wrapper-title p {
@@ -101,7 +110,7 @@ html {
     padding: 50px 0; 
     width: 50%;
     margin: 100px auto;
-    background-color: #ebeced;
+    background-color: #faf0e6;
 }
     .login-form {
         width: 60%;
@@ -119,8 +128,13 @@ html {
     }
 
     .form-group {
-        margin-left: 145px;
-        margin-bottom: 5px;
+        width: 50%;
+        max-width: 400px;
+        margin: 5px auto;
+    }
+
+    .form-box {
+        width: 100%;
     }
    
 
@@ -140,10 +154,86 @@ html {
     input::placeholder,
     textarea::placeholder {
         opacity: 0.5;
-        color: #222222;
+        color: #333333;
     }
 
   .copyright {
       position: absolute;
       bottom: 0;
     }    
+
+    @media screen and (max-width:800px) {
+      
+        /* 観光地登録 */
+    .lo-tittle{
+        font-weight: bold;
+        margin-bottom: 20px;
+     
+        margin-left: 0px;
+        text-align: center;
+      }
+      .login-wrapper {
+        height:auto;
+        width: 100%;
+          text-align: center;
+          padding: 30px 0 ;
+      }
+          .login-wrapper-title {
+            margin: 0px;
+          }
+      
+          .login-wrapper-title h3{
+              font-size: 18px;
+              color: #333333;
+          }
+      
+          .login-wrapper-title p {
+              font-size: 12px;
+              color: #a2aab0;
+          }
+          .containerds{
+            width: 100%;
+          }
+      
+      .login {
+          padding: 30px 0; 
+          width: 95%;
+          margin: 30px auto;
+          background-color: #faf0e6;
+      }
+          .login-form {
+              width: 60%;
+              margin: 0 auto;
+          }
+      
+          .login-form input {
+              border: none;
+              width: 100%;
+              height: 25px;
+          }
+      
+          .login-form p {
+              text-align: left;
+          }
+          
+        .form-group {
+          width: 80%;
+          margin: 5px auto;
+      }
+      .form-group label{
+        font-size: 13px;
+      }
+      .form-box{
+        width: 100%;
+      }
+     .tttou{
+      font-size: 13px;
+     }
+
+     .container {
+        width: 95%;
+     }
+      
+
+
+    }

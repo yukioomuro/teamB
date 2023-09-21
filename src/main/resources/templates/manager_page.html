@@ -222,16 +222,11 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
 	<div th:if="${costomerForm.newCostomer}" style="margin: 5px">
-		<h3>お客様一覧</h3>
+		<h3 class="h3s">お客様一覧</h3>
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
@@ -245,7 +240,7 @@
 				});
 			});
 		</script>
-
+<div class ="A-boxn">
 		<div class="A">一覧 ⇓</div>
 		<div class="B">
 			<table th:unless="${#lists.isEmpty('costomerList')}">
@@ -266,12 +261,14 @@
 				</tr>
 			</table>
 		</div>
+	
 
 		<!-- △△△データが一件でもあれば表示△△△ -->
 		<!-- ▼▼▼データが一件もない場合表示▼▼▼ -->
-		<p th:if="${#lists.isEmpty(costomerList)}">登録されている顧客情報はありません。</p>
+		<p th:if="${#lists.isEmpty(costomerList)}" class ="tttou">登録されている顧客情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
+</div>
 	<!--th:if="${spotForm.newSpot}"  -->
 	<div style="margin: 5px">
 
@@ -282,42 +279,42 @@
 			<div class="containerds">
 				<div class="login">
 					<div class="login-wrapper-title">
-						<h3 class="lo-tittle">観光地編集</h3>
+						<h3 class="lo-tittle">観光地登録</h3>
 					</div>
 					<form method="POST" th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
 						th:object="${spotForm}">
 						<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label th:unless="*{newSpot}">観光地連番</label><br>
 							<input th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label>観光地名</label><br>
 							<input type="text" th:field="*{spotName}" class="form-box" /><br>
 						</div>
 						<div class="form-group">
 							<label>観光地住所</label><br>
-							<input type="text" th:field="*{address}"><br>
+							<input type="text" th:field="*{address}" class="form-box"><br>
 						</div>
 						<div class="form-group">
 							<label>WEBページ</label><br>
-							<input type="text" th:field="*{web}"><br>
+							<input type="text" th:field="*{web}" class="form-box"><br>
 						</div>
 						<div class="form-group">
 							<label>電話番号</label><br>
-							<input type="text" th:field="*{tel}"><br>
+							<input type="text" th:field="*{tel}" class="form-box"><br>
 						</div>
 						<div class="form-group">
 							<label>オススメ</label><br>
-							<textarea rows="5" cols="22" th:field="*{point}"></textarea><br>
+							<textarea rows="5" cols="22" th:field="*{point}" class="form-box"></textarea><br>
 						</div>
 						<div class="form-group">
 							<label>目的ID</label><br>
-							<input type="text" th:field="*{purposeId}"><br>
+							<input type="text" th:field="*{purposeId}"class="form-box"><br>
 						</div>
 						<div class="form-group">
 							<label>画像URL</label><br>
-							<input type="text" th:field="*{imageFileName}"><br>
+							<input type="text" th:field="*{imageFileName}" class="form-box"><br>
 						</div>
 						<div class="button006">
 							<div class="btn-box">
@@ -342,10 +339,13 @@
 				});
 			});
 		</script>
+		<h3 class="h3s">観光地一覧</h3>
+			<div class="E-box">
 		<div th:if="${spotForm.newSpot}">
 			<div class="E">一覧 ⇓</div>
 			<div class="F">
-				<table th:unless="${#lists.isEmpty(spotList)}">
+				<table th:unless="${#lists.isEmpty(spotList)}" cellpadding="10">
+				<div class="F-table">
 					<tr>
 						<th>観光地連番</th>
 						<th>観光地名</th>
@@ -381,6 +381,7 @@
 							</form>
 						</td>
 					</tr>
+				</div>
 				</table>
 			</div>
 		</div>
@@ -390,6 +391,7 @@
 		<p th:if="${#lists.isEmpty(spotList) && spotForm.newSpot == true}">登録されている観光情報はありません。</p>
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
+</div>
 	<!-- △△△新規登録時のみ表示△△△ -->
 	<!-- ▼▼▼新規登録時でない時に表示▼▼▼ -->
 	<p th:unless="${costomerForm.newCostomer}">

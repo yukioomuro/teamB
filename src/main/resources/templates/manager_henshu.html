@@ -189,11 +189,6 @@
 		</div>
 	</header>
 
-<br>
-<br>
-<br>
-<br>
-<br>
 
 	<header class="mheader">
 		<div class="pc_menuFlex">
@@ -222,7 +217,7 @@
 
 				<div class="form-group">	
 					<label>観光地連番</label><br>
-					<input type="text" th:field="*{spot_id}" /><br>
+					<input type="text" th:field="*{spot_id}" class="form-box"/><br>
 				</div>
 				<div class="form-group">
 					<label>観光地名</label><br>
@@ -230,28 +225,28 @@
 				</div>	
 				<div class="form-group">
 					<label>観光地住所</label><br>
-					<input type="text" th:field="*{address}"><br>
+					<input type="text" th:field="*{address}" class="form-box"><br>
 				</div>
 				<div class="form-group">	
 					<label>WEBページ</label><br>
-					<input type="text" th:field="*{web}"><br>
+					<input type="text" th:field="*{web}" class="form-box"><br>
 				</div>	
 				<div class="form-group">
 					<label>電話番号</label><br>
-					<input type="text" th:field="*{tel}"><br>
+					<input type="text" th:field="*{tel}" class="form-box"><br>
 				</div>
 				<div class="form-group">
 					<label>オススメ</label><br>
-					<textarea rows="5" cols="22" th:field="*{point}"></textarea><br> 
+					<textarea rows="5" cols="22" th:field="*{point}" class="form-box"></textarea><br> 
 					<!-- <textarea rows="5" cols="50" th:field="*{memo}"></textarea><br> -->
 				</div>
 				<div class="form-group">
 					<label>目的ID</label><br>
-					<input type="text" th:field="*{purpose}"><br>
+					<input type="text" th:field="*{purpose}" class="form-box"><br>
 				</div>
 				<div class="form-group">
 					<label>画像URL</label><br>
-					<input type="text" th:field="*{img}"><br>
+					<input type="text" th:field="*{img}" class="form-box"><br>
 				</div>	
 					<div class="button006">
 						<div class="btn-box"><button type="submit" class="btnds btn-submit" onclick="location.href='manager_page.html'">登録</button>
@@ -316,7 +311,7 @@
 
 		<footer>
 			<p class="copyright">
-				©︎Oritabi　All Rights Reserved.
+				©︎Oritabi All Rights Reserved.
 			</p>
 		</footer>
 		<!--sliderのjs-------------------------------------------->

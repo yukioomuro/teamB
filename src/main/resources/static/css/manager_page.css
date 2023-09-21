@@ -21,8 +21,13 @@ body {
   empty-cells: show;
 }
 
-h3 {
+.h3s{
   color:#333333;
+  font-size: 30px;
+  font-weight: bold;
+ width: 90%;
+ margin: 0 auto;
+ text-align: center;
 }
 
 table {
@@ -34,16 +39,16 @@ th,
 td {
   padding: 1rem 2rem;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #333;
   font-weight: normal;
   color: #333333; 
   padding: 0 15px !important;
 }
 th {
   font-weight: bolder;
-  font-size: .875rem;
+  font-size: 20px;
   color: #333333;
-  background: #e6e6e6;
+  background: #faf0e6;
   text-align: center !important;
   white-space: nowrap !important;
 }
@@ -56,39 +61,159 @@ img {
 }
 
 tr {
-  background: #e6e6e6;
+  background: #faf0e6;
   
 }
 
 .A, 
 .C,
 .E {
-  display: inline-block;
-	background: #e6e6e6;
+  /* display: inline-block; */
+	background: #c1692a;
 	padding: 5px 10px;
 	cursor: pointer;
 }
-.A{
+.E-box{
+  width: 50%;
+  margin: 0 auto;
+}
+.A-boxn{
+  width: 50%;
+  margin: 0 auto;
+}
+.A {
+  margin: 0 auto;
+  text-align: center;
+  width: 20%;
+  min-width: 200px;
+  
+  margin-top: 10px;
   padding: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+.B{
+  overflow-x: auto;
+  transform: rotateX(180deg);
+}
+.B table{
+  border-spacing: 10px;
+  border-collapse: separate;
+  transform: rotateX(180deg);
+}
+.B th{
+  font-weight: bold;
+  font-size: 20px;
+  top: 50%;
+  align-items: center;
+border: solid 1px #fff;
+}
+.B td{
+  padding: 5px;
+  border: solid 1px #fff;
+  font-size: 15px;
+}
+.B th td{
+  padding: 5px;
+  border-collapse: separate
+}
+.B table{
+  margin-bottom: 30px;
+  display: flex;
+  width: 90%;
+  border-spacing: 10px;
+  border-collapse: separate;
+ 
+  
+}
+.B table::-webkit-scrollbar{
+  height: 10px;
+}
+.B table::-webkit-scrollbar-thumb{
+  background: #aaa;
+}
+.B table::-webkit-scrollbar-track{
+  background: #ddd;
+}
+.E{
+  width: 20%;
+  text-align: center;
+  margin-top: 10px;
+  margin:  0 auto;
+  padding: 10px;
+  min-width: 200px;
+  color: #fff;
+  font-size: 20px;
+}
+.E-box{
+  margin-bottom: 80px;
 }
 
 .B,
 .D,
 .F {
   display: none;
-  background: #e6e6e6;
+  background: #faf0e6;
 	/* height: 100px; */
+  margin: 0 auto;
+}
+.F table{
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+.F th{
+  font-weight: bold;
+  font-size: 20px;
+  top: 50%;
+  align-items: center;
+border: solid 1px #fff;
+}
+.F td{
+  padding: 5px;
+  border: solid 1px #fff;
+  font-size: 15px;
+}
+.F th td{
+  padding: 5px;
+  border-collapse: separate
+}
+.F{
+  overflow-x: auto;
+  transform: rotateX(180deg);
+}
+.F table{
+  margin-bottom: 30px;
+  display: flex;
+  width: 90%;
+  border-spacing: 10px;
+  border-collapse: separate;
+  transform: rotateX(180deg);
+  
 }
 
+.F table::-webkit-scrollbar{
+  height: 10px;
+}
+.F table::-webkit-scrollbar-thumb{
+  background: #aaa;
+}
+.F table::-webkit-scrollbar-track{
+  background: #ddd;
+}
+.tttou{
+  width: 100%;
+  margin: 10px auto;
+}
 .lo-tittle{
   font-weight: bold;
-  margin-left: 145px;
+  margin:  0 auto;
+  text-align: center;
 }
 /* 共通CSS */
 .containerds {
-  max-width: 1100px;
+  width: 50%;
   margin: 0 auto;
-  padding: 0 15px;
+ 
   }
   
   html {
@@ -117,7 +242,7 @@ tr {
       }
   
   .btnds {
-      display: block;
+    display: block;
     padding: 0.8em 1em;
     text-align: center;
     margin: 0 auto;
@@ -134,10 +259,11 @@ tr {
   }
   
   .btn-submit {
-      background-color: #4c586f;
+      background-color: #C1692A;
       color: #fff;
-      width: 100%;
+      width: 60%;
       margin: 0 auto;
+      border: solid 1px #C1692A;
   }
   .btn-submitds{
     width: 100%;
@@ -158,8 +284,8 @@ tr {
       padding: 80px 0 ;
   }
       .login-wrapper-title {
-          margin-left: 50px;
-          margin-bottom: 30px;
+         margin:  0 auto;
+          
       }
   
       .login-wrapper-title h3{
@@ -174,9 +300,9 @@ tr {
   
   .login {
       padding: 50px 0; 
-      width: 50%;
+      width: 100%;
       margin: 100px auto;
-      background-color: #ebeced;
+      background-color: #faf0e6;
   }
       .login-form {
           width: 60%;
@@ -194,8 +320,12 @@ tr {
       }
   
       .form-group {
-          margin-left: 145px;
-          margin-bottom: 5px;
+        width: 50%;
+        max-width: 400px;
+         margin: 5px auto; 
+      }
+      .form-box {
+        width: 100%;
       }
      
   
@@ -223,4 +353,187 @@ tr {
         bottom: 0;
       }    
    
-  
+  @media screen and (max-width:800px) {
+    
+    .h3s {
+      font-size: 20px;
+    }
+
+    .A {
+      width: 20%;
+      font-size: 15px;
+      padding: 10px;
+      margin:  0 auto;
+    }
+    .A-boxn{
+      width: 95%;
+    }
+   .B{
+    width: 95%;
+      overflow-x: auto;
+      transform: rotateX(180deg);
+   }
+    .B table{
+      margin-bottom: 30px;
+      display: flex;
+      width: 90%;
+      border-spacing: 10px;
+      border-collapse: separate;
+     
+      transform: rotateX(180deg);
+    }
+    .B th{
+      font-weight: bold;
+      font-size: 13px;
+      top: 50%;
+      align-items: center;
+    border: solid 1px #fff;
+    }
+    .B td{
+      padding: 5px;
+      border: solid 1px #fff;
+      font-size: 15px;
+    }
+    .B th td{
+      padding: 5px;
+      border-collapse: separate
+    }
+   
+    .B table::-webkit-scrollbar{
+      height: 10px;
+    }
+    .B table::-webkit-scrollbar-thumb{
+      background: #aaa;
+    }
+    .B table::-webkit-scrollbar-track{
+      background: #ddd;
+    }
+    .E-box{
+      width: 95%;
+      margin-bottom: 30px;
+    }
+    .E{
+     
+      margin-top: 10px;
+      padding: 10px;
+      color: #fff;
+      font-size: 15px;
+    }
+    
+    /* .B,
+    .D,
+    .F {
+      display: none;
+      background: #faf0e6;
+      /* height: 100px; */
+      margin: 0 auto;
+    /* }  */
+    .F{
+      width: 95%;
+      overflow-x: auto;
+      transform: rotateX(180deg);
+    }
+ 
+    .F table{
+      margin-bottom: 30px;
+      display: flex;
+      width: 90%;
+      border-spacing: 10px;
+      border-collapse: separate;
+     
+      transform: rotateX(180deg);
+    }
+    .F table::-webkit-scrollbar{
+      height: 50px;
+    }
+    .F table::-webkit-scrollbar-thumb{
+      background: #aaa;
+    }
+    .F table::-webkit-scrollbar-track{
+      background: #ddd;
+    }
+    .F th{
+      font-weight: bold;
+      font-size: 15px;
+      top: 50%;
+      align-items: center;
+    border: solid 1px #fff;
+    }
+    .F td{
+      padding: 5px;
+      min-width: 130px;
+      border: solid 1px #fff;
+      font-size: 13px;
+    }
+    .F th td{
+      padding: 5px;
+      border-collapse: separate
+    }
+
+    /* 観光地登録 */
+    .lo-tittle{
+      font-weight: bold;
+      margin-bottom: 20px;
+   
+      margin-left: 0px;
+      text-align: center;
+    }
+    .login-wrapper {
+      height:auto;
+      width: 100%;
+        text-align: center;
+        padding: 80px 0 ;
+    }
+        .login-wrapper-title {
+          margin: 0px;
+        }
+    
+        .login-wrapper-title h3{
+            font-size: 18px;
+            color: #333333;
+        }
+    
+        .login-wrapper-title p {
+            font-size: 12px;
+            color: #a2aab0;
+        }
+        .containerds{
+          width: 100%;
+        }
+    
+    .login {
+        padding: 30px 0; 
+        width: 95%;
+        margin: 30px auto;
+        background-color: #faf0e6;
+    }
+        .login-form {
+            width: 60%;
+            margin: 0 auto;
+        }
+    
+        .login-form input {
+            border: none;
+            width: 100%;
+            height: 25px;
+        }
+    
+        .login-form p {
+            text-align: left;
+        }
+        
+      .form-group {
+        width: 80%;
+        margin: 5px auto;
+    }
+    .form-group label{
+      font-size: 13px;
+    }
+    .form-box{
+      width: 100%;
+    }
+   .tttou{
+    font-size: 13px;
+   }
+    
+  }
