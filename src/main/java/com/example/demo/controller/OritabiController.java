@@ -80,10 +80,11 @@ public class OritabiController {
 	//		return "manager_page";
 	//	}
 
-	//	@GetMapping("/map")
-	//	public String showMap() {
-	//		return "map";
-	//	}
+	//検証用spot
+//		@GetMapping("/showspot")
+//		public String showSpot() {
+//			return "/spotSelect";
+//		}
 
 	@GetMapping("/myPage")
 	public String showMyPage() {
