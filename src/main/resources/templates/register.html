@@ -241,8 +241,8 @@
 		<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
 		<!-- ログインフォーム -->
 		<!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
-		<form method="POST"
-			th:action="@{/oritabi/insertCostomer}"
+		<form method="GET"
+			th:action="@{/oritabi/spot}"
 			th:object="${costomerForm}">
 
 			<div class="login-wrapper" id="login">
@@ -295,7 +295,7 @@
 						</div>
 						<div class="btn-box">
 							<input type="submit" class="btnds btn-submit"
-							value="登録" th:href="@{/oritabi/spot}">
+							value="登録" th:hr="@{/oritabi/spot}">
 						</div>
 					</div>
 				</div>
