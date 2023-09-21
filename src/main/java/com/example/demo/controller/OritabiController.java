@@ -375,7 +375,7 @@ public class OritabiController {
 			System.out.println(i.getName());
 		}
 		//表示用Modelへ格納
-		model.addAttribute("CostomerList", list);
+		model.addAttribute("costomerList", list);
 		//model.addAttribute("title", "登録用フォーム");
 		return "spot";
 	}

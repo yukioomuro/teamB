@@ -242,7 +242,7 @@
 	<h1>oritabi</h1>
 	<hr>
 	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
-	<div th:if="${costomerForm.newCostomer}" style="margin: 5px">
+	<div th:method="POST" th:object="${'/oritabi/costomerList'}" style="margin: 5px">
 		<h3>お客様一覧</h3>
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
