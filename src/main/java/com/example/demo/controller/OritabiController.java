@@ -68,10 +68,10 @@ public class OritabiController {
 		return "manager_login";
 	}
 
-//	@GetMapping("/manager_page")
-//	public String showManagerPage() {
-//		return "manager_page";
-//	}
+	//	@GetMapping("/manager_page")
+	//	public String showManagerPage() {
+	//		return "manager_page";
+	//	}
 
 	@GetMapping("/map")
 	public String showMap() {
@@ -98,10 +98,12 @@ public class OritabiController {
 		return "register";
 	}
 
-	//@GetMapping("/spot")
-	//public String showSpot() {
-	//	return "spot";
-	//}
+	@GetMapping("/spot")
+	public String showSpot(Model model) {
+		spotView(model);
+		System.out.println("spot入" + model.getAttribute("spottaberu"));
+		return "spot";
+	}
 
 	@GetMapping("/top")
 	public String showTop() {
@@ -254,50 +256,11 @@ public class OritabiController {
 	/* △△△△△△△△△△ 観光地Spot削除 △△△△△△△△△△ */
 	//管理者ページ　終了
 
-	/***************************************************************************************************/
-
-	//Registerページ↓
-	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
-
-	//新規登録画面の操作
-	@PostMapping("/register")
-	public String insertCostomer(@Validated CostomerForm costomerForm,
-			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-
-		//Form から entity へ詰め替え
-		Costomer costomer = new Costomer();
-		costomer.setName(costomerForm.getName());
-		costomer.setMail(costomerForm.getMail());
-		costomer.setMailView(costomerForm.getMailView());
-		costomer.setPass(costomerForm.getPass());
-		costomer.setPassView(costomerForm.getPassView());
-		costomer.setMemo(costomerForm.getMemo());
-
-		//入力チェック
-		if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
-				costomerForm.getPass().equals(costomerForm.getPassView())) {
-
-			if (!bindingResult.hasErrors()) {
-				service.insertCostomer(costomer);
-				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-				return "spot";
-
-			} else {
-				//エラーがある場合は、もう一度新規登録画面へ飛びます。
-				return "register";
-			}
-		} else {
-			model.addAttribute("miss", "確認用メールアドレスか、確認用パスワードが違います。");
-			return "register";
-		}
-	}
-
-	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
-
+	//Spot ページで表示↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot表示 ▼▼▼▼▼▼▼▼▼▼ */
 
-	@GetMapping("/spot")
-	public String spotview(Model model) {
+	@GetMapping("/spotView")
+	public String spotView(Model model) {
 		Iterable<Spot> spotall = service.selectAllSpot();
 
 		List<Spot> spottaberu = new ArrayList<>();
@@ -347,15 +310,67 @@ public class OritabiController {
 	}
 
 	/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
+	//Spot ページで表示↑
 
-	/* Register 登録画面 */
-//	@PostMapping("makeCostomer")
-//	public String makeRegister(@Valid @ModelAttribute CostomerForm costomerForm, BindingResult bindingResult,
-//			Model model) {
-//
-//		if (bindingResult.hasErrors()) {
-//			model.addAttribute("costomerForm", new CostomerForm());
+	/***************************************************************************************************/
+
+	//Registerページ↓
+	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
+
+	//新規登録画面の操作
+	@PostMapping("/insertCostomer")
+	public String insertCostomer(@Validated CostomerForm costomerForm,
+			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+
+		System.out.println("+++++++++++++++++++++++");
+		//Form から entity へ詰め替え
+		Costomer costomer = new Costomer();
+		costomer.setName(costomerForm.getName());
+		costomer.setMail(costomerForm.getMail());
+		costomer.setMailView(costomerForm.getMailView());
+		costomer.setPass(costomerForm.getPass());
+		costomer.setPassView(costomerForm.getPassView());
+
+		//入力チェック
+		if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
+				costomerForm.getPass().equals(costomerForm.getPassView())) {
+
+			System.out.println("\\\\\\\\\\");
+			if (!bindingResult.hasErrors()) {
+				System.out.println("Form : " + costomerForm);
+				System.out.println("entity : " + costomer);
+				service.insertCostomer(costomer);
+				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+				return "spot";
+
+			} else {
+				//エラーがある場合は、もう一度新規登録画面へ飛びます。
+				System.out.println(bindingResult.getAllErrors());
+				return "register";
+			}
+		} else {
+			System.out.println("ERAAA");
+			model.addAttribute("miss", "確認用メールアドレスか、確認用パスワードが違います。");
+			return "register";
+		}
+	}
+
+//	@GetMapping("/spotList")
+//	public String showCostomerList(CostomerForm costomerForm, Model model) {
+//		System.out.println("-------- showCostomerList に入りました -------");
+//		//新規登録設定
+//		costomerForm.setNewCostomer(true);
+//		//新規登録情報の一覧を取得
+//		Iterable<Costomer> list = service.selectAllCostomer();
+//		for (Costomer i : list) {
+//			System.out.println(i.getName());
 //		}
-//		return "register";
+//		//表示用Modelへ格納
+//		model.addAttribute("CostomerList", list);
+//		//model.addAttribute("title", "登録用フォーム");
+//		return "spot";
 //	}
+
+	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
+
 }
