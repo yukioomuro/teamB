@@ -288,12 +288,12 @@
 		</div>
 	</div>
 	<!-- チェックボックス表示 -->
-	<div th:each="check:${spotcheck}">
-	<p >[[${check}]]</p>
+	<!--<div th:each="check:${spotcheck}">
+	<p >[[${check}]]</p>-->
 </div>
 <!-- ↑チェックボックス表示 -->
 
-	<script>
+	<script th:inline="javascript">
 		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
 
@@ -344,32 +344,33 @@
 		<!--map1の処理-->
             let selectedAddresses = [];
             let clickedAddresses = []; // クリックされた住所を記録するための配列
+             
+           
+
             
+  		const locations = /*[[${spotcheck}]]*/ [];
 		function setupMap1() {
-            const locations = [
-            	//データベースから住所を取ってくる
-            	{ name: '大阪駅' },
-                { name: '京セラドーム' },
-                { name: '心斎橋駅' },
-                { name: '海遊館' }
-            ];
-
-
+		
+		
+		
             locations.forEach(function(address) {
+				console.log("こんそーる" + address); 
                 const geocoder = new google.maps.Geocoder();
                 const infoWindow = new google.maps.InfoWindow(); // infoWindow の宣言
+                
+                
 
-                geocoder.geocode({ 'address': address.name }, function(results, status) {
+                geocoder.geocode({ 'address': address }, function(results, status) {
                     if (status === 'OK') {
                         const marker = new google.maps.Marker({
                             map: map1,
                             position: results[0].geometry.location,
-                            title: address.name
+                            title: address
                         });
 
                         // ホバー処理
                         marker.addListener('mouseover', function() {
-                            infoWindow.setContent(address.name);
+                            infoWindow.setContent(address);
                             infoWindow.open(map, marker);
                         });
 
@@ -379,13 +380,13 @@
 
                         marker.addListener('click', function() {
                             // クリックされた住所がすでにclickedAddressesに含まれていない場合に処理を実行
-                            if (!clickedAddresses.includes(address.name)) {
+                            if (!clickedAddresses.includes(address)) {
                                 // 選択された住所を配列に追加
-                                selectedAddresses.push(address.name);
+                                selectedAddresses.push(address);
                                 document.getElementById('addressDisplay').textContent = address.name;
 
                                 // クリックされた住所をclickedAddressesに追加
-                                clickedAddresses.push(address.name);
+                                clickedAddresses.push(address);
 
                                 // リストとして選択された住所を表示
                                 updateAddressList();
@@ -393,7 +394,7 @@
                         });
 
                     } else {
-                        alert('ジオコーディングに失敗しました: ' + status);
+                        alert('ジオコーディングに失敗しました: '+ location[0]);
                     }
                 });
             });
