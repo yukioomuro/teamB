@@ -38,7 +38,7 @@ public class OritabiController {
 	//「form-backing bean」の初期化
 	@ModelAttribute
 	public SpotForm setUpSpotForm() {
-		System.out.println("setupSpotForm");
+		//		System.out.println("setupSpotForm");
 		SpotForm form = new SpotForm();
 		return form;
 	}
@@ -51,7 +51,7 @@ public class OritabiController {
 
 	@ModelAttribute
 	public CostomerForm setUpCostomerForm() {
-		System.out.println("setupCostomerForm");
+		//		System.out.println("setupCostomerForm");
 		CostomerForm form = new CostomerForm();
 		return form;
 	}
@@ -61,10 +61,10 @@ public class OritabiController {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
-	
+
 	@ModelAttribute
 	public CheckForm setUpCheckForm() {
-		CheckForm form=new CheckForm();
+		CheckForm form = new CheckForm();
 		return form;
 	}
 
@@ -80,10 +80,10 @@ public class OritabiController {
 	//		return "manager_page";
 	//	}
 
-//	@GetMapping("/map")
-//	public String showMap() {
-//		return "map";
-//	}
+	//	@GetMapping("/map")
+	//	public String showMap() {
+	//		return "map";
+	//	}
 
 	@GetMapping("/myPage")
 	public String showMyPage() {
@@ -105,10 +105,10 @@ public class OritabiController {
 		return "register";
 	}
 
-	@GetMapping("/spot")
+	@PostMapping("/spot")
 	public String showSpot(Model model) {
 		spotView(model);
-		System.out.println("spot入" + model.getAttribute("spottaberu"));
+		System.out.println("spot入" + model.getAttribute("spottour"));
 		return "spot";
 	}
 
@@ -303,13 +303,13 @@ public class OritabiController {
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作☆ ▼▼▼▼▼▼▼▼▼▼ */
 
 	@GetMapping("/map")
-	public String checkBoxview(CheckForm checkform,Model model) {
+	public String checkBoxview(CheckForm checkform, Model model) {
 
-//		List<Spot> checkBoxSpot = new ArrayList<>();
-//
-//		for (Spot s : checkBoxSpot) {
-//			checkBoxSpot.add(s);
-//		}
+		//		List<Spot> checkBoxSpot = new ArrayList<>();
+		//
+		//		for (Spot s : checkBoxSpot) {
+		//			checkBoxSpot.add(s);
+		//		}
 
 		model.addAttribute("spotcheck", checkform.getCheckBoxSpot());
 
@@ -325,7 +325,7 @@ public class OritabiController {
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
 
 	//新規登録画面の操作
-	@PostMapping("/insertCostomer")
+	@PostMapping("/spotSelect")
 	public String insertCostomer(@Validated CostomerForm costomerForm,
 			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
 
@@ -348,6 +348,8 @@ public class OritabiController {
 				System.out.println("entity : " + costomer);
 				service.insertCostomer(costomer);
 				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+				showCostomerList(costomerForm, model);
+				spotView(model);
 				return "spot";
 
 			} else {
@@ -362,22 +364,35 @@ public class OritabiController {
 		}
 	}
 
-//	@GetMapping("/spotList")
-//	public String showCostomerList(CostomerForm costomerForm, Model model) {
-//		System.out.println("-------- showCostomerList に入りました -------");
-//		//新規登録設定
-//		costomerForm.setNewCostomer(true);
-//		//新規登録情報の一覧を取得
-//		Iterable<Costomer> list = service.selectAllCostomer();
-//		for (Costomer i : list) {
-//			System.out.println(i.getName());
-//		}
-//		//表示用Modelへ格納
-//		model.addAttribute("CostomerList", list);
-//		//model.addAttribute("title", "登録用フォーム");
-//		return "spot";
-//	}
+	@PostMapping("/costomerList")
+	public String showCostomerList(CostomerForm costomerForm, Model model) {
+		System.out.println("-------- showCostomerList に入りました -------");
+		//新規登録設定
+		costomerForm.setNewCostomer(true);
+		//新規登録情報の一覧を取得
+		Iterable<Costomer> list = service.selectAllCostomer();
+		for (Costomer i : list) {
+			System.out.println(i.getName());
+		}
+		//表示用Modelへ格納
+		model.addAttribute("CostomerList", list);
+		//model.addAttribute("title", "登録用フォーム");
+		return "spot";
+	}
 
 	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
 
+	/* ▼▼▼▼▼▼▼▼▼▼ MyPage に使うメソッド ▼▼▼▼▼▼▼▼▼▼ */
+
+	@GetMapping("/costomer/{id}")
+	public String getCostomerInf(@PathVariable Integer id, Model model) {
+		Costomer costomer = service.selectOneByIdCostomer(id).orElse(null);
+
+		if (costomer != null) {
+			model.addAttribute("costomer", costomer);
+		}
+
+		return "myPage";
+	}
+	/* △△△△△△△△△△ MyPage に使うメソッド △△△△△△△△△△ */
 }
