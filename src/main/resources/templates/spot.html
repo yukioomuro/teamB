@@ -253,8 +253,8 @@
 
 							<h3 class="titleds">食べる</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot : ${spottaberu}">
+							<div th:each="spot : ${spottaberu}">
+								<ul class="ul-class">
 									<li class="spot_taberu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
@@ -271,8 +271,9 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
-								</div>
-							</ul>
+								</ul>
+							</div>
+							
 						</div>
 
 
@@ -281,8 +282,8 @@
 
 							<h3 class="titleds">観る</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot:${spottour}">
+							<div th:each="spot:${spottour}">
+								<ul class="ul-class">
 									<li class="spot_tour">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
@@ -299,10 +300,10 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
+								</ul>
+							</div>
 
-								</div>
-
-							</ul>
+							
 
 							<!--  					<ul class="ul-class">
 							<div th:each="spot:${spottour}">
@@ -375,8 +376,9 @@
 						<div class="tabcontent" id="tabcontent3">
 							<h3 class="titleds">遊ぶ</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot:${spotasobu}">
+							<div th:each="spot:${spotasobu}">
+								<ul class="ul-class">
+								
 									<li class="spot_asobu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
@@ -393,8 +395,9 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
-								</div>
-							</ul>
+								</ul>
+							</div>
+							
 						</div>
 					</div>
 				</div>
