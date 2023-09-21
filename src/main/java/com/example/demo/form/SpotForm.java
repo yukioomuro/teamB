@@ -32,7 +32,6 @@ public class SpotForm {
 	private String web;
 
 	//電話番号
-	@NotBlank
 	private String tel;
 
 	//おすすめポイント
