@@ -195,6 +195,7 @@
 					})(document);
 </script>
 
+
 </head>
 <body>
 	<header id="header">
@@ -208,8 +209,8 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -245,50 +246,42 @@
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 
-		<!-- 表示用の要素1 -->
-		<div id="displayElement1">
-			<!--  マップの表示 -->
-			<div id="map1" style="height: 300px;"></div>
-
-			<p id="result">ooo</p>
-			<script type="text/javascript">
-				$(function(){
-				  var d = sessionStorage.getItem('key');
-				  $("#result").text(d);
-				})
-				</script>
-
-
-			<!--  選択した住所表示 -->
-			<div class="jun">
-				<p>ピンをクリックして順番を決めてください</p>
-				<p>今選択した目的地</p>
-				<div id="addressDisplay"></div>
-				<div id="selectedAddresses"></div>
-				<!--  ボタン表示 -->
-				<button id="undoButton">一つ戻る</button>
-			</div>
+	<!-- 表示用の要素1 -->
+	<div id="displayElement1">
+		<!--  マップの表示 -->
+		<div id="map1" style="height: 300px;"></div>
+		<!--  選択した住所表示 -->
+		<div class="jun">
+			<p>ピンをクリックして順番を決めてください</p>
+			<p>今選択した目的地</p>
+			<div id="addressDisplay"></div>
+			<div id="selectedAddresses"></div>
+			<!--  ボタン表示 -->
+			<button id="undoButton">一つ戻る</button>
 		</div>
+	</div>
 
-		<!-- 表示用の要素2（初めは非表示） -->
-		<div id="displayElement2" style="display: none;">
+	<!-- 表示用の要素2（初めは非表示） -->
+	<div id="displayElement2" style="display: none;">
 
-			<!-- mapの表示 -->
-			<div id="map2" style="height: 300px;"></div>
-			<div class="suke">
-				<h3>スケジュール</h3>
-				<!-- 住所の要素 -->
-				<p>名前 場所</p>
-				<!-- 所要時間の要素 -->
-				<div id="leg1"></div>
-				<p>名前 場所</p>
-				<div id="leg2"></div>
-				<p>名前 場所</p>
-				<div id="leg3"></div>
-				<p>名前 場所</p>
-			</div>
+		<!-- mapの表示 -->
+		<div id="map2" style="height: 300px;"></div>
+		<div class="suke">
+			<h3>スケジュール</h3>
+			<!-- 住所の要素 -->
+			<!-- 所要時間の要素 -->
+			<div id="address_1"></div>
+			<div id="leg1"></div>
+			<div id="address_2"></div>
+			<div id="leg2"></div>
+			<div id="address_3"></div>
+			<div id="leg3"></div>
+			<div id="address_4"></div>
+			<div id="leg4"></div>
+			<div id="address_5"></div>
 		</div>
-	
+	</div>
+
 	<script>
 		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
@@ -323,13 +316,13 @@
 			// 地図1の初期化
 			map1 = new google.maps.Map(document.getElementById('map1'), {
 				center : mapCenter,
-				zoom : 12
+				zoom : 11.5
 			});
 
 			// 地図2の初期化
 			map2 = new google.maps.Map(document.getElementById('map2'), {
 				center : mapCenter,
-				zoom : 12
+				zoom : 11.5
 			});
 
 			// 各地図に対する処理を追加
@@ -339,6 +332,8 @@
 
 		<!--map1の処理-->
             let selectedAddresses = [];
+            let clickedAddresses = []; // クリックされた住所を記録するための配列
+            
 		function setupMap1() {
             const locations = [
             	//データベースから住所を取ってくる
@@ -372,45 +367,65 @@
                         });
 
                         marker.addListener('click', function() {
-                            // 選択された住所を配列に追加
-                            selectedAddresses.push(address.name);
-                            document.getElementById('addressDisplay').textContent = address.name;
+                            // クリックされた住所がすでにclickedAddressesに含まれていない場合に処理を実行
+                            if (!clickedAddresses.includes(address.name)) {
+                                // 選択された住所を配列に追加
+                                selectedAddresses.push(address.name);
+                                document.getElementById('addressDisplay').textContent = address.name;
 
-                            // リストとして選択された住所を表示
-                            updateAddressList();
+                                // クリックされた住所をclickedAddressesに追加
+                                clickedAddresses.push(address.name);
+
+                                // リストとして選択された住所を表示
+                                updateAddressList();
+                            }
                         });
+
                     } else {
                         alert('ジオコーディングに失敗しました: ' + status);
                     }
                 });
             });
 
-            //<!--選び直すボタン-->
+            //選び直すボタン-->
             const undoButton = document.getElementById('undoButton');
             undoButton.addEventListener('click', function() {
                 // リストから最後に選択された住所を削除
-                selectedAddresses.pop();
+                const lastSelectedAddress = selectedAddresses.pop();
+
+    			// クリックされた住所の記録からも削除
+   			 	const index = clickedAddresses.indexOf(lastSelectedAddress);
+    			if (index !== -1) {
+        			clickedAddresses.splice(index, 1);
+   					}
+
                 // 住所リストを更新
                 updateAddressList();
             });
 
-            //<!--クリックした住所-->
+            //クリックした住所
             function updateAddressList() {
                 const addressList = document.getElementById('selectedAddresses');
                 addressList.innerHTML = '<h3>　目的地の順番：</h3>' +
                     '<ul>' + selectedAddresses.map(addr => `<li>　${addr}　</li>`).join('') + '</ul>';
+                    
+                    for (let x = 0; x < selectedAddresses.length; x++) {
+                    	  const addressElement = document.getElementById('address_' + (x + 1));
+                    	  if (addressElement) {
+                    	    addressElement.textContent = selectedAddresses[x]; // 選択されたアドレスを設定
+                    	  }
+                    	}
             }
         }
-		
-		//<!--map2の処理-->
+		// map2の処理
 		function setupMap2(map) {
-			// 出発地、目的地、ウェイポイントの設定
-			const directionsService = new google.maps.DirectionsService();
-			const directionsRenderer = new google.maps.DirectionsRenderer({
-				map : map,
-			});
+		    // 出発地、目的地、ウェイポイントの設定
+		    const directionsService = new google.maps.DirectionsService();
+		    const directionsRenderer = new google.maps.DirectionsRenderer({
+		        map: map,
+		    });
 
-			// ウェイポイントの配列を作成
+		    // ウェイポイントの配列を作成
 		    const waypoints = [];
 
 		    for (let i = 1; i < selectedAddresses.length - 1; i++) {
@@ -428,54 +443,49 @@
 		        optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
 		    };
 
-			// Directions サービスを使用して経路を計算
-			directionsService
-					.route(
-							request,
-							function(response, status) {
-								if (status === 'OK') {
-									// 経路情報を地図に描画
-									directionsRenderer.setDirections(response);
+		    // Directions サービスを使用して経路を計算
+		    directionsService.route(request, function (response, status) {
+		        if (status === 'OK') {
+		            // 経路情報を地図に描画
+		            directionsRenderer.setDirections(response);
 
-									// 所要時間を表示
-									//配列で回す
-									for(let x = 0; x < request.length; x++){
-									document.getElementById('leg'+ (x+1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
-									}
-								} else {
-									alert('ルートの取得中にエラーが発生しました: ' + status);
-								}
-							});
+		            // 所要時間を表示
+		            for (let x = 0; x < response.routes[0].legs.length; x++) {
+		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
+		            }
+		         
+		        } else {
+		            alert('ルートの取得中にエラーが発生しました: ' + status);
+		        }
+		    });
 		}
+
 	</script>
+
 
 	<!-- Google Maps JavaScript APIの読み込み -->
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVClt3T6_YjhogNvKLn8XYb20nSNifSKg&callback=initMap"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnAhS4QglEOA1OS33iZ2S3-mZRx6qId34&callback=initMap"
 		async defer></script>
 
 
 	<br>
-
-	<p id="result"></p>
-
 	<!-- ボタン -->
 	<button id="toggleButton">ルート表示</button>
 	<hr>
 	<br>
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<div  class="btn">
+		<div class="btn">
 			<button onclick="location.href='spot'">スポットの変更</button>
-		
-		<br>
-		<!--各顧客観光リストテーブル③に登録されるように-->
+
+			<br>
+			<!--各顧客観光リストテーブル③に登録されるように-->
 			<form th:action="@{/oritabi/myPage}">
 				<button type="submit">リスト作成</button>
 			</form>
-			
+
 		</div>
-		
 	</div>
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
@@ -517,11 +527,15 @@
 			</dl>
 
 			<dl>
-				<dd><a href ="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a></dd>
+				<dd>
+					<a href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
+				</dd>
 			</dl>
-			
+
 			<dl>
-				<dd><a href="@{/oritabi/manager_login"><div class= "btn-log">ログイン</div></a></dd>
+				<dd>
+					<a href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
+				</dd>
 			</dl>
 
 		</div>
