@@ -258,7 +258,7 @@
 									<li class="spot_taberu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_taberu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -287,7 +287,7 @@
 									<li class="spot_tour">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_tour">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -382,7 +382,7 @@
 									<li class="spot_asobu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample”  th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_asobu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -485,16 +485,6 @@
 		 </div>
 
 	</div>	 
-
-		 <script type="text/javascript">
-			$(function(){
-			  $("#checkbox").on("click", function(){
-				var v = $(this).val();
-				sessionStorage.setItem('key', v);
-			  });
-			})
-			</script>
-
 
 
 		 <!--footer-------------------------------------------->
