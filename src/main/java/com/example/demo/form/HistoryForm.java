@@ -22,30 +22,33 @@ public class HistoryForm {
 	private Integer costomerId;
 
 	//観光地ID
-	@NotBlank
-	private Integer touristId_1;
+	
+	private String touristId_1;
 	
 	//所要時間
-	@NotBlank
+	
 	private String time_1;
 	
-	@NotBlank
-	private Integer touristId_2;
+	
+	private String touristId_2;
 	
 	private String time_2;
 	
-	private Integer touristId_3;
+	private String touristId_3;
 	
 	private String time_3;
 	
-	private Integer touristId_4;
+	private String touristId_4;
 	
 	private String time_4;
 
-	private Integer touristId_5;
+	private String touristId_5;
+	
+	//総時間
+	private String totalDuration;
 	
 	//顧客情報
-	@NotBlank
+	
 	private String memo;
 
 }

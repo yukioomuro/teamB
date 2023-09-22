@@ -276,15 +276,15 @@
 			<h3>スケジュール</h3>
 			<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
-			<div id="address_1" name="address_1"></div>
-			<div id="leg1"name="leg1"></div>
-			<div id="address_2" name="address_2"></div>
-			<div id="leg2"name="leg2"></div>
-			<div id="address_3"name="address_3"></div>
-			<div id="leg3"name="leg3"></div>
-			<div id="address_4"name="address_4"></div>
-			<div id="leg4"name="leg4"></div>
-			<div id="address_5"name="address_5"></div>
+			<div id="address_1" name="touristId_1"></div>
+			<div id="leg1"name="time_1"></div>
+			<div id="address_2" name="touristId_2"></div>
+			<div id="leg2"name="time_2"></div>
+			<div id="address_3"name="touristId_3"></div>
+			<div id="leg3"name="time_3"></div>
+			<div id="address_4"name="touristId_4"></div>
+			<div id="leg4"name="time_4"></div>
+			<div id="address_5"name="touristId_5"></div>
 			<!-- 所要総時間の要素 -->
 			<div id="totalDuration"name="totalDuration"></div>
 		</div>
@@ -522,17 +522,17 @@
 				<button type="submit">リスト作成</button>
 				<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
-			<div id="address_1" th:field="${mapForm.address_1}"></div>
-			<div id="leg1"th:field="${mapForm.leg1}"></div>
-			<div id="address_2" th:field="${mapForm.address_2}"></div>
-			<div id="leg2"th:field="${mapForm.leg2}"></div>
-			<div id="address_3"th:field="${mapForm.address_3}"></div>
-			<div id="leg3"th:field="${mapForm.leg3}"></div>
-			<div id="address_4"th:field="${mapForm.address_4}"></div>
-			<div id="leg4"th:field="${mapForm.leg4}"></div>
-			<div id="address_5"th:field="${mapForm.address_5}"></div>
+			<div id="address_1" th:field="${historyForm.touristId_1}"></div>
+			<div id="leg1"th:field="${historyForm.time_1}"></div>
+			<div id="address_2" th:field="${historyForm.touristId_2}"></div>
+			<div id="leg2"th:field="${historyForm.time_2}"></div>
+			<div id="address_3"th:field="${historyForm.touristId_3}"></div>
+			<div id="leg3"th:field="${historyForm.time_3}"></div>
+			<div id="address_4"th:field="${historyForm.touristId_4}"></div>
+			<div id="leg4"th:field="${historyForm.time_4}"></div>
+			<div id="address_5"th:field="${historyForm.touristId_5}"></div>
 			<!-- 所要総時間の要素 -->
-			<div id="totalDuration"th:field="${mapForm.totalDuration}"></div>
+			<div id="totalDuration"th:field="${historyForm.totalDuration}"></div>
 			</form>
 
 		</div>
