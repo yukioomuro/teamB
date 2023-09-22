@@ -23,7 +23,7 @@ public class History {
 
 	//観光地ID
 	@NotBlank
-	private Integer touristId_1;
+	private String touristId_1;
 	
 	//所要時間
 	@NotBlank

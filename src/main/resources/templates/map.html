@@ -276,15 +276,17 @@
 			<h3>スケジュール</h3>
 			<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
-			<div id="address_1"></div>
-			<div id="leg1"></div>
-			<div id="address_2"></div>
-			<div id="leg2"></div>
-			<div id="address_3"></div>
-			<div id="leg3"></div>
-			<div id="address_4"></div>
-			<div id="leg4"></div>
-			<div id="address_5"></div>
+			<div id="address_1" name="address_1"></div>
+			<div id="leg1"name="leg1"></div>
+			<div id="address_2" name="address_2"></div>
+			<div id="leg2"name="leg2"></div>
+			<div id="address_3"name="address_3"></div>
+			<div id="leg3"name="leg3"></div>
+			<div id="address_4"name="address_4"></div>
+			<div id="leg4"name="leg4"></div>
+			<div id="address_5"name="address_5"></div>
+			<!-- 所要総時間の要素 -->
+			<div id="totalDuration"name="totalDuration"></div>
 		</div>
 	</div>
 	<!-- チェックボックス表示 -->
@@ -347,14 +349,21 @@
              
            
 
-            
-  		const locations = /*[[${spotcheck}]]*/ [];
+            //選択された住所を配列に入れる
+  		//const locations =  /*[[${spotcheck}]]*/ [];
+  		
 		function setupMap1() {
-		
+			
+			//検証用住所
+		 const locations = [
+            	'大阪駅' ,
+                '京セラドーム' ,
+                '心斎橋駅' ,
+                '海遊館' 
+            ];
 		
 		
             locations.forEach(function(address) {
-				console.log("こんそーる" + address); 
                 const geocoder = new google.maps.Geocoder();
                 const infoWindow = new google.maps.InfoWindow(); // infoWindow の宣言
                 
@@ -394,7 +403,7 @@
                         });
 
                     } else {
-                        alert('ジオコーディングに失敗しました: '+ location[0]);
+                        alert('ジオコーディングに失敗しました: '+ status);
                     }
                 });
             });
@@ -425,6 +434,7 @@
                     	  const addressElement = document.getElementById('address_' + (x + 1));
                     	  if (addressElement) {
                     	    addressElement.textContent = selectedAddresses[x]; // 選択されたアドレスを設定
+                    	 	addressElement.value = selectedAddresses[x];
                     	  }
                     	}
             }
@@ -462,9 +472,22 @@
 		            directionsRenderer.setDirections(response);
 
 		            // 所要時間を表示
+		            let totalDurationInSeconds = 0;
 		            for (let x = 0; x < response.routes[0].legs.length; x++) {
 		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
+		                document.getElementById('leg' + (x + 1)).value = `${response.routes[0].legs[x].duration.text}`;
+		            	 
+		            	 totalDurationInSeconds += response.routes[0].legs[x].duration.value;
 		            }
+		            
+		            // 合計所要時間をHH時間MM分SS秒形式に変換
+					const hours = Math.floor(totalDurationInSeconds / 3600);
+					const minutes = Math.floor((totalDurationInSeconds % 3600) / 60);
+					const seconds = totalDurationInSeconds % 60;
+        
+        // 合計所要時間をHTMLに表示
+        document.getElementById('totalDuration').textContent = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
+        document.getElementById('totalDuration').value = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
 		         
 		        } else {
 		            alert('ルートの取得中にエラーが発生しました: ' + status);
@@ -495,6 +518,19 @@
 			<!--各顧客観光リストテーブル③に登録されるように-->
 			<form th:action="@{/oritabi/myPage}">
 				<button type="submit">リスト作成</button>
+				<!-- 住所の要素 -->
+			<!-- 所要時間の要素 -->
+			<div id="address_1" th:field="${mapForm.address_1}"></div>
+			<div id="leg1"th:field="${mapForm.leg1}"></div>
+			<div id="address_2" th:field="${mapForm.address_2}"></div>
+			<div id="leg2"th:field="${mapForm.leg2}"></div>
+			<div id="address_3"th:field="${mapForm.address_3}"></div>
+			<div id="leg3"th:field="${mapForm.leg3}"></div>
+			<div id="address_4"th:field="${mapForm.address_4}"></div>
+			<div id="leg4"th:field="${mapForm.leg4}"></div>
+			<div id="address_5"th:field="${mapForm.address_5}"></div>
+			<!-- 所要総時間の要素 -->
+			<div id="totalDuration"th:field="${mapForm.totalDuration}"></div>
 			</form>
 
 		</div>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Costomer;
+import com.example.demo.entity.History;
 import com.example.demo.entity.Spot;
 import com.example.demo.form.CheckForm;
 import com.example.demo.form.CostomerForm;
@@ -87,7 +88,10 @@ public class OritabiController {
 //		}
 
 	@GetMapping("/myPage")
-	public String showMyPage() {
+	public String showMyPage(HistoryForm historyForm) {
+		History history = new History();
+		history.setTouristId_1(historyForm.getAddress_1());
+		service.insertHistory(history);
 		return "myPage";
 	}
 
