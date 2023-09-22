@@ -27,7 +27,7 @@ article,footer, header, menu, nav, section {
 }
 
 html {
-    min-height: 100%;
+    min-height: 60%;
     position: relative;
 }
 
@@ -103,7 +103,7 @@ html {
 
 .login {
     padding: 50px 0; 
-    width: 100%;
+    width: 45%;
     margin: 100px auto;
     background-color: #faf0e6;
 }
@@ -131,9 +131,11 @@ html {
     }
 
     .form-group p{
-        width: 50%;
+        width: 60%;
         max-width: 400px;
-        margin: 5px auto; 
+        /* margin: 5px auto;  */
+        margin-top: 10px;
+        margin-left: 20px;
         
     }
 
@@ -190,7 +192,7 @@ html {
                   color: #a2aab0;
               }
               .containerds{
-                width: 100%;
+                width: 95%;
               }
           
           .login {
@@ -225,6 +227,7 @@ html {
             .form-box{
               width: 100%;
             }
+
         }
     
     
