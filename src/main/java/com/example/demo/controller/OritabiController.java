@@ -82,10 +82,10 @@ public class OritabiController {
 	//	}
 
 	//検証用spot
-//		@GetMapping("/showspot")
-//		public String showSpot() {
-//			return "/spotSelect";
-//		}
+	//		@GetMapping("/showspot")
+	//		public String showSpot() {
+	//			return "/spotSelect";
+	//		}
 
 	@GetMapping("/myPage")
 	public String showMyPage(HistoryForm historyForm) {
@@ -399,5 +399,12 @@ public class OritabiController {
 
 		return "myPage";
 	}
+
+	//	public String showTop(Model model, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+	//		// ログインしたユーザー情報を画面に表示するために記述。
+	//		model.addAttribute("loginUsername", userPrincipal.getUsername());
+	//
+	//		return "myPage";
+	//	}
 	/* △△△△△△△△△△ MyPage に使うメソッド △△△△△△△△△△ */
 }

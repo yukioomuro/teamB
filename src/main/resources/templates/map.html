@@ -512,7 +512,9 @@
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
 		<div class="btn">
-			<button onclick="location.href='spot'">スポットの変更</button>
+			<form th:method="POST" th:action="@{/oritabi/spotSelect}">
+				<button type="submit">スポットの変更</button>
+			</form>
 
 			<br>
 			<!--各顧客観光リストテーブル③に登録されるように-->
