@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>管理画面</title>
+<link rel="icon" href="../static/imag/logo3png.png">
 <link rel="stylesheet" href="css/manager_page.css">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -195,17 +196,18 @@
 </head>
 
 <body>
+	<div id ="top"></div>
 	<header id="header">
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img th:src="@{/imag/logo22.png}" alt="" /></a>
+					<a href=""><img th:src="@{../static/imag/logo2.png}" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							<li><a href="">ボタン</a></li>
-							<li><a href="">ボタン</a></li>
+						
+							<li><a href="#top">TOP</a></li>
 							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
@@ -220,12 +222,12 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="@{/imag/logo22.png}" alt="" /></a>
+				<a href="#"><img src="@{/imag/logo2.png}" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
-					<li><a href="#nav01">ボタン</a></li>
-					<li><a href="#nav02">ボタン</a></li>
+					
+					<li><a href="#top">TOP</a></li>
 					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
