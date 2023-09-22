@@ -434,8 +434,11 @@
                     	  const addressElement = document.getElementById('address_' + (x + 1));
                     	  if (addressElement) {
                     	    addressElement.textContent = selectedAddresses[x]; // 選択されたアドレスを設定
-                    	 	addressElement.value = selectedAddresses[x];
                     	  }
+                    	  const addressElement2 = document.getElementById('_address_' + (x + 1));
+                    	  if (addressElement2) {
+                    	    addressElement2.value = selectedAddresses[x]; // 選択されたアドレスを設定
+                    	}
                     	}
             }
         }
@@ -475,7 +478,7 @@
 		            let totalDurationInSeconds = 0;
 		            for (let x = 0; x < response.routes[0].legs.length; x++) {
 		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
-		                document.getElementById('leg' + (x + 1)).value = `${response.routes[0].legs[x].duration.text}`;
+		                document.getElementById('_leg' + (x + 1)).value = `${response.routes[0].legs[x].duration.text}`;
 		            	 
 		            	 totalDurationInSeconds += response.routes[0].legs[x].duration.value;
 		            }
@@ -487,7 +490,7 @@
         
         // 合計所要時間をHTMLに表示
         document.getElementById('totalDuration').textContent = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
-        document.getElementById('totalDuration').value = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
+        document.getElementById('_totalDuration').value = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
 		         
 		        } else {
 		            alert('ルートの取得中にエラーが発生しました: ' + status);
@@ -511,7 +514,7 @@
 	<br>
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<div class="btn">
+		<input class="btn">
 			<form th:method="POST" th:action="@{/oritabi/spotSelect}">
 				<button type="submit">スポットの変更</button>
 			</form>
@@ -522,17 +525,17 @@
 				<button type="submit">リスト作成</button>
 				<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
-			<div id="address_1" th:field="${historyForm.touristId_1}"></div>
-			<div id="leg1"th:field="${historyForm.time_1}"></div>
-			<div id="address_2" th:field="${historyForm.touristId_2}"></div>
-			<div id="leg2"th:field="${historyForm.time_2}"></div>
-			<div id="address_3"th:field="${historyForm.touristId_3}"></div>
-			<div id="leg3"th:field="${historyForm.time_3}"></div>
-			<div id="address_4"th:field="${historyForm.touristId_4}"></div>
-			<div id="leg4"th:field="${historyForm.time_4}"></div>
-			<div id="address_5"th:field="${historyForm.touristId_5}"></div>
+			<input type="hidden" id="_address_1" th:field="${historyForm.touristId_1}">
+			<input type="hidden" id="_leg1"th:field="${historyForm.time_1}">
+			<input type="hidden" id="_address_2" th:field="${historyForm.touristId_2}">
+			<input type="hidden" id="_leg2"th:field="${historyForm.time_2}">
+			<input type="hidden" id="_address_3"th:field="${historyForm.touristId_3}">
+			<input type="hidden" id="_leg3"th:field="${historyForm.time_3}">
+			<input type="hidden" id="_address_4"th:field="${historyForm.touristId_4}">
+			<input type="hidden" id="_leg4"th:field="${historyForm.time_4}">
+			<input type="hidden" id="_address_5"th:field="${historyForm.touristId_5}">
 			<!-- 所要総時間の要素 -->
-			<div id="totalDuration"th:field="${historyForm.totalDuration}"></div>
+			<input type="hidden" id="_totalDuration"th:field="${historyForm.totalDuration}">
 			</form>
 
 		</div>

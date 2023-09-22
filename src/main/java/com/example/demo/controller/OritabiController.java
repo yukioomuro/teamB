@@ -101,7 +101,7 @@ public class OritabiController {
 		history.setTime_4(historyForm.getTime_4());
 		history.setTotalDuration(historyForm.getTotalDuration());
 		
-		service.insertHistory(history);
+		service.insertHistory(history);	
 		return "myPage";
 	}
 
