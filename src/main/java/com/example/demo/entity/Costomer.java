@@ -35,4 +35,7 @@ public class Costomer {
 
 	//メモ
 	private String memo;
+	
+	//暗号可PASS
+	private String secretPass;
 }

@@ -3,10 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="../static/imag/logo3png.png">
+<link rel="icon" th:src="@{/imag/logo3.png}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>ログイン画面</title>
-<link rel="stylesheet" href="../static/css/manager_login.css">
+<link rel="stylesheet" th:href="@{/css/manager_login.css}">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
 
@@ -15,13 +15,13 @@
 	href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
 <!--headercss-->
-<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
-<link href="../static/css/font-awesome.min.css" rel="stylesheet"
+<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"
 	type="text/css">
-<link href="../static/css/header.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
 <!--css-->
-<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
-<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
 
 <!--font-awesome-->
 <link rel="stylesheet" type="text/css"
@@ -58,8 +58,8 @@
 <script type="text/javascript" src="js/scroll.js"></script>
 
 <!--slider-->
-<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
-<link href="../static/css/slick-theme.css" rel="stylesheet"
+<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+<link th:href="@{static/css/slick-theme.css}" rel="stylesheet"
 	type="text/css">
 
 <!--headerscript-->
@@ -210,7 +210,7 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img src="../static/imag/logo2.png" alt="" /></a>
+					<a href=""><img th:src="@{/imag/logo2.png}" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
@@ -231,7 +231,7 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="../static/imag/logo2.png" alt="" /></a>
+				<a href="#"><img th:src="@{/imag/logo2.png}" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
@@ -255,7 +255,7 @@
 				<div class="login-wrapper-title">
 					<h3 class="lo-tittle">ログイン</h3>
 				</div>
-				<form class="login-form" th:action="@{authenticate}" method="post">
+				<form class="login-form" th:action="@{/spotloginProcessing}" method="post">
 					<div class="form-group">
 						<p>メールアドレス</p>
 						<input type="text" name="username" required>
@@ -265,8 +265,7 @@
 						<input type="password" name="password" required>
 					</div>
 					<div class="btn-box">
-						<button type="submit" class="btn btn-submit"
-							onclick="location.href='manager_page.html'">ログイン</button>
+						<button type="submit" class="btn btn-submit">ログイン</button>
 					</div>
 				</form>
 			</div>
@@ -298,7 +297,7 @@
 	<!--footer_メニューの中身-->
 	<div class="f_open">
 		<div class="f_logo">
-			<img src="../imag/logo22.png" alt="" />
+			<img th:src="@{/imag/logo22.png}" alt="" />
 		</div>
 
 		<div class="category_list">
