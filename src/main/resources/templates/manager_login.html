@@ -255,7 +255,7 @@
 				<div class="login-wrapper-title">
 					<h3 class="lo-tittle">ログイン</h3>
 				</div>
-				<form class="login-form" th:action="@{authenticate}" method="post">
+				<form class="login-form" th:action="@{/spotloginProcessing}" method="post">
 					<div class="form-group">
 						<p>メールアドレス</p>
 						<input type="text" name="username" required>
@@ -265,8 +265,7 @@
 						<input type="password" name="password" required>
 					</div>
 					<div class="btn-box">
-						<button type="submit" class="btn btn-submit"
-							onclick="location.href='manager_page.html'">ログイン</button>
+						<button type="submit" class="btn btn-submit">ログイン</button>
 					</div>
 				</form>
 			</div>
