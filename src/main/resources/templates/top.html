@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="images/favicon.png">
-<title>ぽちきふ</title>
+<link rel="icon" href="../static/imag/logo3png.png">
+<title>ORITABI</title>
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/slick-1.8.1/slick/slick.js}"></script>
 
 <!--リセットユイ-->
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
 <!--headercss-->
-<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
-<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../static/css/header.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
 <!--css-->
-<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
-<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/top.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slick-them.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slickds.css}" rel="stylesheet" type="text/css">
 
 <!--font-awesome-->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,8 +49,8 @@
 <script type="text/javascript" src="js/scroll.js"></script>
 	
 <!--slider-->
-<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
-<link href="../static/css/slick-theme.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slick-theme.css}" rel="stylesheet" type="text/css">
 
 <!--headerscript-->
 <script type="text/javascript">
@@ -165,19 +171,121 @@ $(function($){
   })(document);
 </script>
 
+
+
+	<script>
+		$(document).ready(function(){
+		  $('.slider-box').slick({
+			  dots:true,
+			  autoplay:true,
+		  });
+		});</script>
+			<script>
+		$(document).ready(function(){
+		  $('.slider-boxds').slick({
+			  dots:true,
+			  autoplay:true,
+		  });
+		});</script>
+		
+			
+		<script>
+		(function($){
+		
+		$(function(){
+		   $(window).scroll(function(){
+			  var scr = $(window).scrollTop();
+			  if(scr > 500){
+				 $('#logo').addClass('mini');
+			  }else{
+				 $('#logo').removeClass('mini');
+			  }
+		   })
+		})
+		})(jQuery);
+			   </script>
+
+			   <!-- アニメーション -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			$(function(){
+ 
+ $(window).on('load scroll', function(){
+   //現時点のスクロールの高さ取得
+   var scrollPosition = $(window).scrollTop();
+   //ウィンドウの高さ取得
+   var windowHeight = $(window).height();
+
+   $('.oritabi-contentbox').each(function(){
+	 //要素の位置（高さ）を取得
+	 var elemPosition = $(this).offset().top;
+	 //スクロールの高さが要素の位置を超えたら以下のスタイルを適用
+	 if(elemPosition < scrollPosition + windowHeight){
+	   $(this).css({
+		 opacity: 1,
+		 transform: 'translateY(0)'
+	   });
+	 }
+   });
+ });
+
+});
+			</script>
+
+			<script>
+				$(function(){
+	 
+	 $(window).on('load scroll', function(){
+	   //現時点のスクロールの高さ取得
+	   var scrollPosition = $(window).scrollTop();
+	   //ウィンドウの高さ取得
+	   var windowHeight = $(window).height();
+	
+	   $('.kinnki-box').each(function(){
+		 //要素の位置（高さ）を取得
+		 var elemPosition = $(this).offset().top;
+		 //スクロールの高さが要素の位置を超えたら以下のスタイルを適用
+		 if(elemPosition < scrollPosition + windowHeight){
+		   $(this).css({
+			 opacity: 1,
+			 transform: 'translateY(0)'
+		   });
+		 }
+	   });
+	 });
+	
+	});
+				</script>
+				<script>
+					$(function(){
+$('a[href^=#]').click(function() {
+var speed = 500; // スクロール速度(ミリ秒)
+var href = $(this).attr("href");
+var target = $(href == "#" || href == "" ? 'html' : href);
+var position = target.offset().top;
+$('html').animate({scrollTop:position}, speed, 'swing');
+return false;
+});
+});
+					</script>
+				
 </head>
 
 <body>
-	
+	<div id ="top"></div>
+	<div class="start">
+		
+		<p><img th:src="@{/imag/logo2.png}" alt=""/></p>
+	</div>
 	<header id="header">
 	<div class="container">
 		<div id="h_top">
-		    <div class="h_logo"><a href=""><img src="../imag/logo22.png" alt=""/></a></div>
+		    <div class="h_logo"><a href=""><img th:src="@{/imag/logo2.png}" alt=""/></a></div>
 			<div class="h_nav">
 				<nav id="gNav">
 					<ul class="nav">
-						<li><a href="">ボタン</a></li>
-						<li><a href="">ボタン</a></li>
+						<li><a href="#top">TOP</a></li>
 						<li><a href="register.html" class="btn-sin">新規登録</a></li>
 						<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
 					</ul>
@@ -191,12 +299,11 @@ $(function($){
 	
 	<header class="mheader">
 		<div class="pc_menuFlex">
-			<div class="i-logo"><a href="#"><img src="../imag/logo22.png" alt=""/></a>
+			<div class="i-logo"><a href="#"><img th:src="@{/imag/logo2.png}" alt=""/></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
-					<li><a href="#nav01">ボタン</a></li>
-					<li><a href="#nav02">ボタン</a></li>
+					<li><a href="#top">TOP</a></li>
 					<li><a href="register.html" class="btn-sin">新規登録</a></li>
 					<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
 				</ul>
@@ -204,192 +311,87 @@ $(function($){
 		</div>
 	</header>
 
-	<!-- 日本地図 -->
-	<table id="mapTbl">
-		<tr>
-		  <td colspan="2" rowspan="34" class="leftRight"></td>
-		  <td colspan="31" class="topBottom"></td>
-		  <td class="leftRight"></td>
-		 </tr>
-		 <tr>
-		  <td colspan="21" rowspan="6"></td>
-		  <td rowspan="8" colspan="2"></td>
-		  <td class="hokka" colspan="8"  rowspan="2" title="北海道"></td>
-		  <td height="24" rowspan="3"></td>
-		 </tr>
-		 <tr>
-		 </tr>
-		 <tr>
-		  <td class="kaikyo" colspan="5"></td>
-		  <td class="kaikyo" colspan="3" style="width : 2em;"></td>
-		 </tr>
-		 <tr>
-		  <td class="tohoku" colspan="5"
-			style="height : 2.5em;" title="青森"></td>
-		  <td rowspan="30" colspan="3"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td class="tohoku" rowspan="2" colspan="2" title="秋田"></td>
-		  <td class="tohoku" rowspan="2" colspan="3" title="岩手"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="16" rowspan="6"></td>
-		  <td></td>
-		  <td colspan="4" rowspan="2"></td>
-		  <td class="tohoku" rowspan="2" colspan="2" title="山形"></td>
-		  <td class="tohoku" rowspan="2" colspan="3" title="宮城"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td class="hokuriku" rowspan="6" title="石川"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="2" title="富山"></td>
-		  <td class="kosinetu" colspan="5" title="新潟" rowspan="3"></td>
-		  <td class="tohoku" rowspan="4" colspan="4" title="福島"></td>
-		  <td rowspan="3"></td>
-		 </tr>
-		 <tr>
-		  <td class="hokuriku" colspan="2" title="富山" rowspan="3"></td>
-		 </tr>
-		 <tr>
-		 </tr>
-		 <tr>
-		  <td class="kosinetu" rowspan="8" title="長野"></td>
-		  <td class="kanto" colspan="4" rowspan="4" title="群馬"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="7"></td>
-		  <td colspan="8"></td>
-		  <td></td>
-		  <td class="cyuubu" colspan="2" rowspan="7" title="岐阜"></td>
-		  <td class="kanto" colspan="2" rowspan="3" title="栃木"></td>
-		  <td class="kanto" colspan="2" rowspan="4" title="茨城"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="7" rowspan="3"></td>
-		  <td colspan="8"></td>
-		  <td class="hokuriku" colspan="2" rowspan="2" title="福井"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td class="tyugoku" rowspan="5" title="山口"></td>
-		  <td class="tyugoku" rowspan="4" title="島根"></td>
-		  <td class="tyugoku" rowspan="4" title="鳥取"></td>
-		  <td class="kinki" colspan="3" rowspan="6" title="兵庫">兵庫</td>
-		  <td colspan="2"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td class="kinki" colspan="3" rowspan="4" title="京都">京都</td>
-		  <td class="kinki" rowspan="4" title="滋賀">滋賀</td>
-		  <td class="kanto" colspan="6" rowspan="3" title="埼玉"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="7" rowspan="2"></td>
-		  <td class="kanto" colspan="2" rowspan="5" 
-			style="padding:0px 4px;" title="千葉"></td>
-		  <td rowspan="2"></td>
-		 </tr>
-		 <tr>
-		 </tr>
-		 <tr>
-		  <td class="kyusyu" rowspan="4" title="長崎"></td>
-		  <td class="kyusyu" rowspan="3" title="佐賀"></td>
-		  <td class="kyusyu" rowspan="2" colspan="3" title="福岡"></td>
-		  <td></td>
-		  <td></td>
-		  <td class="tyugoku" rowspan="2" title="広島"></td>
-		  <td class="tyugoku" rowspan="2" title="岡山"></td>
-		  <td class="kosinetu" colspan="3" title="山梨"></td>
-		  <td class="kanto" colspan="3" title="東京"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="3"></td>
-		  <td class="kinki" colspan="2" rowspan="4" title="大阪">大<br>阪</td>
-		  <td class="kinki" rowspan="4" title="奈良">奈<br>良</td>
-		  <td class="kinki" rowspan="5" title="三重">三<br>重</td>
-		  <td class="cyuubu" colspan="2" rowspan="2" title="愛知"></td>
-		  <td class="cyuubu" colspan="3" rowspan="3" title="静岡"></td>
-		  <td class="kanto" colspan="3" rowspan="2" title="神奈川"></td>
-		  <td rowspan="2"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td rowspan="2"></td>
-		  <td class="kyusyu" rowspan="6" style="padding:0px 4px;" title="熊本"></td>
-		  <td class="kyusyu" rowspan="2" title="大分"></td>
-		  <td colspan="8" rowspan="2"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td></td>
-		  <td colspan="2" title="愛知"></td>
-		  <td colspan="2"></td>
-		  <td></td>
-		  <td></td>
-		  <td colspan="2"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="3" rowspan="9"></td>
-		  <td class="kyusyu" rowspan="4" title="宮崎"></td>
-		  <td colspan="2" rowspan="3"></td>
-		  <td class="sikoku" colspan="2" title="愛媛"></td>
-		  <td class="sikoku" colspan="3" title="香川"></td>
-		  <td rowspan="3"></td>
-		  <td rowspan="10" colspan="11"></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td class="sikoku" colspan="2" rowspan="2" title="高知"></td>
-		  <td class="sikoku" colspan="3" rowspan="2" title="徳島"></td>
-		  <td class="kinki" colspan="3" rowspan="4" title="和歌山">和歌山</td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td rowspan="8"></td>
-		  <td rowspan="9"></td>
-		 </tr>
-	   <tr>
-		  <td colspan="8" rowspan="6"></td>
-		 </tr>
-		 <tr>
-		  <td class="kyusyu" colspan="2" rowspan="4" style="height : 2.5em;" title="鹿児島"></td>
-		 </tr>
-		 <tr>
-		  <td colspan="3" rowspan="5"></td>
-		 </tr>
-		 <tr>
-		 </tr>
-		 <tr>
-		 </tr>
-		 <tr>
-		  <td colspan="2"></td>
-		 </tr>
-		 <tr>
-		  <td class="kyusyu" colspan="2" title="沖縄"></td>
-		  <td></td>
-		  <td colspan="2"></td>
-		  <td colspan="6"></td>
-		  <td></td>
-		  <td></td>
-		 </tr>
-		 <tr>
-		  <td colspan="28" class="topBottom"></td>
-		 </tr>
-	   </table>
 
+
+
+	<div class="hero-img">
+		<!-- <img src="/Users/konkou/Desktop/トップページ/images/gallery-bg.jpeg"> -->
+		<div class="hero-map"><img src="@{/imag/m.png}"></div>
+	<div class ="hero-content">
+		<p class ="hero-tittle">あなたの旅を記録に残そう</p>
+		<p class="hero-text">大切な人との時間をもっと大切にしよう<br>
+			Oritabiで最高の時間を
+
+		</p>
+		<a href="#link01"><p class="text-link">行き先を決めよう→</p></a>
+	</div>
+	<a href="#link02"><div class ="sclol"><img src ="@{/imag/scrol.png}"></div></a>
+	</div>
+	
+<div id="link02">
+	<div class ="oritabi-contentbox">
+		<div class ="kinki-img"><img src="@{/imag/siori.png}"></div>
+		   <div class ="oritabitittle">旅のしおり作成</div>
+		   <div class ="oritabi-box">
+			   <div class ="tabi-textbox">
+				   <p class ="tabi-tittle">ORITABIで思い出を残そう</p>
+				   <p>ORITABIは共有を前提とした旅のしおり。<br>
+					大切な思い出をずっと手元に残しましょう。<br>
+					ワイワイ楽しく旅を盛り上げます。</p>
+
+			   </div>
+			   <div class="tabi-imgbox"><img src="@{/imag/gallery-bg.jpeg}"></div>
+
+		   </div>
+		  
+		</div>
+	</div>
+
+	
+	  
+		<div id ="link01">
+	   <div class="kinnki-box">
+		   
+		   <div class ="kinki-tittle"><div class ="kinki-img"><img src="@{/imag/logo3png.png}"></div>向かう旅先を選択しよう</div>
+		   <div class ="kinki-region">
+			   <div class ="prefecture">
+				   
+				   <a th:href ="@{/purpose_osaka.html}"><img src="@{/imag/osaka.png}"></a>
+				   <a th:href="@{/purpose_osaka.html}"><p class ="prefecture-text">大阪</p></a>
+			</div>
+				<div class ="prefecture">
+				
+					<a href ="" class="prefecture-btn"><img src="@{/imag/hyougo.png}"></a>
+					<a href=""><p class ="prefecture-text">兵庫</p></a>
+				</div>
+				 <div class ="prefecture">
+					
+					<a href =""class="prefecture-btn"><img src="@{/imag/kyouto.png}"></a>
+					<a href=""><p class ="prefecture-text">京都</p></a>
+				</div>
+				 <div class ="prefecture">
+					
+					<a href =""class="prefecture-btn"><img src="@{/imag/nara.png}"></a>
+					<a href=""><p class ="prefecture-text">奈良</p></a>
+				</div>
+				 <div class ="prefecture">
+					
+					<a href =""class="prefecture-btn"> <img src="@{/imag/wakayama.png}"></a>
+					<a href=""><p class ="prefecture-text">和歌山</p></a>
+				</div>
+				 <div class ="prefecture">
+				
+					<a href =""class="prefecture-btn"><img src="@{/imag/siga.png}"></a>
+					<a href=""><p class ="prefecture-text">滋賀</p></a>
+				</div>
+			  
+
+
+
+		   </div>
+		   
+	   </div>
+	</div>
 
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
@@ -420,12 +422,10 @@ $(function($){
 				</div>
 				
 				<div class="category_list">
-					<dl>
-						<dd>ボタン</dd>
-					</dl>
+					
 					
 					<dl>
-						<dd>ボタン</dd>
+						<dd>TOP</dd>
 					</dl>
 					
 					<dl>

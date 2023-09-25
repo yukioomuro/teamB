@@ -65,7 +65,7 @@ main{
 
 .i-logo img{
 	width: 100%;
-	max-width: 100px;
+	max-width: 200px;
 	padding-top: 10px;
 	box-sizing: border-box;
 }
@@ -552,7 +552,7 @@ footer .copyright{
 	text-align: center;
 }
 .copyright {
-	position: absolute;
+	position: relative;
 	bottom: 0;
   }    
 /*pc版--------------------------------------*/
@@ -567,7 +567,7 @@ footer .copyright{
 	padding-top: 0px;
 }
 	.h_logo{
-    width: 150px;
+    width: 200px;
 	margin: 0 auto;
 	margin-left: 50px;
 	text-align: center;
@@ -590,7 +590,7 @@ footer .copyright{
 	font-weight: bold;
 }
 .copyright {
-	position: absolute;
+	position: relative;
 	bottom: 0;
   }    
 /* 日本地図 */

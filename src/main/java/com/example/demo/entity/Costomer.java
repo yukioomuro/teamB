@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,8 +24,14 @@ public class Costomer {
 	//メアド
 	private String mail;
 
+	@Transient
+	private String mailView;
+
 	//パスワード
 	private String pass;
+
+	@Transient
+	private String passView;
 
 	//メモ
 	private String memo;

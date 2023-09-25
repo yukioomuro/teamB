@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="icon" href="../static/imag/logo3png.png">
 	<link th:href="@{/css/style_oomuro.css}" rel="stylesheet" type="text/css">
 	<title>観光スポット一覧</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -197,8 +198,9 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-							<li><a href="register.html" class="btn-sin">新規登録</a></li>
-							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
+							
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -217,8 +219,8 @@
 				<ul>
 					<li><a href="#nav01">ボタン</a></li>
 					<li><a href="#nav02">ボタン</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
@@ -234,7 +236,7 @@
 		<h2 class="ooosaka">大阪エリア</h2>
 		<div class="oosaka">
 
-			<form action ="./mapcopy.html">
+			<form th:action ="@{/oritabi/map}">
 				<div class="tabds">
 
 					<!--tabの設定-->
@@ -252,12 +254,12 @@
 
 							<h3 class="titleds">食べる</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot:${spottaberu}">
+							<div th:each="spot : ${spottaberu}">
+								<ul class="ul-class">
 									<li class="spot_taberu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_taberu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -270,8 +272,9 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
-								</div>
-							</ul>
+								</ul>
+							</div>
+							
 						</div>
 
 
@@ -280,12 +283,12 @@
 
 							<h3 class="titleds">観る</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot:${spottour}">
+							<div th:each="spot:${spottour}">
+								<ul class="ul-class">
 									<li class="spot_tour">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_tour">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -298,10 +301,10 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
+								</ul>
+							</div>
 
-								</div>
-
-							</ul>
+							
 
 							<!--  					<ul class="ul-class">
 							<div th:each="spot:${spottour}">
@@ -374,12 +377,13 @@
 						<div class="tabcontent" id="tabcontent3">
 							<h3 class="titleds">遊ぶ</h3>
 
-							<ul class="ul-class">
-								<div th:each="spot:${spotasobu}">
+							<div th:each="spot:${spotasobu}">
+								<ul class="ul-class">
+								
 									<li class="spot_asobu">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
 											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” value="${spot.spotId}">[[${spot.spotName}]]
+												<input type="checkbox" id="checkbox" name=“sample”  th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
 											</p>
 											<div class="img_asobu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
@@ -392,8 +396,9 @@
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
 									</li>
-								</div>
-							</ul>
+								</ul>
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -470,8 +475,7 @@
 				<div class="pickup">
 					<a target="_blank" rel="noopener noreferrer">
 						<div class="button-box">
-							<input type="submit" id="submit" value="pickup" onclick="location.href='mapcopy.html'"  >
-
+							<input type="submit" id="submit" value="pickup" th:href="@{/oritabi/map}"  >
 						</div>
 					</a>
 				</div>
@@ -481,17 +485,7 @@
 
 		 </div>
 
-		 
-
-		 <script type="text/javascript">
-			$(function(){
-			  $("#checkbox").on("click", function(){
-				var v = $(this).val();
-				sessionStorage.setItem('key', v);
-			  });
-			})
-			</script>
-
+	</div>	 
 
 
 		 <!--footer-------------------------------------------->
@@ -521,7 +515,7 @@
 		<!--footer_メニューの中身-->
 		<div class="f_open">
 			<div class="f_logo">
-				<img src="../imag/logo22.png" alt="" />
+				<img th:src="@{/imag/logo22.png}" alt="" />
 			</div>
 
 			<div class="category_list">
@@ -535,7 +529,7 @@
 
 				<dl>
 					<dd>
-						<a href="register.html">
+						<a th:href="@{/oritabi/register}" >
 							<div class="btn-sin">新規登録</div>
 						</a>
 					</dd>
@@ -543,7 +537,7 @@
 
 				<dl>
 					<dd>
-						<a href="manager_login.html">
+						<a th:href="@{/oritabi/manager_login}">
 							<div class="btn-log">ログイン</div>
 						</a>
 					</dd>

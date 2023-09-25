@@ -15,44 +15,41 @@
 //import com.example.demo.service.userdetails.UserDetailsImpl;
 //
 //@Service
-//
 //public class UserDetailServiceImpl implements UserDetailsService {
-//@Autowired
-//CostomerRepository loginUserRepository;
-////@Autowired
-////RoleRepository roleRepository;
+//	@Autowired
+//	CostomerRepository loginUserRepository;
+//	//@Autowired
+//	//RoleRepository roleRepository;
 //
+//	@Override
+//	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+//		// login_user テーブルからusername に対応するデータを取得する
+//		Iterable<Costomer> loginUserIte = loginUserRepository.findAll();
+//		Costomer r = null;
 //
-//@Override
-//public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-//// login_user テーブルからusername に対応するデータを取得する
-//Iterable<Costomer> loginUserIte = loginUserRepository.findAll();
-//Costomer r=null;
+//		for (Costomer s : loginUserIte) {
+//			if (s.getMail().equals(mail)) {
+//				r = s;
+//				break;
+//			}
 //
+//		}
 //
-//for(Costomer s:loginUserIte) {
-//	if(s.getMail().equals(mail)){
-//		r=s;
-//		break;
+//		Collection<GrantedAuthority> authorities = new ArrayList<>();
+//		//if ( loginUserOpt.isPresent()) {
+//		//}
+//		// ログインユーザーが存在するとき
+//		// 権限データを取得
+//		//Iterable<Role> roleIte = roleRepository.findAll();
+//		//Integer roleId = loginUserOpt.get().getRoleId();
+//		//for (Role role : roleIte) {
+//		//if (roleId == role.getId()) {
+//
+//		// ユーザーの権限に対応する権限名を設定する
+//		// "ROLE_◯◯ の名前で設定するとhasRole の権限になる
+//		// " をつけない場合はhasAuthority の権限になる
+//
+//		//authorities.add(new SimpleGrantedAuthority( SimpleGrantedAuthority("ROLE_" + role.
+//		return new UserDetailsImpl(r, authorities);
 //	}
-//		
-//	}
-//
-//Collection<GrantedAuthority> authorities = new ArrayList<>();
-////if ( loginUserOpt.isPresent()) {
-////}
-//// ログインユーザーが存在するとき
-//// 権限データを取得
-////Iterable<Role> roleIte = roleRepository.findAll();
-////Integer roleId = loginUserOpt.get().getRoleId();
-////for (Role role : roleIte) {
-////if (roleId == role.getId()) {
-//	
-//// ユーザーの権限に対応する権限名を設定する
-//// "ROLE_◯◯ の名前で設定するとhasRole の権限になる
-//// " をつけない場合はhasAuthority の権限になる
-//	
-////authorities.add(new SimpleGrantedAuthority( SimpleGrantedAuthority("ROLE_" + role.
-//return new UserDetailsImpl(r, authorities);
-//}
 //}

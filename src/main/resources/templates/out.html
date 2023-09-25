@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http:/www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ログアウト</title>
+<title>Insert title here</title>
+
+<link rel="icon" href="../static/imag/logo3png.png">
 <link rel="stylesheet" href="../static/css/out.css">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -178,14 +180,13 @@ $(function($){
     <header id="header">
         <div class="container">
             <div id="h_top">
-                <div class="h_logo"><a href=""><img src="../imag/logo22.png" alt=""/></a></div>
+                <div class="h_logo"><a href=""><img src="../static/imag/logo2.png" alt=""/></a></div>
                 <div class="h_nav">
                     <nav id="gNav">
                         <ul class="nav">
-                            <li><a href="">ボタン</a></li>
-                            <li><a href="">ボタン</a></li>
-                            <li><a href="src/main/resources/templates/register.html" class="btn-sin">新規登録</a></li>
-                            <li><a href="src/main/resources/templates/manager_login.html"class= "btn-log">ログイン</a></li>
+                            <li><a href="#top">TOP</a></li>
+                            <li><a href="register.html" class="btn-sin">新規登録</a></li>
+                            <li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
                         </ul>
                         <div class="mask"></div>
                     </nav>
@@ -197,14 +198,13 @@ $(function($){
         
         <header class="mheader">
             <div class="pc_menuFlex">
-                <div class="i-logo"><a href="#"><img src="../imag/logo22.png" alt=""/></a>
+                <div class="i-logo"><a href="#"><img src="../static/imag/logo2.png" alt=""/></a>
                 </div>
                 <div class="pc_menu">
                     <ul>
-                        <li><a href="#nav01">ボタン</a></li>
-                        <li><a href="#nav02">ボタン</a></li>
-                        <li><a href="src/main/resources/templates/register.html" class="btn-sin">新規登録</a></li>
-                        <li><a href="src/main/resources/templates/manager_login.html"class= "btn-log">ログイン</a></li>
+                        <li><a href="#top">TOP</a></li>
+                        <li><a href="register.html" class="btn-sin">新規登録</a></li>
+                        <li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
                     </ul>
                 </div> 
             </div>
@@ -263,11 +263,11 @@ $(function($){
                 </dl>
                 
                 <dl>
-                    <dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+                    <dd><a th:href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a></dd>
                 </dl>
                 
                 <dl>
-                    <dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+                    <dd><a th:href="@{/oritabi/manager_login}" ><div class= "btn-log">ログイン</div></a></dd>
                 </dl>
             
         </div>

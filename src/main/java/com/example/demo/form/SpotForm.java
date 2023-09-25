@@ -22,7 +22,7 @@ public class SpotForm {
 	@NotBlank
 	private String spotName;
 	//チェックBOX 確認用
-	private String []spotNames; 
+	private String spotNames;
 
 	//観光地住所
 	@NotBlank
@@ -32,7 +32,6 @@ public class SpotForm {
 	private String web;
 
 	//電話番号
-	@NotBlank
 	private String tel;
 
 	//おすすめポイント
