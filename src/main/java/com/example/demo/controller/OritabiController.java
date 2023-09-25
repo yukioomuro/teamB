@@ -18,14 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Costomer;
+import com.example.demo.entity.History;
 import com.example.demo.entity.Spot;
+import com.example.demo.form.CheckForm;
 import com.example.demo.form.CostomerForm;
 import com.example.demo.form.HistoryForm;
 import com.example.demo.form.PurposeForm;
 import com.example.demo.form.SpotForm;
 import com.example.demo.service.OritabiService;
 
-//Oritabiのコントローラー
+//Oritabiのコントローラー-----☆
 @Controller
 @RequestMapping("/oritabi")
 public class OritabiController {
@@ -37,7 +39,7 @@ public class OritabiController {
 	//「form-backing bean」の初期化
 	@ModelAttribute
 	public SpotForm setUpSpotForm() {
-		System.out.println("setupSpotForm");
+		//		System.out.println("setupSpotForm");
 		SpotForm form = new SpotForm();
 		return form;
 	}
@@ -50,6 +52,7 @@ public class OritabiController {
 
 	@ModelAttribute
 	public CostomerForm setUpCostomerForm() {
+		//		System.out.println("setupCostomerForm");
 		CostomerForm form = new CostomerForm();
 		return form;
 	}
@@ -59,6 +62,77 @@ public class OritabiController {
 		HistoryForm form = new HistoryForm();
 		return form;
 	}
+
+	@ModelAttribute
+	public CheckForm setUpCheckForm() {
+		CheckForm form = new CheckForm();
+		return form;
+	}
+
+	/* ▼▼▼▼▼▼▼▼▼▼ HTML 表示用メソッド ▼▼▼▼▼▼▼▼▼▼ */
+
+	@GetMapping("/manager_login")
+	public String showLogin() {
+		return "manager_login";
+	}
+
+	//	@GetMapping("/manager_page")
+	//	public String showManagerPage() {
+	//		return "manager_page";
+	//	}
+
+	//検証用spot
+	//		@GetMapping("/showspot")
+	//		public String showSpot() {
+	//			return "/spotSelect";
+	//		}
+
+	@GetMapping("/myPage")
+	public String showMyPage(HistoryForm historyForm) {
+		History history = new History();
+		history.setTouristId_1(historyForm.getTouristId_1());
+		history.setTouristId_2(historyForm.getTouristId_2());
+		history.setTouristId_3(historyForm.getTouristId_3());
+		history.setTouristId_4(historyForm.getTouristId_4());
+		history.setTouristId_5(historyForm.getTouristId_5());
+		history.setTime_1(historyForm.getTime_1());
+		history.setTime_2(historyForm.getTime_2());
+		history.setTime_3(historyForm.getTime_3());
+		history.setTime_4(historyForm.getTime_4());
+		history.setTotalDuration(historyForm.getTotalDuration());
+		
+		service.insertHistory(history);	
+		return "myPage";
+	}
+
+	@GetMapping("/out")
+	public String showOut() {
+		return "out";
+	}
+
+	@GetMapping("/purpose_osaka")
+	public String showPurpose() {
+		return "purpose_osaka";
+	}
+
+	@GetMapping("/register")
+	public String showRegister() {
+		return "register";
+	}
+
+	@PostMapping("/spot")
+	public String showSpot(Model model) {
+		spotView(model);
+		System.out.println("spot入" + model.getAttribute("spottour"));
+		return "spot";
+	}
+
+	@GetMapping("/top")
+	public String showTop() {
+		return "top";
+	}
+
+	/* △△△△△△△△△△ HTML 表示用メソッド △△△△△△△△△△ */
 
 	//管理者ページ↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
@@ -161,7 +235,7 @@ public class OritabiController {
 	}
 
 	/*----- 【以下はFormとDomainObjectの詰めなおし】----- */
-	/* Form yから entity へ詰めなおし */
+	/* Form から entity へ詰めなおし */
 	private Spot makeSpot(SpotForm spotForm) {
 		Spot spot = new Spot();
 		spot.setSpotId(spotForm.getSpotId());
@@ -198,54 +272,17 @@ public class OritabiController {
 		System.out.println(spotId);
 		//タスクを１件削除してリダイレクト
 		service.deleteSpotById(Integer.parseInt(spotId));
-		redirectAttributes.addFlashAttribute("spotDelComp", "削除がしました");
+		redirectAttributes.addFlashAttribute("spotDelComp", "削除が完了しました");
 		return "redirect:/oritabi/manager_page";
 	}
 	/* △△△△△△△△△△ 観光地Spot削除 △△△△△△△△△△ */
 	//管理者ページ　終了
 
-	/***************************************************************************************************/
-
-	//Registerページ↓
-	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
-
-	//新規登録画面の操作
-	@PostMapping("/register")
-	public String insertCostomer(@Validated CostomerForm costomerForm,
-			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-
-		//Form から entity へ詰め替え
-		Costomer costomer = new Costomer();
-		costomer.setName(costomerForm.getName());
-		costomer.setMail(costomerForm.getMail());
-		costomer.setPass(costomerForm.getPass());
-		costomer.setMemo(costomerForm.getMemo());
-
-		//入力チェック
-		if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
-				costomerForm.getPass().equals(costomerForm.getPassView())) {
-
-			if (!bindingResult.hasErrors()) {
-				service.insertCostomer(costomer);
-				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
-				return "map";
-
-			} else {
-				//エラーがある場合は、もう一度新規登録画面へ飛びます。
-				return "register";
-			}
-		} else {
-			model.addAttribute("miss", "確認用メールアドレスか、確認用パスワードが違います。");
-			return "register";
-		}
-	}
-
-	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
-
+	//Spot ページで表示↓
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot表示 ▼▼▼▼▼▼▼▼▼▼ */
 
-	@GetMapping("/spot")
-	public String spotview(Model model) {
+	@GetMapping("/spotView")
+	public String spotView(Model model) {
 		Iterable<Spot> spotall = service.selectAllSpot();
 
 		List<Spot> spottaberu = new ArrayList<>();
@@ -278,24 +315,106 @@ public class OritabiController {
 	}
 	/* △△△△△△△△△△ 観光地Spot表示 △△△△△△△△△△ */
 
-/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作 ▼▼▼▼▼▼▼▼▼▼ */
+	/* ▼▼▼▼▼▼▼▼▼▼ 観光地SpotチェックBOX 操作☆ ▼▼▼▼▼▼▼▼▼▼ */
 
-@PostMapping("/spotList")
-public String checkBoxview(Model model) {
+	@GetMapping("/map")
+	public String checkBoxview(CheckForm checkform, Model model) {
 
-List<Spot> checkBoxSpot= new ArrayList<>();
+		//		List<Spot> checkBoxSpot = new ArrayList<>();
+		//
+		//		for (Spot s : checkBoxSpot) {
+		//			checkBoxSpot.add(s);
+		//		}
 
-for(Spot s :checkBoxSpot) {
-	checkBoxSpot.add(s);
+		model.addAttribute("spotcheck", checkform.getCheckBoxSpot());
+
+		return "map";
+	}
+
+	/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
+	//Spot ページで表示↑
+
+	/***************************************************************************************************/
+
+	//Registerページ↓
+	/* ▼▼▼▼▼▼▼▼▼▼ 新規会員登録 ▼▼▼▼▼▼▼▼▼▼ */
+
+	//新規登録画面の操作
+	@PostMapping("/spotSelect")
+	public String insertCostomer(@Validated CostomerForm costomerForm,
+			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+
+		System.out.println("+++++++++++++++++++++++");
+		//Form から entity へ詰め替え
+		Costomer costomer = new Costomer();
+		costomer.setName(costomerForm.getName());
+		costomer.setMail(costomerForm.getMail());
+		costomer.setMailView(costomerForm.getMailView());
+		costomer.setPass(costomerForm.getPass());
+		costomer.setPassView(costomerForm.getPassView());
+
+		//入力チェック
+		if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
+				costomerForm.getPass().equals(costomerForm.getPassView())) {
+
+			System.out.println("\\\\\\\\\\");
+			if (!bindingResult.hasErrors()) {
+				System.out.println("Form : " + costomerForm);
+				System.out.println("entity : " + costomer);
+				service.insertCostomer(costomer);
+				redirectAttributes.addFlashAttribute("complete", "登録が完了しました");
+				showCostomerList(costomerForm, model);
+				spotView(model);
+				return "spot";
+
+			} else {
+				//エラーがある場合は、もう一度新規登録画面へ飛びます。
+				System.out.println(bindingResult.getAllErrors());
+				return "register";
+			}
+		} else {
+			System.out.println("ERAAA");
+			model.addAttribute("miss", "確認用メールアドレスか、確認用パスワードが違います。");
+			return "register";
+		}
+	}
+
+	@PostMapping("/costomerList")
+	public String showCostomerList(CostomerForm costomerForm, Model model) {
+		System.out.println("-------- showCostomerList に入りました -------");
+		//新規登録設定
+		costomerForm.setNewCostomer(true);
+		//新規登録情報の一覧を取得
+		Iterable<Costomer> list = service.selectAllCostomer();
+		for (Costomer i : list) {
+			System.out.println(i.getName());
+		}
+		//表示用Modelへ格納
+		model.addAttribute("costomerList", list);
+		//model.addAttribute("title", "登録用フォーム");
+		return "spot";
+	}
+
+	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */
+
+	/* ▼▼▼▼▼▼▼▼▼▼ MyPage に使うメソッド ▼▼▼▼▼▼▼▼▼▼ */
+
+	@GetMapping("/costomer/{id}")
+	public String getCostomerInf(@PathVariable Integer id, Model model) {
+		Costomer costomer = service.selectOneByIdCostomer(id).orElse(null);
+
+		if (costomer != null) {
+			model.addAttribute("costomer", costomer);
+		}
+
+		return "myPage";
+	}
+
+	//	public String showTop(Model model, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+	//		// ログインしたユーザー情報を画面に表示するために記述。
+	//		model.addAttribute("loginUsername", userPrincipal.getUsername());
+	//
+	//		return "myPage";
+	//	}
+	/* △△△△△△△△△△ MyPage に使うメソッド △△△△△△△△△△ */
 }
-
-	model.addAttribute("spotcheck",checkBoxSpot);
-
-return "mapcopy";
-}
-
-	
-
-/* △△△△△△△△△△ 観光地SpotチェックBOX 操作 △△△△△△△△△△ */
-}
-

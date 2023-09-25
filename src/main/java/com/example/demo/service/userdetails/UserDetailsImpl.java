@@ -8,19 +8,18 @@
 //import com.example.demo.entity.Costomer;
 //
 //public class UserDetailsImpl implements UserDetails {
-//	
+//
 //	private final Costomer loginUser;
-//	
+//
 //	// 権限コレクション
 //	private Collection<GrantedAuthority> authorities;
+//
 //	// コンストラクタ
 //	public UserDetailsImpl(Costomer loginUser, Collection<GrantedAuthority> authorities) {
-//	this.loginUser = loginUser;
-//	this.authorities = authorities;
-//	
+//		this.loginUser = loginUser;
+//		this.authorities = authorities;
+//
 //	}
-//	
-//	
 //
 //	@Override
 //	public Collection<? extends GrantedAuthority> getAuthorities() {

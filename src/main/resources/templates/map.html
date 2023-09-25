@@ -209,8 +209,8 @@
 						<ul class="nav">
 							<li><a href="">ボタン</a></li>
 							<li><a href="">ボタン</a></li>
-							<li><a href="register.html" class="btn-sin">新規登録</a></li>
-							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -229,8 +229,8 @@
 				<ul>
 					<li><a href="#nav01">ボタン</a></li>
 					<li><a href="#nav02">ボタン</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
@@ -264,35 +264,38 @@
 	<!-- 表示用の要素2（初めは非表示） -->
 	<div id="displayElement2" style="display: none;">
 
+
+
+
+
+
+
 		<!-- mapの表示 -->
 		<div id="map2" style="height: 300px;"></div>
 		<div class="suke">
 			<h3>スケジュール</h3>
 			<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
-			<div id="address_1"></div>
-			<div id="leg1"></div>
-			<div id="address_2"></div>
-			<div id="leg2"></div>
-			<div id="address_3"></div>
-			<div id="leg3"></div>
-			<div id="address_4"></div>
-			<div id="leg4"></div>
-			<div id="address_5"></div>
-			<div id="leg5"></div>
-			<div id="address_6"></div>
-			<div id="leg6"></div>
-			<div id="address_7"></div>
-			<div id="leg7"></div>
-			<div id="address_8"></div>
-			<div id="leg8"></div>
-			<div id="address_9"></div>
-			<div id="leg9"></div>
-			<div id="address_10"></div>
+			<div id="address_1" name="touristId_1"></div>
+			<div id="leg1"name="time_1"></div>
+			<div id="address_2" name="touristId_2"></div>
+			<div id="leg2"name="time_2"></div>
+			<div id="address_3"name="touristId_3"></div>
+			<div id="leg3"name="time_3"></div>
+			<div id="address_4"name="touristId_4"></div>
+			<div id="leg4"name="time_4"></div>
+			<div id="address_5"name="touristId_5"></div>
+			<!-- 所要総時間の要素 -->
+			<div id="totalDuration"name="totalDuration"></div>
 		</div>
 	</div>
+	<!-- チェックボックス表示 -->
+	<!--<div th:each="check:${spotcheck}">
+	<p >[[${check}]]</p>-->
+</div>
+<!-- ↑チェックボックス表示 -->
 
-	<script>
+	<script th:inline="javascript">
 		let map1; // 地図1用の変数
 		let map2; // 地図2用の変数
 
@@ -343,32 +346,40 @@
 		<!--map1の処理-->
             let selectedAddresses = [];
             let clickedAddresses = []; // クリックされた住所を記録するための配列
-            
+             
+           
+
+            //選択された住所を配列に入れる
+  		//const locations =  /*[[${spotcheck}]]*/ [];
+  		
 		function setupMap1() {
-            const locations = [
-            	//データベースから住所を取ってくる
-            	{ name: '大阪駅' },
-                { name: '京セラドーム' },
-                { name: '心斎橋駅' },
-                { name: '海遊館' }
+			
+			//検証用住所
+		 const locations = [
+            	'大阪駅' ,
+                '京セラドーム' ,
+                '心斎橋駅' ,
+                '海遊館' 
             ];
-
-
+		
+		
             locations.forEach(function(address) {
                 const geocoder = new google.maps.Geocoder();
                 const infoWindow = new google.maps.InfoWindow(); // infoWindow の宣言
+                
+                
 
-                geocoder.geocode({ 'address': address.name }, function(results, status) {
+                geocoder.geocode({ 'address': address }, function(results, status) {
                     if (status === 'OK') {
                         const marker = new google.maps.Marker({
                             map: map1,
                             position: results[0].geometry.location,
-                            title: address.name
+                            title: address
                         });
 
                         // ホバー処理
                         marker.addListener('mouseover', function() {
-                            infoWindow.setContent(address.name);
+                            infoWindow.setContent(address);
                             infoWindow.open(map, marker);
                         });
 
@@ -378,13 +389,13 @@
 
                         marker.addListener('click', function() {
                             // クリックされた住所がすでにclickedAddressesに含まれていない場合に処理を実行
-                            if (!clickedAddresses.includes(address.name)) {
+                            if (!clickedAddresses.includes(address)) {
                                 // 選択された住所を配列に追加
-                                selectedAddresses.push(address.name);
+                                selectedAddresses.push(address);
                                 document.getElementById('addressDisplay').textContent = address.name;
 
                                 // クリックされた住所をclickedAddressesに追加
-                                clickedAddresses.push(address.name);
+                                clickedAddresses.push(address);
 
                                 // リストとして選択された住所を表示
                                 updateAddressList();
@@ -392,7 +403,7 @@
                         });
 
                     } else {
-                        alert('ジオコーディングに失敗しました: ' + status);
+                        alert('ジオコーディングに失敗しました: '+ status);
                     }
                 });
             });
@@ -424,6 +435,10 @@
                     	  if (addressElement) {
                     	    addressElement.textContent = selectedAddresses[x]; // 選択されたアドレスを設定
                     	  }
+                    	  const addressElement2 = document.getElementById('_address_' + (x + 1));
+                    	  if (addressElement2) {
+                    	    addressElement2.value = selectedAddresses[x]; // 選択されたアドレスを設定
+                    	}
                     	}
             }
         }
@@ -460,9 +475,22 @@
 		            directionsRenderer.setDirections(response);
 
 		            // 所要時間を表示
+		            let totalDurationInSeconds = 0;
 		            for (let x = 0; x < response.routes[0].legs.length; x++) {
 		                document.getElementById('leg' + (x + 1)).textContent = `　↓　${response.routes[0].legs[x].duration.text}`;
+		                document.getElementById('_leg' + (x + 1)).value = `${response.routes[0].legs[x].duration.text}`;
+		            	 
+		            	 totalDurationInSeconds += response.routes[0].legs[x].duration.value;
 		            }
+		            
+		            // 合計所要時間をHH時間MM分SS秒形式に変換
+					const hours = Math.floor(totalDurationInSeconds / 3600);
+					const minutes = Math.floor((totalDurationInSeconds % 3600) / 60);
+					const seconds = totalDurationInSeconds % 60;
+        
+        // 合計所要時間をHTMLに表示
+        document.getElementById('totalDuration').textContent = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
+        document.getElementById('_totalDuration').value = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
 		         
 		        } else {
 		            alert('ルートの取得中にエラーが発生しました: ' + status);
@@ -486,10 +514,31 @@
 	<br>
 	<div>
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<button class="btn" onclick="location.href='./purpose_osaka.html'">スポットの変更</button>
-		<br>
-		<!--各顧客観光リストテーブル③に登録されるように-->
-		<button class="btn" onclick="location.href='./mypage.html'">リスト作成</button>
+		<input class="btn">
+			<form th:method="POST" th:action="@{/oritabi/spotSelect}">
+				<button type="submit">スポットの変更</button>
+			</form>
+
+			<br>
+			<!--各顧客観光リストテーブル③に登録されるように-->
+			<form th:action="@{/oritabi/myPage}">
+				<button type="submit">リスト作成</button>
+				<!-- 住所の要素 -->
+			<!-- 所要時間の要素 -->
+			<input type="hidden" id="_address_1" th:field="${historyForm.touristId_1}">
+			<input type="hidden" id="_leg1"th:field="${historyForm.time_1}">
+			<input type="hidden" id="_address_2" th:field="${historyForm.touristId_2}">
+			<input type="hidden" id="_leg2"th:field="${historyForm.time_2}">
+			<input type="hidden" id="_address_3"th:field="${historyForm.touristId_3}">
+			<input type="hidden" id="_leg3"th:field="${historyForm.time_3}">
+			<input type="hidden" id="_address_4"th:field="${historyForm.touristId_4}">
+			<input type="hidden" id="_leg4"th:field="${historyForm.time_4}">
+			<input type="hidden" id="_address_5"th:field="${historyForm.touristId_5}">
+			<!-- 所要総時間の要素 -->
+			<input type="hidden" id="_totalDuration"th:field="${historyForm.totalDuration}">
+			</form>
+
+		</div>
 	</div>
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
@@ -532,13 +581,13 @@
 
 			<dl>
 				<dd>
-					<a href="register.html"><div class="btn-sin">新規登録</div></a>
+					<a href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
 				</dd>
 			</dl>
 
 			<dl>
 				<dd>
-					<a href="manager_login.html"><div class="btn-log">ログイン</div></a>
+					<a href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
 				</dd>
 			</dl>
 

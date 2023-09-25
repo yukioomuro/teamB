@@ -1,0 +1,390 @@
+@charset "UTF-8";
+
+.start img{
+	width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+
+.slider-box{
+  display: block;
+  background-color: #232323;
+  width: 100%;
+  margin: 0 auto;
+}
+.start {
+    	background: #FAF9F3;
+
+position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9000;
+}
+.start p {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	z-index: 9999;
+	width: 300px;
+}
+.hero{
+    width: 100%;
+}
+.hero-img{
+  height: 100vh;
+  width: 100%;
+    background-image: url(../imag/gallery-bg.jpeg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    position: relative;
+    
+}
+.hero-map{
+  top: 20%;
+  left: 10%;
+  position: absolute;
+  width: 40%;
+}
+.hero-content{
+  position: absolute;
+    max-width: 600px;
+    background-color: #efffff;
+    top: 40%;
+    background:rgba(255, 255, 255, 0.856);
+    left: 60%;
+    border-radius: 10%;
+   
+    border:3px solid  #deb887;
+    padding: 50px;
+}
+.hero-tittle{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c16829;
+}
+.hero-text{
+  line-height: 30px;
+
+}
+.sclol{
+  width: 60px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.sclol img{
+  width: 100%;
+}
+.text-link{
+ margin: 20px auto;
+  width: 100%;
+  padding: 10px;
+  background-color: #c16829;
+  color: #ffffff;
+}
+
+.oritabi-contentbox{
+  width: 80%;
+  margin: 150px auto;
+}
+.oritabi-contentbox {
+  
+  opacity: 0;
+  transform: translateY(200px);
+  transition: 5s ease;
+}
+.kinnki-box{
+  opacity: 0;
+  transform: translateY(200px);
+  transition: 5s ease;
+}
+
+.oritabitittle{
+  font-size: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+.oritabi-box{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px auto;
+  align-items: center;
+
+  
+}
+.tabi-tittle{
+  
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.tabi-textbox{
+  
+  width: 60%;
+  max-width: 400px;
+}
+
+.tabi-imgbox{
+width: 40%;
+}
+.tabi-imgbox img{
+  width: 100%;
+}
+
+ 
+@media screen and (min-width: 450px) {
+ 
+  .scroll_content li {
+    width: 45%;
+  }
+ 
+}
+  /* 近畿地方ここから */
+  .kinnki-box{
+      width: 80%;
+      padding: 20px;
+      margin: 20px auto;
+      background-color: #ffffff;
+  }
+  .kinki-tittle{
+    width: 100%;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 50px;
+      text-align: center;
+  }
+  .kinki-img{
+    width: 100px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+  .kinki-img img{
+    margin: 0 auto;
+  }
+  .kinki-region{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+  }
+  .prefecture{
+    border: solid 1px #f5f5f5;
+      width: 33%;
+      
+      padding: 5%;
+      margin: 2px auto;
+  }
+  .prefecture img{
+    width: 100%;
+  }
+  .prefecture-text{
+    width: 80%;
+    background-color: #c16829;
+    color: #ffffff;
+    padding: 5px;
+    margin: 10px auto;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+  }
+  .prefecture-btn{
+    transition-duration: .4s;
+    margin: 0 auto;
+  }
+  .prefecture-btn:hover{
+    transform: scale(1.1);
+  }
+  @media screen and (max-width:800px){
+    .hero{
+      width: 100%;
+  }
+  .hero-img{
+    height: 100vh;
+      background-image: url(../imag/gallery-bg.jpeg);
+      background-repeat: no-repeat;
+      background-size:auto;
+      position: relative;
+      
+  }
+  .hero-map{
+    top: 5%;
+    left: 5%;
+    position: absolute;
+    width: 90%;
+  }
+  .hero-content{
+    position: absolute;
+     width: 90%;
+      background-color: #efffff;
+      top: 65%;
+      background:rgba(255, 255, 255, 0.856);
+      left: 50%;
+      transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      border-radius: 10%;
+     
+      border:3px solid  #deb887;
+      padding: 30px;
+  }
+  .hero-tittle{
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #c16829;
+  }
+  .hero-text{
+    line-height: 20px;
+    font-size: 13px;
+  
+  }
+  .sclol{
+    width: 60px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+  }
+  .sclol img{
+    width: 100%;
+  }
+  .text-link{
+   margin: 20px auto;
+    width: 100%;
+    padding: 10px;
+    background-color: #c16829;
+    color: #ffffff;
+  }
+  .oritabi-contentbox{
+    width: 95%;
+    margin: 100px auto;
+  }
+  .tabi-textbox{
+  
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .tabi-tittle{
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .tabi-textbox p{
+    font-size: 13px;
+  }
+  .tabi-imgbox{
+  width: 100%;
+  }
+  .oritabitittle{
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+.oritabi-box{
+  margin-top: 40px;
+  text-align: center;
+}
+.tabi-textbox p{
+  text-align: center;
+}
+  /* 近畿地方ここから */
+  .kinnki-box{
+      width: 80%;
+      padding: 20px;
+      margin: 20px auto;
+      background-color: #ffffff;
+  }
+  .kinki-tittle{
+    width: 100%;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+  }
+  .kinki-img{
+    width: 80px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  .kinki-img img{
+    margin: 0 auto;
+  }
+  .kinki-region{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+  }
+  .prefecture{
+    border:1px solid  #deb887;
+      width: 100%;
+      padding: 3%;
+      margin: 8px auto;
+  }
+  .prefecture-text{
+      text-align: center;
+      font-weight: bold;
+  }
+  .prefecture-btn{
+    transition-duration: .4s;
+    margin: 0 auto;
+  }
+  .prefecture-btn:hover{
+    transform: scale(1.1);
+  }.oritabitittle{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .oritabi-box{
+    margin-top: 40px;
+    text-align: center;
+  }
+  .tabi-textbox p{
+    text-align: center;
+  }
+    /* 近畿地方ここから */
+    .kinnki-box{
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #ffffff;
+    }
+    .kinki-tittle{
+      width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .kinki-img{
+      width: 100px;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    .kinki-img img{
+      margin: 0 auto;
+    }
+    .kinki-region{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+  
+    }
+  
+  }
+ 

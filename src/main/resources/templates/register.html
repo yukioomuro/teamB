@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<meta name="viewport" content="width=device-width, initial-scale=1">	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <head>
 <meta charset="UTF-8">
+
+<link rel="icon" href="../static/imag/logo3png.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link href="../static/css/style_oomuro.css" rel="stylesheet"
-	type="text/css">
+<link th:href="@{/css/style_oomuro.css}" rel="stylesheet" type="text/css">
 <title>新規登録</title>
-<link rel="stylesheet" href="../static/css/register.css">
+<link rel="stylesheet" th:href="@{/css/register.css}">
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
 
@@ -16,13 +18,13 @@
 	href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
 <!--headercss-->
-<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
-<link href="../static/css/font-awesome.min.css" rel="stylesheet"
+<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"
 	type="text/css">
-<link href="../static/css/header.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
 <!--css-->
-<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
-<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
 
 <!--font-awesome-->
 <link rel="stylesheet" type="text/css"
@@ -59,8 +61,8 @@
 <script type="text/javascript" src="js/scroll.js"></script>
 
 <!--slider-->
-<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
-<link href="../static/css/slick-theme.css" rel="stylesheet"
+<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slick-theme.css}" rel="stylesheet"
 	type="text/css">
 
 <!--headerscript-->
@@ -202,15 +204,14 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img src="../imag/logo22.png" alt="" /></a>
+					<a href=""><img th:src="@{/imag/logo22.png}" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							<li><a href="">ボタン</a></li>
-							<li><a href="">ボタン</a></li>
-							<li><a href="register.html" class="btn-sin">新規登録</a></li>
-							<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+							<li><a href="#top">TOP</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -223,65 +224,91 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="../imag/logo22.png" alt="" /></a>
+				<a href="#"><img th:src="@{/imag/logo22.png}" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
-					<li><a href="#nav01">ボタン</a></li>
-					<li><a href="#nav02">ボタン</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html" class="btn-log">ログイン</a></li>
+					
+					<li><a href="#top">ボタン</a></li>
+					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
 			</div>
 		</div>
 	</header>
-	
+
 	<div id="register" class="col s12">
-	<!-- ログインエラーのときはメッセージを表示 -->
-	<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
- 	<!-- ログインフォーム -->
- <!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
-	<form method="POST"
-			th:action="${costomerForm.newCostomer}? @{/teamB/insert}"
+		<!-- ログインエラーのときはメッセージを表示 -->
+		<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
+		<!-- ログインフォーム -->
+		<!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
+		<form method="POST"
+			th:action="@{/oritabi/spotSelect}"
 			th:object="${costomerForm}">
 
-	<div class="login-wrapper" id="login">
-		<div class="container">
-				<div class="login">
+			<div class="login-wrapper" id="login">
+				<div class="container">
+					<div class="login">
 						<div class="login-wrapper-title">
+<<<<<<< HEAD
 				<h3 class="lo-tittle">新規登録1</h3>
+=======
+							<h3 class="lo-tittle">新規登録</h3>
+>>>>>>> branch 'master' of https://github.com/yukioomuro/teamB.git
 						</div>
-						<form class="login-form" th:action="@{authenticate}" method="post">
-							<div class="row">
-								<div class="form-group">
-									<p>名前<span class="req">必須</span></p>
-									<input id="name" type="name" class="validate" placeholder="山田" th:field="*{name}" autocomplete="name" required>
-								</div>
+						<!-- <form class="login-form" th:action="@{authenticate}" method="post"> -->
+						<div class="row">
 							<div class="form-group">
-									<p>メールアドレス<span class="req">必須</span></p>
-									<input class="mail" type="email" name="email" placeholder="test.test.com" th:field="*{mail}" autocomplete="email" required>
+								<p>
+									名前<span class="req">必須</span>
+								</p>
+								<input id="name" type="text" class="validate" placeholder="山田"
+									th:field="*{name}" autocomplete="name" required>
 							</div>
-							<div class="form-group">
-								<p>メールアドレス確認<span class="req">必須</span></p>
-								<input class="mail" type="email" name="email" placeholder="test@test.com" th:field="*{mailView}" autocomplete="email" required>
 						</div>
-							<div class="form-group">
-									<p>パスワード<span class="req">必須</span></p>
-									<input class="password" type="password" name="password" placeholder="123456" th:field="*{pass}" autocomplete="password" required>
-							</div>
-							<div class="form-group">
-								<p>パスワード確認<span class="req">必須</span></p>
-								<input class="password" type="password" name="password" placeholder="123456" th:field="*{passView}" autocomplete="password" required>
+						<div class="form-group">
+							<p>
+								メールアドレス<span class="req">必須</span>
+							</p>
+							<input class="mail" type="email" name="email"
+								placeholder="test.test.com" th:field="*{mail}"
+								autocomplete="email" required>
 						</div>
-							<div class="btn-box"><button type="submit" class="btnds btn-submit" onclick="location.href='spot.html'">登録</button>
-				      </div>
+						<div class="form-group">
+							<p>
+								メールアドレス確認<span class="req">必須</span>
+							</p>
+							<input class="mail" type="email" name="email"
+								placeholder="test@test.com" th:field="*{mailView}"
+								autocomplete="email" required>
+						</div>
+						<div class="form-group">
+							<p>
+								パスワード<span class="req">必須</span>
+							</p>
+							<input class="password" type="password" name="password"
+								placeholder="123456" th:field="*{pass}" autocomplete="password"
+								required>
+						</div>
+						<div class="form-group">
+							<p>
+								パスワード確認<span class="req">必須</span>
+							</p>
+							<input class="password" type="password" name="password"
+								placeholder="123456" th:field="*{passView}"
+								autocomplete="password" required>
+						</div>
+						<div class="btn-box">
+							<input type="submit" class="btnds btn-submit"
+							value="登録" >
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</div>
-</div>
- <div class="f_menu">
 
-	</div>
+	<div class="f_menu"></div>
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
 
@@ -310,7 +337,7 @@
 	<!--footer_メニューの中身-->
 	<div class="f_open">
 		<div class="f_logo">
-			<img src="../imag/logo22.png" alt="" />
+			<img src="@{/imag/logo22.png}" alt="" />
 		</div>
 
 		<div class="category_list">
@@ -323,11 +350,15 @@
 			</dl>
 
 			<dl>
-				<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+				<dd>
+					<a th:href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
+				</dd>
 			</dl>
-			
+
 			<dl>
-				<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+				<dd>
+					<a th:href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
+				</dd>
 			</dl>
 
 		</div>
