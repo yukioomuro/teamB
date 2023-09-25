@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="../static/imag/logo3png.png">
+<link rel="icon" th:src="@{/imag/logo3.png}">
 <title>ORITABI</title>
 <!--headerのjs-->
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -286,8 +286,8 @@ return false;
 				<nav id="gNav">
 					<ul class="nav">
 						<li><a href="#top">TOP</a></li>
-						<li><a href="register.html" class="btn-sin">新規登録</a></li>
-						<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
+						<li><a th:href="@{/oritabi/register}"  class="btn-sin">新規登録</a></li>
+						<li><a th:href="@{/oritabi/manager_login}" class= "btn-log">ログイン</a></li>
 					</ul>
 					<div class="mask"></div>
 				</nav>
@@ -304,8 +304,8 @@ return false;
 			<div class="pc_menu">
 				<ul>
 					<li><a href="#top">TOP</a></li>
-					<li><a href="register.html" class="btn-sin">新規登録</a></li>
-					<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
+					<li><a th:href="@{/oritabi/register}"  class="btn-sin">新規登録</a></li>
+					<li><a th:href="@{/oritabi/manager_login}" class= "btn-log">ログイン</a></li>
 				</ul>
 			</div> 
 		</div>
@@ -316,7 +316,7 @@ return false;
 
 	<div class="hero-img">
 		<!-- <img src="/Users/konkou/Desktop/トップページ/images/gallery-bg.jpeg"> -->
-		<div class="hero-map"><img src="@{/imag/m.png}"></div>
+		<div class="hero-map"><img th:src="@{/imag/m.png}"></div>
 	<div class ="hero-content">
 		<p class ="hero-tittle">あなたの旅を記録に残そう</p>
 		<p class="hero-text">大切な人との時間をもっと大切にしよう<br>
@@ -325,12 +325,12 @@ return false;
 		</p>
 		<a href="#link01"><p class="text-link">行き先を決めよう→</p></a>
 	</div>
-	<a href="#link02"><div class ="sclol"><img src ="@{/imag/scrol.png}"></div></a>
+	<a href="#link02"><div class ="sclol"><img th:src ="@{/imag/scrol.png}"></div></a>
 	</div>
 	
 <div id="link02">
 	<div class ="oritabi-contentbox">
-		<div class ="kinki-img"><img src="@{/imag/siori.png}"></div>
+		<div class ="kinki-img"><img th:src="@{/imag/siori.png}"></div>
 		   <div class ="oritabitittle">旅のしおり作成</div>
 		   <div class ="oritabi-box">
 			   <div class ="tabi-textbox">
@@ -340,7 +340,7 @@ return false;
 					ワイワイ楽しく旅を盛り上げます。</p>
 
 			   </div>
-			   <div class="tabi-imgbox"><img src="@{/imag/gallery-bg.jpeg}"></div>
+			   <div class="tabi-imgbox"><img th:src="@{/imag/gallery-bg.jpeg}"></div>
 
 		   </div>
 		  
@@ -352,36 +352,36 @@ return false;
 		<div id ="link01">
 	   <div class="kinnki-box">
 		   
-		   <div class ="kinki-tittle"><div class ="kinki-img"><img src="@{/imag/logo3png.png}"></div>向かう旅先を選択しよう</div>
+		   <div class ="kinki-tittle"><div class ="kinki-img"><img th:src="@{/imag/logo3.png}"></div>向かう旅先を選択しよう</div>
 		   <div class ="kinki-region">
 			   <div class ="prefecture">
 				   
-				   <a th:href ="@{/purpose_osaka.html}"><img src="@{/imag/osaka.png}"></a>
-				   <a th:href="@{/purpose_osaka.html}"><p class ="prefecture-text">大阪</p></a>
+				   <a th:href="@{/oritabi/register}"><img th:src="@{/imag/osaka.png}"></a>
+				   <a th:href="@{/oritabi/register}"><p class ="prefecture-text">大阪</p></a>
 			</div>
 				<div class ="prefecture">
 				
-					<a href ="" class="prefecture-btn"><img src="@{/imag/hyougo.png}"></a>
+					<a href ="" class="prefecture-btn"><img th:src="@{/imag/hyougo.png}"></a>
 					<a href=""><p class ="prefecture-text">兵庫</p></a>
 				</div>
 				 <div class ="prefecture">
 					
-					<a href =""class="prefecture-btn"><img src="@{/imag/kyouto.png}"></a>
+					<a href =""class="prefecture-btn"><img th:src="@{/imag/kyouto.png}"></a>
 					<a href=""><p class ="prefecture-text">京都</p></a>
 				</div>
 				 <div class ="prefecture">
 					
-					<a href =""class="prefecture-btn"><img src="@{/imag/nara.png}"></a>
+					<a href =""class="prefecture-btn"><img th:src="@{/imag/nara.png}"></a>
 					<a href=""><p class ="prefecture-text">奈良</p></a>
 				</div>
 				 <div class ="prefecture">
 					
-					<a href =""class="prefecture-btn"> <img src="@{/imag/wakayama.png}"></a>
+					<a href =""class="prefecture-btn"> <img th:src="@{/imag/wakayama.png}"></a>
 					<a href=""><p class ="prefecture-text">和歌山</p></a>
 				</div>
 				 <div class ="prefecture">
 				
-					<a href =""class="prefecture-btn"><img src="@{/imag/siga.png}"></a>
+					<a href =""class="prefecture-btn"><img th:src="@{/imag/siga.png}"></a>
 					<a href=""><p class ="prefecture-text">滋賀</p></a>
 				</div>
 			  
@@ -418,7 +418,7 @@ return false;
 	<!--footer_メニューの中身-->
 			<div class="f_open">
 				<div class="f_logo">
-				 <img src="../imag/logo22.png" alt=""/>
+				 <img th:src="@{/imag/logo22.png}" alt=""/>
 				</div>
 				
 				<div class="category_list">
@@ -429,11 +429,11 @@ return false;
 					</dl>
 					
 					<dl>
-						<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+						<dd><a th:href ="@{/oritabi/register.html}"><div class="btn-sin">新規登録</div></a></dd>
 					</dl>
 					
 					<dl>
-						<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+						<dd><a th:href="@{/oritabi/manager_login.html}"><div class= "btn-log">ログイン</div></a></dd>
 					</dl>
 			</div>
 
