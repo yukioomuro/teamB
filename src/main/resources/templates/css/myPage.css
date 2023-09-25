@@ -1,16 +1,218 @@
 @charset "UTF-8";
 
-.button {
-	display: -webkit-flex;
-	display: flex;
+.mypage-box{
+width: 80%;
+padding: 30px;
+background-color: #deb887;
+margin: 150px auto;
 }
 
-.shusei {
-	margin-left:10px;
-	order: 1;
+
+
+.mypage-tittle{
+  font-size: 30px;
+  text-align: center;
+ 
+
+  font-weight: bold;
+}
+.mypage-text{
+  font-weight: bold;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+.mypage-inner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  width: 50%;
+  padding: 10px;
+  margin: 0 auto;
+}
+.mypace-buttun{
+  width: 40%;
+  text-align: center;
+  
+  background-color: #fff;
+  padding: 10px;
+  border: solid 1px #303030;
+}
+.time-schedule {
+  width: 80%;
+  list-style: none;
+  margin: 30px auto 0 6em;
+  padding-left: 20px;
+  border-left: 6px solid #ef761f;
+  box-sizing: border-box;
+}
+.time-schedule li{
+margin-bottom: 20px;
+}
+.time-schedule span.time {
+  width: 5em;
+  display: inline-block;
+  margin-left: -8em;
+  padding: 0 0 5px;
+  margin-top: 15px;
+  vertical-align: top;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+}
+.sch_tx{
+  font-size: 13px;
+}
+.time-schedule .sch_box {
+  display: inline-block;
+  width: 100%;
+  margin-left: 30px;
+  padding: 15px 10px 15px 10px;
+  vertical-align: middle;
+  background: #efefef;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.time-schedule span.time {
+  width: 5em;
+  display: inline-block;
+  margin-left: -8em;
+  padding: 0 0 5px;
+  margin-top: 15px;
+  vertical-align: top;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+}
+.time-schedule span.time::after {
+  content: "";
+  position: absolute;
+  right: -35px;
+  top: 0;
+  background: #ef761f;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+.mypace-buttun-a{
+  background-color: crimson;
+  color: #fff;
+  width: 40%;
+  padding: 10px;
+  text-align: center;
+
+}
+.soutime{
+width: 80%;
+text-align: right;
+margin: 0 auto;
+font-size: 20px;
+font-weight: bold;
 }
 
-.hozon {
-	margin-left:10px;
-	order: 2;
+
+
+
+
+
+.schedule-box {
+  background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #535761;
+    border-radius: 8px;
+    position:relative;
 }
+.schedule-box::before {
+    background-color: #fff;
+    color: #535761;
+    border: 2px solid #535761;
+    content: "スケジュール";
+    font-weight: bold;
+    position: absolute;
+    padding: 0 20px;
+    left: 42%;
+    top: -10px;
+}
+  @media screen and (max-width:800px){
+
+    .mypage-box{
+      width: 90%;
+      padding: 30px;
+      background-color: #deb887;
+      margin: 30px auto;
+      }
+      .mypage-text{
+        font-weight: bold;
+        width: 80%;
+        margin: 0 auto;
+        font-size: 15px;
+      }
+    .mypage-tittle{
+      font-size: 20px;
+      text-align: center;
+      
+      font-weight: bold;
+    }
+    .time-schedule {
+      width: 90%;
+      list-style: none;
+      margin: 10px auto 0 6em;
+      padding-left: 5px;
+      border-left: 6px solid #a7be18;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+    .time-schedule span.time {
+  width: 5em;
+  display: inline-block;
+  margin-left: -8em;
+  padding: 0 0 5px;
+  margin-top: 15px;
+  vertical-align: top;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+}
+.time-schedule .sch_box {
+  display: inline-block;
+  width: 80%;
+  margin-left: 30px;
+  padding: 10px 5px 10px 5px;
+  vertical-align: middle;
+  background: #efefef;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+    .mypace-buttun-a{
+      background-color: crimson;
+      color: #fff;
+      font-size: 13px;
+      width: 40%;
+
+    }
+    .mypage-inner{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+      width: 100%;
+      padding: 10px;
+      margin: 0 auto;
+    }
+    .mypace-buttun{
+      width: 40%;
+      text-align: center;
+      font-size: 13px;
+      background-color: #fff;
+      padding: 10px;
+      border: solid 1px #303030;
+    }
+    .soutime{
+      width: 100%;
+      text-align: right;
+      margin: 0 auto;
+      font-size: 15px;
+      font-weight: bold;
+      }
+  } 

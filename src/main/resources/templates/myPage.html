@@ -196,21 +196,16 @@
 
 </head>
 <body>
-	<div id="top"></div>
 	<header id="header">
 		<div class="container">
 			<div id="h_top">
-				<div class="h_logo">
-					<a href=""><img src="../static/imag/logo2.png" alt="" /></a>
-				</div>
+				<div class="h_logo"><a href=""><img src="imag/logo2.png" alt=""/></a></div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							
 							<li><a href="#top">TOP</a></li>
-							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
-
+							<li><a href="register.html" class="btn-sin">新規登録</a></li>
+							<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -218,178 +213,142 @@
 			</div>
 		</div>
 	</header>
-
-
-	<header class="mheader">
-		<div class="pc_menuFlex">
-			<div class="i-logo">
-				<a href="#"><img src="../imag/logo22.png" alt="" /></a>
-			</div>
-			<div class="pc_menu">
-				<ul>
-					<li><a href="#nav01">ボタン</a></li>
-					<li><a href="#nav02">ボタン</a></li>
-					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
-				</ul>
-			</div>
-		</div>
-	</header>
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div id="headline">
-		<h1 class="headline">マイページ</h1>
-	</div>
-
-	<div id="name">
-		<!-- ログイン時に客情報をListかなんかに入れて、そこから名前を持ってきて表示？ -->
-		<table th:method="POST" th:action="@{/oritabi/costomerList}">
-			<tr>
-				<th>名前</th>
-			</tr>
-
-			<tr>
-				<!-- <td th:text="${costomer.name}"></td> -->
-			</tr>
-		</table>
-	</div>
-
-	<div class="element">
-
-		<!-- ▼▼▼ 以下テーブルはスケジュール表 ▼▼▼ -->
-		<!-- データベースから引っ張ってきたい -->
-		<table id="table" border="1">
-			<tr>
-				<th colspan="3">スケジュール</th>
-			</tr>
-			<!-- 以下の名前と場所(URL)の行は th:each="【要素格納用変数】:${【繰り返し処理するオブジェクト】}
-				を使った繰り返し処理の方が楽にできそう___教科書(p.151)___ -->
-			<tr>
-				<th>名前</th>
-				<th>場所(URL)</th>
-			</tr>
-			<tr>
-				<td>名前</td>
-				<td>場所(URL)</td>
-			</tr>
-			<tr>
-				<td>名前</td>
-				<td>場所(URL)</td>
-			</tr>
-		</table>
-		<!-- ▲▲▲ 以上テーブル ▲▲▲ -->
-
-		<div class="button">
-			<!-- ▼▼▼ 以下修正ボタン（ひとつ前のページのリンク）▼▼▼ -->
-			<h3 class="shusei">
-				<button type="button" onclick="location.href='map'">修正する</button>
-			</h3>
-			<!-- ▲▲▲以上修正ボタン ▲▲▲-->
-
-			<!-- ▼▼▼以下保存ボタン▼▼▼ -->
-			<h3 class="hozon">
-				<input type="submit" value="保存">
-			</h3>
-			<!-- ▲▲▲以上保存ボタン▲▲▲ -->
-		</div>
-
-
-		<h3>
-			<!-- リマインドボタン -->
-			<!-- いまいち作り方が思いつかない -->
-		</h3>
-
-
-		<h3>
-			<!-- メモ帳 -->
-			<label>メモ帳</label><br>
-			<textarea rows="5" cols="30"></textarea>
-		</h3>
-
-
-		<h4>
-			<!-- 下記コメントはログアウト専用の公式みたいなもの。たぶん使わない。 -->
-			<!-- <form name="Logout" method="post" action="/cgi-bin/Logout.cgi">
-			<input type="submit" value="Logout" />
-			</form> -->
-			<a href="out.html">ログアウト</a>
-		</h4>
-	</div>
-	<!--footer-------------------------------------------->
-	<div class="f_menu">
-
-
-		<!--footer_ナビゲーション-->
-		<ul>
-			<li></li>
-
-			<li></li>
-
-			<li></li>
-
-			<li></li>
-
-			<li>
-				<div class="f_menubtn">
-					<div>
-						<i class="fas fa-bars"></i>
-					</div>
+	
+		
+		<header class="mheader">
+			<div class="pc_menuFlex">
+				<div class="i-logo"><a href="#"><img src="images/logo2.png" alt=""/></a>
 				</div>
-
-			</li>
-		</ul>
+				<div class="pc_menu">
+					<ul>
+						<li><a href="#top">TOP</a></li>
+						<li><a href="register.html" class="btn-sin">新規登録</a></li>
+						<li><a href="manager_login.html"class= "btn-log">ログイン</a></li>
+					</ul>
+				</div> 
+			</div>
+		</header>
+	
+	
+	
+	
+	<div class="mypage-box">
+	<div class ="mypage-tittle">マイページ</div>
+	<!-- スケジュール -->
+	
+	<p class="mypage-text">名前：</p>
+	<div class="schedule-box">
+	<ul class="time-schedule">
+		<li>
+		  <span class="time">9:20</span>
+		  <div class="sch_box"><p class="sch_title">タイトル</p>
+			<p class="sch_tx">
+			内容テキストテキストテキスト<br>テキストテキストテキストテキスト
+			</p>
+		 </div>
+		</li>
+		<li>
+		  <span class="time">10:00</span>
+		  <div class="sch_box">
+		   <p class="sch_title">タイトル</p>
+			<p class="sch_tx">内容テキスト
+			</p>
+		  </div>
+		</li>
+		<li>
+		  <span class="time">11:00</span>
+		  <div class="sch_box"><p class="sch_title">タイトル</p>
+			<p class="sch_tx">
+			内容テキスト
+			</p>
+		  </div>
+		</li>
+		<li>
+		  <span class="time">12:00</span>
+		  <div class="sch_box"><p class="sch_title">タイトル</p>
+			<p class="sch_tx">
+			内容テキスト
+			</p>
+		  </div>
+		</li>
+	  </ul>
 	</div>
-	<!--footer_メニューの中身-->
-	<div class="f_open">
-		<div class="f_logo">
-			<img src="../imag/logo22.png" alt="" />
-		</div>
-
-		<div class="category_list">
-			<dl>
-				<dd>ボタン</dd>
-			</dl>
-
-			<dl>
-				<dd>ボタン</dd>
-			</dl>
-
-			<dl>
-				<dd>
-					<a th:href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
-				</dd>
-			</dl>
-
-			<dl>
-				<dd>
-					<a th:href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
-				</dd>
-			</dl>
-		</div>
-
+	<div class="soutime">総時間：</div>
+	<!-- ここまで -->
+	
+	
+	
+	<!-- <p class="mypage-text">名前</p>
+	<p class="mypage-text">名前場所（URL）</p>
+	<p class="mypage-text">名前場所（URL）</p>
+	<p class="mypage-text">名前場所（URL）</p> -->
+	<div class="mypage-inner"> 
+	
+	<a href="" class ="mypace-buttun">修正する</a>
+	<a href="" class ="mypace-buttun-a">保存</a>
 	</div>
-
-
-
-	<footer>
-		<p class="copyright">©︎Oritabi All Rights Reserved.</p>
-	</footer>
-	<!--sliderのjs-------------------------------------------->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<!-- <div class="mypage-text">メモ帳</div> -->
+		</div>
+	
+		<!--footenar-------------------------------------------->
+		<div class="f_menu">
+			
+			
+			<!--footer_ナビゲmyーション-->
+			<ul>
+				<li></li>
+				
+				<li></li>
+				
+				<li></li>
+			
+				<li></li>
+				
+				<li>
+						<div class="f_menubtn">
+							<div><i class="fas fa-bars"></i></div>
+						</div>
+					
+				</li>
+			</ul>
+		</div>
+		<!--footer_メニューの中身-->
+				<div class="f_open">
+					<div class="f_logo">
+					 <img src="../imag/logo22.png" alt=""/>
+					</div>
+					
+					<div class="category_list">
+						
+						
+						<dl>
+							<dd>TOP</dd>
+						</dl>
+						
+						<dl>
+							<dd><a href ="register.html"><div class="btn-sin">新規登録</div></a></dd>
+						</dl>
+						
+						<dl>
+							<dd><a href="manager_login.html"><div class= "btn-log">ログイン</div></a></dd>
+						</dl>
+				</div>
+	
+		</div>
+		
+		
+		
+		<footer>
+		<p class="copyright">
+			©︎Oritabi　All Rights Reserved.
+		</p>
+		</footer>
+		<!--sliderのjs------------------------------------------ -->
+	<script type="text/javascript"src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="js/test.js"></script>
 	<script type="text/javascript" src="js/slick.min.js"></script>
-
-
+	
 
 </body>
 </html>
