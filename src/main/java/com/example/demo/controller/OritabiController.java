@@ -54,6 +54,7 @@ public class OritabiController {
 	public CostomerForm setUpCostomerForm() {
 		//		System.out.println("setupCostomerForm");
 		CostomerForm form = new CostomerForm();
+		form.setNewCostomer(true); //データ入れたり、表示しない時はコメントアウト
 		return form;
 	}
 
@@ -141,6 +142,7 @@ public class OritabiController {
 	public String showSpotList(SpotForm spotForm, Model model) {
 		//新規登録設定
 		spotForm.setNewSpot(true);
+		
 		//新規登録情報の一覧を取得
 		Iterable<Spot> list = service.selectAllSpot();
 		for (Spot i : list) {
