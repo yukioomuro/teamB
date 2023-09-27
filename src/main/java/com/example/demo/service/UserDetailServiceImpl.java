@@ -24,16 +24,19 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
 		// login_user テーブルからusername に対応するデータを取得する
+		System.out.println("loadUserByUsername");
 		Iterable<Costomer> loginUserIte = loginUserRepository.findAll();
-		Costomer r = null;
+		Costomer r = new Costomer();
 
 		for (Costomer s : loginUserIte) {
 			if (s.getMail().equals(mail)) {
 				r = s;
+				System.out.println("if文");
 				break;
 			}
 
 		}
+		System.out.println(r);
 
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		//if ( loginUserOpt.isPresent()) {
@@ -50,6 +53,15 @@ public class UserDetailServiceImpl implements UserDetailsService {
 		// " をつけない場合はhasAuthority の権限になる
 
 		//authorities.add(new SimpleGrantedAuthority( SimpleGrantedAuthority("ROLE_" + role.
-		return new UserDetailsImpl(r, authorities);
+		UserDetailsImpl userDI = new UserDetailsImpl(r, authorities);
+		System.out.println(userDI.getUsername());
+
+		return userDI;
 	}
+
+	//	public Integer getId() {
+	//		System.out.print("ユーザーID : ");
+	//		System.out.println(userDI.getId());
+	//		return userDI.getId();
+	//	}
 }

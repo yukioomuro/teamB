@@ -32,9 +32,9 @@ public class SecurityConfig {
 				.requestMatchers("/oritabi/register").permitAll()//新規許可
 				.requestMatchers("/oritabi/top").permitAll()//TOP許可
 				.requestMatchers("/oritabi/spot").permitAll()//spot許可
-				.requestMatchers("/oritabi/spotSelect")	.permitAll()//新規登録の際に使うメソッド許可
-				.anyRequest().authenticated()				
-						
+				.requestMatchers("/oritabi/spotSelect").permitAll()//新規登録の際に使うメソッド許可
+				.anyRequest().authenticated()
+
 		//URLごとにRoleの権限を設定
 		);
 

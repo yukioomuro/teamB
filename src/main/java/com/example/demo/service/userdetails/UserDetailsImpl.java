@@ -16,12 +16,21 @@ public class UserDetailsImpl implements UserDetails {
 
 	// コンストラクタ
 	public UserDetailsImpl(Costomer loginUser, Collection<GrantedAuthority> authorities) {
+		if(loginUser != null) {
+			System.out.print("loginUser : ");
+			System.out.println(loginUser.getId());
+		}
+		
 		this.loginUser = loginUser;
 		this.authorities = authorities;
-
+		
+		System.out.print("this.loginUser : ");
+		System.out.println(this.loginUser.getId());
 	}
-	
+
 	public Integer getId() {
+		System.out.print("ログインユーザー : ");
+		System.out.println(loginUser.getId());
 		return loginUser.getId();
 	}
 
@@ -66,5 +75,5 @@ public class UserDetailsImpl implements UserDetails {
 		// TODO 自動生成されたメソッド・スタブ
 		return true;
 	}
-
+	
 }
