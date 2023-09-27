@@ -74,30 +74,29 @@ public class OritabiController {
 		return form;
 	}
 
-//	//SPOTView呼び出し
-//	@GetMapping("/spotcall")
-//	public String callSpotView(Model model, UserDetailsImpl user) {
-//		System.out.println("GETcall");
-//		System.out.println("user.getId() : " + user.getId());
-//		if (user.getId() == 1) {
-//			return "manager_page";
-//		} else {
-//			return spotView(model);
-//		}
-//	}
-	
+	//	//SPOTView呼び出し
+	//	@GetMapping("/spotcall")
+	//	public String callSpotView(Model model, UserDetailsImpl user) {
+	//		System.out.println("GETcall");
+	//		System.out.println("user.getId() : " + user.getId());
+	//		if (user.getId() == 1) {
+	//			return "manager_page";
+	//		} else {
+	//			return spotView(model);
+	//		}
+	//	}
+
 	@GetMapping("/spotcall")
 	public String loginOk(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
 		System.out.println("Test" + principal.getId());
 		if (principal.getId() == 1) {
-			return "manager_page";
+			return showSpotList(model);
 		} else {
 			return spotView(model);
 		}
 	}
-	
 
 	@PostMapping("/spotcall")
 	public String callSpotpost(Model model) {
@@ -179,9 +178,9 @@ public class OritabiController {
 	/* ▼▼▼▼▼▼▼▼▼▼ 新規観光地Spot登録 ▼▼▼▼▼▼▼▼▼▼ */
 
 	@GetMapping("/manager_page")
-	public String showSpotList(SpotForm spotForm, Model model) {
+	public String showSpotList(Model model) {
 		//新規登録設定
-		spotForm.setNewSpot(true);
+		//spotForm.setNewSpot(true);
 
 		//新規登録情報の一覧を取得
 		Iterable<Spot> list = service.selectAllSpot();
@@ -191,6 +190,10 @@ public class OritabiController {
 		//表示用Modelへ格納
 		model.addAttribute("spotList", list);
 		//model.addAttribute("title", "登録用フォーム");
+		
+		//客情報一覧の取得
+		costomerList(model);
+		
 		return "manager_page";
 	}
 
@@ -221,7 +224,7 @@ public class OritabiController {
 		} else {
 			System.out.println("insertTourist でエラーが出ています。");
 			//エラーがある場合は、もう一度新規登録画面へ飛びます。
-			return showSpotList(spotForm, model);
+			return showSpotList(model);
 		}
 	}
 
@@ -242,6 +245,7 @@ public class OritabiController {
 		}
 		//更新用のModelを作る
 		makeUpdateModel(spotForm, model);
+		costomerList(model);
 		return "manager_page";
 	}
 
@@ -439,6 +443,18 @@ public class OritabiController {
 		model.addAttribute("costomerList", list);
 		//model.addAttribute("title", "登録用フォーム");
 		return "spot";
+	}
+	
+	public void costomerList(Model model) {
+		System.out.println("-------- costomerList に入りました -------");
+		//新規登録情報の一覧を取得
+		Iterable<Costomer> list = service.selectAllCostomer();
+		for (Costomer i : list) {
+			System.out.println(i.getName());
+		}
+		//表示用Modelへ格納
+		model.addAttribute("costomerList", list);
+		//model.addAttribute("title", "登録用フォーム");
 	}
 
 	/* △△△△△△△△△△ 新規会員登録 △△△△△△△△△△ */

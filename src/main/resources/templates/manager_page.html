@@ -262,7 +262,7 @@
 
 		<div class="A">一覧 ⇓</div>
 		<div class="B">
-			<table th:unless="${#lists.isEmpty('costomerList')}">
+			<table th:unless="${#lists.isEmpty(costomerList)}">
 				<tr>
 					<th>顧客ID</th>
 					<th>名前</th>
@@ -297,8 +297,8 @@
 			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
 			th:object="${spotForm}">
 			<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
-			<label th:unless="*{newSpot}">観光地連番</label> <input
-				th:unless="*{newSpot}" type="text" th:field="*{spotId}" /><br>
+			<label th:unless="*{newSpot}" th:if="${spotForm.newSpot}">観光地連番</label> <input
+				th:unless="*{newSpot}" type="text" th:field="*{spotId}" th:if="${spotForm.newSpot}" /><br>
 			<label>観光地名</label> <input type="text" th:field="*{spotName}" /><br>
 			<label>観光地住所</label> <input type="text" th:field="*{address}"><br>
 			<label>WEBページ</label> <input type="text" th:field="*{web}"><br>
@@ -327,7 +327,7 @@
 				});
 			});
 		</script>
-		<div th:if="${spotForm.newSpot}">
+		<!-- <div th:if="${spotForm.newSpot}"> -->
 			<div class="E">一覧 ⇓</div>
 			<div class="F">
 				<table th:unless="${#lists.isEmpty(spotList)}">
