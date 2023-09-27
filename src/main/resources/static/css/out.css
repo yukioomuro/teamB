@@ -42,7 +42,8 @@ html {
 
     .wrapper-title h3{
         font-size: 25px;
-        color: #3e3e3b;
+       
+        font-weight: bold;
     }
 
     .wrapper-title p {
@@ -69,8 +70,8 @@ html {
 }
 
 .btn-submit {
-    background-color: #4c586f;
-    color: #fff;
+    background-color: #fff;
+  
   margin: 0 auto;
 }
 
@@ -80,26 +81,29 @@ html {
     padding: 80px 0 ;
 }
     .login-wrapper-title {
-        margin-left: 55px;
-        margin-bottom: 30px;
+       text-align: center;
+    }
+    .lo-tittle{
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
     }
 
     .login-wrapper-title h3{
         font-size: 20px;
-        color: #3e3e3b;
+      
     }
 
     .login-wrapper-title p {
         font-size: 13px;
-        color: #a2aab0;
+      
     }
 
 .login {
     padding: 50px 0; 
     width: 50%;
-    margin: 100px auto;
-    margin-top: 280px;
-    background-color: #ebeced;
+    margin: 150px auto;
+    background-color:#faf0e6;
 }
     .login-form {
         width: 70%;
@@ -120,7 +124,11 @@ html {
         margin-bottom: 10px;
     }
 
-  .copyright {
-      position: absolute;
-      bottom: 0;
-    }    
+    @media screen and (max-width:800px) {
+        .login {
+            padding: 50px 0; 
+            width: 95%;
+            margin: 150px auto;
+            background-color:#faf0e6;
+        }
+    }
