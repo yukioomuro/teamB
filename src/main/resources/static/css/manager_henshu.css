@@ -14,7 +14,10 @@ article,footer, header, menu, nav, section {
   text-decoration: none;
   vertical-align: baseline;
 }
-
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 
 .lo-tittle{
   font-weight: bold;
   margin: 0 auto;
@@ -163,7 +166,10 @@ html {
     }    
 
     @media screen and (max-width:800px) {
-      
+      .copyright {
+	position: absolute;
+	bottom: 0;
+  } 
         /* 観光地登録 */
     .lo-tittle{
         font-weight: bold;

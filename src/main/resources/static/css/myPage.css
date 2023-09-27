@@ -7,7 +7,10 @@ background-color: #faf0e6;
 margin: 150px auto;
 }
 
-
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 
 
 .mypage-tittle{
   font-size: 30px;
@@ -154,6 +157,10 @@ font-weight: bold;
       
       font-weight: bold;
     }
+    .copyright {
+	position: absolute;
+	bottom: 0;
+  } 
     .time-schedule {
       width: 90%;
       list-style: none;

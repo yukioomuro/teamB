@@ -20,7 +20,10 @@ body {
   border-spacing: 0;
   empty-cells: show;
 }
-
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 
 .h3s{
   color:#333333;
   font-size: 30px;
@@ -368,6 +371,10 @@ border: solid 1px #fff;
     .A-boxn{
       width: 95%;
     }
+    .copyright {
+	position: absolute;
+	bottom: 0;
+  } 
    .B{
     width: 95%;
       overflow-x: auto;
@@ -426,7 +433,7 @@ border: solid 1px #fff;
       display: none;
       background: #faf0e6;
       /* height: 100px; */
-      margin: 0 auto;
+     
     /* }  */
     .F{
       width: 95%;

@@ -13,3 +13,7 @@ button{
  transform: translateY(5px);
  border-bottom: none;
 }
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 

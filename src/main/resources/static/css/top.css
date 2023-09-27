@@ -24,6 +24,10 @@ position: fixed;
 	width: 100%;
 	z-index: 9000;
 }
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 
 .start p {
 	position: fixed;
 	left: 50%;
@@ -251,6 +255,10 @@ width: 40%;
     font-size: 13px;
   
   }
+  .copyright {
+	position: absolute;
+	bottom: 0;
+  } 
   .sclol{
     width: 60px;
     position: absolute;

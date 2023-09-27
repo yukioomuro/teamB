@@ -14,7 +14,10 @@ article,footer, header, menu, nav, section {
   text-decoration: none;
   vertical-align: baseline;
 }
-
+.copyright {
+	position: absolute;
+	bottom: 0;
+  } 
 /* 共通CSS */
 .containerds {
     max-width: 1100px;
