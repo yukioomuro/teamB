@@ -191,13 +191,13 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img th:src="@{/imag/logo22.png}" alt="" /></a>
+					<a href=""><img th:src="@{/imag/logo2.png}" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							<li><a href="">ボタン</a></li>
-							<li><a href="">ボタン</a></li>
+							
+							<li><a th:href="@{/oritabi/top}">TOP</a></li>
 							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 							
@@ -213,12 +213,12 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img th:src="@{/imag/logo22.png}" alt="" /></a>
+				<a href="#"><img th:src="@{/imag/logo2.png}" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
-					<li><a href="#nav01">ボタン</a></li>
-					<li><a href="#nav02">ボタン</a></li>
+					
+					<li><a href="@{/oritabi/top}">TOP</a></li>
 					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
 				</ul>
@@ -226,12 +226,7 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 	<div class="osaka">
 		<h2 class="ooosaka">大阪エリア</h2>
 		<div class="oosaka">
@@ -253,28 +248,37 @@
 						<div class="tabcontent" id="tabcontent1">
 
 							<h3 class="titleds">食べる</h3>
+							
+							
 
-							<div th:each="spot : ${spottaberu}">
+							<div class="spotbox" th:each="spot : ${spottaberu}">
 								<ul class="ul-class">
 									<li class="spot_taberu">
+									<div class="spot-inner">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
-											</p>
+											
 											<div class="img_taberu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
 											</div>
 										</a>
+										</div>
+										</li>
+										<li class="spot_taberu">
+										<div class="spot-inner">
+										<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
+											</p>
 										<p>[[${spot.point}]]</p>
 										<address>
 											<a th:href="${spot.web}">[[${spot.address}]]</a>
 											<br>
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
+										</div>
 									</li>
 								</ul>
 							</div>
-							
+						
 						</div>
 
 
@@ -283,23 +287,30 @@
 
 							<h3 class="titleds">観る</h3>
 
-							<div th:each="spot:${spottour}">
+							<div class="spotbox" th:each="spot:${spottour}">
 								<ul class="ul-class">
 									<li class="spot_tour">
+									<div class="spot-inner">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
-											</p>
+											
 											<div class="img_tour">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
 											</div>
 										</a>
+										</div>
+										</li>
+										<li class="spot_tour">
+										<div class="spot-inner2">
+										<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample” th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
+											</p>
 										<p>[[${spot.point}]]</p>
 										<address>
 											<a th:href="${spot.web}">[[${spot.address}]]</a>
 											<br>
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -377,24 +388,32 @@
 						<div class="tabcontent" id="tabcontent3">
 							<h3 class="titleds">遊ぶ</h3>
 
-							<div th:each="spot:${spotasobu}">
+							<div class="spot-inner" th:each="spot:${spotasobu}">
 								<ul class="ul-class">
 								
 									<li class="spot_asobu">
+									<div class="spot-inner">
 										<a target="_blank" rel="noopener noreferrer" th:href="${spot.web}">
-											<p class="ptag">
-												<input type="checkbox" id="checkbox" name=“sample”  th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
-											</p>
+											
 											<div class="img_asobu">
 												<img th:src="@{'/imag/'+${spot.imageFileName}}">
 											</div>
+											
 										</a>
+										</div>
+										</li>
+										<li class="spot_asobu">
+										<div class="spot-inner2">
+										<p class="ptag">
+												<input type="checkbox" id="checkbox" name=“sample”  th:value="${spot.spotName}" th:field="${checkForm.checkBoxSpot}">[[${spot.spotName}]]
+											</p>
 										<p>[[${spot.point}]]</p>
 										<address>
 											<a th:href="${spot.web}">[[${spot.address}]]</a>
 											<br>
 											<a th:href="'tel:' + ${spot.tel}">TEL:[[${spot.tel}]]</a>
 										</address>
+										</div>
 									</li>
 								</ul>
 							</div>

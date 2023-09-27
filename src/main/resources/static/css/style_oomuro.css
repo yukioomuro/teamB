@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
 
+.osaka{
+	margin:150px auto;
+	
+}
+
+
 .osaka_spot{
   display:flex;
   flex-direction:column;
@@ -26,7 +32,7 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 
@@ -36,7 +42,9 @@
 
 }
 .ptag{
+	font-size:20px;
   font-weight: bold;
+  margin-bottom:10px;
 }
 /* コンテンツの余白 */
 .yukari{
@@ -96,6 +104,7 @@
 .tabds{
   width: 80%;
   margin: 0 auto;
+
 }
 
 /* ▼タブにマウスポインタが載った際の装飾 */
@@ -120,11 +129,13 @@ input:checked+.tab {
 .spot_taberu,
 .spot_tour,
 .spot_asobu {
-  width: 400px;
-  height: 250px;
+  width: 350px;
+ 
   margin :0 auto;
+  margin-bottom:20px;
   object-fit: cover;
 }
+
 
 .taberu,
 .tour,
@@ -138,6 +149,7 @@ input:checked+.tab_class+.area {
 }
 
 .tabbox .tabcontent input{
+	margin-right:10px;
   display:inline;
 }
 
@@ -171,13 +183,27 @@ input:checked+.tab_class+.area {
 ul{
  
 }
+.spotbox{
+	display:flex;
+}
 .ul-class{
   width: 100%;
   display: flex;
   flex-wrap:wrap;
-  justify-content:center;
+  justify-content:space-between;
   margin:  0 auto;
+  align-items:center
 }
+.spotbox{width: 100%;
+	
+}
+.spot-inner2{
+	max-width:400px;
+}
+
+
+
+
 li{
   list-style: none;
   margin-left: 20px;
@@ -221,8 +247,13 @@ li{
   background-color: hwb(160 64% 14%);
 }
 .button-box{
-  width: 50%;
-  margin: 0 auto;;
+  width: 80%;
+  margin: 30px auto;;
+}
+.button-box input{
+	width:100%;
+	padding:20px;
+	
 }
 .login body {
   background: #f5f5f5;
@@ -254,4 +285,33 @@ h5 {
 
 .confirmation-tabs-btn {
   position: absolute;
+}
+@media screen and (max-width:800px){
+	.osaka{
+	margin:30px auto;
+	
+	
+}
+.ooosaka {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+.titleds{
+	font-size:17px;
+}
+.tabds{
+  width: 95%;
+  margin: 0 auto;
+}
+.button-box{
+  width: 80%;
+  margin: 30px auto;;
+}
+.button-box input{
+	width:100%;
+	padding:10px;
+	
+}
 }
