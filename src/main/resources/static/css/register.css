@@ -75,7 +75,7 @@ html {
 .btn-submit {
     background-color: #C1692A;
     color: #fff;
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
     border: solid 1px #C1692A;
 }
@@ -89,7 +89,7 @@ html {
     height:auto;
     width: 100%;
     text-align: center;
-    padding: 80px 0 ;
+   
 }
     .login-wrapper-title {
         margin: 0 auto;
@@ -108,7 +108,8 @@ html {
 .login {
     padding: 50px 0; 
     width: 45%;
-    margin: 100px auto;
+    margin: 0 auto;
+    margin-top:150px;
     background-color: #faf0e6;
 }
     .login-form {
@@ -133,13 +134,17 @@ html {
         text-align: center;
         margin: 0 auto;
     }
+     .form-group input{
+     width:100%;
+     margin:10px auto;
+     }
+     
 
     .form-group p{
         width: 60%;
         max-width: 400px;
         /* margin: 5px auto;  */
-        margin-top: 10px;
-        margin-left: 20px;
+        
         
     }
 
@@ -168,9 +173,20 @@ html {
     }    
 
     @media screen and (max-width:800px) {
-
+  .btnds {
+  
+  padding:10px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 100px;
+}
+.btn-box{
+  width: 70%;
+  margin: 30px auto;
+}
         .lo-tittle{
             font-weight: bold;
+            
             margin-bottom: 20px;
          
             margin-left: 0px;
@@ -180,14 +196,14 @@ html {
             height:auto;
             width: 100%;
               text-align: center;
-              padding: 80px 0 ;
+              padding: 30px 0 ;
           }
               .login-wrapper-title {
                 margin: 0px;
               }
           
               .login-wrapper-title h3{
-                  font-size: 18px;
+                  font-size: 25px;
                   color: #333333;
               }
           
@@ -196,7 +212,7 @@ html {
                   color: #a2aab0;
               }
               .containerds{
-                width: 95%;
+                width: 100%;
               }
           
           .login {
@@ -230,11 +246,13 @@ html {
             }
             .form-group p{
               font-size: 13px;
-              text-align: center;
+             
             }
             .form-box{
               width: 100%;
             }
+          
+            
 
         }
     
