@@ -14,10 +14,41 @@ article,footer, header, menu, nav, section {
   text-decoration: none;
   vertical-align: baseline;
 }
-.copyright {
-	position: absolute;
-	bottom: 0;
-  } 
+.post-box{
+    
+    width: 50%;
+    background-color: #faf0e6;
+    margin:100px auto;
+    margin-top: 200px;
+    padding: 30px;
+}
+.post-inner{
+
+  max-width: 400px;
+  margin: 0 auto;
+ 
+}
+.input-box{
+    width: 100%;
+    margin: 10px auto;
+}
+.post-tittle{
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+.button006{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+.button006 input{
+    width: 100%;
+    padding: 5px;
+    margin: 0 auto;
+}
 .lo-tittle{
   font-weight: bold;
   margin: 0 auto;
@@ -53,7 +84,9 @@ html {
         font-size: 13px;
         color: #a2aab0;
     }
-
+.post-box{
+    width: 80%;
+}
 .btnds {
   display: block;
   padding: 0.8em 1em;
@@ -239,7 +272,41 @@ html {
      .container {
         width: 95%;
      }
-      
+     .post-box{
+    
+        width: 95%;
+        background-color: #faf0e6;
+        margin:50px auto;
+       
+        padding: 20px;
+    }
+    .post-inner{
+    
+      max-width: 400px;
+      margin: 0 auto;
+     
+    }
+    .input-box{
+        width: 100%;
+        margin: 10px auto;
+    }
+    .post-tittle{
+        margin-bottom: 10px;
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .button006{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 30px;
+        
+    }
+    .button006 input{
+        width: 100%;
+        padding: 5px;
+        margin: 0 auto;
+    }
 
 
     }

@@ -590,7 +590,7 @@ footer .copyright{
 	font-weight: bold;
 }
 .copyright {
-	position: relative;
+	position: absolute;
 	bottom: 0;
   }    
 /* 日本地図 */

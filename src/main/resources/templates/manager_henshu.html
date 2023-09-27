@@ -219,7 +219,7 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="../static/imag/logo22.png" alt="" /></a>
+				<a href="#"><img src="../static/imag/logo2.png" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
@@ -232,31 +232,26 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<form method="POST"
+	<div class="post-box">
+		<h2 class="post-tittle">編集</h2>
+	<form method="POST"class="post-inner"
 		th:action="${spotForm.tourist}? @{/teamB/insert} : @{/teamB/update}"
 		th:object="${spotForm}">
-		<label>観光地連番</label> <input type="text" th:field="*{spot_id}" /><br>
-		<label>観光地名</label> <input type="text" th:field="*{spot_name}" /><br>
-		<label>観光地住所</label> <input type="text" th:field="*{address}"><br>
-		<label>WEBページ</label> <input type="text" th:field="*{web}"><br>
-		<label>電話番号</label> <input type="text" th:field="*{tel}"><br>
+		<label>観光地連番</label><br> <input type="text" class="input-box"th:field="*{spot_id}" /><br>
+		<label>観光地名</label> <br> <input type="text" class="input-box"th:field="*{spot_name}" /><br>
+		<label>観光地住所</label> <br> <input type="text" class="input-box"th:field="*{address}"><br>
+		<label>WEBページ</label><br>  <input type="text"class="input-box" th:field="*{web}"><br>
+		<label>電話番号</label> <br> <input type="text"class="input-box" th:field="*{tel}"><br>
 		<label>オススメ</label><br>
-		<textarea rows="5" cols="50" th:field="*{memo}"></textarea>
-		<br> <label>目的ID</label> <input type="text" th:field="*{purpose}"><br>
-		<label>画像URL</label> <input type="text" th:field="*{img}"><br>
+		<textarea rows="5" cols="50" class="input-box"th:field="*{memo}"></textarea>
+		<br> <label>目的ID</label> <br> <input type="text" class="input-box"th:field="*{purpose}"><br>
+		<label>画像URL</label> <br> <input type="text"class="input-box" th:field="*{img}"><br>
 		<div class="button006">
 			<input type="submit" value="送信">
 
 		</div>
 	</form>
+</div>
 	<div class="f_menu">
 
 
