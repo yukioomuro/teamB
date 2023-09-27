@@ -123,27 +123,6 @@ public class OritabiController {
 	//			return "/spotSelect";
 	//		}
 
-	@GetMapping("/myPage")
-	public String showMyPage(HistoryForm historyForm) {
-		History history = new History();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
-
-		history.setCostomerId(principal.getId());
-		history.setTouristId_1(historyForm.getTouristId_1());
-		history.setTouristId_2(historyForm.getTouristId_2());
-		history.setTouristId_3(historyForm.getTouristId_3());
-		history.setTouristId_4(historyForm.getTouristId_4());
-		history.setTouristId_5(historyForm.getTouristId_5());
-		history.setTime_1(historyForm.getTime_1());
-		history.setTime_2(historyForm.getTime_2());
-		history.setTime_3(historyForm.getTime_3());
-		history.setTime_4(historyForm.getTime_4());
-		history.setTotalDuration(historyForm.getTotalDuration());
-
-		service.insertHistory(history);
-		return "myPage";
-	}
 
 	@GetMapping("/out")
 	public String showOut() {
@@ -478,5 +457,40 @@ public class OritabiController {
 	//
 	//		return "myPage";
 	//	}
+	@GetMapping("/myPage")
+	public String showMyPage(HistoryForm historyForm) {
+		History history = new History();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
+		
+		history.setCostomerId(principal.getId());
+		history.setTouristId_1(historyForm.getTouristId_1());
+		history.setTouristId_2(historyForm.getTouristId_2());
+		history.setTouristId_3(historyForm.getTouristId_3());
+		history.setTouristId_4(historyForm.getTouristId_4());
+		history.setTouristId_5(historyForm.getTouristId_5());
+		history.setTime_1(historyForm.getTime_1());
+		history.setTime_2(historyForm.getTime_2());
+		history.setTime_3(historyForm.getTime_3());
+		history.setTime_4(historyForm.getTime_4());
+		history.setTotalDuration(historyForm.getTotalDuration());
+		
+		service.insertHistory(history);
+		return "myPage";
+	}
+	
+	@GetMapping("/myPageShowList")
+		public String getHistoryList(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
+		
+		Integer costomerId = principal.getId();
+		System.out.println("id=" + costomerId);
+		
+		Optional <History> historyOpt = service.selectOneByIdHistory(costomerId);
+		model.addAttribute("hl", historyOpt.get());
+		return "myPage";
+	}
+	
 	/* △△△△△△△△△△ MyPage に使うメソッド △△△△△△△△△△ */
 }

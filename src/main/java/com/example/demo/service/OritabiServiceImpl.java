@@ -65,8 +65,9 @@ public class OritabiServiceImpl implements OritabiService {
 	}
 
 	@Override
-	public Optional<History> selectOneByIdHistory(Integer historyId) {
-		return historyRep.findById(historyId);
+	public Optional<History> selectOneByIdHistory(Integer costomerId) {
+		Integer maxHistory = historyRep.maxHistoryId(costomerId);
+		return historyRep.historyOpt(costomerId , maxHistory);
 	}
 
 	@Override

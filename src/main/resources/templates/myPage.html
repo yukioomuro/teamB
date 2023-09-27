@@ -237,43 +237,41 @@
 	<!-- スケジュール -->
 	
 	<p class="mypage-text">名前：</p>
+	
+	<Form th:object="${hl}">
 	<div class="schedule-box">
 	<ul class="time-schedule">
 		<li>
-		  <span class="time">9:20</span>
-		  <div class="sch_box"><p class="sch_title">タイトル</p>
-			<p class="sch_tx">
-			内容テキストテキストテキスト<br>テキストテキストテキストテキスト
-			</p>
+		  <span class="time" th:text="*{time_1}">時間</span>
+		  <div class="sch_box"><p class="sch_title" th:text="*{touristId_1}">住所</p>
+<!--			<p class="sch_tx">-->
+<!--			内容テキストテキストテキスト<br>テキストテキストテキストテキスト-->
+<!--			</p>-->
 		 </div>
 		</li>
 		<li>
-		  <span class="time">10:00</span>
-		  <div class="sch_box">
-		   <p class="sch_title">タイトル</p>
-			<p class="sch_tx">内容テキスト
-			</p>
-		  </div>
+		 <span class="time" th:text="*{time_2}">時間</span>
+		  <div class="sch_box"><p class="sch_title" th:text="*{touristId_2}">住所</p>
+		 </div>
 		</li>
 		<li>
-		  <span class="time">11:00</span>
-		  <div class="sch_box"><p class="sch_title">タイトル</p>
-			<p class="sch_tx">
-			内容テキスト
-			</p>
-		  </div>
+		  <span class="time" th:text="*{time_3}">時間</span>
+		  <div class="sch_box"><p class="sch_title" th:text="*{touristId_3}">住所</p>
+		 </div>
 		</li>
 		<li>
-		  <span class="time">12:00</span>
-		  <div class="sch_box"><p class="sch_title">タイトル</p>
-			<p class="sch_tx">
-			内容テキスト
-			</p>
-		  </div>
+		  <span class="time" th:text="*{time_4}">時間</span>
+		  <div class="sch_box"><p class="sch_title" th:text="*{touristId_4}">住所</p>
+		 </div>
+		</li>
+		<li>
+		  <div class="sch_box"><p class="sch_title" th:text="*{touristId_5}">住所</p>
+		 </div>
 		</li>
 	  </ul>
 	</div>
-	<div class="soutime">総時間：</div>
+	<div class="soutime" th:href="$[hl.totalDuration]">総時間：+ [[${hl.totalDuration}]]</div>
+	</Form>
 	<!-- ここまで -->
 	
 	
