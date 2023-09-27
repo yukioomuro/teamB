@@ -381,9 +381,12 @@ public class OritabiController {
         //入力チェック
         if (costomerForm.getMail().equals(costomerForm.getMailView()) &&
                 costomerForm.getPass().equals(costomerForm.getPassView())) {
+//        	if(costomerForm.getId()==1) {
+//        		 return "manager_page";
+//        	}
 
-            System.out.println("\\\\\\\\\\");
-            if (!bindingResult.hasErrors()) {
+//            System.out.println("\\\\\\\\\\");
+             if (!bindingResult.hasErrors()) {
 //				System.out.println("Form : " + costomerForm);
 //				System.out.println("entity : " + costomer);
                 costomer.setSecretPass(new BCryptPasswordEncoder().encode(costomerForm.getPass()));

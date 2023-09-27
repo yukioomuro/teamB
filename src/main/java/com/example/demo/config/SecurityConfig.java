@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -30,9 +28,9 @@ public class SecurityConfig {
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()//CSSを許可
 				.requestMatchers("/imag/**").permitAll()//画像許可
 				.requestMatchers("/oritabi/register").permitAll()//新規許可
-				.requestMatchers("/oritabi/top").permitAll()//新規許可
+				.requestMatchers("/oritabi/top").permitAll()//TOP許可
 				.requestMatchers("/oritabi/spot").permitAll()//spot許可
-				.requestMatchers("/oritabi/spotSelect")	.permitAll()
+				.requestMatchers("/oritabi/spotSelect")	.permitAll()//新規登録の際に使うメソッド許可
 				.anyRequest().authenticated()				
 						
 		//URLごとにRoleの権限を設定
@@ -41,10 +39,10 @@ public class SecurityConfig {
 		return http.build();
 	}
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-	//	System.out.println(new BCryptPasswordEncoder().encode("123"));
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	PasswordEncoder passwordEncoder() {
+//	//	System.out.println(new BCryptPasswordEncoder().encode("123"));
+//		return new BCryptPasswordEncoder();
+//	}
 
 }
