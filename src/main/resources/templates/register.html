@@ -236,10 +236,12 @@
 			</div>
 		</div>
 	</header>
+	
+	
 
 	<div id="register" class="col s12">
 		<!-- ログインエラーのときはメッセージを表示 -->
-		<div th:if="${costomerForm != null}" th:text="${costomerForm}"></div>
+		<div th:if="${miss != null}" th:text="${miss}"></div>
 		<!-- ログインフォーム -->
 		<!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
 		<form method="POST"
