@@ -12,13 +12,16 @@ public class LoginController {
 	// ログイン画面を表示
 	return "login";
 	}
+	
 	// SecurityConfig のfailureUrl で指定したURL と のうしろのパラメータ
 	@GetMapping(value="/login", params="failure")
 	public String loginFail(Model model) {
+		System.out.println("fail");
 	model.addAttribute("failureMessage", " ログインに失敗しました");
 	// ログイン画面を表示
-	return "login";
+	return "manager_login";
 	}
+	
 	// SecurityConfig のdefaultSuccessUrl で指定したURL
 	@GetMapping("loginsuccess")
 	public String loginSuccess() {

@@ -76,12 +76,14 @@ public class OritabiController {
     //SPOTView呼び出し
     @GetMapping("/spotcall")
     public String callSpotView(Model model) {
+    	System.out.println("GETcall");
     return spotView(model);
 
     }
 
     @PostMapping("/spotcall")
     public String callSpotpost(Model model) {
+    	System.out.println("POSTcall");
     return spotView(model);
 
     }
