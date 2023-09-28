@@ -89,8 +89,11 @@ button{
  margin:0 auto;
   display:flex;
   flex-wrap:wrap;
-  justify-content: center;
+ justify-content: space-between;
   padding-bottom:30px;
+ }
+ .toggleButton1{
+ width:40%;
  }
  html{
 	position:unset;
