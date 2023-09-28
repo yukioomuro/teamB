@@ -212,7 +212,7 @@ public class OritabiController {
 	/* ▼▼▼▼▼▼▼▼▼▼ 観光地Spot編集 ▼▼▼▼▼▼▼▼▼▼ */
 	@GetMapping("/{spotId}")
 	public String showUpdateSpot(SpotForm spotForm,
-			@PathVariable Integer spotId, Model model) {
+			@PathVariable Integer spotId, Model model, RedirectAttributes redirectAttributes) {
 		System.out.println("showUpdateSpot");
 		//Spotを取得
 		Optional<Spot> spotOpt = service.selectOneByIdSpot(spotId);
@@ -225,6 +225,7 @@ public class OritabiController {
 		//更新用のModelを作る
 		makeUpdateModel(spotForm, model);
 		costomerList(model);
+		spotDel(spotId.toString(), model, redirectAttributes);
 		return "manager_page";
 	}
 
