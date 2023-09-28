@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -458,10 +459,12 @@ public class OritabiController {
 	//		return "myPage";
 	//	}
 	@GetMapping("/myPage")
-	public String showMyPage(HistoryForm historyForm) {
+	public String showMyPage(HistoryForm historyForm, Model model, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
 		History history = new History();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
+		
+		System.out.println("名前"+userPrincipal.getCusotmname());
 		
 		history.setCostomerId(principal.getId());
 		history.setTouristId_1(historyForm.getTouristId_1());
@@ -476,6 +479,9 @@ public class OritabiController {
 		history.setTotalDuration(historyForm.getTotalDuration());
 		
 		service.insertHistory(history);
+		model.addAttribute("hl", historyForm);
+		model.addAttribute("loginUsername", userPrincipal.getCusotmname());
+		
 		return "myPage";
 	}
 	
