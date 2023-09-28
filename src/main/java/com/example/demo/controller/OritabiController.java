@@ -124,7 +124,6 @@ public class OritabiController {
 	//			return "/spotSelect";
 	//		}
 
-
 	@GetMapping("/out")
 	public String showOut() {
 		return "out";
@@ -170,10 +169,10 @@ public class OritabiController {
 		//表示用Modelへ格納
 		model.addAttribute("spotList", list);
 		//model.addAttribute("title", "登録用フォーム");
-		
+
 		//客情報一覧の取得
 		costomerList(model);
-		
+
 		return "manager_page";
 	}
 
@@ -352,6 +351,7 @@ public class OritabiController {
 		//			checkBoxSpot.add(s);
 		//		}
 
+		System.out.println(checkform.getCheckBoxSpot());
 		model.addAttribute("spotcheck", checkform.getCheckBoxSpot());
 
 		return "map";
@@ -424,7 +424,7 @@ public class OritabiController {
 		//model.addAttribute("title", "登録用フォーム");
 		return "spot";
 	}
-	
+
 	public void costomerList(Model model) {
 		System.out.println("-------- costomerList に入りました -------");
 		//新規登録情報の一覧を取得
@@ -459,13 +459,14 @@ public class OritabiController {
 	//		return "myPage";
 	//	}
 	@GetMapping("/myPage")
-	public String showMyPage(HistoryForm historyForm, Model model, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
+	public String showMyPage(HistoryForm historyForm, Model model,
+			@AuthenticationPrincipal UserDetailsImpl userPrincipal) {
 		History history = new History();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
-		
-		System.out.println("名前"+userPrincipal.getCusotmname());
-		
+
+		System.out.println("名前" + userPrincipal.getCusotmname());
+
 		history.setCostomerId(principal.getId());
 		history.setTouristId_1(historyForm.getTouristId_1());
 		history.setTouristId_2(historyForm.getTouristId_2());
@@ -477,27 +478,72 @@ public class OritabiController {
 		history.setTime_3(historyForm.getTime_3());
 		history.setTime_4(historyForm.getTime_4());
 		history.setTotalDuration(historyForm.getTotalDuration());
-		
+
 		service.insertHistory(history);
 		model.addAttribute("hl", historyForm);
 		model.addAttribute("loginUsername", userPrincipal.getCusotmname());
-		
+
 		return "myPage";
 	}
-	
+
 	@GetMapping("/myPageShowList")
-		public String getHistoryList(Model model, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
+	public String getHistoryList(Model model, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
-		
+
 		Integer costomerId = principal.getId();
 		System.out.println("id=" + costomerId);
-		
-		Optional <History> historyOpt = service.selectOneByIdHistory(costomerId);
+
+		Optional<History> historyOpt = service.selectOneByIdHistory(costomerId);
 		model.addAttribute("hl", historyOpt.get());
 		model.addAttribute("loginUsername", userPrincipal.getCusotmname());
 		return "myPage";
 	}
-	
+
+	//修正ボタン用のメソッド
+	@GetMapping("/backToMap")
+	public String backToMap(Model model, CheckForm checkForm, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
+		Optional<History> historyOpt = service.selectOneByIdHistory(userPrincipal.getId());
+
+		List<String> checkBoxSpot = new ArrayList<>();
+
+		for (int i = 1; i < 6; i++) {
+			switch (i) {
+			case 1:
+				if (!historyOpt.get().getTouristId_1().isEmpty()) {
+					checkBoxSpot.add(historyOpt.get().getTouristId_1());
+				}
+				break;
+
+			case 2:
+				if (!historyOpt.get().getTouristId_2().isEmpty()) {
+					checkBoxSpot.add(historyOpt.get().getTouristId_2());
+				}
+				break;
+
+			case 3:
+				if (!historyOpt.get().getTouristId_3().isEmpty()) {
+					checkBoxSpot.add(historyOpt.get().getTouristId_3());
+				}
+				break;
+
+			case 4:
+				if (!historyOpt.get().getTouristId_4().isEmpty()) {
+					checkBoxSpot.add(historyOpt.get().getTouristId_4());
+				}
+				break;
+
+			case 5:
+				if (!historyOpt.get().getTouristId_5().isEmpty()) {
+					checkBoxSpot.add(historyOpt.get().getTouristId_5());
+				}
+			}
+
+		}
+
+		System.out.println(checkBoxSpot);
+		model.addAttribute("spotcheck", checkBoxSpot);
+		return "map";
+	}
 	/* △△△△△△△△△△ MyPage に使うメソッド △△△△△△△△△△ */
 }
