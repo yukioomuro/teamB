@@ -44,19 +44,16 @@ button{
   .ruuro-box{
   width:100%;
   padding:20px;
- 
+ background-color:#fff;
   margin:0 auto;
   align-items:center;
   display:flex;
   flex-wrap:wrap;
   justify-content: speace-between;
   }
-  .junds{
-   width:40%;
-     bacground-color:#fff !important;
-  }
+  
   .jun{
-  width:100%;
+  width:40%;
   
     padding:20px;
   margin:0 auto;
