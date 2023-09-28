@@ -1,18 +1,14 @@
 @charset "UTF-8";
 
 button{
- padding: 10px 20px;
- background: yellow;
- color: #111111;
- border-bottom: solid 5px gray;
+ padding: 10px;
+ background: #c1692a;
+ color: #fff;
+ border: solid 1px #c1692a;
  border-radius: 25px;
 }
 
-button{
- -webkit-transform: translateY(5px);
- transform: translateY(5px);
- border-bottom: none;
-}
+
 .copyright {
 	position: absolute;
 	bottom: 0;
@@ -21,10 +17,14 @@ button{
   font-size:25px;
   text-align:center;
   margin-top:150px;
+  font-weight:bold;
   }
   .ruuro-box{
   width:80%;
+  padding:20px;
+  bacground-color:#fff;
   margin:0 auto;
+  align-items:center;
   display:flex;
   flex-wrap:wrap;
   justify-content: speace-between;
