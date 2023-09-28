@@ -8,7 +8,7 @@ button{
  border-radius: 25px;
  margin:0 auto:
 }
-.undoButton{
+#undoButton{
 	width:50%;
 	margin:0 auto;
 }
@@ -26,7 +26,7 @@ button{
   .ruuro-boxall{
   width:80%;
    margin:0 auto;
-    bacgroundr:#fff;
+    bacground:#fff;
   }
   .ruuro-box{
   width:100%;
