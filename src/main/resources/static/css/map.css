@@ -20,6 +20,18 @@ button{
 	
 	
 }
+#toggleButton{
+	
+}
+.toggleButton1{
+	width:50%;
+	margin:0 auto;
+	padding:10px;
+}
+.toggleButton1-1{
+	width:100%;
+	
+}
 .copyright {
 	position: absolute;
 	bottom: 0;
@@ -38,7 +50,7 @@ button{
   
   .ruuro-boxall{
   width:80%;
-   margin:0 auto;
+   margin:30px auto;
   
   }
   .ruuro-box{
