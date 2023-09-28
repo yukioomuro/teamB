@@ -46,6 +46,11 @@ public class UserDetailsImpl implements UserDetails {
 		return loginUser.getSecretPass();
 	}
 
+	public String getCusotmname() {
+		// TODO 自動生成されたメソッド・スタブ
+		return loginUser.getName();
+	}
+	
 	@Override
 	public String getUsername() {
 		// TODO 自動生成されたメソッド・スタブ

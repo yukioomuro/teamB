@@ -236,7 +236,7 @@
 	<div class ="mypage-tittle">マイページ</div>
 	<!-- スケジュール -->
 	
-	<p class="mypage-text">名前：</p>
+	<p class="mypage-text" >名前：<span th:text="${loginUsername}"></span></p>
 	
 	<Form th:object="${hl}">
 	<div class="schedule-box">
@@ -270,7 +270,7 @@
 		</li>
 	  </ul>
 	</div>
-	<div class="soutime" th:href="$[hl.totalDuration]">総時間：+ [[${hl.totalDuration}]]</div>
+	<div class="soutime" th:text="*{totalDuration}">総時間</div>
 	</Form>
 	<!-- ここまで -->
 	

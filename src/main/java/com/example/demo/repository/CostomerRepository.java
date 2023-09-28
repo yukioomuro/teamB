@@ -6,4 +6,5 @@ import com.example.demo.entity.Costomer;
 
 public interface CostomerRepository extends CrudRepository<Costomer, Integer> {
 
+	
 }
