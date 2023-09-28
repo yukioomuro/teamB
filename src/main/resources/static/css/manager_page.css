@@ -9,7 +9,7 @@ h1 {
 	font-size:25px;
 	text-align:center;
 	
-	margin-bottom:20px;
+	margin-bottom:10px;
 	font-weight:bold;
 }
 .post-tittled{
@@ -174,7 +174,10 @@ border: solid 1px #fff;
   min-width: 200px;
   color: #fff;
   font-size: 20px;
-  margin-bottom:100px;
+ 
+}
+.copyright{
+	margin-top:50px;
 }
 .E-box{
   margin-bottom: 80px;
