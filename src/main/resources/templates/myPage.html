@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="../static/imag/logo3png.png">
-<link rel="stylesheet" href="css/myPage.css">
+<link rel="icon" th:src="@{/imag/logo3.png}">
+<link rel="stylesheet" th:href="@{/css/myPage.css}">
 <title>☆マイページ☆</title>
 <!--headerのjs-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,13 +14,13 @@
 	href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 
 <!--headercss-->
-<link href="../static/css/meanmenu.css" rel="stylesheet" type="text/css">
-<link href="../static/css/font-awesome.min.css" rel="stylesheet"
+<link th:href="@{/css/meanmenu.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"
 	type="text/css">
-<link href="../static/css/header.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
 <!--css-->
-<link href="../static/css/i-style.css" rel="stylesheet" type="text/css">
-<link href="../static/css/parts.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/i-style.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/parts.css}" rel="stylesheet" type="text/css">
 
 <!--font-awesome-->
 <link rel="stylesheet" type="text/css"
@@ -57,9 +57,9 @@
 <script type="text/javascript" src="js/scroll.js"></script>
 
 <!--slider-->
-<link href="../static/css/slick.css" rel="stylesheet" type="text/css">
-<link href="../static/css/slick-theme.css" rel="stylesheet"
-	type="text/css">
+<link th:href="@{/css/slick.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/slick-theme.css}" rel="stylesheet" type="text/css">
+
 
 <!--headerscript-->
 <script type="text/javascript">
@@ -199,13 +199,13 @@
 	<header id="header">
 		<div class="container">
 			<div id="h_top">
-				<div class="h_logo"><a href=""><img src="../static/imag/logo2.png" alt=""/></a></div>
+				<div class="h_logo"><a href=""><img th:src="@{/imag/logo2.png}" alt=""/></a></div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
 							<li><a href="#top">TOP</a></li>
-							<li><a href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-							<li><a href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
+							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+							<li><a th:href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
 						</ul>
 						<div class="mask"></div>
 					</nav>
@@ -217,13 +217,13 @@
 		
 		<header class="mheader">
 			<div class="pc_menuFlex">
-				<div class="i-logo"><a href="#"><img src="../static/imag/logo2.png" alt=""/></a>
+				<div class="i-logo"><a href="#"><img sth:src="@{/imag/logo2.png}" alt=""/></a>
 				</div>
 				<div class="pc_menu">
 					<ul>
 						<li><a href="#top">TOP</a></li>
-						<li><a href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
-						<li><a href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
+						<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
+						<li><a th:href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
 					</ul>
 				</div> 
 			</div>
@@ -282,8 +282,8 @@
 	<p class="mypage-text">名前場所（URL）</p> -->
 	<div class="mypage-inner"> 
 	
-	<a href="@{/oritabi/map}" class ="mypace-buttun">修正する</a>
-	<a href="@{/oritabi/out}" class ="mypace-buttun-a">Logout</a>
+	<a th:href="@{/oritabi/map}" class ="mypace-buttun">修正する</a>
+	<a th:href="@{/oritabi/out}" class ="mypace-buttun-a">Logout</a>
 	</div>
 	<!-- <div class="mypage-text">メモ帳</div> -->
 		</div>
@@ -313,7 +313,7 @@
 		<!--footer_メニューの中身-->
 				<div class="f_open">
 					<div class="f_logo">
-					 <img src="../imag/logo22.png" alt=""/>
+					 <img th:src="@{/imag/logo22.png}" alt=""/>
 					</div>
 					
 					<div class="category_list">
@@ -324,11 +324,11 @@
 						</dl>
 						
 						<dl>
-							<dd><a href ="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a></dd>
+							<dd><a th:href ="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a></dd>
 						</dl>
 						
 						<dl>
-							<dd><a href="@{/oritabi/manager_login}"><div class= "btn-log">ログイン</div></a></dd>
+							<dd><a th:href="@{/oritabi/manager_login}"><div class= "btn-log">ログイン</div></a></dd>
 						</dl>
 				</div>
 	
