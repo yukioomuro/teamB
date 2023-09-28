@@ -235,17 +235,11 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>oritabi</h1>
-	<hr>
+	
+
 	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
 	<div th:method="POST" th:object="${'/oritabi/costomerList'}" style="margin: 5px">
-		<h3>お客様一覧</h3>
+		<h3 class="post-tittle">お客様一覧</h3>
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>

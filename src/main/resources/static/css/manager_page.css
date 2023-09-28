@@ -5,7 +5,12 @@ h1 {
 	margin-top:0px; 
 	margin-bottom:0px;
 }
-
+.post-tittle{
+	font-size:25px;
+	text-align:center;
+	margin-top:150px;
+	margin-bottom:30px;
+}
 body {
   background-color:#ffffff;
  /*  font-family: 'M PLUS Rounded 1c', sans-serif;
