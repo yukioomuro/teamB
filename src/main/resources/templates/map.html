@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="css/map.css">
+<link th:href="@{/css/map.css}" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>スポットのMAP</title>
@@ -236,20 +236,15 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>ルート選択</h1>
+	
+	<h1 class= "ruuto-tittle">ルート選択</h1>
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 
 	<!-- 表示用の要素1 -->
-	<div id="displayElement1">
+	<div class="ruuro-box" id="displayElement1">
 		<!--  マップの表示 -->
-		<div id="map1" style="height: 300px;"></div>
+		<div id="map1" style="height: 300px; width:50%;"></div>
 		<!--  選択した住所表示 -->
 		<div class="jun">
 			<p>ピンをクリックして順番を決めてください</p>
