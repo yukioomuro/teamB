@@ -6,7 +6,8 @@ button{
  color: #fff;
  border: solid 1px #c1692a;
  border-radius: 25px;
- margin:0 auto:
+ margin:0 auto;
+ text-align:center;
 }
 .undoButton1{
 	text-align:center;
