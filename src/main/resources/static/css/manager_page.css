@@ -28,6 +28,9 @@ h1 {
 .post-innner input{
 	width:100%;
 }
+.post-innner textarea{
+	width:100%;
+}
 body {
   background-color:#ffffff;
  /*  font-family: 'M PLUS Rounded 1c', sans-serif;
