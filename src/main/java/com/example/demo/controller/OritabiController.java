@@ -486,7 +486,7 @@ public class OritabiController {
 	}
 	
 	@GetMapping("/myPageShowList")
-		public String getHistoryList(Model model) {
+		public String getHistoryList(Model model, @AuthenticationPrincipal UserDetailsImpl userPrincipal) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
 		
@@ -495,6 +495,7 @@ public class OritabiController {
 		
 		Optional <History> historyOpt = service.selectOneByIdHistory(costomerId);
 		model.addAttribute("hl", historyOpt.get());
+		model.addAttribute("loginUsername", userPrincipal.getCusotmname());
 		return "myPage";
 	}
 	
