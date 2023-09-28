@@ -92,9 +92,9 @@ button{
  justify-content: space-between;
   padding-bottom:30px;
  }
- .toggleButton1{
- width:40%;
- }
+.submit-btn{
+	width:40%
+}
  html{
 	position:unset;
 }
