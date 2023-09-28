@@ -524,13 +524,16 @@
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
 		
 			<form th:method="POST" th:action="@{/oritabi/spotcall}">
+			<div class="submit-btn1">
 				<button type="submit" class="submit-btn">スポットの変更</button>
+				</div>
 			</form>
 
 			<br>
 			<!--各顧客観光リストテーブル③に登録されるように-->
 			<form th:action="@{/oritabi/myPage}">
-				<button type="submit"class="submit-btn">リスト作成</button>
+			<div class="submit-btn1">
+				<button type="submit"class="submit-btn">リスト作成</button></div>
 				<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
 			<input type="hidden" id="_address_1" th:field="${historyForm.touristId_1}">
