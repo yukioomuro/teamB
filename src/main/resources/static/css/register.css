@@ -29,11 +29,10 @@ article,footer, header, menu, nav, section {
     width: 50%;
     margin: 0 auto;
 }
-
-html {
-    min-height: 60%;
-    position: relative;
+.col{
+	position:relative;
 }
+
 
 .wrapper {
     padding: 80px 0;
