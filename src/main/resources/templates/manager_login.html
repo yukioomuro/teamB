@@ -210,12 +210,13 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}" alt="" /></a>
+					<a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}"
+						alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							
+
 							<li><a th:href="@{/oritabi/top}">TOP</a></li>
 							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 							<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
@@ -231,11 +232,12 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}" alt="" /></a>
+				<a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}"
+					alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
-					
+
 					<li><a th:href="@{/oritabi/top}">TOP</a></li>
 					<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 					<li><a th:href="@{/oritabi/manager_login}" class="btn-log">ログイン</a></li>
@@ -265,16 +267,14 @@
 						<input type="password" name="password" required>
 					</div>
 					<div class="btn-box">
-						<button type="submit" class="btn btn-submit" >SPOTへ</button>
+						<button type="submit" class="btn btn-submit">SPOTへ</button>
 					</div>
-					</form>
-					<div class="btn-box">
+				</form>
+				<div class="btn-box">
 					<form class="login-form" th:action="@{/oritabi/myPageShowList}" method="get">
 						<button type="submit" class="btn btn-submit">MY PAGEへ</button>
 					</form>
-					</div>
-				
-				
+				</div>
 			</div>
 		</div>
 	</div>
