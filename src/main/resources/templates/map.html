@@ -468,8 +468,9 @@
 		        destination: selectedAddresses[selectedAddresses.length - 1],
 		        waypoints: waypoints,
 		        travelMode: 'WALKING', // 交通手段を指定 (DRIVING, WALKING, BICYCLING など)
-		        optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
+		       // optimizeWaypoints: true, // ウェイポイントの最適化を有効にする
 		    };
+		    
 
 		    // Directions サービスを使用して経路を計算
 		    directionsService.route(request, function (response, status) {
@@ -495,6 +496,7 @@
         document.getElementById('totalDuration').textContent = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
         document.getElementById('_totalDuration').value = `（総移動時間： ${hours}時間 ${minutes}分 ${seconds}秒）`;
 		         
+		    
 		        } else {
 		            alert('ルートの取得中にエラーが発生しました: ' + status);
 		        }
