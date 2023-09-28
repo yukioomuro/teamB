@@ -515,12 +515,14 @@
 	<!-- ボタン -->
 	<div class="toggleButton1-1">
 	<button class="toggleButton1"id="toggleButton">ルート表示</button>
+	
+
 	</div>
-	<hr>
+	
 	<br>
-	<div>
+	<div class="spot-btnbox">
 		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<input class="btn">
+		
 			<form th:method="POST" th:action="@{/oritabi/spotcall}">
 				<button type="submit">スポットの変更</button>
 			</form>
@@ -545,7 +547,7 @@
 			</form>
 
 		</div>
-	</div>
+	
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
 
