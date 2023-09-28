@@ -84,7 +84,7 @@ margin-bottom: 20px;
   margin-top: 15px;
   vertical-align: top;
   position: relative;
-  text-align: left;
+  text-align: right;
   box-sizing: border-box;
 }
 .time-schedule span.time::after {
