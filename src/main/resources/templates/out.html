@@ -222,7 +222,10 @@ $(function($){
                              <h3 class ="lo-tittle">ログアウトしました</h3>
                      </div>
                     
-                             <div class="btn-box"><a  class="btnds btn-submit" th:href="@{/oritabi/manager_login}">ログインページへ</a></div>
+                             
+                             <form class="btn-box" th:action="@{/oritabi/manager_login}" method="get">
+						<button type="submit" class="btn btn-submit">ログインページへ</button>
+					</form>
                      
              </div>
      </div>
