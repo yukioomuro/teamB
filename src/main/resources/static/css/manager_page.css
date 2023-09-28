@@ -1,6 +1,6 @@
 @charset "UTF-8";
 html{
-	padding-bottom:50px;
+	padding-bottom:50px !important;
 }
 h1 {
 	font-size:50px;
