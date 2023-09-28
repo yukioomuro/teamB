@@ -10,6 +10,7 @@ h1 {
 	text-align:center;
 	margin-top:150px;
 	margin-bottom:30px;
+	font-weight:bold;
 }
 body {
   background-color:#ffffff;
@@ -127,12 +128,19 @@ border: solid 1px #fff;
 }
 .B table{
   margin-bottom: 30px;
-  display: flex;
+  
   width: 90%;
+  margin: 0 auto;
   border-spacing: 10px;
   border-collapse: separate;
  
   
+}
+.travel-box{
+	width:50%;
+	padding:30px;
+	margin:50px auto;
+	background-color:#faf0e6;
 }
 .B table::-webkit-scrollbar{
   height: 10px;
@@ -190,6 +198,7 @@ border: solid 1px #fff;
   transform: rotateX(180deg);
 }
 .F table{
+	margin:0 auto;
   margin-bottom: 30px;
   display: flex;
   width: 90%;

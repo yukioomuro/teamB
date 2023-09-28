@@ -201,7 +201,7 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img th:src="@{../static/imag/logo2.png}" alt="" /></a>
+					<a href=""><img th:src="@{/imag/logo2.png}" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
@@ -281,7 +281,7 @@
 		<!-- △△△データが一件もない場合表示△△△ -->
 	</div>
 	<!--th:if="${spotForm.newSpot}"  -->
-	<div style="margin: 5px">
+	<div class="travel-box" style="margin: 5px">
 		<h3>
 			観光地スポット<br>
 		</h3>
@@ -307,6 +307,8 @@
 					th:unless="*{newSpot}" type="submit" value="送信">
 			</div>
 		</form>
+		
+		
 		<p th:if="${complete}" th:text="${complete}"></p>
 
 		<!-- 削除完了コメント -->
