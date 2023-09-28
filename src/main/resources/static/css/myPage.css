@@ -80,11 +80,11 @@ margin-bottom: 20px;
   width: 5em;
   display: inline-block;
   margin-left: -8em;
-  padding: 0 0 5px;
+  padding: 50px 0 5px;
   margin-top: 15px;
   vertical-align: top;
   position: relative;
-  text-align: right;
+  text-align: left;
   box-sizing: border-box;
 }
 .time-schedule span.time::after {
