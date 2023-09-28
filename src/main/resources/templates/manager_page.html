@@ -300,7 +300,7 @@
 			<label>WEBページ</label><br> <input type="text" th:field="*{web}"><br>
 			<label>電話番号</label><br> <input type="text" th:field="*{tel}"><br>
 			<label>オススメ</label><br>
-			<textarea rows="5" cols="50" th:field="*{point}"></textarea>
+			<textarea rows="5"  th:field="*{point}"></textarea>
 			<br> <label>目的ID</label> <br><input type="text"
 				th:field="*{purposeId}"><br> <label>画像URL</label><br> <input
 				type="text" th:field="*{imageFileName}"><br>
@@ -328,6 +328,8 @@
 		</script>
 		<!-- <div th:if="${spotForm.newSpot}"> -->
 			<div class="E">一覧 ⇓</div>
+			<br>
+			<br>
 			<div class="F">
 				<table th:unless="${#lists.isEmpty(spotList)}">
 					<tr>
