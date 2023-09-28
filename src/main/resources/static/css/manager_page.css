@@ -198,6 +198,11 @@ border: solid 1px #fff;
   overflow-x: auto;
   transform: rotateX(180deg);
 }
+.button006{
+	width:50%;
+	margin:0 auto;
+	padding:10px;
+}
 .F table{
 	margin:0 auto;
   margin-bottom: 30px;
