@@ -29,11 +29,11 @@ article,footer, header, menu, nav, section {
     width: 50%;
     margin: 0 auto;
 }
-
-html {
-    min-height: 60%;
-    position: relative;
+.col{
+	position:relative;
+	padding-bottom:100px;
 }
+
 
 .wrapper {
     padding: 80px 0;
@@ -107,7 +107,7 @@ html {
 
 .login {
     padding: 50px 0; 
-    width: 45%;
+    width: 50%;
     margin: 0 auto;
     margin-top:150px;
     background-color: #faf0e6;
