@@ -72,8 +72,10 @@ html {
 .btn-submit {
     background-color: #c16829;
     color:#fff;
-  
+  border:solid 1px #c16829;
   margin: 0 auto;
+  padding:10px;
+  border-radius:20px;
 }
 
 /* login */
