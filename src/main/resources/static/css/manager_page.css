@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+html{
+	padding-bottom:50px;
+}
 h1 {
 	font-size:50px;
 	margin-top:0px; 
