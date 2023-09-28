@@ -8,9 +8,10 @@ button{
  border-radius: 25px;
  margin:0 auto:
 }
-#undoButton{
+.undoButton1{
+	text-align:center;
 	width:50%;
-	margin:0 auto;
+	margin:10px auto;
 }
 
 .copyright {
@@ -26,7 +27,7 @@ button{
   .ruuro-boxall{
   width:80%;
    margin:0 auto;
-    bacground:#fff;
+  
   }
   .ruuro-box{
   width:100%;
@@ -40,5 +41,7 @@ button{
   }
   .jun{
   width:40%;
+    bacground:#fff;
+    padding:20px;
   margin:0 auto;
  }
