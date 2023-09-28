@@ -51,9 +51,13 @@ button{
   flex-wrap:wrap;
   justify-content: speace-between;
   }
+  .junds{
+   width:40%;
+     bacground-color:#fff !important;
+  }
   .jun{
-  width:40%;
-    bacground-color:#fff;
+  width:100%;
+  
     padding:20px;
   margin:0 auto;
  }
