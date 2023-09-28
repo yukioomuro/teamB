@@ -91,9 +91,13 @@ button{
   flex-wrap:wrap;
  justify-content: space-between;
   padding-bottom:30px;
+ 
  }
+.submit-btn1{
+	width:40%;
+}
 .submit-btn{
-	width:40%
+	width:100%
 }
  html{
 	position:unset;
