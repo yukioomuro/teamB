@@ -7,6 +7,89 @@
     display: block;
 }
 
+#loader_wrap {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	background: #fff;
+	}
+	#logo_loader {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 101;
+		background-color: #FAF9F3;
+	}
+	#logo_loader .f_logo {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		width: 450px;
+		height: 250px;
+		text-align: center;
+		color: #fff;
+		font-size: 30px;
+	}
+	#logo_loader .f_logo img {
+		width: 100%;
+		height: auto;
+	}
+	#logo_loader .f_logo:before {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 110%;
+		background-color: #FAF9F3;
+		position: absolute;
+		top: 0;
+		left: 100%;
+		animation: loadLogo 1s;
+	}
+	@keyframes loadLogo {
+		0% {
+		  left: 0;
+		}
+		50% {
+		  left: 0;
+		}
+		100% {
+		  left: 100%;
+		}
+	  }
+	  #logo_loader .f_logo:before {
+		animation: loadLogo 1s;
+	}
+	#logo_loader.open {
+		animation-name: slideOut;
+		animation-fill-mode: forwards;
+		animation-duration: 1s;
+		animation-delay: 1s;
+	}
+	
+	@keyframes slideOut {
+	  0% {
+		transform: translateX(0%);
+	  }
+	  50% {
+		transform: translateX(0%);
+	  }
+	  100% {
+		transform: translateX(100%);
+	  }
+	}
+
+
+
 
 .slider-box{
   display: block;
