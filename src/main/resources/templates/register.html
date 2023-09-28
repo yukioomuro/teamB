@@ -299,10 +299,13 @@
 								placeholder="123456" th:field="*{passView}"
 								autocomplete="password" required>
 						</div>
+						
+						<p class="miss" th:if="${miss}" th:text="${miss}"></p>
 						<div class="btn-box">
 							<input type="submit" class="btnds btn-submit"
 							value="登録" >
 						</div>
+						
 						<!-- ログインのみ↓↓ -->
 						
 						<div class="btn-box">
