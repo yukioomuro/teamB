@@ -515,20 +515,26 @@
 	<!-- ボタン -->
 	<div class="toggleButton1-1">
 	<button class="toggleButton1"id="toggleButton">ルート表示</button>
-	</div>
-	<hr>
-	<br>
-	<div>
-		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
-		<input class="btn">
-			<form th:method="POST" th:action="@{/oritabi/spotcall}">
-				<button type="submit">スポットの変更</button>
-			</form>
+	
 
-			<br>
+	</div>
+	
+	<br>
+	<div class="spot-btnbox">
+		<!--リスト作成ボタン(ピン留めの場所が登録される)-->
+		<div class="submit-btn1">
+			<form th:method="POST" th:action="@{/oritabi/spotcall}">
+			
+				<button type="submit" class="submit-btn">スポットの変更</button>
+				
+			</form>
+</div>
+			
 			<!--各顧客観光リストテーブル③に登録されるように-->
+				<div class="submit-btn1">
 			<form th:action="@{/oritabi/myPage}">
-				<button type="submit">リスト作成</button>
+		
+				<button type="submit"class="submit-btn">リスト作成</button>
 				<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
 			<input type="hidden" id="_address_1" th:field="${historyForm.touristId_1}">
@@ -542,9 +548,12 @@
 			<input type="hidden" id="_address_5"th:field="${historyForm.touristId_5}">
 			<!-- 所要総時間の要素 -->
 			<input type="hidden" id="_totalDuration"th:field="${historyForm.totalDuration}">
-			</form>
+			</form></div>
 
 		</div>
+<<<<<<< HEAD
+	
+=======
 	</div>
 	<br>
 	<br>
@@ -559,6 +568,7 @@
 	<br>
 	<br>
 	<br>
+>>>>>>> branch 'master' of https://github.com/yukioomuro/teamB.git
 	<!--footer-------------------------------------------->
 	<div class="f_menu">
 
