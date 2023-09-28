@@ -8,7 +8,7 @@ h1 {
 .post-tittle{
 	font-size:25px;
 	text-align:center;
-	margin-top:150px;
+	
 	margin-bottom:30px;
 	font-weight:bold;
 }
@@ -194,6 +194,7 @@ border: solid 1px #fff;
   border-collapse: separate
 }
 .F{
+	margin-bottom:100px;
   overflow-x: auto;
   transform: rotateX(180deg);
 }

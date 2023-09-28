@@ -293,14 +293,14 @@
 			<!-- <form method="POST" th:action="@{/oritabi/insertSpot}" th:object="${spotForm}"> -->
 			<label th:unless="*{newSpot}" th:if="${spotForm.newSpot}">観光地連番</label> <input
 				th:unless="*{newSpot}" type="text" th:field="*{spotId}" th:if="${spotForm.newSpot}" /><br>
-			<label>観光地名</label> <input type="text" th:field="*{spotName}" /><br>
-			<label>観光地住所</label> <input type="text" th:field="*{address}"><br>
-			<label>WEBページ</label> <input type="text" th:field="*{web}"><br>
-			<label>電話番号</label> <input type="text" th:field="*{tel}"><br>
+			<label>観光地名</label><br> <input type="text" th:field="*{spotName}" /><br>
+			<label>観光地住所</label> <br><input type="text" th:field="*{address}"><br>
+			<label>WEBページ</label><br> <input type="text" th:field="*{web}"><br>
+			<label>電話番号</label><br> <input type="text" th:field="*{tel}"><br>
 			<label>オススメ</label><br>
 			<textarea rows="5" cols="50" th:field="*{point}"></textarea>
-			<br> <label>目的ID</label> <input type="text"
-				th:field="*{purposeId}"><br> <label>画像URL</label> <input
+			<br> <label>目的ID</label> <br><input type="text"
+				th:field="*{purposeId}"><br> <label>画像URL</label><br> <input
 				type="text" th:field="*{imageFileName}"><br>
 			<div class="button006">
 				<input th:if="*{newSpot}" type="submit" value="送信"> <input
