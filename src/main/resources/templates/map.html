@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="css/map.css">
+<link th:href="@{/css/map.css}" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>スポットのMAP</title>
@@ -202,7 +202,7 @@
 		<div class="container">
 			<div id="h_top">
 				<div class="h_logo">
-					<a href=""><img src="../imag/logo22.png" alt="" /></a>
+					<a href=""><img src="../imag/logo2.png" alt="" /></a>
 				</div>
 				<div class="h_nav">
 					<nav id="gNav">
@@ -223,7 +223,7 @@
 	<header class="mheader">
 		<div class="pc_menuFlex">
 			<div class="i-logo">
-				<a href="#"><img src="../imag/logo22.png" alt="" /></a>
+				<a href="#"><img src="../imag/logo2.png" alt="" /></a>
 			</div>
 			<div class="pc_menu">
 				<ul>
@@ -236,33 +236,36 @@
 		</div>
 	</header>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>ルート選択</h1>
+	<div class ="ruuto-tittle"><div class ="kinki-img"><img th:src="@{/imag/logo3.png}"></div>ルートを選択しよう</div>
+
 
 	<script src="https://code.jquery.com/jquery.min.js"></script>
 
 	<!-- 表示用の要素1 -->
-	<div id="displayElement1">
+	<div class="ruuro-boxall">
+	<div class="ruuro-box" id="displayElement1">
 		<!--  マップの表示 -->
-		<div id="map1" style="height: 300px;"></div>
+		<div id="map1" style="height: 300px; width:50%;"></div>
 		<!--  選択した住所表示 -->
+		
 		<div class="jun">
-			<p>ピンをクリックして順番を決めてください</p>
-			<p>今選択した目的地</p>
+			<p class="jun-text">ピンをクリックして順番を決めてください</p>
+			<p class="jun-text1">今選択した目的地</p>
 			<div id="addressDisplay"></div>
 			<div id="selectedAddresses"></div>
 			<!--  ボタン表示 -->
-			<button id="undoButton">一つ戻る</button>
+			<div class="undoButton1-1">
+			<button class="undoButton1" id="undoButton">一つ戻る</button></div>
 		</div>
+		
 	</div>
-
+</div>
 	<!-- 表示用の要素2（初めは非表示） -->
-	<div id="displayElement2" style="display: none;">
+	
+	
+	
+	<div class="ruuro-boxall">
+	<div class="ruuro-box" id="displayElement2" style="display: none;">
 
 
 
@@ -271,9 +274,9 @@
 
 
 		<!-- mapの表示 -->
-		<div id="map2" style="height: 300px;"></div>
+		<div id="map2" style="height: 300px;width:50%;"></div>
 		<div class="suke">
-			<h3>スケジュール</h3>
+			<h3 class="suke-tittle">スケジュール</h3>
 			<!-- 住所の要素 -->
 			<!-- 所要時間の要素 -->
 			<div id="address_1" name="touristId_1"></div>
@@ -289,10 +292,11 @@
 			<div id="totalDuration"name="totalDuration"></div>
 		</div>
 	</div>
+	</div>
 	<!-- チェックボックス表示 -->
 	<!--<div th:each="check:${spotcheck}">
 	<p >[[${check}]]</p>-->
-</div>
+
 <!-- ↑チェックボックス表示 -->
 
 	<script th:inline="javascript">
@@ -509,7 +513,9 @@
 
 	<br>
 	<!-- ボタン -->
-	<button id="toggleButton">ルート表示</button>
+	<div class="toggleButton1-1">
+	<button class="toggleButton1"id="toggleButton">ルート表示</button>
+	</div>
 	<hr>
 	<br>
 	<div>
