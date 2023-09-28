@@ -43,7 +43,7 @@ button{
   font-weight:bold;
   }
   .kinki-img{
-  width:100px;
+  width:80px;
   margin:0 auto;
   margin-bottom:15px;
   }
@@ -73,3 +73,12 @@ button{
  .jun-text1{
  margin-bottom:10px;
  }
+ .suke{
+ width:40%;
+  
+    padding:20px;
+  margin:0 auto;
+ }
+ .suke-tittle{}
+ font-size:20px;
+ font-weight:bold;
