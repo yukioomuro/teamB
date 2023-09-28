@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" th:src="@{/imag/logo3.png}">
+<link rel="icon" th:href="@{/imag/logo3.png}">
 <link rel="stylesheet" th:href="@{/css/myPage.css}">
 <title>☆マイページ☆</title>
 <!--headerのjs-->
@@ -199,11 +199,11 @@
 	<header id="header">
 		<div class="container">
 			<div id="h_top">
-				<div class="h_logo"><a href=""><img th:src="@{/imag/logo2.png}" alt=""/></a></div>
+				<div class="h_logo"><a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}" alt=""/></a></div>
 				<div class="h_nav">
 					<nav id="gNav">
 						<ul class="nav">
-							<li><a href="#top">TOP</a></li>
+							<li><a th:href="@{/oritabi/top}">TOP</a></li>
 							<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 							<li><a th:href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
 						</ul>
@@ -217,11 +217,11 @@
 		
 		<header class="mheader">
 			<div class="pc_menuFlex">
-				<div class="i-logo"><a href="#"><img sth:src="@{/imag/logo2.png}" alt=""/></a>
+				<div class="i-logo"><a th:href="@{/oritabi/top}"><img th:src="@{/imag/logo2.png}" alt=""/></a>
 				</div>
 				<div class="pc_menu">
 					<ul>
-						<li><a href="#top">TOP</a></li>
+						<li><a th:href="@{/oritabi/top}">TOP</a></li>
 						<li><a th:href="@{/oritabi/register}" class="btn-sin">新規登録</a></li>
 						<li><a th:href="@{/oritabi/manager_login}"class= "btn-log">ログイン</a></li>
 					</ul>
