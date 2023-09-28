@@ -12,6 +12,20 @@ h1 {
 	margin-bottom:30px;
 	font-weight:bold;
 }
+.post-tittled{
+	font-size:25px;
+	text-align:center;
+	margin-top:150px;
+	margin-bottom:30px;
+	font-weight:bold;
+}
+.post-innner{
+	width:60%;
+	margin:0 auto;
+}
+.post-innner input{
+	width:100%;
+}
 body {
   background-color:#ffffff;
  /*  font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -202,6 +216,11 @@ border: solid 1px #fff;
 	width:50%;
 	margin:0 auto;
 	padding:10px;
+}
+.button006 input{
+	padding:10px;
+	width:100%;
+	margin-top:10px;
 }
 .F table{
 	margin:0 auto;

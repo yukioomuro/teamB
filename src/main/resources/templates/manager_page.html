@@ -238,8 +238,9 @@
 	
 
 	<!-- ▼▼▼ 新規登録時のみ表示 ▼▼▼ -->
+
 	<div th:method="POST" th:object="${'/oritabi/costomerList'}" style="margin: 5px">
-		<h3 class="post-tittle">お客様一覧</h3>
+		<h3 class="post-tittled">お客様一覧</h3>
 		<!-- 削除完了コメント -->
 		<p th:if="${delcomplete}" th:text="${delcomplete}"></p>
 		<p th:if="${msg}" th:text="${msg}"></p>
@@ -287,6 +288,7 @@
 		</h3>
 
 		<!-- ▼▼▼ Form ▼▼▼ -->
+			<div class="post-innner">
 		<form method="POST"
 			th:action="${spotForm.newSpot}? @{/oritabi/insertSpot} : @{/oritabi/spotUpdate}"
 			th:object="${spotForm}">
@@ -307,6 +309,7 @@
 					th:unless="*{newSpot}" type="submit" value="送信">
 			</div>
 		</form>
+		</div>
 			</div>
 		
 		<p th:if="${complete}" th:text="${complete}"></p>
