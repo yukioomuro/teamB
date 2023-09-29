@@ -413,7 +413,7 @@
 	<!--footer_メニューの中身-->
 	<div class="f_open">
 		<div class="f_logo">
-			<img src="@{/imag/logo22.png}" alt="" />
+			<img th:src="@{/imag/logo22.png}" alt="" />
 		</div>
 
 		<div class="category_list">
@@ -427,13 +427,13 @@
 
 			<dl>
 				<dd>
-					<a href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
+					<a th:href="@{/oritabi/register}"><div class="btn-sin">新規登録</div></a>
 				</dd>
 			</dl>
 
 			<dl>
 				<dd>
-					<a href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
+					<a th:href="@{/oritabi/manager_login}"><div class="btn-log">ログイン</div></a>
 				</dd>
 			</dl>
 
